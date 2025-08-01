@@ -1,12 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ExternalLink, Download, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Handle navigation via location.state (from other pages)
+    if (location.state?.scrollTarget) {
+      const targetId = location.state.scrollTarget;
+      const targetElement = document.getElementById(targetId);
+  
+      if (targetElement) {
+        // Wait until DOM is painted
+        requestAnimationFrame(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+  
+      // Clear state so scroll doesn't happen again
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  
+    // Handle direct /#about hash (optional fallback)
+    if (location.hash) {
+      const hashElement = document.querySelector(location.hash);
+      if (hashElement) {
+        requestAnimationFrame(() => {
+          hashElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    }
+  }, [location, navigate]);
 
   const experiences = [
     {

@@ -22,12 +22,10 @@ const Header = () => {
     if (location.pathname === '/') {
       document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate('/#about');
-      setTimeout(() => {
-        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      navigate('/', { state: { scrollTarget: 'about' } });
     }
   };
+  
 
   const handleHomeClick = () => {
     if (location.pathname === '/') {
