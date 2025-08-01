@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
@@ -11,7 +10,6 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
-import ScrollToTop from './components/ScrollToTop';
 import Contact from './pages/Contact';
 
 const AppContent = () => {
@@ -20,7 +18,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
         {/* Trigger scroll reset on route change */}
         <ScrollToTop />
         <Routes location={location} key={location.pathname}>
