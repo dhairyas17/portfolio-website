@@ -36,26 +36,26 @@ const Home = () => {
   ];
 
   const tools = [
-    { name: 'Jira', logo: 'https://cdn.worldvectorlogo.com/logos/jira-1.svg' },
-    { name: 'Confluence', logo: 'https://cdn.worldvectorlogo.com/logos/confluence-1.svg' },
-    { name: 'Notion', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png' },
-    { name: 'Google Analytics', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Google_Analytics_Logo.png' },
-    { name: 'Mixpanel', logo: 'https://cdn.worldvectorlogo.com/logos/mixpanel-1.svg' },
-    { name: 'Amplitude', logo: 'https://cdn.worldvectorlogo.com/logos/amplitude-3.svg' },
-    { name: 'Aha!', logo: 'https://cdn.worldvectorlogo.com/logos/aha-1.svg' },
-    { name: 'Productboard', logo: 'https://cdn.worldvectorlogo.com/logos/productboard.svg' },
-    { name: 'Figma', logo: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-    { name: 'Miro', logo: 'https://cdn.worldvectorlogo.com/logos/miro-2.svg' },
-    { name: 'GitHub', logo: 'https://cdn.worldvectorlogo.com/logos/github-icon-1.svg' },
-    { name: 'Jenkins', logo: 'https://cdn.worldvectorlogo.com/logos/jenkins-1.svg' },
-    { name: 'Docker', logo: 'https://cdn.worldvectorlogo.com/logos/docker.svg' },
-    { name: 'Kubernetes', logo: 'https://cdn.worldvectorlogo.com/logos/kubernetes.svg' },
-    { name: 'AWS', logo: 'https://cdn.worldvectorlogo.com/logos/aws-2.svg' },
-    { name: 'Postman', logo: 'https://cdn.worldvectorlogo.com/logos/postman.svg' },
-    { name: 'Airflow', logo: 'https://cdn.worldvectorlogo.com/logos/apache-airflow.svg' },
-    { name: 'Grafana', logo: 'https://cdn.worldvectorlogo.com/logos/grafana.svg' },
-    { name: 'Prometheus', logo: 'https://cdn.worldvectorlogo.com/logos/prometheus.svg' },
-    { name: 'GitLab', logo: 'https://cdn.worldvectorlogo.com/logos/gitlab.svg' }
+    { name: 'Jira', logo: '/assets/logos/jira.png' },
+    { name: 'Confluence', logo: '/assets/logos/confluence.png' },
+    { name: 'Notion', logo: '/assets/logos/Notion.png' },
+    { name: 'Google Analytics', logo: '/assets/logos/google_analytics.png' },
+    { name: 'Mixpanel', logo: '/assets/logos/mixpanel.png' },
+    { name: 'Amplitude', logo: '/assets/logos/amplitude.png' },
+    { name: 'Aha!', logo: '/assets/logos/aha.png' },
+    { name: 'Productboard', logo: '/assets/logos/productboard.png' },
+    { name: 'Figma', logo: '/assets/logos/figma.png' },
+    { name: 'Miro', logo: '/assets/logos/miro.png' },
+    { name: 'GitHub', logo: '/assets/logos/github.png' },
+    { name: 'Jenkins', logo: '/assets/logos/Jenkins.png' },
+    { name: 'Docker', logo: '/assets/logos/docker.png' },
+    { name: 'Kubernetes', logo: '/assets/logos/Kubernetes.png' },
+    { name: 'AWS', logo: '/assets/logos/aws.png' },
+    { name: 'Postman', logo: '/assets/logos/postman.png' },
+    { name: 'Airflow', logo: '/assets/logos/airflow.png' },
+    { name: 'Grafana', logo: '/assets/logos/Grafana.png' },
+    { name: 'Prometheus', logo: '/assets/logos/prometheus.png' },
+    { name: 'GitLab', logo: '/assets/logos/gitlab.png' }
   ];
   
 
