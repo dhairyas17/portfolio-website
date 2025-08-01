@@ -36,27 +36,28 @@ const Home = () => {
   ];
 
   const tools = [
-    { name: 'Jira', icon: '🔷' },
-    { name: 'Confluence', icon: '🌊' },
-    { name: 'Notion', icon: '📝' },
-    { name: 'Google Analytics', icon: '📊' },
-    { name: 'Mixpanel', icon: '📈' },
-    { name: 'Amplitude', icon: '⚡' },
-    { name: 'Aha!', icon: '💡' },
-    { name: 'Productboard', icon: '📋' },
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Miro', icon: '🖼️' },
-    { name: 'GitHub', icon: '🐙' },
-    { name: 'Jenkins', icon: '🔧' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'Kubernetes', icon: '☸️' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'Postman', icon: '📮' },
-    { name: 'Airflow', icon: '🌪️' },
-    { name: 'Grafana', icon: '📊' },
-    { name: 'Prometheus', icon: '🔥' },
-    { name: 'GitLab', icon: '🦊' }
+    { name: 'Jira', logo: '/assets/logos/jira.png' },
+    { name: 'Confluence', logo: '/assets/logos/confluence.png' },
+    { name: 'Notion', logo: '/assets/logos/Notion.png' },
+    { name: 'Google Analytics', logo: '/assets/logos/google_analytics.png' },
+    { name: 'Mixpanel', logo: '/assets/logos/mixpanel.png' },
+    { name: 'Amplitude', logo: '/assets/logos/amplitude.png' },
+    { name: 'Aha!', logo: '/assets/logos/aha.png' },
+    { name: 'Productboard', logo: '/assets/logos/productboard.png' },
+    { name: 'Figma', logo: '/assets/logos/figma.png' },
+    { name: 'Miro', logo: '/assets/logos/miro.png' },
+    { name: 'GitHub', logo: '/assets/logos/github.png' },
+    { name: 'Jenkins', logo: '/assets/logos/Jenkins.png' },
+    { name: 'Docker', logo: '/assets/logos/docker.png' },
+    { name: 'Kubernetes', logo: '/assets/logos/Kubernetes.png' },
+    { name: 'AWS', logo: '/assets/logos/aws.png' },
+    { name: 'Postman', logo: '/assets/logos/postman.png' },
+    { name: 'Airflow', logo: '/assets/logos/airflow.png' },
+    { name: 'Grafana', logo: '/assets/logos/Grafana.png' },
+    { name: 'Prometheus', logo: '/assets/logos/prometheus.png' },
+    { name: 'GitLab', logo: '/assets/logos/gitlab.png' }
   ];
+  
 
   const certifications = [
     { name: 'Certified Scrum Master (CSM)', provider: 'Scrum Alliance', year: '2023', link: '#' },
@@ -166,61 +167,95 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">About Me</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">My Journey</h2>
+            <p className="text-xl text-gray-600">
+              A timeline of learning, building, and scaling impactful products.
+            </p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row items-start gap-12">
-            {/* About Me Text */}
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            {/* Left Side - Paragraph */}
             <motion.div
-              className="flex-1 text-lg text-gray-600 leading-relaxed"
+              className="lg:w-1/2 text-gray-700 text-lg space-y-6"
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              My journey began in software engineering, where I discovered my passion for bridging the gap between technology and user needs. This led me to transition into product management, where I could combine technical expertise with strategic thinking. <br /><br />
-              Over the past 8 years, I've scaled products from startup concepts to enterprise solutions, leading cross-functional teams and driving innovation in AI, machine learning, and distributed systems. <br /><br />
-              I specialize in building products that not only solve complex technical challenges but also deliver measurable business impact and exceptional user experiences. <br /><br />
+              <p>
+                Hello! I'm a strategic Product Manager with a passion for transforming innovative ideas into successful digital products. 
+                My journey in product management started 5+ years ago, and I've been driving product excellence and user satisfaction ever since.
+              </p>
+              <p>
+                I specialize in product strategy, user experience optimization, and cross-functional team leadership. 
+                My expertise spans from market research and competitive analysis to feature prioritization and go-to-market strategies.
+              </p>
+              <p>
+                When I'm not analyzing user data or planning product roadmaps, you can find me mentoring aspiring product managers, 
+                exploring emerging technologies, or studying successful product case studies. 
+                I believe in continuous learning and staying ahead of industry trends.
+              </p>
             </motion.div>
 
-            {/* Experience Metrics */}
+            {/* Right Side - Value Cards */}
             <motion.div
-              className="grid grid-cols-2 md:grid-cols-2 gap-8 flex-1"
+              className="lg:w-2/5 space-y-4"
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                  <Calendar className="w-8 h-8 text-blue-600" />
+              {[
+                {
+                  title: 'Strategic Vision',
+                  icon: '💡',
+                  desc: 'Developing product roadmaps aligned with business goals and user needs.'
+                },
+                {
+                  title: 'Cross-functional Leadership',
+                  icon: '👥',
+                  desc: 'Leading teams of engineers, designers, and stakeholders to deliver results.'
+                },
+                {
+                  title: 'Data-Driven Decisions',
+                  icon: '📊',
+                  desc: 'Leveraging analytics and research to guide product strategy.'
+                }
+              ].map((item, index) => (
+                <div key={index} className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition">
+                  <div className="flex items-start gap-3">
+                    <div className="text-2xl">{item.icon}</div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
+                      <p className="text-gray-600 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-900">8+</div>
-                <div className="text-gray-600">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                  <Users className="w-8 h-8 text-green-600" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900">100+</div>
-                <div className="text-gray-600">Global Sites</div>
-              </div>
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
-                  <TrendingUp className="w-8 h-8 text-purple-600" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900">5M+</div>
-                <div className="text-gray-600">Daily Users</div>
-              </div>
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
-                  <MapPin className="w-8 h-8 text-orange-600" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900">4</div>
-                <div className="text-gray-600">Cities Worked</div>
-              </div>
+              ))}
             </motion.div>
           </div>
+
+          {/* Bottom Stats */}
+          <motion.div
+            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+              <div className="text-indigo-600 text-4xl font-bold">25+</div>
+              <div className="text-sm text-gray-600 mt-2">Products Launched</div>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+              <div className="text-indigo-600 text-4xl font-bold">5+</div>
+              <div className="text-sm text-gray-600 mt-2">Years Experience</div>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+              <div className="text-indigo-600 text-4xl font-bold">98%</div>
+              <div className="text-sm text-gray-600 mt-2">User Satisfaction</div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -311,15 +346,19 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                  {tool.icon}
-                </div>
+                <img
+                  src={tool.logo}
+                  alt={`${tool.name} logo`}
+                  className="h-10 w-10 mb-2 object-contain"
+                />
                 <div className="text-sm font-medium text-gray-700 text-center">
                   {tool.name}
                 </div>
               </motion.div>
             ))}
           </div>
+
+
         </div>
       </section>
 
