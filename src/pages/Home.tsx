@@ -40,12 +40,12 @@ const Home = () => {
 
   const experiences = [
     {
-      role: 'Technical Product Manager',
-      company: 'Evercam',
-      period: '2023 - Present',
-      description: 'Leading AI platform delivery across 100+ global sites',
-      metrics: ['60% reduction in manual reporting', '90% faster incident response', '100+ global sites managed'],
-      location: 'San Francisco, CA'
+      role: 'Product Manager',
+      company: 'StartupXYZ',
+      period: '2019 - 2021',
+      description: 'Built product from 0-1, achieving product-market fit',
+      metrics: ['0 to 100K users in 18 months', '25% monthly growth rate', '$2M ARR achieved'],
+      location: 'Austin, TX'
     },
     {
       role: 'Senior Product Manager',
@@ -56,13 +56,13 @@ const Home = () => {
       location: 'New York, NY'
     },
     {
-      role: 'Product Manager',
-      company: 'StartupXYZ',
-      period: '2019 - 2021',
-      description: 'Built product from 0-1, achieving product-market fit',
-      metrics: ['0 to 100K users in 18 months', '25% monthly growth rate', '$2M ARR achieved'],
-      location: 'Austin, TX'
-    }
+      role: 'Technical Product Manager',
+      company: 'Evercam',
+      period: '2023 - Present',
+      description: 'Leading AI platform delivery across 100+ global sites',
+      metrics: ['60% reduction in manual reporting', '90% faster incident response', '100+ global sites managed'],
+      location: 'San Francisco, CA'
+    },    
   ];
 
   const tools = [
@@ -143,10 +143,10 @@ const Home = () => {
             <h2 className="text-2xl md:text-2xl text-gray-700 mb-9">
               Product Manger & Strategy Leader
             </h2>
-            <p className="text-xl text-gray-400 mb-2 max-w-6xl mx-auto">
+            <p className="text-xl text-gray-800 mb-2 max-w-6xl mx-auto">
               I bridge business goals and technical execution, delivering scalable products that solve real-world problems.
             </p>
-            <p className="text-xl text-gray-400 mb-8 max-w-6xl mx-auto">
+            <p className="text-xl text-gray-800 mb-8 max-w-6xl mx-auto">
               Driven by clarity, data, and collaboration, I lead cross-functional teams from product vision to launch.
             </p>
           </motion.div>
@@ -181,7 +181,7 @@ const Home = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <ArrowDown size={32} className="text-gray-400" />
+            <ArrowDown size={52} className="text-gray-800" />
           </motion.div>
 
         </div>
@@ -299,8 +299,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Experience</h2>
-            <p className="text-xl text-gray-600">My journey in product leadership</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">Experience</h2>
           </motion.div>
           <div className="relative">
             {/* Horizontal timeline line */}
@@ -362,7 +361,6 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Tools & Platforms</h2>
-            <p className="text-xl text-gray-600">Technologies I work with daily</p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6">
@@ -403,7 +401,6 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
-            <p className="text-xl text-gray-600">Continuous learning and professional development</p>
           </motion.div>
 
           <motion.div
@@ -417,16 +414,16 @@ const Home = () => {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                       Certification
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                       Provider
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                       Year
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                       Link
                     </th>
                   </tr>

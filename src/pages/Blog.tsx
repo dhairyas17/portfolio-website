@@ -25,8 +25,6 @@ const Blog = () => {
       category: 'ai-ml',
       date: '2024-01-15',
       readTime: '8 min read',
-      likes: 124,
-      comments: 18,
       tags: ['AI', 'Product Management', 'Strategy']
     },
     {
@@ -37,8 +35,6 @@ const Blog = () => {
       category: 'leadership',
       date: '2024-01-08',
       readTime: '6 min read',
-      likes: 89,
-      comments: 12,
       tags: ['Team Building', 'Leadership', 'Scaling']
     },
     {
@@ -49,8 +45,6 @@ const Blog = () => {
       category: 'product-strategy',
       date: '2023-12-28',
       readTime: '10 min read',
-      likes: 156,
-      comments: 24,
       tags: ['Data Analytics', 'Product Strategy', 'Decision Making']
     },
     {
@@ -61,8 +55,6 @@ const Blog = () => {
       category: 'tech-trends',
       date: '2023-12-20',
       readTime: '7 min read',
-      likes: 78,
-      comments: 15,
       tags: ['Architecture', 'Microservices', 'Technical Strategy']
     },
     {
@@ -73,8 +65,6 @@ const Blog = () => {
       category: 'product-strategy',
       date: '2023-12-12',
       readTime: '9 min read',
-      likes: 142,
-      comments: 31,
       tags: ['User Research', 'Customer Development', 'Product Discovery']
     },
     {
@@ -85,8 +75,6 @@ const Blog = () => {
       category: 'ai-ml',
       date: '2023-12-05',
       readTime: '11 min read',
-      likes: 203,
-      comments: 42,
       tags: ['AI Ethics', 'Product Strategy', 'Responsible AI']
     }
   ];
@@ -294,14 +282,6 @@ const Blog = () => {
 
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                         <div className="flex items-center gap-4 text-sm text-gray-500">
-                          <div className="flex items-center gap-1">
-                            <Heart className="w-4 h-4" />
-                            <span>{post.likes}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MessageCircle className="w-4 h-4" />
-                            <span>{post.comments}</span>
-                          </div>
                         </div>
                         <span className="text-blue-600 text-sm font-semibold group-hover:text-blue-800 transition-colors">
                           Read More →
