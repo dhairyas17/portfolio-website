@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, ExternalLink, Download, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Home = () => {
   const scrollToAbout = () => {
@@ -126,66 +127,104 @@ const Home = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-5">
-              Hi, I'm{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Dhairya
-              </span>
-            </h1>
-            <h2 className="text-2xl md:text-2xl text-gray-700 mb-9">
-              Product Manger & Strategy Leader
-            </h2>
-            <p className="text-xl text-gray-800 mb-2 max-w-6xl mx-auto">
-              I bridge business goals and technical execution, delivering scalable products that solve real-world problems.
-            </p>
-            <p className="text-xl text-gray-800 mb-8 max-w-6xl mx-auto">
-              Driven by clarity, data, and collaboration, I lead cross-functional teams from product vision to launch.
-            </p>
-          </motion.div>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 font-semibold"
-            >
-              Let's Connect
-            </Link>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg hover:bg-gray-900 hover:text-white transition-all transform hover:scale-105 font-semibold"
-            >
-              <Download size={20} />
-              Download Resume
-            </a>
-          </motion.div>
+      
+{/* Hero Section */}
+<section
+  id="home"
+  className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 px-4"
+>
+  <div className="max-w-5xl w-full mx-auto text-center">
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      <h1 className="text-5xl md:text-6xl font-bold text-gray-700 mb-3">
+        Hi, I'm{' '}
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+          Dhairya
+        </span>
+      </h1>
+      <h2 className="text-xl md:text-2xl text-gray-700 mb-4 font-medium">
+        Technical Product Manager & Strategy Leader
+      </h2>
 
-          <motion.div
-            className="animate-bounce cursor-pointer absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            onClick={scrollToAbout}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <ArrowDown size={52} className="text-gray-800" />
-          </motion.div>
+      <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
+        I connect business vision with engineering execution to build scalable, data-driven products.
+      </p>
 
-        </div>
-      </section>
+      <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
+        With a sharp focus on clarity, collaboration, and outcomes, I lead cross-functional teams from 0 to 1 and beyond.
+      </p>
+    </motion.div>
+
+    <motion.div
+      className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
+      initial={{ y: 30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.6 }}
+    >
+      <Link
+        to="/contact"
+        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-transform transform hover:scale-105 font-medium"
+      >
+        Let’s Connect
+      </Link>
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 px-6 py-3 rounded-md hover:bg-gray-900 hover:text-white transition-transform transform hover:scale-105 font-medium"
+      >
+        <Download size={18} />
+        Resume
+      </a>
+    </motion.div>
+
+    <motion.div
+      className="flex justify-center items-center gap-6 mb-12"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.9 }}
+    >
+      <a
+        href="https://github.com/your-username"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-700 hover:text-gray-900 transition-transform transform hover:scale-110"
+      >
+        <Github size={26} />
+      </a>
+      <a
+        href="https://linkedin.com/in/your-username"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-700 hover:text-blue-700 transition-transform transform hover:scale-110"
+      >
+        <Linkedin size={26} />
+      </a>
+      <a
+        href="mailto:your@email.com"
+        className="text-gray-700 hover:text-red-600 transition-transform transform hover:scale-110"
+      >
+        <Mail size={26} />
+      </a>
+    </motion.div>
+
+    <motion.div
+      className="animate-bounce absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
+      onClick={scrollToAbout}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 1 }}
+    >
+      <ArrowDown size={40} className="text-gray-700" />
+    </motion.div>
+  </div>
+</section>
+
+
 
       {/* About Section */}
       <section id="about" className="py-20 bg-white">

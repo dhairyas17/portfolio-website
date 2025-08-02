@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, CheckCircle } from 'lucide-react';
+import {
+  Mail,
+  Calendar,
+  MapPin,
+  Linkedin,
+  Github,
+  Twitter,
+  Send,
+  CheckCircle
+} from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +22,13 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -33,10 +43,10 @@ const Contact = () => {
       link: 'mailto:dhairya@example.com'
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      icon: Calendar,
+      label: 'Schedule Meeting',
+      value: 'Book a call',
+      link: 'https://calendly.com/dhairya/30min' // Replace with your actual scheduling link
     },
     {
       icon: MapPin,
@@ -85,7 +95,7 @@ const Contact = () => {
         >
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Let's Connect</h1>
           <p className="text-xl text-gray-600 max-w-6xl mx-auto">
-          Interested in collaborating or chatting about product, AI, or tech? Feel free to reach out! <br /><br />
+            Interested in collaborating or chatting about product, AI, or tech? Feel free to reach out! <br /><br />
           </p>
         </motion.div>
 
@@ -98,7 +108,7 @@ const Contact = () => {
           >
             <div className="bg-white rounded-2xl shadow-lg p-8 min-h-[660px]">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h2>
-              
+
               {isSubmitted ? (
                 <motion.div
                   className="flex items-center justify-center p-8"
@@ -113,7 +123,6 @@ const Contact = () => {
                   </div>
                 </motion.div>
               ) : (
-                
                 <form onSubmit={handleSubmit} className="space-y-11">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -209,7 +218,7 @@ const Contact = () => {
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
               <div className="space-y-4">
-                {contactInfo.map((item, index) => (
+                {contactInfo.map((item) => (
                   <motion.a
                     key={item.label}
                     href={item.link}
@@ -253,7 +262,6 @@ const Contact = () => {
                 Connect with me on social media for the latest updates on my projects and insights into product strategy.
               </p>
             </div>
-
           </motion.div>
         </div>
       </div>
