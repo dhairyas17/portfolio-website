@@ -229,7 +229,8 @@ const Blog = () => {
                   onClick={() => handleCardClick(post.id)}
                   className="cursor-pointer"
                 >
-                  <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                  <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden">
+  
                     <div className="relative overflow-hidden">
                       <img
                         src={post.image}

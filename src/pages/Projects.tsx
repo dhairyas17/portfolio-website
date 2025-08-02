@@ -172,7 +172,8 @@ const Projects = () => {
               className="flex cursor-pointer"
               onClick={() => handleCardClick(project.id)}
             >
-              <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full w-full">
+              <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden flex flex-col h-full w-full">
+  
                 <div className="relative overflow-hidden h-48">
                   <img
                     src={project.image}
