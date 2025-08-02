@@ -165,21 +165,22 @@ const CaseStudyCategory = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
+
         <motion.div
-          className="mb-12"
+          className="mb-12 text-center flex flex-col items-center"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Link
             to="/case-studies"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors self-start"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Case Studies
           </Link>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">{title}</h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <p className="text-xl text-gray-600 max-w-5xl">
             {isSystemDesign 
               ? 'Explore how I\'ve architected scalable systems to handle complex technical challenges and massive scale.'
               : 'Discover strategic product decisions that drove significant business growth and user value.'
@@ -198,7 +199,9 @@ const CaseStudyCategory = () => {
               onClick={() => handleCardClick(study.id)}
               className="cursor-pointer"
             >
-              <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105">
+              {/* <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105"> */}
+              <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[500px] flex flex-col">
+  
                 <div className="relative overflow-hidden">
                   <img
                     src={study.image}

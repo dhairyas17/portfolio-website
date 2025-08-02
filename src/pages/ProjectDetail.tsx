@@ -298,6 +298,29 @@ const ProjectDetail = () => {
               ))}
             </div>
           </motion.section>
+          {/* Let's Connect CTA */}
+          <motion.div
+              className="mt-12 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-4"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.3 }}
+            />
+
+            <motion.div
+              className="mt-6 text-center"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to discuss a similar solution?</h2>
+              <p className="text-gray-600 mb-6 text-lg">I’m always open to connecting, sharing insights, or tackling new product challenges together.</p>
+              <Link
+                to="/contact"
+                className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition"
+              >
+                Let’s Connect
+              </Link>
+            </motion.div>      
         </div>
       </div>
     </motion.div>
