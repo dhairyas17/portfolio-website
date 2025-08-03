@@ -111,7 +111,7 @@ const Blog = () => {
 
   return (
     <motion.div
-      className="min-h-screen pt-20 pb-16"
+      className="min-h-[80vh] pt-12 pb-8"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -295,6 +295,9 @@ const Blog = () => {
             ))}
           </AnimatePresence>
         </div>
+        <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+</p>
       </div>
     </motion.div>
   );

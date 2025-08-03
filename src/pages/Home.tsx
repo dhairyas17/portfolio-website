@@ -347,40 +347,6 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {experiences.map((exp, index) => (
-                  // <motion.div
-                  //   key={index}
-                  //   className="relative flex flex-col items-center"
-                  //   initial={{ y: 50, opacity: 0 }}
-                  //   whileInView={{ y: 0, opacity: 1 }}
-                  //   viewport={{ once: true }}
-                  //   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  // >
-                  //   {/* Dot - perfectly centered on the timeline line */}
-                  //   <div className="hidden md:flex absolute top-[24px] z-10">
-                  //     <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
-                  //   </div>
-
-                  //   {/* Card - appears slightly below the dot */}
-                  //   <div className="mt-[48px] w-3/4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                  //     <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
-                  //     <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
-                  //     <div className="text-gray-600 mb-2 flex items-center gap-1">
-                  //       <span>{exp.company}</span>
-                  //     </div>
-                  //     <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-                  //       <MapPin size={14} />
-                  //       {exp.location}
-                  //     </div>
-                  //     <p className="text-gray-700 text-sm mb-3">{exp.description}</p>
-                  //     <div className="space-y-1">
-                  //       {exp.metrics.map((metric, idx) => (
-                  //         <div key={idx} className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
-                  //           {metric}
-                  //         </div>
-                  //       ))}
-                  //     </div>
-                  //   </div>
-                  // </motion.div>
                   <motion.div
   key={index}
   className="relative flex flex-col items-center"
@@ -390,7 +356,15 @@ const Home = () => {
   transition={{ duration: 0.6, delay: index * 0.1 }}
 >
   <div className="hidden md:flex absolute top-[24px] z-10">
-    <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+    {/* <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div> */}
+    <div
+  className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
+  style={{
+    boxShadow: '0 0 0 rgba(59,130,246,0.4)',
+    animation: 'glow 2s infinite ease-in-out',
+  }}
+></div>
+
   </div>
 
   <motion.div
@@ -426,7 +400,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Tools & Platforms */}
+      {/* Testimonials */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -508,9 +482,8 @@ const Home = () => {
         </div>
       </section>
 
-
-      {/* Certifications */}
-      <section className="py-20 bg-white">
+{/* Certifications */}
+<section className="pt-24 pb-16 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div
       className="text-center mb-16"
@@ -523,47 +496,39 @@ const Home = () => {
     </motion.div>
 
     <motion.div
-      className="bg-white rounded-lg shadow-lg overflow-hidden"
+      className="bg-white rounded-2xl shadow-xl ring-1 ring-gray-200 overflow-hidden"
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
       <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-50">
+        <table className="min-w-full divide-y divide-gray-200 text-sm">
+          <thead className="bg-gray-100">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
-                Certification
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
-                Provider
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
-                Link
-              </th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Certification</th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Provider</th>
+              <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Link</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-gray-100">
             {certifications.map((cert, index) => (
               <motion.tr
                 key={index}
-                className="hover:bg-gray-50 transition-colors"
-                initial={{ x: -50, opacity: 0 }}
+                className="hover:bg-gray-50 transition"
+                initial={{ x: -30, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {cert.name}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {cert.provider}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{cert.name}</td>
+                <td className="px-6 py-4 text-gray-600 whitespace-nowrap">{cert.provider}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
                   <a
                     href={cert.link}
-                    className="text-blue-600 hover:text-blue-900 transition-colors inline-flex items-center gap-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 transition inline-flex items-center gap-1"
                   >
                     View <ExternalLink size={14} />
                   </a>
@@ -578,9 +543,7 @@ const Home = () => {
 </section>
 
 {/* Closing Section */}
-
-{/* Closing Section */}
-<section className="py-24 bg-white">
+<section className="pt-12 pb-10 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <motion.div
       initial={{ y: 40, opacity: 0 }}
@@ -616,8 +579,12 @@ const Home = () => {
         </Link>
       </div>
     </motion.div>
+    <p className="text-xs text-center text-gray-400 mt-8 pt-4 border-t border-gray-200">
+      © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+    </p>
   </div>
 </section>
+
 
     </motion.div>
   );

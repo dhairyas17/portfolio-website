@@ -271,26 +271,11 @@ const CaseStudyDetail = () => {
           </motion.section>
           {/* Previous / Next Navigation */}
           <motion.div
-            className="mt-20 pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-4"
+            className="mt-12 pt-2 border-t flex flex-col md:flex-row justify-between items-center gap-4"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.3 }}
           >
-            <Link
-              to={`/case-studies/${category}/previous-case-id`} // Replace with real ID or logic
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Previous</span>
-            </Link>
-
-            <Link
-              to={`/case-studies/${category}/next-case-id`} // Replace with real ID or logic
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
-            >
-              <span>Next</span>
-              <ArrowLeft className="w-5 h-5 rotate-180" /> {/* Rotated left arrow to act like right arrow */}
-            </Link>
           </motion.div>
 
           {/* Let's Connect CTA */}
@@ -310,6 +295,9 @@ const CaseStudyDetail = () => {
             </Link>
           </motion.div>
         </div>
+        <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+</p>
       </div>
     </motion.div>
   );

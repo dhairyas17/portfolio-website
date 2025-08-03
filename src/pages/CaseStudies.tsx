@@ -40,9 +40,9 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="min-h-[100vh] px-4 py-10">
+    <div className="min-h-0 px-4 pt-6 pb-0">
       <motion.div
-        className="flex-grow flex flex-col pt-20 pb-16"
+        className="flex-grow flex flex-col pt-20 pb-14"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -40 }}
@@ -125,6 +125,9 @@ const CaseStudies = () => {
               ))}
             </div>
           </div>
+          <p className="text-xs text-center text-gray-400 mt-16 pt-6 border-t border-gray-200">
+  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+</p>
         </div>
       </motion.div>
     </div>
