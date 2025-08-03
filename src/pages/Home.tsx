@@ -189,7 +189,7 @@ const Home = () => {
       transition={{ duration: 0.8, delay: 0.9 }}
     >
       <a
-        href="https://github.com/your-username"
+        href="https://github.com/dhairyas17"
         target="_blank"
         rel="noopener noreferrer"
         className="text-gray-700 hover:text-gray-900 transition-transform transform hover:scale-110"
@@ -197,7 +197,7 @@ const Home = () => {
         <Github size={26} />
       </a>
       <a
-        href="https://linkedin.com/in/your-username"
+        href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-gray-700 hover:text-blue-700 transition-transform transform hover:scale-110"
@@ -205,7 +205,7 @@ const Home = () => {
         <Linkedin size={26} />
       </a>
       <a
-        href="mailto:your@email.com"
+        href="mailto:dhairyasharma008@gmail.com"
         className="text-gray-700 hover:text-red-600 transition-transform transform hover:scale-110"
       >
         <Mail size={26} />
@@ -342,44 +342,81 @@ const Home = () => {
           </motion.div>
           <div className="relative">
             {/* Horizontal timeline line */}
-            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-blue-600 z-0"></div>
+            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-blue-500 z-0 shadow-[0_0_20px_4px_rgba(59,130,246,0.6)] animate-pulse"></div>
+
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative flex flex-col items-center"
-                    initial={{ y: 50, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    {/* Dot - perfectly centered on the timeline line */}
-                    <div className="hidden md:flex absolute top-[24px] z-10">
-                      <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
-                    </div>
+                  // <motion.div
+                  //   key={index}
+                  //   className="relative flex flex-col items-center"
+                  //   initial={{ y: 50, opacity: 0 }}
+                  //   whileInView={{ y: 0, opacity: 1 }}
+                  //   viewport={{ once: true }}
+                  //   transition={{ duration: 0.6, delay: index * 0.1 }}
+                  // >
+                  //   {/* Dot - perfectly centered on the timeline line */}
+                  //   <div className="hidden md:flex absolute top-[24px] z-10">
+                  //     <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+                  //   </div>
 
-                    {/* Card - appears slightly below the dot */}
-                    <div className="mt-[48px] w-3/4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                      <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
-                      <div className="text-gray-600 mb-2 flex items-center gap-1">
-                        <span>{exp.company}</span>
-                      </div>
-                      <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-                        <MapPin size={14} />
-                        {exp.location}
-                      </div>
-                      <p className="text-gray-700 text-sm mb-3">{exp.description}</p>
-                      <div className="space-y-1">
-                        {exp.metrics.map((metric, idx) => (
-                          <div key={idx} className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
-                            {metric}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+                  //   {/* Card - appears slightly below the dot */}
+                  //   <div className="mt-[48px] w-3/4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+                  //     <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+                  //     <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+                  //     <div className="text-gray-600 mb-2 flex items-center gap-1">
+                  //       <span>{exp.company}</span>
+                  //     </div>
+                  //     <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+                  //       <MapPin size={14} />
+                  //       {exp.location}
+                  //     </div>
+                  //     <p className="text-gray-700 text-sm mb-3">{exp.description}</p>
+                  //     <div className="space-y-1">
+                  //       {exp.metrics.map((metric, idx) => (
+                  //         <div key={idx} className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
+                  //           {metric}
+                  //         </div>
+                  //       ))}
+                  //     </div>
+                  //   </div>
+                  // </motion.div>
+                  <motion.div
+  key={index}
+  className="relative flex flex-col items-center"
+  initial={{ y: 50, opacity: 0 }}
+  whileInView={{ y: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: index * 0.1 }}
+>
+  <div className="hidden md:flex absolute top-[24px] z-10">
+    <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+  </div>
+
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    className="mt-[48px] w-3/4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300"
+  >
+    <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+    <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+    <div className="text-gray-600 mb-2 flex items-center gap-1">
+      <span>{exp.company}</span>
+    </div>
+    <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+      <MapPin size={14} />
+      {exp.location}
+    </div>
+    <p className="text-gray-700 text-sm mb-3">{exp.description}</p>
+    <div className="space-y-1">
+      {exp.metrics.map((metric, idx) => (
+        <div key={idx} className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
+          {metric}
+        </div>
+      ))}
+    </div>
+  </motion.div>
+</motion.div>
+
                 
               ))}
             </div>

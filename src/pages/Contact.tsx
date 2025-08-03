@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
   Mail,
   Calendar,
@@ -12,6 +13,7 @@ import {
 } from 'lucide-react';
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,40 +21,64 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsSending(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('Missing EmailJS environment variables.');
+      alert('Email configuration error. Please try again later.');
+      setIsSending(false);
+      return;
+    }
+
+    if (form.current) {
+      emailjs
+        .sendForm(serviceId, templateId, form.current, publicKey)
+        .then(() => {
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', subject: '', message: '' });
+          setIsSending(false);
+          setTimeout(() => setIsSubmitted(false), 3000);
+        })
+        .catch((error) => {
+          console.error('EmailJS Error:', error);
+          alert('Something went wrong. Please try again later.');
+          setIsSending(false);
+        });
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: 'dhairya@example.com',
-      link: 'mailto:dhairya@example.com'
+      value: 'dhairyasharma008@gmail.com',
+      link: 'mailto:dhairyasharma008@gmail.com'
     },
     {
       icon: Calendar,
       label: 'Schedule Meeting',
       value: 'Book a call',
-      link: 'https://calendly.com/dhairya/30min' // Replace with your actual scheduling link
+      link: 'https://calendly.com/dhairyasharma008/30min'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'San Francisco, CA',
-      link: 'https://maps.google.com/?q=San+Francisco,+CA'
+      value: 'Bengaluru, India',
+      link: 'https://maps.google.com/?q=Bengaluru,+India'
     }
   ];
 
@@ -60,19 +86,19 @@ const Contact = () => {
     {
       icon: Linkedin,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/dhairya',
+      url: 'https://www.linkedin.com/in/dhairya-sharma-5484231a9/',
       color: 'text-blue-600 hover:text-blue-700'
     },
     {
       icon: Github,
       name: 'GitHub',
-      url: 'https://github.com/dhairya',
+      url: 'https://github.com/dhairyas17',
       color: 'text-gray-700 hover:text-gray-900'
     },
     {
       icon: Twitter,
       name: 'Twitter',
-      url: 'https://twitter.com/dhairya',
+      url: 'https://x.com/Dhairya76327149',
       color: 'text-blue-400 hover:text-blue-500'
     }
   ];
@@ -86,7 +112,6 @@ const Contact = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ y: 50, opacity: 0 }}
@@ -95,12 +120,11 @@ const Contact = () => {
         >
           <h1 className="text-5xl font-bold text-gray-900 mb-6">Let's Connect</h1>
           <p className="text-xl text-gray-600 max-w-6xl mx-auto">
-            Interested in collaborating or chatting about product, AI, or tech? Feel free to reach out! <br /><br />
+            Interested in collaborating or chatting about product, AI, or tech? Feel free to reach out!
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
-          {/* Contact Form */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -108,7 +132,6 @@ const Contact = () => {
           >
             <div className="bg-white rounded-2xl shadow-lg p-8 min-h-[660px]">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h2>
-
               {isSubmitted ? (
                 <motion.div
                   className="flex items-center justify-center p-8"
@@ -123,7 +146,7 @@ const Contact = () => {
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-11">
+                <form ref={form} onSubmit={handleSubmit} className="space-y-11">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -197,27 +220,49 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center gap-4"
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
+                    disabled={isSending}
                   >
-                    <Send className="w-5 h-5" />
-                    Send Message
+                    {isSending ? (
+                      <>
+                        <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               )}
             </div>
           </motion.div>
 
-          {/* Contact Information */}
           <motion.div
             className="space-y-8"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {/* Contact Details */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 min-h-[422px] flex flex-col">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-              <div className="space-y-4">
+              <div className="flex-1 space-y-4">
                 {contactInfo.map((item) => (
                   <motion.a
                     key={item.label}
@@ -240,7 +285,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Social Links */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Follow Me</h3>
               <div className="flex gap-4">
@@ -259,7 +303,7 @@ const Contact = () => {
                 ))}
               </div>
               <p className="text-gray-600 mt-4">
-                Connect with me on social media for the latest updates on my projects and insights into product strategy.
+                Connect with me for quick insights on product, tech, and strategy.
               </p>
             </div>
           </motion.div>
