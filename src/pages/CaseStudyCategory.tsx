@@ -150,7 +150,7 @@ const CaseStudyCategory = () => {
 
                   {/* Read More Link pinned to bottom */}
                   <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
-                    <span className="text-sm font-semibold mr-2">Read Article</span>
+                    <span className="text-sm font-semibold mr-2">View Case Study</span>
                     <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>

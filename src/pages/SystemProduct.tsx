@@ -14,7 +14,6 @@ const SystemProduct = () => {
       color: 'from-blue-500 to-indigo-600',
       studies: 6,
       titles: [
-        'Distributed Logging at Scale',
         'Video Streaming Pipeline',
         'IoT Fleet Architecture',
         'Database Sharding Strategy',
@@ -32,9 +31,6 @@ const SystemProduct = () => {
         'Revamping Onboarding Flow',
         'Pricing Model Experiments',
         'Feature Adoption Metrics',
-        'User Retention Strategy',
-        'Conversion Funnel Redesign',
-        'Feedback Loop System',
       ],
     },
   ];
@@ -99,7 +95,7 @@ const SystemProduct = () => {
                         </p>
 
                         {/* CASE STUDY LIST */}
-                        <ul className="text-sm text-gray-500 space-y-2 mb-6 list-disc list-inside text-left">
+                        <ul className="text-sm text-gray-500 space-y-2 mb-6 list-disc list-inside text-left justify-between">
                           {category.titles.map((title, i) => (
                             <li key={i} className="truncate">{title}</li>
                           ))}
@@ -110,7 +106,7 @@ const SystemProduct = () => {
                           <span className="text-sm text-gray-500">
                             {category.studies} case studies
                           </span>
-                          <div className="flex items-center text-blue-600 group-hover:text-indigo-600 transition-colors">
+                          <div className="flex items-center text-blue-600 group-hover:text-indigo-600 transition-colors justify-between">
                             <span className="text-sm font-semibold mr-2">Explore</span>
                             <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                           </div>
