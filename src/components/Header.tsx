@@ -38,8 +38,8 @@ const Header = () => {
   const navItems = [
     { name: 'Home', onClick: handleHomeClick },
     { name: 'About', onClick: handleAboutClick },
-    { name: 'Case Studies', href: '/case-studies' },
-    { name: 'Projects', href: '/projects' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'System & Product Design', href: '/system-product-design' },
     { name: 'Blogs', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];

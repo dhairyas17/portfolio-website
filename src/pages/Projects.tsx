@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { ExternalLink, Github, Calendar, Users, Tag } from 'lucide-react';
+import { ExternalLink, Github, Calendar, Users, Tag, ArrowLeft } from 'lucide-react';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -19,7 +19,8 @@ const Projects = () => {
     {
       id: 'ai-recommendation-engine',
       title: 'AI Recommendation Engine',
-      description: 'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
+      description:
+        'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
       category: 'ai-ml',
       tech: ['Python', 'TensorFlow', 'FastAPI', 'PostgreSQL', 'Docker'],
@@ -34,7 +35,8 @@ const Projects = () => {
     {
       id: 'real-time-analytics-dashboard',
       title: 'Real-time Analytics Dashboard',
-      description: 'Interactive dashboard processing millions of events daily, providing actionable insights for business stakeholders.',
+      description:
+        'Interactive dashboard processing millions of events daily, providing actionable insights for business stakeholders.',
       image: 'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
       category: 'data',
       tech: ['React', 'D3.js', 'Apache Kafka', 'ClickHouse', 'WebSocket'],
@@ -49,7 +51,8 @@ const Projects = () => {
     {
       id: 'mobile-productivity-app',
       title: 'Mobile Productivity App',
-      description: 'Cross-platform mobile app helping users manage tasks and improve productivity, with 50K+ downloads.',
+      description:
+        'Cross-platform mobile app helping users manage tasks and improve productivity, with 50K+ downloads.',
       image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
       category: 'mobile',
       tech: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Redux'],
@@ -59,49 +62,6 @@ const Projects = () => {
       links: {
         github: 'https://github.com/dhairya/productivity-app',
         demo: 'https://apps.apple.com/productivity-app'
-      }
-    },
-    {
-      id: 'microservices-platform',
-      title: 'Microservices Platform',
-      description: 'Scalable microservices architecture serving 1M+ requests daily with 99.9% uptime and automated deployment.',
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'web-apps',
-      tech: ['Node.js', 'Kubernetes', 'Docker', 'PostgreSQL', 'Redis'],
-      year: '2023',
-      team: '12 people',
-      status: 'Live',
-      links: {
-        github: 'https://github.com/dhairya/microservices-platform'
-      }
-    },
-    {
-      id: 'ml-model-deployment',
-      title: 'ML Model Deployment Pipeline',
-      description: 'Automated pipeline for deploying machine learning models to production with A/B testing and monitoring.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'ai-ml',
-      tech: ['Python', 'MLflow', 'Kubernetes', 'TensorFlow', 'Prometheus'],
-      year: '2023',
-      team: '10 people',
-      status: 'Live',
-      links: {
-        github: 'https://github.com/dhairya/ml-deployment'
-      }
-    },
-    {
-      id: 'data-visualization-tool',
-      title: 'Interactive Data Visualization Tool',
-      description: 'Web-based tool for creating interactive data visualizations and reports, used by 500+ analysts.',
-      image: 'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'data',
-      tech: ['React', 'D3.js', 'Python', 'Flask', 'PostgreSQL'],
-      year: '2022',
-      team: '7 people',
-      status: 'Live',
-      links: {
-        github: 'https://github.com/dhairya/data-viz-tool',
-        demo: 'https://dataviz-demo.com'
       }
     }
   ];
@@ -113,8 +73,8 @@ const Projects = () => {
   const handleCardClick = (id: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
-      navigate(`/projects/${id}`);
-    }, 100); // small delay to let scroll happen before route change
+      navigate(`/portfolio/projects/${id}`);
+    }, 100);
   };
 
   return (
@@ -126,7 +86,14 @@ const Projects = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        <Link
+          to="/portfolio"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2 -mt-0.5" />
+          Back to Portfolio
+        </Link>
+
         <motion.div
           className="text-center mb-12"
           initial={{ y: 50, opacity: 0 }}
@@ -136,7 +103,6 @@ const Projects = () => {
           <h1 className="text-6xl font-bold text-gray-900 mb-6">Projects</h1>
         </motion.div>
 
-        {/* Filters */}
         <motion.div
           className="flex flex-wrap justify-center gap-4 mb-12"
           initial={{ y: 30, opacity: 0 }}
@@ -158,7 +124,6 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
         <motion.div
           key={activeFilter}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -173,7 +138,6 @@ const Projects = () => {
               onClick={() => handleCardClick(project.id)}
             >
               <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden flex flex-col h-full w-full">
-  
                 <div className="relative overflow-hidden h-48">
                   <img
                     src={project.image}
@@ -268,9 +232,11 @@ const Projects = () => {
             </div>
           ))}
         </motion.div>
+
+        <div className="h-8" />
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
-  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-</p>
+          © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+        </p>
       </div>
     </motion.div>
   );

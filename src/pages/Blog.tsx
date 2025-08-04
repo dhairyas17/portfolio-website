@@ -296,8 +296,8 @@ const Blog = () => {
           </AnimatePresence>
         </div>
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
-  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-</p>
+          © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+        </p>
       </div>
     </motion.div>
   );

@@ -1,90 +1,124 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ExternalLink, Github, Calendar, Users, Tag, Star, GitBranch } from 'lucide-react';
+import {
+  ArrowLeft,
+  ExternalLink,
+  Github,
+  Calendar,
+  Users,
+  Tag,
+  Star,
+  GitBranch,
+} from 'lucide-react';
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  
-  // Mock data - in a real app, this would come from an API
+
+  // Mock project data
   const project = {
     title: 'AI Recommendation Engine',
-    description: 'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    description:
+      'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
+    image:
+      'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
     year: '2024',
     team: '8 people',
     status: 'Live',
     category: 'AI & Machine Learning',
-    tech: ['Python', 'TensorFlow', 'FastAPI', 'PostgreSQL', 'Docker', 'Kubernetes', 'Redis', 'Apache Kafka'],
-    
-    overview: 'This AI-powered recommendation engine transforms how e-commerce platforms connect customers with products they love. Built using advanced machine learning algorithms, the system analyzes user behavior, purchase history, and product characteristics to deliver highly personalized recommendations in real-time.',
-    
-    problem: 'Traditional e-commerce platforms struggle with low conversion rates and poor user engagement due to generic product recommendations. Customers often abandon their shopping sessions when they can\'t find relevant products quickly, leading to significant revenue loss.',
-    
-    solution: 'I architected and led the development of a sophisticated recommendation system that combines collaborative filtering, content-based filtering, and deep learning techniques. The platform processes user interactions in real-time and adapts recommendations based on current browsing behavior.',
-    
+    tech: [
+      'Python',
+      'TensorFlow',
+      'FastAPI',
+      'PostgreSQL',
+      'Docker',
+      'Kubernetes',
+      'Redis',
+      'Apache Kafka',
+    ],
+    overview:
+      'This AI-powered recommendation engine transforms how e-commerce platforms connect customers with products they love. Built using advanced machine learning algorithms, the system analyzes user behavior, purchase history, and product characteristics to deliver highly personalized recommendations in real-time.',
+    problem:
+      'Traditional e-commerce platforms struggle with low conversion rates and poor user engagement due to generic product recommendations. Customers often abandon their shopping sessions when they can\'t find relevant products quickly, leading to significant revenue loss.',
+    solution:
+      'I architected and led the development of a sophisticated recommendation system that combines collaborative filtering, content-based filtering, and deep learning techniques. The platform processes user interactions in real-time and adapts recommendations based on current browsing behavior.',
     features: [
       {
         name: 'Real-time Personalization',
-        description: 'Instant adaptation to user behavior with sub-100ms response times'
+        description: 'Instant adaptation to user behavior with sub-100ms response times',
       },
       {
         name: 'Multi-Algorithm Approach',
-        description: 'Hybrid system combining collaborative filtering, content-based, and deep learning models'
+        description:
+          'Hybrid system combining collaborative filtering, content-based, and deep learning models',
       },
       {
         name: 'A/B Testing Framework',
-        description: 'Built-in experimentation platform for testing different recommendation strategies'
+        description:
+          'Built-in experimentation platform for testing different recommendation strategies',
       },
       {
         name: 'Scalable Architecture',
-        description: 'Microservices-based design handling millions of recommendations daily'
+        description: 'Microservices-based design handling millions of recommendations daily',
       },
       {
         name: 'Analytics Dashboard',
-        description: 'Comprehensive monitoring and performance tracking for business stakeholders'
+        description: 'Comprehensive monitoring and performance tracking for business stakeholders',
       },
       {
         name: 'API-First Design',
-        description: 'RESTful APIs enabling easy integration with existing e-commerce platforms'
-      }
+        description: 'RESTful APIs enabling easy integration with existing e-commerce platforms',
+      },
     ],
-    
     results: [
-      { metric: 'Conversion Rate', improvement: '+35%', description: 'Increased from 2.1% to 2.8% average conversion rate' },
-      { metric: 'User Engagement', improvement: '+45%', description: 'Users spend 45% more time browsing recommended products' },
-      { metric: 'Revenue Impact', improvement: '+$2.3M', description: 'Additional annual revenue attributed to improved recommendations' },
-      { metric: 'Click-through Rate', improvement: '+28%', description: 'More users clicking on recommended products' }
+      {
+        metric: 'Conversion Rate',
+        improvement: '+35%',
+        description: 'Increased from 2.1% to 2.8% average conversion rate',
+      },
+      {
+        metric: 'User Engagement',
+        improvement: '+45%',
+        description: 'Users spend 45% more time browsing recommended products',
+      },
+      {
+        metric: 'Revenue Impact',
+        improvement: '+$2.3M',
+        description: 'Additional annual revenue attributed to improved recommendations',
+      },
+      {
+        metric: 'Click-through Rate',
+        improvement: '+28%',
+        description: 'More users clicking on recommended products',
+      },
     ],
-    
     architecture: [
       'Data ingestion pipeline using Apache Kafka for real-time user events',
       'Feature engineering and model training pipeline using Apache Airflow',
       'Model serving infrastructure with TensorFlow Serving and FastAPI',
       'Caching layer with Redis for sub-100ms response times',
-      'Monitoring and alerting with Prometheus and Grafana'
+      'Monitoring and alerting with Prometheus and Grafana',
     ],
-    
     challenges: [
       {
         challenge: 'Cold Start Problem',
-        solution: 'Implemented content-based recommendations for new users and popularity-based fallbacks'
+        solution:
+          'Implemented content-based recommendations for new users and popularity-based fallbacks',
       },
       {
         challenge: 'Real-time Processing',
-        solution: 'Built streaming architecture with Kafka and maintained pre-computed recommendations'
+        solution: 'Built streaming architecture with Kafka and maintained pre-computed recommendations',
       },
       {
         challenge: 'Scalability',
-        solution: 'Designed microservices architecture with auto-scaling capabilities on Kubernetes'
-      }
+        solution: 'Designed microservices architecture with auto-scaling capabilities on Kubernetes',
+      },
     ],
-    
     links: {
       github: 'https://github.com/dhairya/ai-recommendation',
       demo: 'https://recommendation-demo.com',
-      documentation: 'https://docs-recommendation.com'
-    }
+      documentation: 'https://docs-recommendation.com',
+    },
   };
 
   return (
@@ -104,18 +138,18 @@ const ProjectDetail = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Link
-            to="/projects"
+            to="/portfolio/projects"
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Projects
           </Link>
-          
+
           <div className="flex items-start justify-between mb-6">
             <div className="flex-grow">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{project.title}</h1>
               <p className="text-xl text-gray-600 mb-4">{project.description}</p>
-              
+
               {/* Project Info */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div className="flex items-center gap-2">
@@ -136,7 +170,7 @@ const ProjectDetail = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Action Buttons */}
             <div className="flex gap-3 ml-6">
               {project.links.github && (
@@ -163,7 +197,7 @@ const ProjectDetail = () => {
               )}
             </div>
           </div>
-          
+
           {/* Tech Stack */}
           <div className="mb-6">
             <h3 className="text-sm font-semibold text-gray-500 mb-3">TECHNOLOGY STACK</h3>
@@ -254,7 +288,10 @@ const ProjectDetail = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Results & Impact</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.results.map((result, index) => (
-                <div key={index} className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg">
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
+                >
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
                   <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
                   <p className="text-gray-600 text-sm">{result.description}</p>
@@ -298,33 +335,36 @@ const ProjectDetail = () => {
               ))}
             </div>
           </motion.section>
-          {/* Let's Connect CTA */}
-          <motion.div
-              className="mt-12 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-4"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.3 }}
-            />
 
-            <motion.div
-              className="mt-6 text-center"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
+          {/* CTA */}
+          <motion.div
+            className="mt-12 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-4"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.3 }}
+          />
+          <motion.div
+            className="mt-6 text-center"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to discuss a similar solution?</h2>
+            <p className="text-gray-600 mb-6 text-lg">
+              I’m always open to connecting, sharing insights, or tackling new product challenges together.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to discuss a similar solution?</h2>
-              <p className="text-gray-600 mb-6 text-lg">I’m always open to connecting, sharing insights, or tackling new product challenges together.</p>
-              <Link
-                to="/contact"
-                className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition"
-              >
-                Let’s Connect
-              </Link>
-            </motion.div>      
+              Let’s Connect
+            </Link>
+          </motion.div>
         </div>
+
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
-  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-</p>
+          © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+        </p>
       </div>
     </motion.div>
   );

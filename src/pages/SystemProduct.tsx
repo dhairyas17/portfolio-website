@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Layers, Brain } from 'lucide-react';
 
-const CaseStudies = () => {
+const SystemProduct = () => {
   const categories = [
     {
       id: 'system-design',
@@ -22,7 +22,7 @@ const CaseStudies = () => {
     },
     {
       id: 'product-thinking',
-      title: 'Product Thinking',
+      title: 'Product Design',
       description:
         'Strategic product decisions aimed at driving user growth, optimizing the user experience, and delivering measurable business outcomes across different product verticals',
       icon: Brain,
@@ -55,7 +55,7 @@ const CaseStudies = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl font-bold text-gray-900 mb-9">Case Studies</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-9">System & Product Design</h1>
             <p className="text-xl text-gray-600 max-w-6xl mx-auto">
               Deep dives into real-world challenges I've solved, showcasing both technical
               excellence and strategic product thinking.
@@ -71,8 +71,8 @@ const CaseStudies = () => {
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
                 >
-                  <Link to={`/case-studies/${category.id}`}>
-                    <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[600px] flex flex-col">
+                  <Link to={`/system-product-design/${category.id}`}>
+                    <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[520px] flex flex-col">
 
                       <div
                         className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
@@ -126,12 +126,12 @@ const CaseStudies = () => {
             </div>
           </div>
           <p className="text-xs text-center text-gray-400 mt-16 pt-6 border-t border-gray-200">
-  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-</p>
+            © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+          </p>
         </div>
       </motion.div>
     </div>
   );
 };
 
-export default CaseStudies;
+export default SystemProduct;
