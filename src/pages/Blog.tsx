@@ -18,7 +18,7 @@ const Blog = () => {
 
   const posts = [
     {
-      id: 'ai-product-development-2024',
+      id: '1',
       title: 'The Future of AI in Product Development: Lessons from the Trenches',
       excerpt: 'After leading AI product initiatives across multiple companies, here are the key insights every product manager should know about building successful AI products.',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
@@ -28,7 +28,7 @@ const Blog = () => {
       tags: ['AI', 'Product Management', 'Strategy']
     },
     {
-      id: 'scaling-product-teams',
+      id: '2',
       title: 'Scaling Product Teams: From 5 to 50 Without Losing Velocity',
       excerpt: 'A practical guide to scaling product teams while maintaining quality, speed, and team culture. Lessons learned from growing teams at multiple startups.',
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
@@ -38,7 +38,7 @@ const Blog = () => {
       tags: ['Team Building', 'Leadership', 'Scaling']
     },
     {
-      id: 'data-driven-product-decisions',
+      id: '3',
       title: 'Beyond A/B Tests: Advanced Frameworks for Data-Driven Product Decisions',
       excerpt: 'While A/B testing is great, sophisticated product decisions require more nuanced approaches. Here\'s how to build a comprehensive data-driven decision framework.',
       image: 'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
@@ -48,7 +48,7 @@ const Blog = () => {
       tags: ['Data Analytics', 'Product Strategy', 'Decision Making']
     },
     {
-      id: 'microservices-product-architecture',
+      id: '4',
       title: 'Product Architecture Decisions: When Microservices Make Sense',
       excerpt: 'Microservices aren\'t always the answer. Here\'s a framework for product managers to evaluate architectural decisions and their business impact.',
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
@@ -58,7 +58,7 @@ const Blog = () => {
       tags: ['Architecture', 'Microservices', 'Technical Strategy']
     },
     {
-      id: 'user-research-at-scale',
+      id: '5',
       title: 'User Research at Scale: Insights from 100+ Customer Interviews',
       excerpt: 'How to systematically gather, analyze, and act on user feedback when you\'re moving fast and serving millions of users.',
       image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
@@ -68,7 +68,7 @@ const Blog = () => {
       tags: ['User Research', 'Customer Development', 'Product Discovery']
     },
     {
-      id: 'ai-ethics-product-management',
+      id: '6',
       title: 'AI Ethics in Product Management: A Practical Framework',
       excerpt: 'As AI becomes central to product experiences, product managers need practical frameworks for making ethical decisions. Here\'s what I\'ve learned.',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
