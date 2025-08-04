@@ -1,66 +1,45 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, Clock, Users, TrendingUp, Target, Lightbulb, Cog, BarChart3 } from 'lucide-react';
+import {
+  ArrowLeft,
+  Clock,
+  Users,
+  TrendingUp,
+  Target,
+  Lightbulb,
+  Cog,
+  BarChart3,
+  ArrowRight,
+} from 'lucide-react';
+import { systemProductList } from '../data/systemProductList'; // adjust path if needed
 
 const SystemProductdetails = () => {
-  const { category, id } = useParams();
-  
-  // Mock data - in a real app, this would come from an API or database
-  const sp = {
-    title: 'AI Platform Architecture',
-    subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    duration: '6 months',
-    team: '15 engineers',
-    impact: '90% faster processing',
-    tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
-    
-    overview: 'This case study explores the design and implementation of a distributed AI platform that processes millions of data points daily across 100+ global manufacturing sites. The challenge was to create a scalable, fault-tolerant system that could handle varying workloads while maintaining consistent performance and reliability.',
-    
-    challenge: 'The existing monolithic system was struggling to handle the increasing data volume and global distribution requirements. Processing times were exceeding acceptable thresholds, and the system frequently experienced downtime during peak loads. The manufacturing sites needed real-time insights for critical decision-making, but the current architecture couldn\'t deliver.',
-    
-    solution: 'I architected a cloud-native, microservices-based platform using Kubernetes for orchestration and Apache Kafka for real-time data streaming. The solution included automated ML model deployment pipelines, edge computing nodes for local processing, and a centralized dashboard for monitoring and analytics.',
-    
-    implementation: [
-      {
-        phase: 'Discovery & Planning',
-        duration: '4 weeks',
-        description: 'Conducted stakeholder interviews, analyzed current system bottlenecks, and designed the target architecture.'
-      },
-      {
-        phase: 'Infrastructure Setup',
-        duration: '8 weeks',
-        description: 'Set up Kubernetes clusters, implemented CI/CD pipelines, and established monitoring systems.'
-      },
-      {
-        phase: 'Core Platform Development',
-        duration: '12 weeks',
-        description: 'Built microservices for data processing, ML model serving, and real-time analytics.'
-      },
-      {
-        phase: 'Migration & Testing',
-        duration: '8 weeks',
-        description: 'Gradually migrated sites to the new platform with comprehensive testing and validation.'
-      }
-    ],
-    
-    results: [
-      { metric: 'Processing Speed', improvement: '90% faster', description: 'Reduced average processing time from 45 minutes to 4 minutes' },
-      { metric: 'System Uptime', improvement: '99.9%', description: 'Achieved enterprise-grade reliability with automated failover' },
-      { metric: 'Scalability', improvement: '10x capacity', description: 'Platform now handles 10x more concurrent processing jobs' },
-      { metric: 'Cost Efficiency', improvement: '40% reduction', description: 'Optimized resource utilization reduced infrastructure costs' }
-    ],
-    
-    technologies: ['Kubernetes', 'Apache Kafka', 'TensorFlow Serving', 'PostgreSQL', 'Redis', 'Prometheus', 'Grafana', 'Docker', 'AWS'],
-    
-    lessons: [
-      'Start with a comprehensive assessment of existing bottlenecks before designing solutions',
-      'Implement gradual migration strategies to minimize disruption to critical business operations',
-      'Invest in robust monitoring and observability from day one',
-      'Design for failure - assume components will fail and build resilience into the system'
-    ]
-  };
+  const { category, id } = useParams<{ category: string; id: string }>();
+  const navigate = useNavigate();
+const filteredList = systemProductList.filter((p) => p.category === category);
+const currentIndex = filteredList.findIndex((p) => p.id === id);
+
+const prevItem = currentIndex > 0 ? filteredList[currentIndex - 1] : null;
+const nextItem = currentIndex < filteredList.length - 1 ? filteredList[currentIndex + 1] : null;
+
+  const sp = systemProductList.find((p) => p.id === id && p.category === category);
+
+  if (!sp) {
+    return (
+      <div className="min-h-screen pt-20 pb-16 text-center text-gray-600">
+        <h1 className="text-3xl font-bold">Project not found</h1>
+        <p className="mt-4">Please check the URL or return to the project list.</p>
+        <Link
+          to={`/system-product-design/${category}`}
+          className="inline-block mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Back to {category === 'system-design' ? 'System Design' : 'Product Design'}
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -85,10 +64,10 @@ const SystemProductdetails = () => {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to {category === 'system-design' ? 'System Design' : 'Product Design'}
           </Link>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{sp.title}</h1>
           <p className="text-xl text-blue-600 font-semibold mb-6">{sp.subtitle}</p>
-          
+
           {/* Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="flex items-center gap-3 bg-gray-50 p-4 rounded-lg">
@@ -113,7 +92,7 @@ const SystemProductdetails = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {sp.tags.map((tag) => (
@@ -144,49 +123,25 @@ const SystemProductdetails = () => {
         {/* Content Sections */}
         <div className="space-y-12">
           {/* Overview */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Target className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Overview</h2>
-            </div>
+          <Section icon={<Target className="text-blue-600" />} title="Overview" delay={0.6}>
             <p className="text-gray-700 leading-relaxed text-lg">{sp.overview}</p>
-          </motion.section>
+          </Section>
 
           {/* Challenge */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Lightbulb className="w-6 h-6 text-orange-500" />
-              <h2 className="text-2xl font-bold text-gray-900">The Challenge</h2>
-            </div>
+          <Section icon={<Lightbulb className="text-orange-500" />} title="The Challenge" delay={0.7}>
             <div className="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-r-lg">
               <p className="text-gray-700 leading-relaxed">{sp.challenge}</p>
             </div>
-          </motion.section>
+          </Section>
 
           {/* Solution */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <Cog className="w-6 h-6 text-green-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Solution</h2>
-            </div>
+          <Section icon={<Cog className="text-green-600" />} title="Solution" delay={0.8}>
             <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
               <p className="text-gray-700 leading-relaxed">{sp.solution}</p>
             </div>
-          </motion.section>
+          </Section>
 
-          {/* Implementation Timeline */}
+          {/* Implementation */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -202,7 +157,9 @@ const SystemProductdetails = () => {
                   <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-lg font-semibold text-gray-900">{phase.phase}</h3>
-                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded">{phase.duration}</span>
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded">
+                        {phase.duration}
+                      </span>
                     </div>
                     <p className="text-gray-700">{phase.description}</p>
                   </div>
@@ -212,15 +169,7 @@ const SystemProductdetails = () => {
           </motion.section>
 
           {/* Results */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <BarChart3 className="w-6 h-6 text-purple-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Results & Impact</h2>
-            </div>
+          <Section icon={<BarChart3 className="text-purple-600" />} title="Results & Impact" delay={1.0}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {sp.results.map((result, index) => (
                 <div key={index} className="bg-white border-2 border-gray-100 p-6 rounded-lg">
@@ -230,15 +179,10 @@ const SystemProductdetails = () => {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </Section>
 
           {/* Technologies */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Technologies Used</h2>
+          <Section title="Technologies Used" delay={1.1}>
             <div className="flex flex-wrap gap-3">
               {sp.technologies.map((tech) => (
                 <span
@@ -249,15 +193,10 @@ const SystemProductdetails = () => {
                 </span>
               ))}
             </div>
-          </motion.section>
+          </Section>
 
-          {/* Key Lessons */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Lessons Learned</h2>
+          {/* Lessons */}
+          <Section title="Key Lessons Learned" delay={1.2}>
             <div className="space-y-4">
               {sp.lessons.map((lesson, index) => (
                 <div key={index} className="flex gap-3">
@@ -268,17 +207,39 @@ const SystemProductdetails = () => {
                 </div>
               ))}
             </div>
-          </motion.section>
-          {/* Previous / Next Navigation */}
-          <motion.div
-            className="mt-12 pt-2 border-t flex flex-col md:flex-row justify-between items-center gap-4"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
-          >
-          </motion.div>
+          </Section>
 
-          {/* Let's Connect CTA */}
+          <div className="mt-20 flex flex-col sm:flex-row justify-between gap-4">
+  {prevItem ? (
+    <button
+      onClick={() => navigate(`/system-product-design/${category}/${prevItem.id}`)}
+      className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+    >
+      <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+      <div className="flex flex-col items-start text-left max-w-full">
+        <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
+        <span className="font-medium truncate group-hover:text-blue-600">{prevItem.title}</span>
+      </div>
+    </button>
+  ) : <div className="hidden sm:block" />}
+
+  {nextItem ? (
+    <button
+      onClick={() => navigate(`/system-product-design/${category}/${nextItem.id}`)}
+      className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+    >
+      <div className="flex flex-col items-end text-right max-w-full">
+        <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
+        <span className="font-medium truncate group-hover:text-blue-600">{nextItem.title}</span>
+      </div>
+      <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+    </button>
+  ) : <div className="hidden sm:block" />}
+</div>
+
+<hr className="mt-12 border-t border-gray-200" />
+
+          {/* CTA */}
           <motion.div
             className="mt-16 text-center"
             initial={{ y: 50, opacity: 0 }}
@@ -295,6 +256,7 @@ const SystemProductdetails = () => {
             </Link>
           </motion.div>
         </div>
+
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
@@ -302,5 +264,30 @@ const SystemProductdetails = () => {
     </motion.div>
   );
 };
+
+// Helper Section Component
+const Section = ({
+  icon,
+  title,
+  children,
+  delay,
+}: {
+  icon?: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+  delay: number;
+}) => (
+  <motion.section
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.6, delay }}
+  >
+    <div className="flex items-center gap-3 mb-6">
+      {icon}
+      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+    </div>
+    {children}
+  </motion.section>
+);
 
 export default SystemProductdetails;

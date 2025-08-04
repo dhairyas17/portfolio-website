@@ -16,7 +16,7 @@ const SystemProductCategory = () => {
 
   const sp = isSystemDesign ? [
     {
-      id: 'ai-platform-architecture',
+      id: '1',
       title: 'AI Platform Architecture',
       subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
       description: 'Designed and implemented a distributed AI platform handling millions of data points daily across global manufacturing sites.',
@@ -27,7 +27,7 @@ const SystemProductCategory = () => {
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
-      id: 'distributed-data-pipeline',
+      id: '2',
       title: 'Distributed Data Pipeline',
       subtitle: 'Real-time Analytics at Petabyte Scale',
       description: 'Built a fault-tolerant data pipeline processing 10TB+ daily across multiple regions with 99.99% uptime.',
@@ -38,7 +38,7 @@ const SystemProductCategory = () => {
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
-      id: 'microservices-migration',
+      id: '3',
       title: 'Microservices Migration',
       subtitle: 'From Monolith to Cloud-Native Architecture',
       description: 'Led the migration of a legacy monolithic system to microservices, improving scalability and deployment frequency.',
@@ -50,7 +50,7 @@ const SystemProductCategory = () => {
     }
   ] : [
     {
-      id: 'ai-product-strategy',
+      id: '4',
       title: 'AI Product Strategy',
       subtitle: 'From Research to Production AI Products',
       description: 'Transformed experimental AI research into market-ready products, achieving 2M+ users and $5M ARR within 18 months.',
@@ -61,7 +61,7 @@ const SystemProductCategory = () => {
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
-      id: 'user-engagement-optimization',
+      id: '5',
       title: 'User Engagement Optimization',
       subtitle: 'Data-Driven sp to Product Growth',
       description: 'Increased user engagement by 150% through systematic A/B testing and behavioral analysis across mobile and web platforms.',
@@ -72,7 +72,7 @@ const SystemProductCategory = () => {
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
-      id: 'marketplace-platform-design',
+      id: '6',
       title: 'Marketplace Platform Design',
       subtitle: 'Building Two-Sided Network Effects',
       description: 'Designed and launched a B2B marketplace connecting 10,000+ suppliers with enterprise buyers, achieving network effects.',

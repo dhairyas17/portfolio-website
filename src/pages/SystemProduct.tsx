@@ -20,7 +20,7 @@ const SystemProduct = () => {
       ],
     },
     {
-      id: 'product-thinking',
+      id: 'product-design',
       title: 'Product Design',
       description:
         'Strategic product decisions aimed at driving user growth, optimizing the user experience, and delivering measurable business outcomes across different product verticals',
