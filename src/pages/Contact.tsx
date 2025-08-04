@@ -105,7 +105,7 @@ const Contact = () => {
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-12 pb-8"
+      className="min-h-[80vh] pt-20 pb-8"
 
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
@@ -119,8 +119,8 @@ const Contact = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">Let's Connect</h1>
-          <p className="text-xl text-gray-600 max-w-6xl mx-auto">
+          <h1 className="text-5xl font-bold text-gray-900 mb-8">Let's Connect</h1>
+          <p className="text-lg text-gray-500 max-w-6xl mx-auto">
             Interested in collaborating or chatting about product, AI, or tech? Feel free to reach out!
           </p>
         </motion.div>

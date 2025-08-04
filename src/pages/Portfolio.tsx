@@ -9,7 +9,7 @@ const Portfolio = () => {
       id: 'case-studies',
       title: 'Case Studies',
       description:
-        'In-depth problem-solving stories showcasing how I approached technical and product challenges end-to-end—from problem framing to outcome delivery.',
+        'In-depth problem-solving stories showcasing how I approached technical and product challenges end-to-end from problem framing to outcome delivery.',
       icon: Layers,
       color: 'from-blue-500 to-indigo-600',
       items: [
@@ -38,7 +38,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-0 px-4 pt-6 pb-0">
+    <div className="min-h-[110vh] px-4 pt-2 pb-0">
       <motion.div
         className="flex-grow flex flex-col pt-20 pb-14"
         initial={{ opacity: 0, y: 40 }}
@@ -54,7 +54,7 @@ const Portfolio = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-5xl font-bold text-gray-900 mb-9">Portfolio</h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            <p className="text-lg text-gray-500 max-w-4xl mx-auto">
               A curated collection of my most impactful case studies and personal projects.
             </p>
           </motion.div>
@@ -84,7 +84,7 @@ const Portfolio = () => {
                         </h3>
                       </div>
 
-                      <p className="text-gray-600 leading-relaxed mb-6">{category.description}</p>
+                      <p className="text-gray-600 leading-relaxed justify-center mb-6">{category.description}</p>
 
                       <ul className="text-sm text-gray-500 space-y-2 mb-6 list-disc list-inside text-left">
                         {category.items.map((item, i) => (
@@ -112,7 +112,7 @@ const Portfolio = () => {
             ))}
           </div>
 
-          <p className="text-xs text-center text-gray-400 mt-16 pt-6 border-t border-gray-200">
+          <p className="text-xs text-center text-gray-400 mt-20 pt-6 border-t border-gray-200">
             © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
           </p>
         </div>

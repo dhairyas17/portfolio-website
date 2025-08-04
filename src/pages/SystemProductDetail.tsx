@@ -237,16 +237,16 @@ const nextItem = currentIndex < filteredList.length - 1 ? filteredList[currentIn
   ) : <div className="hidden sm:block" />}
 </div>
 
-<hr className="mt-12 border-t border-gray-200" />
+<hr className="mt-10 border-t border-gray-200" />
 
           {/* CTA */}
           <motion.div
-            className="mt-16 text-center"
+            className="mt-5 text-center"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.4 }}
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Solving a similar challenge?</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Solving a similar challenge?</h2>
             <p className="text-gray-600 mb-6 text-lg">I’d love to exchange ideas or collaborate on building the next big thing.</p>
             <Link
               to="/contact"

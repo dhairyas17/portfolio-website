@@ -114,7 +114,7 @@ const SystemProductCategory = () => {
             Back to menu
           </Link>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">{title}</h1>
-          <p className="text-xl text-gray-600 max-w-5xl">
+          <p className="text-lg text-gray-500 max-w-5xl">
             {isSystemDesign 
               ? 'Explore how I\'ve architected scalable systems to handle complex technical challenges and massive scale.'
               : 'Discover strategic product decisions that drove significant business growth and user value.'
@@ -133,7 +133,6 @@ const SystemProductCategory = () => {
               onClick={() => handleCardClick(study.id)}
               className="cursor-pointer"
             >
-              {/* <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105"> */}
               <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform scale-[0.88] hover:scale-100 h-[500px] flex flex-col mx-auto">
                   <div className="relative overflow-hidden">
                     <img

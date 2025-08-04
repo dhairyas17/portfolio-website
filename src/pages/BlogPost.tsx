@@ -11,10 +11,6 @@ const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate()
 
-  const currentIndex = blogList.findIndex((post) => post.id === id);
-  const prevPost = blogList[currentIndex - 1];
-  const nextPost = blogList[currentIndex + 1];
-
   const blog = blogList.find((item) => item.id === id);
   if (!blog) {
     return (
@@ -22,7 +18,7 @@ const BlogPost = () => {
         <h1 className="text-3xl font-bold">Blog not found</h1>
         <p className="mt-4">Check the URL or go back to the blog list.</p>
         <button
-          onClick={() => navigate('/blogs')}
+          onClick={() => navigate('/blog')}
           className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
           Back to Blogs
@@ -35,7 +31,7 @@ const BlogPost = () => {
 
   return (
     <motion.div
-      className="min-h-screen pt-20 pb-16"
+      className="min-h-[80vh] pt-20 pb-8"
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -30 }}
@@ -116,34 +112,34 @@ const BlogPost = () => {
           </motion.div>
           {/* CTA Section */}
           <motion.div
-            className="border-t pt-8 mt-12 text-center"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-          >
-                 <div className="mt-16 text-center">
-        <h4 className="text-xl font-semibold text-gray-800 mb-2">Enjoyed the read?</h4>
-        <p className="text-gray-600 mb-4">Explore more insights or connect with me to discuss AI product thinking.</p>
-        <div className="flex justify-center gap-4">
-          <Link
-            to="/blog"
-            className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition no-underline"
-          >
-            View All Posts
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition no-underline"
-          >
-            Connect on LinkedIn
-          </a>
-        </div>
-      </div>
-
-
-          </motion.div>
+  className="border-t pt-1 mt-1 text-center"
+  initial={{ y: 30, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.6, delay: 1 }}
+>
+  <div className="mt-8 text-center"> {/* Reduced from mt-16 to mt-6 */}
+    <h4 className="text-2xl font-semibold text-gray-800 mb-2">Enjoyed the read?</h4>
+    <p className="text-gray-600 mb-8">
+      Explore more insights or connect with me to discuss AI product thinking.
+    </p>
+    <div className="flex justify-center gap-4">
+      <Link
+        to="/blog"
+        className="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition no-underline"
+      >
+        View All Posts
+      </Link>
+      <a
+        href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-100 transition no-underline"
+      >
+        Connect on LinkedIn
+      </a>
+    </div>
+  </div>
+</motion.div>
         </motion.article>
 
         {/* Footer */}

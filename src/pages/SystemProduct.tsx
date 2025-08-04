@@ -36,7 +36,7 @@ const SystemProduct = () => {
   ];
 
   return (
-    <div className="min-h-0 px-4 pt-6 pb-0">
+    <div className="min-h-0 px-4 pt-1 pb-0">
       <motion.div
         className="flex-grow flex flex-col pt-20 pb-14"
         initial={{ opacity: 0, y: 40 }}
@@ -52,7 +52,7 @@ const SystemProduct = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-5xl font-bold text-gray-900 mb-9">System & Product Design</h1>
-            <p className="text-xl text-gray-600 max-w-6xl mx-auto">
+            <p className="text-lg text-gray-500 max-w-7xl mx-auto">
               Deep dives into real-world challenges I've solved, showcasing both technical
               excellence and strategic product thinking.
             </p>

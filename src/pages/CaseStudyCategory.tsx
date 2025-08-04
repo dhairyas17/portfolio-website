@@ -75,7 +75,7 @@ const CaseStudyCategory = () => {
             Back to portfolio
           </Link>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">Case studies</h1>
-          <p className="text-xl text-gray-600 max-w-6xl">
+          <p className="text-lg text-gray-500 max-w-6xl">
             Deep dives into real-world challenges I've solved, showcasing both technical
             excellence and strategic product thinking.
           </p>

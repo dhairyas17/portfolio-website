@@ -236,8 +236,8 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">My Journey</h2>
-            <p className="text-xl text-gray-600">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+            <p className="text-lg text-gray-500">
               A timeline of learning, building, and scaling impactful products.
             </p>
           </motion.div>
@@ -245,7 +245,7 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Side - Paragraph */}
             <motion.div
-              className="lg:w-1/2 text-gray-700 text-lg space-y-6"
+              className="lg:w-1/2 text-gray-700 text-lg justify-center space-y-6"
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -449,7 +449,6 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Testimonials</h2>
-            <p className="text-xl text-gray-600">What colleagues say about working with me</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
