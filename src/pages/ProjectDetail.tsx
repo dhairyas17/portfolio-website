@@ -11,115 +11,36 @@ import {
   Star,
   GitBranch,
 } from 'lucide-react';
+import { projectData } from '../data/projectContent';
+import { Project } from '../types/project';
 
-const ProjectDetail = () => {
-  const { id } = useParams();
+const ProjectDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
 
-  // Mock project data
-  const project = {
-    title: 'AI Recommendation Engine',
-    description:
-      'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
-    image:
-      'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    year: '2024',
-    team: '8 people',
-    status: 'Live',
-    category: 'AI & Machine Learning',
-    tech: [
-      'Python',
-      'TensorFlow',
-      'FastAPI',
-      'PostgreSQL',
-      'Docker',
-      'Kubernetes',
-      'Redis',
-      'Apache Kafka',
-    ],
-    overview:
-      'This AI-powered recommendation engine transforms how e-commerce platforms connect customers with products they love. Built using advanced machine learning algorithms, the system analyzes user behavior, purchase history, and product characteristics to deliver highly personalized recommendations in real-time.',
-    problem:
-      'Traditional e-commerce platforms struggle with low conversion rates and poor user engagement due to generic product recommendations. Customers often abandon their shopping sessions when they can\'t find relevant products quickly, leading to significant revenue loss.',
-    solution:
-      'I architected and led the development of a sophisticated recommendation system that combines collaborative filtering, content-based filtering, and deep learning techniques. The platform processes user interactions in real-time and adapts recommendations based on current browsing behavior.',
-    features: [
-      {
-        name: 'Real-time Personalization',
-        description: 'Instant adaptation to user behavior with sub-100ms response times',
-      },
-      {
-        name: 'Multi-Algorithm Approach',
-        description:
-          'Hybrid system combining collaborative filtering, content-based, and deep learning models',
-      },
-      {
-        name: 'A/B Testing Framework',
-        description:
-          'Built-in experimentation platform for testing different recommendation strategies',
-      },
-      {
-        name: 'Scalable Architecture',
-        description: 'Microservices-based design handling millions of recommendations daily',
-      },
-      {
-        name: 'Analytics Dashboard',
-        description: 'Comprehensive monitoring and performance tracking for business stakeholders',
-      },
-      {
-        name: 'API-First Design',
-        description: 'RESTful APIs enabling easy integration with existing e-commerce platforms',
-      },
-    ],
-    results: [
-      {
-        metric: 'Conversion Rate',
-        improvement: '+35%',
-        description: 'Increased from 2.1% to 2.8% average conversion rate',
-      },
-      {
-        metric: 'User Engagement',
-        improvement: '+45%',
-        description: 'Users spend 45% more time browsing recommended products',
-      },
-      {
-        metric: 'Revenue Impact',
-        improvement: '+$2.3M',
-        description: 'Additional annual revenue attributed to improved recommendations',
-      },
-      {
-        metric: 'Click-through Rate',
-        improvement: '+28%',
-        description: 'More users clicking on recommended products',
-      },
-    ],
-    architecture: [
-      'Data ingestion pipeline using Apache Kafka for real-time user events',
-      'Feature engineering and model training pipeline using Apache Airflow',
-      'Model serving infrastructure with TensorFlow Serving and FastAPI',
-      'Caching layer with Redis for sub-100ms response times',
-      'Monitoring and alerting with Prometheus and Grafana',
-    ],
-    challenges: [
-      {
-        challenge: 'Cold Start Problem',
-        solution:
-          'Implemented content-based recommendations for new users and popularity-based fallbacks',
-      },
-      {
-        challenge: 'Real-time Processing',
-        solution: 'Built streaming architecture with Kafka and maintained pre-computed recommendations',
-      },
-      {
-        challenge: 'Scalability',
-        solution: 'Designed microservices architecture with auto-scaling capabilities on Kubernetes',
-      },
-    ],
-    links: {
-      github: 'https://github.com/dhairya/ai-recommendation',
-      demo: 'https://recommendation-demo.com',
-      documentation: 'https://docs-recommendation.com',
-    },
-  };
+  const projectList = Object.values(projectData).sort((a, b) => a.id - b.id);
+  const currentIndex = projectList.findIndex((p) => String(p.id) === id);
+  const prevProject = projectList[currentIndex - 1];
+  const nextProject = projectList[currentIndex + 1];
+  
+  // Find project by numeric ID
+  const project: Project | undefined = Object.values(projectData).find(
+    (p) => String(p.id) === id
+  );
+
+  if (!project) {
+    return (
+      <div className="text-center py-20">
+        <h1 className="text-2xl font-semibold text-gray-700">Project not found</h1>
+        <Link
+          to="/portfolio/projects"
+          className="mt-4 inline-block text-blue-600 hover:underline"
+        >
+          Back to Projects
+        </Link>
+      </div>
+    );
+  }
+
 
   return (
     <motion.div
@@ -145,12 +66,11 @@ const ProjectDetail = () => {
             Back to Projects
           </Link>
 
-          <div className="flex items-start justify-between mb-6">
-            <div className="flex-grow">
+          <div className="flex flex-col md:flex-row justify-between mb-6">
+            <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{project.title}</h1>
               <p className="text-xl text-gray-600 mb-4">{project.description}</p>
 
-              {/* Project Info */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-gray-400" />
@@ -171,31 +91,7 @@ const ProjectDetail = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-3 ml-6">
-              {project.links.github && (
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                >
-                  <Github className="w-4 h-4" />
-                  Code
-                </a>
-              )}
-              {project.links.demo && (
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Demo
-                </a>
-              )}
-            </div>
+
           </div>
 
           {/* Tech Stack */}
@@ -228,7 +124,7 @@ const ProjectDetail = () => {
           />
         </motion.div>
 
-        {/* Content Sections */}
+        {/* Content */}
         <div className="space-y-12">
           {/* Overview */}
           <motion.section
@@ -335,19 +231,45 @@ const ProjectDetail = () => {
               ))}
             </div>
           </motion.section>
+          <div className="mt-10 flex flex-col sm:flex-row justify-between gap-4">
+  {prevProject ? (
+    <Link
+      to={`/portfolio/projects/${prevProject.id}`}
+      className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+    >
+      <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+      <div className="flex flex-col items-start text-left max-w-full">
+        <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
+        <span className="font-medium truncate group-hover:text-blue-600">{prevProject.title}</span>
+      </div>
+    </Link>
+  ) : (
+    <div className="hidden sm:block" />
+  )}
+
+  {nextProject ? (
+    <Link
+      to={`/portfolio/projects/${nextProject.id}`}
+      className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+    >
+      <div className="flex flex-col items-end text-right max-w-full">
+        <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
+        <span className="font-medium truncate group-hover:text-blue-600">{nextProject.title}</span>
+      </div>
+      <ArrowLeft className="w-4 h-4 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+    </Link>
+  ) : (
+    <div className="hidden sm:block" />
+  )}
+</div>
+
 
           {/* CTA */}
           <motion.div
-            className="mt-12 pt-6 border-t flex flex-col md:flex-row justify-between items-center gap-4"
+            className="mt-12 pt-6 border-t text-center"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.3 }}
-          />
-          <motion.div
-            className="mt-6 text-center"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to discuss a similar solution?</h2>
             <p className="text-gray-600 mb-6 text-lg">

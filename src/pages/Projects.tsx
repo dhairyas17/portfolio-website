@@ -17,7 +17,7 @@ const Projects = () => {
 
   const projects = [
     {
-      id: 'ai-recommendation-engine',
+      id: '101',
       title: 'AI Recommendation Engine',
       description:
         'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
@@ -33,7 +33,7 @@ const Projects = () => {
       }
     },
     {
-      id: 'real-time-analytics-dashboard',
+      id: '102',
       title: 'Real-time Analytics Dashboard',
       description:
         'Interactive dashboard processing millions of events daily, providing actionable insights for business stakeholders.',
@@ -49,7 +49,7 @@ const Projects = () => {
       }
     },
     {
-      id: 'mobile-productivity-app',
+      id: '103',
       title: 'Mobile Productivity App',
       description:
         'Cross-platform mobile app helping users manage tasks and improve productivity, with 50K+ downloads.',

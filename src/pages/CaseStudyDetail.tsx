@@ -1,6 +1,8 @@
+// src/pages/CaseStudyDetail.tsx
+
 import React from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Link, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
   Clock,
@@ -10,264 +12,21 @@ import {
   Lightbulb,
   Cog,
   BarChart3,
+  ArrowRight,
 } from 'lucide-react';
 
-const caseStudies = [
-  {
-    id: '1',
-    title: 'AI Platform Architecture',
-    subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-    image:
-      'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    duration: '6 months',
-    team: '15 engineers',
-    impact: '90% faster processing',
-    tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
-    overview:
-      'This case study explores the design and implementation of a distributed AI platform that processes millions of data points daily across 100+ global manufacturing sites. The challenge was to create a scalable, fault-tolerant system that could handle varying workloads while maintaining consistent performance and reliability.',
-    challenge:
-      "The existing monolithic system was struggling to handle the increasing data volume and global distribution requirements. Processing times were exceeding acceptable thresholds, and the system frequently experienced downtime during peak loads. The manufacturing sites needed real-time insights for critical decision-making, but the current architecture couldn't deliver.",
-    solution:
-      'I architected a cloud-native, microservices-based platform using Kubernetes for orchestration and Apache Kafka for real-time data streaming. The solution included automated ML model deployment pipelines, edge computing nodes for local processing, and a centralized dashboard for monitoring and analytics.',
-    implementation: [
-      {
-        phase: 'Discovery & Planning',
-        duration: '4 weeks',
-        description:
-          'Conducted stakeholder interviews, analyzed current system bottlenecks, and designed the target architecture.',
-      },
-      {
-        phase: 'Infrastructure Setup',
-        duration: '8 weeks',
-        description:
-          'Set up Kubernetes clusters, implemented CI/CD pipelines, and established monitoring systems.',
-      },
-      {
-        phase: 'Core Platform Development',
-        duration: '12 weeks',
-        description:
-          'Built microservices for data processing, ML model serving, and real-time analytics.',
-      },
-      {
-        phase: 'Migration & Testing',
-        duration: '8 weeks',
-        description:
-          'Gradually migrated sites to the new platform with comprehensive testing and validation.',
-      },
-    ],
-    results: [
-      {
-        metric: 'Processing Speed',
-        improvement: '90% faster',
-        description: 'Reduced average processing time from 45 minutes to 4 minutes',
-      },
-      {
-        metric: 'System Uptime',
-        improvement: '99.9%',
-        description: 'Achieved enterprise-grade reliability with automated failover',
-      },
-      {
-        metric: 'Scalability',
-        improvement: '10x capacity',
-        description: 'Platform now handles 10x more concurrent processing jobs',
-      },
-      {
-        metric: 'Cost Efficiency',
-        improvement: '40% reduction',
-        description: 'Optimized resource utilization reduced infrastructure costs',
-      },
-    ],
-    technologies: [
-      'Kubernetes',
-      'Apache Kafka',
-      'TensorFlow Serving',
-      'PostgreSQL',
-      'Redis',
-      'Prometheus',
-      'Grafana',
-      'Docker',
-      'AWS',
-    ],
-    lessons: [
-      'Start with a comprehensive assessment of existing bottlenecks before designing solutions',
-      'Implement gradual migration strategies to minimize disruption to critical business operations',
-      'Invest in robust monitoring and observability from day one',
-      'Design for failure - assume components will fail and build resilience into the system',
-    ],
-  },
-  // You can add more case studies here using the same structure
-  {
-    id: '2',
-    title: 'AI Platform Architecture',
-    subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-    image:
-      'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    duration: '6 months',
-    team: '15 engineers',
-    impact: '90% faster processing',
-    tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
-    overview:
-      'This case study explores the design and implementation of a distributed AI platform that processes millions of data points daily across 100+ global manufacturing sites. The challenge was to create a scalable, fault-tolerant system that could handle varying workloads while maintaining consistent performance and reliability.',
-    challenge:
-      "The existing monolithic system was struggling to handle the increasing data volume and global distribution requirements. Processing times were exceeding acceptable thresholds, and the system frequently experienced downtime during peak loads. The manufacturing sites needed real-time insights for critical decision-making, but the current architecture couldn't deliver.",
-    solution:
-      'I architected a cloud-native, microservices-based platform using Kubernetes for orchestration and Apache Kafka for real-time data streaming. The solution included automated ML model deployment pipelines, edge computing nodes for local processing, and a centralized dashboard for monitoring and analytics.',
-    implementation: [
-      {
-        phase: 'Discovery & Planning',
-        duration: '4 weeks',
-        description:
-          'Conducted stakeholder interviews, analyzed current system bottlenecks, and designed the target architecture.',
-      },
-      {
-        phase: 'Infrastructure Setup',
-        duration: '8 weeks',
-        description:
-          'Set up Kubernetes clusters, implemented CI/CD pipelines, and established monitoring systems.',
-      },
-      {
-        phase: 'Core Platform Development',
-        duration: '12 weeks',
-        description:
-          'Built microservices for data processing, ML model serving, and real-time analytics.',
-      },
-      {
-        phase: 'Migration & Testing',
-        duration: '8 weeks',
-        description:
-          'Gradually migrated sites to the new platform with comprehensive testing and validation.',
-      },
-    ],
-    results: [
-      {
-        metric: 'Processing Speed',
-        improvement: '90% faster',
-        description: 'Reduced average processing time from 45 minutes to 4 minutes',
-      },
-      {
-        metric: 'System Uptime',
-        improvement: '99.9%',
-        description: 'Achieved enterprise-grade reliability with automated failover',
-      },
-      {
-        metric: 'Scalability',
-        improvement: '10x capacity',
-        description: 'Platform now handles 10x more concurrent processing jobs',
-      },
-      {
-        metric: 'Cost Efficiency',
-        improvement: '40% reduction',
-        description: 'Optimized resource utilization reduced infrastructure costs',
-      },
-    ],
-    technologies: [
-      'Kubernetes',
-      'Apache Kafka',
-      'TensorFlow Serving',
-      'PostgreSQL',
-      'Redis',
-      'Prometheus',
-      'Grafana',
-      'Docker',
-      'AWS',
-    ],
-    lessons: [
-      'Start with a comprehensive assessment of existing bottlenecks before designing solutions',
-      'Implement gradual migration strategies to minimize disruption to critical business operations',
-      'Invest in robust monitoring and observability from day one',
-      'Design for failure - assume components will fail and build resilience into the system',
-    ],
-  },
-  {
-    id: '3',
-    title: 'AI Platform Architecture',
-    subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-    image:
-      'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    duration: '6 months',
-    team: '15 engineers',
-    impact: '90% faster processing',
-    tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
-    overview:
-      'This case study explores the design and implementation of a distributed AI platform that processes millions of data points daily across 100+ global manufacturing sites. The challenge was to create a scalable, fault-tolerant system that could handle varying workloads while maintaining consistent performance and reliability.',
-    challenge:
-      "The existing monolithic system was struggling to handle the increasing data volume and global distribution requirements. Processing times were exceeding acceptable thresholds, and the system frequently experienced downtime during peak loads. The manufacturing sites needed real-time insights for critical decision-making, but the current architecture couldn't deliver.",
-    solution:
-      'I architected a cloud-native, microservices-based platform using Kubernetes for orchestration and Apache Kafka for real-time data streaming. The solution included automated ML model deployment pipelines, edge computing nodes for local processing, and a centralized dashboard for monitoring and analytics.',
-    implementation: [
-      {
-        phase: 'Discovery & Planning',
-        duration: '4 weeks',
-        description:
-          'Conducted stakeholder interviews, analyzed current system bottlenecks, and designed the target architecture.',
-      },
-      {
-        phase: 'Infrastructure Setup',
-        duration: '8 weeks',
-        description:
-          'Set up Kubernetes clusters, implemented CI/CD pipelines, and established monitoring systems.',
-      },
-      {
-        phase: 'Core Platform Development',
-        duration: '12 weeks',
-        description:
-          'Built microservices for data processing, ML model serving, and real-time analytics.',
-      },
-      {
-        phase: 'Migration & Testing',
-        duration: '8 weeks',
-        description:
-          'Gradually migrated sites to the new platform with comprehensive testing and validation.',
-      },
-    ],
-    results: [
-      {
-        metric: 'Processing Speed',
-        improvement: '90% faster',
-        description: 'Reduced average processing time from 45 minutes to 4 minutes',
-      },
-      {
-        metric: 'System Uptime',
-        improvement: '99.9%',
-        description: 'Achieved enterprise-grade reliability with automated failover',
-      },
-      {
-        metric: 'Scalability',
-        improvement: '10x capacity',
-        description: 'Platform now handles 10x more concurrent processing jobs',
-      },
-      {
-        metric: 'Cost Efficiency',
-        improvement: '40% reduction',
-        description: 'Optimized resource utilization reduced infrastructure costs',
-      },
-    ],
-    technologies: [
-      'Kubernetes',
-      'Apache Kafka',
-      'TensorFlow Serving',
-      'PostgreSQL',
-      'Redis',
-      'Prometheus',
-      'Grafana',
-      'Docker',
-      'AWS',
-    ],
-    lessons: [
-      'Start with a comprehensive assessment of existing bottlenecks before designing solutions',
-      'Implement gradual migration strategies to minimize disruption to critical business operations',
-      'Invest in robust monitoring and observability from day one',
-      'Design for failure - assume components will fail and build resilience into the system',
-    ],
-  }
-]
+import caseStudies from '../data/caseStudies'; // ✅ Import the data from your data file
 
-;
 
 const CaseStudyDetail = () => {
-  const { id } = useParams();
-  const caseStudy = caseStudies.find((cs) => cs.id === id);
+  const { id } = useParams();           // ✅ Move here
+  const navigate = useNavigate();       // ✅ Move here
 
+  const currentIndex = caseStudies.findIndex((cs) => cs.id === id);
+  const prevCaseStudy = caseStudies[currentIndex - 1];
+  const nextCaseStudy = caseStudies[currentIndex + 1];
+
+  const caseStudy = caseStudies.find((cs) => cs.id === id);
   if (!caseStudy) {
     return (
       <div className="min-h-screen flex items-center justify-center text-red-600 text-xl font-semibold">
@@ -352,6 +111,7 @@ const CaseStudyDetail = () => {
         </motion.div>
 
         <div className="space-y-12">
+          {/* Overview */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -364,6 +124,41 @@ const CaseStudyDetail = () => {
             <p className="text-gray-700 leading-relaxed text-lg">{caseStudy.overview}</p>
           </motion.section>
 
+          {/* Business Goal */}
+          <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.25 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Business Goal</h2>
+            <p className="text-gray-700 leading-relaxed">{caseStudy.businessGoal}</p>
+          </motion.section>
+
+          {/* Role */}
+          <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.3 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">My Role</h2>
+            <p className="text-gray-700 leading-relaxed">{caseStudy.role}</p>
+          </motion.section>
+
+          {/* Collaboration */}
+          <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.35 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Collaboration Highlights</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              {caseStudy.collaboration.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+          </motion.section>
+
+          {/* Challenge */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -378,6 +173,21 @@ const CaseStudyDetail = () => {
             </div>
           </motion.section>
 
+          {/* Key Decisions */}
+          <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Decisions</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              {caseStudy.keyDecisions.map((decision, index) => (
+                <li key={index}>{decision}</li>
+              ))}
+            </ul>
+          </motion.section>
+
+          {/* Solution */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -392,6 +202,7 @@ const CaseStudyDetail = () => {
             </div>
           </motion.section>
 
+          {/* Implementation */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -407,7 +218,9 @@ const CaseStudyDetail = () => {
                   <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-lg font-semibold text-gray-900">{phase.phase}</h3>
-                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded">{phase.duration}</span>
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded">
+                        {phase.duration}
+                      </span>
                     </div>
                     <p className="text-gray-700">{phase.description}</p>
                   </div>
@@ -416,6 +229,26 @@ const CaseStudyDetail = () => {
             </div>
           </motion.section>
 
+          {/* Technologies */}
+          <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Technologies Used</h2>
+            <div className="flex flex-wrap gap-3">
+              {caseStudy.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Results */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -436,24 +269,7 @@ const CaseStudyDetail = () => {
             </div>
           </motion.section>
 
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-          >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Technologies Used</h2>
-            <div className="flex flex-wrap gap-3">
-              {caseStudy.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.section>
-
+          {/* Lessons Learned */}
           <motion.section
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -471,6 +287,68 @@ const CaseStudyDetail = () => {
               ))}
             </div>
           </motion.section>
+
+          {/* Quote */}
+          {/* {caseStudy.quote && (
+            <motion.section
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.45 }}
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">What They Said</h2>
+              <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 text-lg">
+                {caseStudy.quote}
+              </blockquote>
+            </motion.section>
+          )} */}
+
+          {/* Takeaways */}
+          {/* <motion.section
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+              {caseStudy.takeaways.map((takeaway, index) => (
+                <li key={index}>{takeaway}</li>
+              ))}
+            </ul>
+          </motion.section> */}
+          <div className="mt-20 flex flex-col sm:flex-row justify-between gap-4">
+            {prevCaseStudy ? (
+              <button
+                onClick={() => navigate(`/portfolio/case-studies/${prevCaseStudy.id}`)}
+                className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+              >
+                <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+                <div className="flex flex-col items-start text-left max-w-full">
+                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
+                  <span className="font-medium truncate group-hover:text-blue-600">{prevCaseStudy.title}</span>
+                </div>
+              </button>
+            ) : <div className="hidden sm:block" />}
+
+            {nextCaseStudy ? (
+              <button
+                onClick={() => navigate(`/portfolio/case-studies/${nextCaseStudy.id}`)}
+                className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+              >
+                <div className="flex flex-col items-end text-right max-w-full">
+                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
+                  <span className="font-medium truncate group-hover:text-blue-600">{nextCaseStudy.title}</span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </button>
+            ) : <div className="hidden sm:block" />}
+          </div>
+
+
+
+
+
+
+          {/* Contact Footer */}
           <div className="mt-24 pt-8 border-t border-gray-200">
             <motion.div
               className="text-center"
@@ -492,9 +370,8 @@ const CaseStudyDetail = () => {
               </Link>
             </motion.div>
           </div>
-
-
         </div>
+
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
