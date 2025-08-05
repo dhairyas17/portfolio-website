@@ -31,7 +31,7 @@ const BlogPost = () => {
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-20 pb-8"
+    className="min-h-[80vh] pt-[100px] md:pt-[90px] pb-8"
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -30 }}

@@ -53,7 +53,8 @@ const CaseStudyCategory = () => {
 
   return (
     <motion.div
-      className="pt-12 pb-32"
+    className="min-h-[80vh] pt-[90px] md:pt-[90px] pb-8"
+
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -69,9 +70,9 @@ const CaseStudyCategory = () => {
         >
           <Link
             to="/portfolio"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors self-start"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors self-start"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-4 h- mr-2" />
             Back to portfolio
           </Link>
           <h1 className="text-5xl font-bold text-gray-900 mb-4">Case studies</h1>

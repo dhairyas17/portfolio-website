@@ -79,7 +79,7 @@ const Projects = () => {
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-12 pb-8"
+    className="pt-[100px] md:pt-[90px] pb-32"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -88,7 +88,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/portfolio"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2 -mt-0.5" />
           Back to Portfolio

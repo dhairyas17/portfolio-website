@@ -91,7 +91,8 @@ const SystemProductCategory = () => {
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-12 pb-8"
+    className="min-h-[80vh] pt-[90px] md:pt-[90px] pb-8"
+
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -108,7 +109,7 @@ const SystemProductCategory = () => {
         >
           <Link
             to="/system-product-design"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors self-start"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors self-start"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to menu
@@ -201,7 +202,7 @@ const SystemProductCategory = () => {
             </motion.div>
           ))}
         </div>
-        <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+        <p className="text-xs text-center text-gray-400 mt-8 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
       </div>
