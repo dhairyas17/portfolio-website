@@ -36,7 +36,7 @@ const SystemProduct = () => {
   ];
 
   return (
-    <div className="min-h-0 px-4 pt-1 pb-0">
+    <div className="min-h-[101vh] px-4 pt-2 pb-0">
       <motion.div
         className="flex-grow flex flex-col pt-20 pb-14"
         initial={{ opacity: 0, y: 40 }}

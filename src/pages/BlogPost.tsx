@@ -15,7 +15,7 @@ const BlogPost = () => {
   if (!blog) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-gray-600 px-4 pt-24">
-        <h1 className="text-3xl font-bold">Blog not found</h1>
+        <h1 className="text-3xl font-bold">Oops! Nothing here yet</h1>
         <p className="mt-4">Check the URL or go back to the blog list.</p>
         <button
           onClick={() => navigate('/blog')}

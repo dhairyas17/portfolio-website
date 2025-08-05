@@ -53,7 +53,7 @@ const CaseStudyCategory = () => {
 
   return (
     <motion.div
-    className="min-h-[80vh] pt-[90px] md:pt-[90px] pb-8"
+    className="min-h-[101vh] pt-[90px] md:pt-[90px] pb-8"
 
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
