@@ -70,7 +70,7 @@ const CaseStudyCategory = () => {
         >
           <Link
             to="/portfolio"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors self-start"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 transition-colors self-start"
           >
             <ArrowLeft className="w-4 h- mr-2" />
             Back to portfolio
@@ -161,10 +161,10 @@ const CaseStudyCategory = () => {
         </div>
 
         {/* Bottom spacing once after the grid */}
-        <div className="mt-24" />
+        <div className="mt-20" />
 
         {/* Footer */}
-        <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+        <p className="text-xs text-center text-gray-400 mt-10 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
       </div>

@@ -109,7 +109,7 @@ const SystemProductCategory = () => {
         >
           <Link
             to="/system-product-design"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors self-start"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 transition-colors self-start"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to menu
@@ -202,7 +202,7 @@ const SystemProductCategory = () => {
             </motion.div>
           ))}
         </div>
-        <p className="text-xs text-center text-gray-400 mt-8 pt-8 border-t border-gray-200">
+        <p className="text-xs text-center text-gray-400 mt-4 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
       </div>

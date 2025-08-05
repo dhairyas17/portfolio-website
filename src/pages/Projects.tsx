@@ -88,7 +88,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/portfolio"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2 -mt-0.5" />
           Back to Portfolio
@@ -233,7 +233,7 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        <div className="h-8" />
+        <div className="h-4" />
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>
