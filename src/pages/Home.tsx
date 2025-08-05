@@ -559,16 +559,16 @@ const Home = () => {
 
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
         <Link
-          to="/portfolio/projects"
+          to="/portfolio"
           className="px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
         >
-          View Projects
+          View Porfolio
         </Link>
         <Link
-          to="/portfolio/case-studies"
+          to="/blog"
           className="px-6 py-3 rounded-full border border-gray-300 text-gray-900 hover:bg-gray-100 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
         >
-          Case Studies
+          Blogs
         </Link>
         <Link
           to="/contact"

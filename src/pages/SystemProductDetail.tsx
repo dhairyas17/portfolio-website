@@ -249,11 +249,17 @@ const nextItem = currentIndex < filteredList.length - 1 ? filteredList[currentIn
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Solving a similar challenge?</h2>
             <p className="text-gray-600 mb-6 text-lg">I’d love to exchange ideas or collaborate on building the next big thing.</p>
             <Link
-              to="/contact"
-              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition"
-            >
-              Let’s Connect
-            </Link>
+  to="/contact"
+  className="inline-block rounded-lg no-underline transform transition-transform duration-200 hover:scale-105 will-change-transform preserve-3d"
+>
+  <div className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
+    <span className="block will-change-auto">Let’s Connect</span>
+  </div>
+</Link>
+
+
+
+
           </motion.div>
         </div>
 

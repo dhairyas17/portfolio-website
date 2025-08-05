@@ -363,11 +363,12 @@ const CaseStudyDetail = () => {
                 I’d love to exchange ideas or collaborate on building the next big thing.
               </p>
               <Link
-                to="/contact"
-                className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition"
-              >
-                Let’s Connect
-              </Link>
+  to="/contact"
+  className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 hover:bg-blue-700 transition-transform duration-200 will-change-transform preserve-3d"
+>
+  <span className="block will-change-auto">Let’s Connect</span>
+</Link>
+
             </motion.div>
           </div>
         </div>
