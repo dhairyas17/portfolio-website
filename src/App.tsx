@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence } from 'framer-motion';
 
 import Header from './components/Header';
-// import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
@@ -13,10 +12,11 @@ import CaseStudyCategory from './pages/CaseStudyCategory';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 import SystemProduct from './pages/SystemProduct';
 import SystemProductCategory from './pages/SystemProductCategory';
-import SystemProductDetails from './pages/SystemProductDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import SystemDesignDetails from './pages/SystemDesignDetails';
+import ProductDesignDetails from './pages/ProductDesignDetails';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -32,7 +32,8 @@ const AppRoutes = () => {
         <Route path="/portfolio/case-studies/:id" element={<CaseStudyDetail />} />
         <Route path="/system-product-design" element={<SystemProduct />} />
         <Route path="/system-product-design/:category" element={<SystemProductCategory />} />
-        <Route path="/system-product-design/:category/:id" element={<SystemProductDetails />} />
+        <Route path="/system-product-design/system-design/:id" element={<SystemDesignDetails />} />
+        <Route path="/system-product-design/product-design/:id" element={<ProductDesignDetails />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />

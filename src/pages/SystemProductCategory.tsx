@@ -19,69 +19,75 @@ const SystemProductCategory = () => {
       id: '1',
       title: 'AI Platform Architecture',
       subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-      description: 'Designed and implemented a distributed AI platform handling millions of data points daily across global manufacturing sites.',
+      description: 'Designed and implemented a distributed AI platform handling millions of data points daily across global manufacturing sites. Leveraged Kubernetes, Kafka, and TensorFlow Serving to achieve real-time ML processing, zero-downtime deployments, and 90% faster system performance.',
       duration: '6 months',
       team: '15 engineers',
       impact: '90% faster processing',
       tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
+    
     {
       id: '2',
-      title: 'Distributed Data Pipeline',
-      subtitle: 'Real-time Analytics at Petabyte Scale',
-      description: 'Built a fault-tolerant data pipeline processing 10TB+ daily across multiple regions with 99.99% uptime.',
-      duration: '4 months',
-      team: '8 engineers',
-      impact: '99.99% uptime',
-      tags: ['Apache Kafka', 'Spark', 'Data Lakes', 'Stream Processing'],
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Webhook Delivery Platform',
+      subtitle: 'Designing a Scalable Webhook Architecture for 3rd-Party Integrations',
+      description: 'Engineered a fault-tolerant, event-driven webhook platform ensuring 99.99% reliable delivery of millions of events per day to 3rd-party partners. Designed for tenant-level configuration, retries, and real-time observability across async pipelines.',
+      duration: '5 months',
+      team: '10 engineers',
+      impact: '99.99% reliable delivery at scale',
+      tags: ['Event-Driven', 'Webhooks', 'Queueing', 'Retries', 'Observability'],
+      image: 'https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
+    
     {
       id: '3',
-      title: 'Microservices Migration',
-      subtitle: 'From Monolith to Cloud-Native Architecture',
-      description: 'Led the migration of a legacy monolithic system to microservices, improving scalability and deployment frequency.',
-      duration: '8 months',
-      team: '20 engineers',
-      impact: '10x faster deployments',
-      tags: ['Docker', 'Kubernetes', 'Service Mesh', 'CI/CD'],
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Fault-Tolerant Design Patterns for Streaming Architectures',
+      subtitle: 'Building Reliable Data Pipelines with Kafka and Stateful Recovery',
+      description: 'Architected a resilient streaming system using Kafka, RocksDB, and circuit-breakers to ensure reliable, recoverable data processing. Downtime was reduced from 3 hours/month to under 10 minutes by implementing retries, DLQs, and self-healing components.',
+      duration: '4 months',
+      team: '8 engineers',
+      impact: 'Reduced downtime from 3 hours/month to <10 min/month',
+      tags: ['Kafka', 'Streaming', 'Resilience', 'Event-Driven Architecture'],
+      image: 'https://images.pexels.com/photos/1828875/pexels-photo-1828875.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     }
+  
   ] : [
     {
       id: '4',
-      title: 'AI Product Strategy',
-      subtitle: 'From Research to Production AI Products',
-      description: 'Transformed experimental AI research into market-ready products, achieving 2M+ users and $5M ARR within 18 months.',
-      duration: '18 months',
-      team: '25 people',
-      impact: '$5M ARR',
-      tags: ['AI Strategy', 'Go-to-Market', 'User Research', 'Metrics'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Driving Product-Led Growth through Self-Serve Onboarding',
+      subtitle: 'Reducing Drop-Offs and Activating Users without Sales Involvement',
+      description: 'Redesigned the onboarding experience into a dynamic, goal-based flow to help users reach value faster without human assistance. Achieved a 40% increase in Day-1 activation and an 18% uplift in free-to-paid conversions by implementing contextual guidance, progress tracking, and smart nudges.',
+      duration: '6 weeks',
+      team: '2 PMs, 1 designer, 3 engineers, 1 data analyst',
+      impact: '40% increase in Day-1 activation rate, 18% uplift in free-to-paid conversion',
+      tags: ['PLG', 'User Onboarding', 'Self-Serve', 'Activation', 'Funnel Optimization'],
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
+    
     {
       id: '5',
-      title: 'User Engagement Optimization',
-      subtitle: 'Data-Driven sp to Product Growth',
-      description: 'Increased user engagement by 150% through systematic A/B testing and behavioral analysis across mobile and web platforms.',
-      duration: '12 months',
-      team: '15 people',
-      impact: '150% engagement boost',
-      tags: ['A/B Testing', 'Analytics', 'User Research', 'Growth'],
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Redesigning Feature Rollouts',
+      subtitle: 'Minimizing Churn and Enabling A/B Testing at Scale',
+      description: 'Revamped the feature rollout process with LaunchDarkly to support fine-grained user targeting, instant rollbacks, and integrated A/B testing. This led to a 30% reduction in churn from premature releases and enabled teams to run experiments 5x faster.',
+      duration: '3 months',
+      team: '4 engineers, 1 designer, 1 data analyst',
+      impact: '30% reduction in churn from premature rollouts, 5x faster experiment cycles',
+      tags: ['Feature Rollouts', 'A/B Testing', 'Growth', 'Experimentation', 'Churn Reduction'],
+      image: 'https://images.pexels.com/photos/3182782/pexels-photo-3182782.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
+    
     {
       id: '6',
-      title: 'Marketplace Platform Design',
-      subtitle: 'Building Two-Sided Network Effects',
-      description: 'Designed and launched a B2B marketplace connecting 10,000+ suppliers with enterprise buyers, achieving network effects.',
-      duration: '15 months',
-      team: '30 people',
-      impact: '10K+ active suppliers',
-      tags: ['Marketplace', 'Network Effects', 'B2B', 'Platform Strategy'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Multi-Tenant SaaS Architecture',
+      subtitle: 'Designing Isolation, Scale, and Customizability from Day One',
+      description: 'Built a scalable multi-tenant SaaS platform with logical isolation, self-serve admin UX, and flexible role management. Partnered with design customers to shape the MVP, resulting in 60% faster onboarding and a 4x increase in tenant growth.',
+      duration: '5 months',
+      team: '1 PM, 2 Designers, 8 Engineers',
+      impact: 'Launched MVP with 3 design partners; reduced onboarding time by 60%',
+      tags: ['Multi-Tenant', 'SaaS', 'Onboarding', 'User Management', 'B2B Product'],
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     }
+    
   ];
 
   const handleCardClick = (id: string) => {

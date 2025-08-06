@@ -41,30 +41,47 @@ const Home = () => {
 
   const experiences = [
     {
-      role: 'Product Manager',
-      company: 'StartupXYZ',
-      period: '2019 - 2021',
-      description: 'Built product from 0-1, achieving product-market fit',
-      metrics: ['0 to 100K users in 18 months', '25% monthly growth rate', '$2M ARR achieved'],
-      location: 'Austin, TX'
-    },
-    {
-      role: 'Senior Product Manager',
-      company: 'TechCorp',
-      period: '2021 - 2023',
-      description: 'Scaled ML platform serving millions of users daily',
-      metrics: ['5M+ daily active users', '40% increase in engagement', '99.9% platform uptime'],
-      location: 'New York, NY'
-    },
-    {
-      role: 'Technical Product Manager',
+      role: 'Technical Product Manager (edge)',
       company: 'Evercam',
-      period: '2023 - Present',
-      description: 'Leading AI platform delivery across 100+ global sites',
-      metrics: ['60% reduction in manual reporting', '90% faster incident response', '100+ global sites managed'],
-      location: 'San Francisco, CA'
-    },    
+      period: 'March 2024 – July 2025',
+      description: 'Led Gate Report AI platform and scaled edge deployments across 1300+ global sites',
+      metrics: [
+        '60% reduction in manual reporting',
+        '70% faster incident response',
+        '1300+ edge deployments (up from 150)',
+        '35% less on-site support'
+      ],
+      location: 'Dublin, Ireland'
+    },
+    {
+      role: 'Product Owner (APM-Equivalent)',
+      company: 'Evercam',
+      period: 'July 2022 – March 2024',
+      description: 'Led ML model and CV platform development for real-time edge deployments',
+      metrics: [
+        'lad OTA deployment for Gate report on 70+ sites',
+        '980K+ frames labeled at 96% accuracy',
+        '92% model performance, 50% faster training',
+        'Stable ML releases with rollback & alerting'
+      ],
+      location: 'Dublin, Ireland'
+    },
+    {
+      role: 'Computer Vision Engineer - R&D',
+      company: 'Evercam',
+      period: 'May 2021 – July 2022',
+      description: 'Owned end-to-end R&D of CV infrastructure, delivering PoCs like DroneView and 360° view',
+      metrics: [
+        'Improved measuring accuracy by 79%',
+        'NPS score increased by 55%',
+        'DroneView & 360° PoCs deployed to production',
+        'Adopted by enterprise clients across US, AU & EU'
+      ],
+      location: 'Dublin, Ireland'
+    }
+    
   ];
+  
 
   const tools = [
     { name: 'Jira', logo: '/assets/logos/jira.png' },
@@ -100,23 +117,24 @@ const Home = () => {
 
   const testimonials = [
     {
-      quote: "Dhairya balances AI innovation with real-world product delivery exceptionally well. I am very very fond of hima nd recommends",
-      name: "Dhia",
-      role: "AI Team Lead – Evercam",
-      avatar: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-    },
-    {
-      quote: "His strategic thinking and execution capabilities are unmatched in the product space.",
-      name: "Sarah Chen",
-      role: "VP Engineering – TechCorp",
-      avatar: "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-    },
-    {
-      quote: "Dhairya transformed our product vision into a scalable reality that users love.",
+      quote: "Dhairya turned our product vision into a scalable edge solution. His leadership on Jetson deployments boosted compliance, cut manual work, and delivered real business impact.",
       name: "Michael Rodriguez",
-      role: "CEO – StartupXYZ",
-      avatar: "https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
+      role: "CEO – Marco Herbst",
+      avatar: "/assets/marco.jpeg",
+    },
+    {
+      quote: "Dhairya bridges ML engineering and product strategy seamlessly. His execution on model rollouts and data pipelines drove accuracy, speed, and real-world reliability.",
+      name: "Dhia Moumeni",
+      role: "AI Team Lead – Evercam",
+      avatar: "/assets/dhia.jpeg",
+    },
+    {
+      quote: "Dhairya’s work on edge AI scaled our global operations. He improved SLAs, automated compliance, and reduced on-site dependencies with clarity and precision.",
+      name: "Michael La Bertew",
+      role: "Operations Director (USA) – Evercam",
+      avatar: "/assets/mike.jpeg",
     }
+    
   ];
 
   return (
@@ -151,11 +169,11 @@ const Home = () => {
       </h2>
 
       <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
-        I connect business vision with engineering execution to build scalable, data-driven products.
+      Bridging business strategy and technical execution through data-driven product leadership.
       </p>
 
       <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-        With a sharp focus on clarity, collaboration, and outcomes, I lead cross-functional teams from 0 to 1 and beyond.
+      From vision to launch, I align stakeholders and systems thinking to deliver data-driven products with lasting impact.
       </p>
     </motion.div>
 
@@ -227,106 +245,118 @@ const Home = () => {
 
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+{/* About Section */}
+<section id="about" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Top Heading */}
+    <motion.div
+      className="text-center mb-16"
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
+      <p className="text-lg text-gray-500">
+        A timeline of learning, building, and scaling impactful products.
+      </p>
+    </motion.div>
+
+    {/* Main Section */}
+    <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+      {/* Left - Paragraph */}
+      <motion.div
+        className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify"
+        initial={{ x: -50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <p>
+          Hello! I'm an engineer-turned-Product Manager with 4+ years of experience transforming complex technologies into high-impact digital products. 
+          With a strong foundation in system design, cloud infrastructure, AI and edge computing, I specialize in building scalable solutions that deliver measurable business results.
+        </p>
+        <p>
+          I lead with strategy, drive with execution, and align cross-functional teams to ship products that solve real-world problems. 
+          From global rollouts and ML infrastructure to UX optimization and go-to-market planning, I operate at the intersection of user needs, technical feasibility, and business goals.
+        </p>
+        <p>
+          Outside of product execution, I mentor aspiring PMs, explore emerging tech, and break down successful product case studies. 
+          I believe in continuous learning, system thinking, and staying ahead of what’s next in product and tech.
+        </p>
+      </motion.div>
+
+      {/* Right - Value Cards */}
+      <motion.div
+        className="lg:w-1/2 grid grid-rows-3 gap-8 h-full"
+        initial={{ x: 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        {[
+          {
+            title: 'Strategic Vision',
+            icon: '💡',
+            desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
+          },
+          {
+            title: 'Cross-functional Leadership',
+            icon: '👥',
+            desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
+          },
+          {
+            title: 'Data-Driven Decisions',
+            icon: '📊',
+            desc: 'Leveraging customer insights, experimentation, and usage metrics to inform every product decision. My approach turns data into real product impact.'
+          }
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex flex-row items-start gap-4"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
-            <p className="text-lg text-gray-500">
-              A timeline of learning, building, and scaling impactful products.
-            </p>
-          </motion.div>
-
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Side - Paragraph */}
-            <motion.div
-              className="lg:w-1/2 text-gray-700 text-lg justify-center space-y-6"
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <p>
-                Hello! I'm a strategic Product Manager with a passion for transforming innovative ideas into successful digital products. 
-                My journey in product management started 5+ years ago, and I've been driving product excellence and user satisfaction ever since.
-              </p>
-              <p>
-                I specialize in product strategy, user experience optimization, and cross-functional team leadership. 
-                My expertise spans from market research and competitive analysis to feature prioritization and go-to-market strategies.
-              </p>
-              <p>
-                When I'm not analyzing user data or planning product roadmaps, you can find me mentoring aspiring product managers, 
-                exploring emerging technologies, or studying successful product case studies. 
-                I believe in continuous learning and staying ahead of industry trends.
-              </p>
-            </motion.div>
-
-            {/* Right Side - Value Cards */}
-            <motion.div
-              className="lg:w-2/5 space-y-4"
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {[
-                {
-                  title: 'Strategic Vision',
-                  icon: '💡',
-                  desc: 'Developing product roadmaps aligned with business goals and user needs.'
-                },
-                {
-                  title: 'Cross-functional Leadership',
-                  icon: '👥',
-                  desc: 'Leading teams of engineers, designers, and stakeholders to deliver results.'
-                },
-                {
-                  title: 'Data-Driven Decisions',
-                  icon: '📊',
-                  desc: 'Leveraging analytics and research to guide product strategy.'
-                }
-              ].map((item, index) => (
-                <div key={index} className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-start gap-3">
-                    <div className="text-2xl">{item.icon}</div>
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
-                      <p className="text-gray-600 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+            <div className="text-2xl mt-1">{item.icon}</div>
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
+              <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
+            </div>
           </div>
+        ))}
+      </motion.div>
+    </div>
 
-          {/* Bottom Stats */}
-          <motion.div
-            className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">25+</div>
-              <div className="text-sm text-gray-600 mt-2">Products Launched</div>
-            </div>
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">5+</div>
-              <div className="text-sm text-gray-600 mt-2">Years Experience</div>
-            </div>
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">98%</div>
-              <div className="text-sm text-gray-600 mt-2">User Satisfaction</div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    {/* Bottom Stats with Buttons */}
+    <motion.div
+      className="mt-16 grid grid-cols-1 sm:grid-cols-5 gap-8 text-center"
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+        <div className="text-indigo-600 text-4xl font-bold">4+</div>
+        <div className="text-sm text-gray-600 mt-2">Years Experience</div>
+      </div>      
+      <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+        <div className="text-indigo-600 text-4xl font-bold">10+</div>
+        <div className="text-sm text-gray-600 mt-2">Products</div>
+      </div>
+      <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+        <div className="text-indigo-600 text-4xl font-bold">50+</div>
+        <div className="text-sm text-gray-600 mt-2">Countries</div>
+      </div>     
+      <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+        <div className="text-indigo-600 text-4xl font-bold">100+</div>
+        <div className="text-sm text-gray-600 mt-2">Global Teams</div>
+      </div> 
+      <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
+        <div className="text-indigo-600 text-4xl font-bold">1300+</div>
+        <div className="text-sm text-gray-600 mt-2">Global Deployments</div>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* Experience Timeline */}
       <section className="py-20 bg-gray-50">
@@ -368,27 +398,36 @@ const Home = () => {
   </div>
 
   <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="mt-[48px] w-3/4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300"
-  >
-    <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
-    <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
-    <div className="text-gray-600 mb-2 flex items-center gap-1">
-      <span>{exp.company}</span>
-    </div>
-    <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-      <MapPin size={14} />
-      {exp.location}
-    </div>
-    <p className="text-gray-700 text-sm mb-3">{exp.description}</p>
-    <div className="space-y-1">
-      {exp.metrics.map((metric, idx) => (
-        <div key={idx} className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
-          {metric}
-        </div>
-      ))}
-    </div>
-  </motion.div>
+  whileHover={{ scale: 1.05 }}
+  className="mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between"
+>
+  <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+
+  <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+
+  <div className="text-gray-600 mb-2 flex items-center gap-1">
+    <span>{exp.company}</span>
+  </div>
+
+  <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+    <MapPin size={14} />
+    <span>{exp.location}</span>
+  </div>
+
+  <p className="text-gray-700 text-sm mb-3 text-justify">{exp.description}</p>
+
+  <div className="space-y-1">
+    {exp.metrics.map((metric, idx) => (
+      <div
+        key={idx}
+        className="text-xs text-green-700 bg-green-50 px-3 py-1 rounded text-left"
+      >
+        {metric}
+      </div>
+    ))}
+  </div>
+</motion.div>
+
 </motion.div>
 
                 
@@ -558,25 +597,26 @@ const Home = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <Link
-          to="/portfolio"
-          className="px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-        >
-          View Porfolio
-        </Link>
-        <Link
-          to="/blog"
-          className="px-6 py-3 rounded-full border border-gray-300 text-gray-900 hover:bg-gray-100 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-        >
-          Blogs
-        </Link>
-        <Link
-          to="/contact"
-          className="px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-        >
-          Get in Touch
-        </Link>
-      </div>
+  <Link
+    to="/portfolio"
+    className="min-w-[150px] text-center px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
+  >
+    View Portfolio
+  </Link>
+  <Link
+    to="/blog"
+    className="min-w-[150px] text-center px-6 py-3 rounded-full border border-gray-300 text-gray-900 hover:bg-gray-100 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
+  >
+    Blogs
+  </Link>
+  <Link
+    to="/contact"
+    className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
+  >
+    Get in Touch
+  </Link>
+</div>
+
     </motion.div>
     <p className="text-xs text-center text-gray-400 mt-8 pt-4 border-t border-gray-200">
       © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.

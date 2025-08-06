@@ -10,75 +10,153 @@ const Blog = () => {
 
   const filters = [
     { id: 'all', name: 'All Posts' },
-    { id: 'product-strategy', name: 'Product Strategy' },
-    { id: 'ai-ml', name: 'AI & ML' },
     { id: 'leadership', name: 'Leadership' },
-    { id: 'tech-trends', name: 'Tech Trends' }
-  ];
+    { id: 'product-strategy', name: 'Product' },
+    { id: 'system-design', name: 'System Design' },
+    { id: 'edge-infra', name: 'Edge Infra' },
+    { id: 'ai-ml', name: 'AI/ML' }
+  ];  
 
   const posts = [
     {
       id: '1',
-      title: 'The Future of AI in Product Development: Lessons from the Trenches',
-      excerpt: 'After leading AI product initiatives across multiple companies, here are the key insights every product manager should know about building successful AI products.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'ai-ml',
-      date: '2024-01-15',
-      readTime: '8 min read',
-      tags: ['AI', 'Product Management', 'Strategy']
+      title: 'Scaling Edge Deployments from 100 to 1,200+ – Lessons from the Trenches',
+      excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
+      image: 'https://images.pexels.com/photos/24224672/pexels-photo-24224672.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'edge-infra',
+      date: '2025-08-01',
+      readTime: '6 min read',
+      tags: ['Edge AI', 'TPM', 'Product Strategy']
     },
     {
       id: '2',
-      title: 'Scaling Product Teams: From 5 to 50 Without Losing Velocity',
-      excerpt: 'A practical guide to scaling product teams while maintaining quality, speed, and team culture. Lessons learned from growing teams at multiple startups.',
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'leadership',
-      date: '2024-01-08',
-      readTime: '6 min read',
-      tags: ['Team Building', 'Leadership', 'Scaling']
+      title: 'Feature Prioritization in Technical Products – Balancing OKRs, Tech Debt & Customer Feedback',
+      excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
+      image: 'https://images.pexels.com/photos/5842330/pexels-photo-5842330.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'product-strategy',
+      date: '2025-08-02',
+      readTime: '5 min read',
+      tags: ['Prioritization', 'AI Products', 'TPM']
     },
     {
       id: '3',
-      title: 'Beyond A/B Tests: Advanced Frameworks for Data-Driven Product Decisions',
-      excerpt: 'While A/B testing is great, sophisticated product decisions require more nuanced approaches. Here\'s how to build a comprehensive data-driven decision framework.',
-      image: 'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'product-strategy',
-      date: '2023-12-28',
-      readTime: '10 min read',
-      tags: ['Data Analytics', 'Product Strategy', 'Decision Making']
+      title: 'Leading AI Product Teams without Being the Smartest Engineer in the Room',
+      excerpt: 'Lessons on leading machine learning teams as a TPM/APM — from alignment to feasibility to trust-building without being the deepest technical expert.',
+      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'leadership',
+      date: '2025-08-03',
+      readTime: '6 min read',
+      tags: ['Leadership', 'AI Teams', 'TPM']
     },
     {
       id: '4',
-      title: 'Product Architecture Decisions: When Microservices Make Sense',
-      excerpt: 'Microservices aren\'t always the answer. Here\'s a framework for product managers to evaluate architectural decisions and their business impact.',
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'tech-trends',
-      date: '2023-12-20',
+      title: 'The Future of MLOps: From Research to Real-Time Alerts',
+      excerpt: 'From MLflow to Airflow to TensorRT – how tools and workflows evolve in the world of real-time inference, versioning, and deployment at scale.',
+      image: 'https://images.pexels.com/photos/2381188/pexels-photo-2381188.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'ai-ml',
+      date: '2025-08-04',
       readTime: '7 min read',
-      tags: ['Architecture', 'Microservices', 'Technical Strategy']
+      tags: ['MLOps', 'AI Infra', 'Model Deployment']
     },
     {
       id: '5',
-      title: 'User Research at Scale: Insights from 100+ Customer Interviews',
-      excerpt: 'How to systematically gather, analyze, and act on user feedback when you\'re moving fast and serving millions of users.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'product-strategy',
-      date: '2023-12-12',
-      readTime: '9 min read',
-      tags: ['User Research', 'Customer Development', 'Product Discovery']
+      title: 'Why Edge AI is Eating the Cloud – 5 Predictions from the Field',
+      excerpt: 'Drawing from Jetson/OTA experience — this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
+      image: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'edge-infra',
+      date: '2025-08-05',
+      readTime: '5 min read',
+      tags: ['Edge AI', 'Predictions', 'Cloud']
     },
     {
       id: '6',
-      title: 'AI Ethics in Product Management: A Practical Framework',
-      excerpt: 'As AI becomes central to product experiences, product managers need practical frameworks for making ethical decisions. Here\'s what I\'ve learned.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+      title: 'From Engineer to TPM: How I Learned to Influence without Authority',
+      excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM — and how communication, trust, and alignment became my real tools.',
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'leadership',
+      date: '2025-08-06',
+      readTime: '5 min read',
+      tags: ['Career', 'TPM', 'Leadership']
+    },
+    {
+      id: '7',
+      title: 'Stakeholder Management for Technical PMs – From Chaos to Clarity',
+      excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
+      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'leadership',
+      date: '2025-08-07',
+      readTime: '6 min read',
+      tags: ['Stakeholders', 'TPM', 'Execution']
+    },
+    {
+      id: '8',
+      title: 'How GenAI Will Reshape the Technical PM Role – Prompting is Just the Beginning',
+      excerpt: 'Beyond prompting — how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
+      image: 'https://images.pexels.com/photos/11035395/pexels-photo-11035395.jpeg?auto=compress&cs=tinysrgb&w=1200',
       category: 'ai-ml',
-      date: '2023-12-05',
-      readTime: '11 min read',
-      tags: ['AI Ethics', 'Product Strategy', 'Responsible AI']
-    }
-  ];
-
+      date: '2025-08-08',
+      readTime: '5 min read',
+      tags: ['GenAI', 'Future of Work', 'TPM']
+    },
+    {
+      id: '9',
+      title: 'How We Built OTA & Observability for 1,200+ Jetson Devices – A SaaS Mindset for Edge Infra',
+      excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI — and how a SaaS mindset helped.',
+      image: 'https://images.pexels.com/photos/19713622/pexels-photo-19713622.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'edge-infra',
+      date: '2025-08-09',
+      readTime: '7 min read',
+      tags: ['Edge Infra', 'SaaS', 'TPM']
+    },
+    {
+      id: '10',
+      title: '10 Tools I Can’t Live Without as a TPM in AI & Cloud',
+      excerpt: 'From Productboard to Grafana, here are the tools I rely on daily to prioritize, ship, align, and measure success in fast-moving AI environments.',
+      image: 'https://images.pexels.com/photos/6476267/pexels-photo-6476267.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      category: 'product-strategy',
+      date: '2025-08-10',
+      readTime: '4 min read',
+      tags: ['Tools', 'TPM', 'Productivity']
+    },
+      {
+        id: '11',
+        title: 'Choosing the Right Database for Your Product',
+        excerpt:
+          'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase — with real trade-offs and mistakes made.',
+        image:
+          'https://images.pexels.com/photos/1708988/pexels-photo-1708988.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        category: 'system-design',
+        date: '2025-08-11',
+        readTime: '6 min read',
+        tags: ['System Design', 'Databases', 'Product Decisions']
+      },
+      {
+        id: '12',
+        title: 'Designing Clean API Integrations - from TPM point of view',
+        excerpt:
+          'From naming conventions to auth flows, these are the principles I follow when designing APIs that scale, evolve, and don’t break clients.',
+        image:
+          'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        category: 'system-design',
+        date: '2025-08-12',
+        readTime: '5 min read',
+        tags: ['API Design', 'Integration', 'Engineering Collaboration']
+      },
+      {
+        id: '13',
+        title: 'Cost-Effective System Design: Balancing Performance & Budget',
+        excerpt:
+          'This is the playbook I’ve used to design systems that scale without setting money on fire. Real-world trade-offs, metrics, and lessons for PMs and engineers.',
+        image:
+          'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        category: 'system-design',
+        date: '2025-08-13',
+        readTime: '6 min read',
+        tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
+      }
+    ];
+    
+  
   const filteredPosts = useMemo(() => {
     const filterByCategory = posts.filter(
       (post) => activeFilter === 'all' || post.category === activeFilter
