@@ -75,14 +75,14 @@ const Header = () => {
             >
               Product Portfolio
             </Link>
-            <Link
+            {/* <Link
               to="/system-product-design"
               className={`relative pb-1 transition-colors ${
                 isActive('/system-product-design') ? 'text-blue-600 font-semibold' : 'text-gray-700'
               } hover:text-blue-600 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-600 hover:after:w-full after:transition-all`}
             >
               System & Product Design
-            </Link>
+            </Link> */}
             <Link
               to="/blog"
               className={`relative pb-1 transition-colors ${

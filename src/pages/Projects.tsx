@@ -18,53 +18,111 @@ const Projects = () => {
   const projects = [
     {
       id: '101',
-      title: 'AI Recommendation Engine',
+      title: 'OTA Firmware Updates with AWX & Ansible',
       description:
-        'Machine learning platform providing personalized recommendations for e-commerce, increasing conversion rates by 35%.',
-      image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'ai-ml',
-      tech: ['Python', 'TensorFlow', 'FastAPI', 'PostgreSQL', 'Docker'],
-      year: '2024',
-      team: '8 people',
+        'Automated OTA firmware updates for Jetson edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',
+      image:
+        'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'Edge Infrastructure & DevOps',
+      tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
+      year: '2025',
+      team: '3 people',
       status: 'Live',
       links: {
-        github: 'https://github.com/dhairya/ai-recommendation',
-        demo: 'https://recommendation-demo.com'
+        github: 'https://github.com/dhairya/ota-ansible-awx',
+        demo: 'https://ota-demo.com'
       }
     },
     {
       id: '102',
-      title: 'Real-time Analytics Dashboard',
+      title: 'Edge Device Monitoring with Prometheus & Grafana',
       description:
-        'Interactive dashboard processing millions of events daily, providing actionable insights for business stakeholders.',
-      image: 'https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'data',
-      tech: ['React', 'D3.js', 'Apache Kafka', 'ClickHouse', 'WebSocket'],
-      year: '2024',
-      team: '6 people',
+        'Deployed lightweight monitoring on Jetson edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
+      image:
+        'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'DevOps & Observability',
+      tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
+      year: '2025',
+      team: '2 people',
       status: 'Live',
       links: {
-        github: 'https://github.com/dhairya/analytics-dashboard',
-        demo: 'https://analytics-demo.com'
+        github: 'https://github.com/dhairya/edge-monitoring-prometheus',
+        demo: 'https://monitoring-demo.com'
       }
     },
     {
       id: '103',
-      title: 'Mobile Productivity App',
+      title: 'Fisheye Distortion Correction on Wide Angle Cameras',
       description:
-        'Cross-platform mobile app helping users manage tasks and improve productivity, with 50K+ downloads.',
-      image: 'https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      category: 'mobile',
-      tech: ['React Native', 'Node.js', 'MongoDB', 'Firebase', 'Redux'],
-      year: '2023',
-      team: '5 people',
+        'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
+      image:
+        'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'Computer Vision & Image Processing',
+      tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
+      year: '2025',
+      team: '2 people',
       status: 'Live',
       links: {
-        github: 'https://github.com/dhairya/productivity-app',
-        demo: 'https://apps.apple.com/productivity-app'
+        github: 'https://github.com/dhairya/fisheye-correction-opencv',
+        demo: 'https://fisheye-demo.com'
+      }
+    },
+    {
+      id: '104',
+      title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
+      description:
+        'Built and deployed real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving sub-50ms inference time and 60% smaller models.',
+      image:
+        'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'Edge AI & Deep Learning',
+      tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
+      year: '2025',
+      team: '3 people',
+      status: 'Live',
+      links: {
+        github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
+        demo: 'https://yolov4-jetson-demo.com'
+      }
+    },
+    {
+      id: '105',
+      title: 'AI Chatbot using GenAI & LLMs',
+      description:
+        'Built a domain-specific GenAI chatbot using LangChain and LLMs, with RAG pipeline and voice/text interaction — cutting query resolution time by 65%.',
+      image:
+        'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'Generative AI & NLP',
+      tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
+      year: '2025',
+      team: '2 people',
+      status: 'Live',
+      links: {
+        github: 'https://github.com/dhairya/genai-chatbot',
+        demo: 'https://genai-chatbot-demo.com'
+      }
+    },
+    {
+      id: '106',
+      title: 'Scalable AI-Driven Video Intelligence API Platform',
+      description:
+        'Developed a modular FastAPI platform offering video AI features via REST APIs—YOLOv8, FaceNet, SAM, LaMa—running on cloud and edge.',
+      image:
+        'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'API Architecture, Video Intelligence, AI Integration',
+      tech: [
+        'Python', 'FastAPI', 'YOLOv8', 'FaceNet', 'SAM', 'LaMa',
+        'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'RabbitMQ', 'gRPC', 'Prometheus + Grafana'
+      ],
+      year: '2025',
+      team: '1 person',
+      status: 'Live',
+      links: {
+        github: 'https://github.com/dhairya/video-intelligence-api',
+        demo: 'https://video-api-demo.com'
       }
     }
   ];
+  
 
   const filteredProjects = projects.filter(
     (project) => activeFilter === 'all' || project.category === activeFilter

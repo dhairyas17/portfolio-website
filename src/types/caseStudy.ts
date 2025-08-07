@@ -6,8 +6,20 @@ export interface ImplementationPhase {
 
 export interface Result {
   metric: string;
-  improvement: string;
-  description: string;
+  before: string;
+  after: string;
+  change: string;
+}
+
+export interface KeyDecision {
+  decision: string;
+  reason: string;
+  tradeOff: string;
+}
+
+export interface Architecture {
+  before: string[];
+  after: string[];
 }
 
 export interface CaseStudy {
@@ -20,7 +32,6 @@ export interface CaseStudy {
   impact: string;
   tags: string[];
 
-  // Newly added sections
   businessGoal: string;
   role: string;
 
@@ -31,10 +42,13 @@ export interface CaseStudy {
   results: Result[];
   technologies: string[];
 
-  // Newly added sections
   collaboration: string[];
-  keyDecisions: string[];
+  keyDecisions: KeyDecision[];
   lessons: string[];
   quote: string;
   takeaways: string[];
+
+  // Newly added fields
+  architecture: Architecture;
+  customerFeedback: string[];
 }

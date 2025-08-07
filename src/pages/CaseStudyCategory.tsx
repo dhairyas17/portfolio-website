@@ -13,37 +13,71 @@ const CaseStudyCategory = () => {
   const caseStudies = [
     {
       id: '1',
-      title: 'AI Platform Architecture',
-      subtitle: 'Scaling ML Infrastructure for 100+ Global Sites',
-      description: 'Designed and implemented a distributed AI platform handling millions of data points daily across global manufacturing sites.',
+      title: "Redesigning Evercam's Gate Report",
+      subtitle: 'Real-Time Edge-Based Object Detection for 100+ Sites',
+      description: 'Led a product and system redesign to transform Evercam’s Gate Report from a cloud-based system to a real-time edge-based solution, reducing latency and bandwidth while improving NPS and MRR.',
       duration: '6 months',
-      team: '15 engineers',
-      impact: '90% faster processing',
-      tags: ['Microservices', 'Kubernetes', 'ML Pipeline', 'Real-time Processing'],
+      team: '1 TPM, 6 Engineers, 2 AI Researchers, 2 DevOps, 1 Designer, 1 CS Manager, 3 QA/Annotation',
+      impact: '750% MRR Growth · 94% Lower Data Usage · 71pt NPS Boost',
+      tags: ['Edge AI', 'System Design', 'YOLOv5', 'Jetson', 'RabbitMQ', 'OTA Deployment'],
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
       id: '2',
-      title: 'Distributed Data Pipeline',
-      subtitle: 'Real-time Analytics at Petabyte Scale',
-      description: 'Built a fault-tolerant data pipeline processing 10TB+ daily across multiple regions with 99.99% uptime.',
+      title: "Standardizing Edge Setup at Evercam",
+      subtitle: 'Scalable Kit-Based Deployment Across 100+ Sites',
+      description: 'Led an edge infrastructure transformation by moving from inconsistent camera setups to a standardized, kit-based deployment. Introduced OTA config delivery via Ansible and AWX, enabling non-engineers to deploy and manage edge devices at scale.',
       duration: '4 months',
-      team: '8 engineers',
-      impact: '99.99% uptime',
-      tags: ['Apache Kafka', 'Spark', 'Data Lakes', 'Stream Processing'],
+      team: '1 TPM, 3 Firmware Engineers, 2 DevOps, 5 Developers, 2 Support Engineers',
+      impact: 'Reduced deployment time by 70% · Enabled 1000+ site scalability · Empowered non-devs to manage edge ops',
+      tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
       image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
     {
       id: '3',
-      title: 'Microservices Migration',
-      subtitle: 'From Monolith to Cloud-Native Architecture',
-      description: 'Led the migration of a legacy monolithic system to microservices, improving scalability and deployment frequency.',
-      duration: '8 months',
-      team: '20 engineers',
-      impact: '10x faster deployments',
-      tags: ['Docker', 'Kubernetes', 'Service Mesh', 'CI/CD'],
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      title: 'Scaling ML Pipelines & MLOps Lifecycle',
+      subtitle: 'Boosted Detection Accuracy from 67% to 96% Across 1000+ Edge Devices',
+      description: 'Led a cross-functional ML lifecycle redesign—data collection, annotation, training, deployment—to scale detection models and increase accuracy by 29% using Airflow, CVAT, and MLflow.',
+      duration: '6 months',
+      team: '1 TPM, 5 Annotation Specialists, 2 ML Engineers, 2 DevOps Engineers',
+      impact: '10× data scale · 29% accuracy lift · 60% faster annotation',
+      tags: ['MLOps', 'Airflow', 'MLflow', 'Edge AI', 'CVAT', 'Data Pipeline'],
+      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
     },
+    {
+      id: '4',
+      title: 'Real-Time Observability for OTA Edge Devices',
+      subtitle: 'Built Scalable Monitoring for 1300+ Devices Using Prometheus & Grafana',
+      description: 'Designed and launched a real-time observability system for Evercam’s global edge fleet, enabling proactive monitoring, reducing failures and support costs, and boosting NPS through Grafana dashboards and OTA updates.',
+      duration: '4 months',
+      team: '1 TPM, 3 DevOps Engineers, 2 Backend Engineers, 1 Embedded Engineer, Support Lead, QA Engineer',
+      impact: '75% fewer device failures · 80% fewer site visits · +35% NPS increase',
+      tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
+      image: 'https://images.pexels.com/photos/1581094/pexels-photo-1581094.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+    },    
+    {
+      "id": "5",
+      "title": "Redesigning Evercam's Gate Report for Real-Time Edge-Based Object Detection",
+      "subtitle": "Product Design, System Design, AI/Edge Architecture",
+      "description": "Led a full-stack redesign and technical transformation of Evercam’s Gate Report feature to support real-time object detection and analytics at the edge.",
+      "duration": "6 months",
+      "team": "1 TPM (myself), 6 Engineers, 2 AI Researchers",
+      "impact": "Improved gate detection accuracy from 65% to 96%, reduced processing time from 2 mins to 5 secs, improved client retention by 22%",
+      "tags": ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
+      "image": "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+    },
+    {
+      "id": "6",
+      "title": "Redesigning Onboarding to Improve Activation by 35%",
+      "subtitle": "User Experience, Onboarding, Product Strategy",
+      "description": "Led the redesign of onboarding flow to increase user activation, reduce churn, and drive early product adoption through progressive flows, AI assistant, and behavior-driven nudges.",
+      "duration": "4 months",
+      "team": "1 PM (me), 1 Designer, 5 Engineers",
+      "impact": "Activation rate improved from 20% to 55%, 28% reduction in support tickets",
+      "tags": ["Onboarding", "User Experience", "GenAI", "React", "Amplitude", "Redis"],
+      "image": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+    }
+    
   ];
 
   const handleCardClick = (id: string) => {

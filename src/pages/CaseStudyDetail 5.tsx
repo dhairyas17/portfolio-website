@@ -27,7 +27,7 @@ const fadeIn = {
 
 const tableRowStyles = "border px-3 py-2 text-sm text-gray-700";
 
-const CaseStudyDetail = () => {
+const CaseStudyDetail5 = () => {
   const navigate = useNavigate();
 
   return (
@@ -208,4 +208,4 @@ const CaseStudyDetail = () => {
   );
 };
 
-export default CaseStudyDetail;
+export default CaseStudyDetail5;
