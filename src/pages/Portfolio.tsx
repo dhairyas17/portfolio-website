@@ -13,10 +13,12 @@ const Portfolio = () => {
       icon: Layers,
       color: 'from-blue-500 to-indigo-600',
       items: [
-        'Distributed Logging at Scale',
-        'IoT Fleet Architecture',
-        'User Retention Strategy',
-        'Conversion Funnel Redesign',
+        "Redesigning Evercam's Gate Report",
+        'Standardizing Edge Setup at Evercam',
+        'Real-Time Observability for Edge Devices',
+        'Scaling ML Pipelines & MLOps Lifecycle',
+        'Designing a Scalable AI-Driven API Platform',
+        'Onboarding Redesign: Boosted Activation'
       ],
       count: 6,
     },
@@ -28,17 +30,19 @@ const Portfolio = () => {
       icon: FolderKanban,
       color: 'from-purple-500 to-pink-600',
       items: [
-        'Multi-Agent Workflow Builder',
-        'Smart Traffic Surveillance',
-        'Realtime Alerting Dashboard',
-        'AI-Powered Annotation Tool',
+        "OTA Firmware Updates with AWX & Ansible",
+        "Edge Device Monitoring with Prometheus & Grafana",
+        "Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT",
+        "Fisheye Distortion Correction on Wide Angle Cameras",
+        "AI Chatbot using GenAI & LLMs",
+        "Scalable AI-Driven Video Intelligence API Platform"
       ],
-      count: 4,
+      count: 6,
     },
   ];
 
   return (
-    <div className="min-h-[110vh] px-4 pt-2 pb-0">
+    <div className="min-h-[101vh] px-4 pt-2 pb-0">
       <motion.div
         className="flex-grow flex flex-col pt-20 pb-14"
         initial={{ opacity: 0, y: 40 }}
@@ -53,7 +57,7 @@ const Portfolio = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-5xl font-bold text-gray-900 mb-9">Portfolio</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">Portfolio</h1>
             <p className="text-lg text-gray-500 max-w-4xl mx-auto">
               A curated collection of my most impactful case studies and personal projects.
             </p>
@@ -68,7 +72,7 @@ const Portfolio = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
               >
                 <Link to={`/portfolio/${category.id}`}>
-                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[500px] flex flex-col">
+                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[530px] flex flex-col">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     />
@@ -113,8 +117,8 @@ const Portfolio = () => {
           </div>
 
           <p className="text-xs text-center text-gray-400 mt-20 pt-10 border-t border-gray-200">
-            © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-          </p>
+    © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+  </p>
         </div>
       </motion.div>
     </div>

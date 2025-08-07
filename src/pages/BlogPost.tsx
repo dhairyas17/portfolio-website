@@ -1,15 +1,30 @@
 // src/pages/BlogPost.tsx
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { blogList } from '../data/blogList';
 import { blogContentMap } from '../data/blogContent';
-import { ArrowLeft, ArrowRight, Calendar, Clock, User } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Calendar, ChevronUp, Clock, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate()
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const blog = blogList.find((item) => item.id === id);
   if (!blog) {
@@ -147,7 +162,15 @@ const BlogPost = () => {
     <div className="hidden sm:block" />
   )}
 </motion.div>
-
+{showScrollTop && (
+  <button
+    onClick={scrollToTop}
+    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+    aria-label="Scroll to top"
+  >
+    <ChevronUp size={20} />
+  </button>
+)}
           {/* CTA Section */}
           <motion.div
   className="border-t pt-1 mt-8 text-center"

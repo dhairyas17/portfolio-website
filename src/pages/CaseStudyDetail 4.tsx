@@ -1,7 +1,7 @@
 // src/pages/CaseStudyDetails.tsx
-
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { ChevronUp } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -29,26 +29,40 @@ const tableRowStyles = "border px-3 py-2 text-sm text-gray-700";
 
 const CaseStudyDetail4 = () => {
   const navigate = useNavigate();
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
   return (
-    <motion.div
-      className="max-w-6xl mx-auto px-6 py-12 text-gray-900"
-      initial="initial"
-      animate="animate"
-      transition={{ staggerChildren: 0.2 }}
-    >
-      {/* Back button */}
-      <motion.button
-        className="flex items-center gap-2 text-sm text-blue-600 hover:underline mb-8"
-        onClick={() => navigate(-1)}
-        {...fadeIn}
-      >
-        <ArrowLeft size={16} /> Back to Case Studies
-      </motion.button>
-
+<motion.div
+  className="max-w-4xl mx-auto px-6 py-24 text-gray-900"
+  initial="initial"
+  animate="animate"
+  transition={{ staggerChildren: 0.2 }}
+>
+  {/* Back button */}
+  <motion.button
+    className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 mb-8 transition"
+    onClick={() => navigate(-1)}
+    {...fadeIn}
+  >
+    <ArrowLeft size={16} />
+    Back to Case Studies
+  </motion.button>
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        📌 Case Study: Building Real-Time Observability for OTA on 1300+ Edge Devices
+        Building Real-Time Observability for OTA on 1300+ Edge Devices
       </motion.h1>
 
       {/* Summary */}
@@ -205,7 +219,38 @@ const CaseStudyDetail4 = () => {
           <li>Challenges in scaling observability systems across diverse device architectures</li>
         </ul>
       </motion.section>
+      {showScrollTop && (
+  <button
+    onClick={scrollToTop}
+    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+    aria-label="Scroll to top"
+  >
+    <ChevronUp size={20} />
+  </button>
+)}     
+      <hr className="mt-10 border-t border-gray-200" />
+      <motion.div
+            className="mt-5 text-center"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Solving a similar challenge?</h2>
+            <p className="text-gray-600 mb-6 text-lg">I’d love to exchange ideas or collaborate on building the next big thing.</p>
+            <Link
+              to="/contact"
+              className="inline-block rounded-lg no-underline transform transition-transform duration-200 hover:scale-105 will-change-transform preserve-3d"
+            >
+              <div className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                <span className="block will-change-auto">Let’s Connect</span>
+              </div>
+            </Link>
 
+            <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+              © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+            </p>
+          </motion.div>
+      
     </motion.div>
   );
 };

@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { ExternalLink, Github, Calendar, Users, Tag, ArrowLeft } from 'lucide-react';
+import {
+  ExternalLink,
+  Github,
+  Calendar,
+  Users,
+  Tag,
+  ArrowLeft,
+} from 'lucide-react';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
   const filters = [
     { id: 'all', name: 'All Projects' },
     { id: 'ai-ml', name: 'AI & ML' },
-    { id: 'web-apps', name: 'Web Apps' },
-    { id: 'mobile', name: 'Mobile' },
-    { id: 'data', name: 'Data & Analytics' }
+    { id: 'infra', name: 'Infra' },
+    { id: 'api', name: 'API Integration' },
   ];
 
   const projects = [
@@ -23,15 +30,15 @@ const Projects = () => {
         'Automated OTA firmware updates for Jetson edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',
       image:
         'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-      category: 'Edge Infrastructure & DevOps',
+      category: 'infra',
       tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
       year: '2025',
       team: '3 people',
       status: 'Live',
       links: {
         github: 'https://github.com/dhairya/ota-ansible-awx',
-        demo: 'https://ota-demo.com'
-      }
+        demo: 'https://ota-demo.com',
+      },
     },
     {
       id: '102',
@@ -40,18 +47,35 @@ const Projects = () => {
         'Deployed lightweight monitoring on Jetson edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
       image:
         'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-      category: 'DevOps & Observability',
+      category: 'infra',
       tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
       year: '2025',
       team: '2 people',
       status: 'Live',
       links: {
         github: 'https://github.com/dhairya/edge-monitoring-prometheus',
-        demo: 'https://monitoring-demo.com'
-      }
+        demo: 'https://monitoring-demo.com',
+      },
     },
     {
       id: '103',
+      title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
+      description:
+        'Built and deployed real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving sub-50ms inference time and 60% smaller models.',
+      image:
+        'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      category: 'ai-ml',
+      tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
+      year: '2025',
+      team: '3 people',
+      status: 'Live',
+      links: {
+        github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
+        demo: 'https://yolov4-jetson-demo.com',
+      },
+    },
+    {
+      id: '104',
       title: 'Fisheye Distortion Correction on Wide Angle Cameras',
       description:
         'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
@@ -64,25 +88,8 @@ const Projects = () => {
       status: 'Live',
       links: {
         github: 'https://github.com/dhairya/fisheye-correction-opencv',
-        demo: 'https://fisheye-demo.com'
-      }
-    },
-    {
-      id: '104',
-      title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
-      description:
-        'Built and deployed real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving sub-50ms inference time and 60% smaller models.',
-      image:
-        'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-      category: 'Edge AI & Deep Learning',
-      tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
-      year: '2025',
-      team: '3 people',
-      status: 'Live',
-      links: {
-        github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
-        demo: 'https://yolov4-jetson-demo.com'
-      }
+        demo: 'https://fisheye-demo.com',
+      },
     },
     {
       id: '105',
@@ -91,15 +98,15 @@ const Projects = () => {
         'Built a domain-specific GenAI chatbot using LangChain and LLMs, with RAG pipeline and voice/text interaction — cutting query resolution time by 65%.',
       image:
         'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-      category: 'Generative AI & NLP',
+      category: 'ai-ml',
       tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
       year: '2025',
       team: '2 people',
       status: 'Live',
       links: {
         github: 'https://github.com/dhairya/genai-chatbot',
-        demo: 'https://genai-chatbot-demo.com'
-      }
+        demo: 'https://genai-chatbot-demo.com',
+      },
     },
     {
       id: '106',
@@ -108,25 +115,44 @@ const Projects = () => {
         'Developed a modular FastAPI platform offering video AI features via REST APIs—YOLOv8, FaceNet, SAM, LaMa—running on cloud and edge.',
       image:
         'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-      category: 'API Architecture, Video Intelligence, AI Integration',
+      category: 'api',
       tech: [
         'Python', 'FastAPI', 'YOLOv8', 'FaceNet', 'SAM', 'LaMa',
-        'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'RabbitMQ', 'gRPC', 'Prometheus + Grafana'
+        'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'RabbitMQ', 'gRPC', 'Prometheus + Grafana',
       ],
       year: '2025',
       team: '1 person',
       status: 'Live',
       links: {
         github: 'https://github.com/dhairya/video-intelligence-api',
-        demo: 'https://video-api-demo.com'
-      }
-    }
+        demo: 'https://video-api-demo.com',
+      },
+    },
   ];
-  
 
   const filteredProjects = projects.filter(
     (project) => activeFilter === 'all' || project.category === activeFilter
   );
+
+  const projectsPerPage = 3;
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+  const paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * projectsPerPage,
+    currentPage * projectsPerPage
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
 
   const handleCardClick = (id: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -137,7 +163,7 @@ const Projects = () => {
 
   return (
     <motion.div
-    className="pt-[80px] md:pt-[90px] pb-32"
+      className="pt-[80px] md:pt-[90px] pb-32"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -183,13 +209,13 @@ const Projects = () => {
         </motion.div>
 
         <motion.div
-          key={activeFilter}
+          key={activeFilter + currentPage}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-          {filteredProjects.map((project) => (
+          {paginatedProjects.map((project) => (
             <div
               key={project.id}
               className="flex cursor-pointer"
@@ -290,6 +316,37 @@ const Projects = () => {
             </div>
           ))}
         </motion.div>
+
+        {/* Pagination */}
+        <div className="mt-10 flex justify-center items-center gap-4">
+  <button
+    onClick={goToPreviousPage}
+    disabled={currentPage === 1}
+    className={`min-w-[128px] inline-block px-4 py-2 text-sm font-semibold rounded-lg no-underline transform transition-transform duration-200 will-change-transform text-center ${
+      currentPage === 1
+        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        : 'bg-blue-600 text-white hover:scale-105'
+    }`}
+  >
+    ← Prev
+  </button>
+
+  <span className="text-sm text-gray-600 font-medium">
+    Page {currentPage} of {totalPages}
+  </span>
+
+  <button
+    onClick={goToNextPage}
+    disabled={currentPage === totalPages}
+    className={`min-w-[128px] inline-block px-4 py-2 text-sm font-semibold rounded-lg no-underline transform transition-transform duration-200 will-change-transform text-center ${
+      currentPage === totalPages
+        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+        : 'bg-blue-600 text-white hover:scale-105'
+    }`}
+  >
+    Next →
+  </button>
+        </div>
 
         <div className="h-4" />
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">

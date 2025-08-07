@@ -1,31 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
-  ExternalLink,
-  Github,
   Calendar,
   Users,
   Tag,
   Star,
   GitBranch,
+  ChevronUp,
 } from 'lucide-react';
 import { projectData } from '../data/projectContent';
 import { Project } from '../types/project';
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const projectList = Object.values(projectData).sort((a, b) => a.id - b.id);
   const currentIndex = projectList.findIndex((p) => String(p.id) === id);
   const prevProject = projectList[currentIndex - 1];
   const nextProject = projectList[currentIndex + 1];
-  
-  // Find project by numeric ID
-  const project: Project | undefined = Object.values(projectData).find(
-    (p) => String(p.id) === id
-  );
+
+  const project: Project | undefined = projectList.find((p) => String(p.id) === id);
 
   if (!project) {
     return (
@@ -41,11 +51,9 @@ const ProjectDetail: React.FC = () => {
     );
   }
 
-
   return (
     <motion.div
       className="min-h-[80vh] pt-[100px] md:pt-[90px] pb-8"
-
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -91,8 +99,6 @@ const ProjectDetail: React.FC = () => {
                 </div>
               </div>
             </div>
-
-
           </div>
 
           {/* Tech Stack */}
@@ -264,6 +270,15 @@ const ProjectDetail: React.FC = () => {
   )}
 </div>
 
+{showScrollTop && (
+  <button
+    onClick={scrollToTop}
+    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+    aria-label="Scroll to top"
+  >
+    <ChevronUp size={20} />
+  </button>
+)}
 
           {/* CTA */}
           <motion.div

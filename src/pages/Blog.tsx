@@ -1,12 +1,15 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, Heart, MessageCircle, Search } from 'lucide-react';
+import { Calendar, Clock, Search } from 'lucide-react';
 
 const Blog = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
+
+  const postsPerPage = 6;
 
   const filters = [
     { id: 'all', name: 'All Posts' },
@@ -15,7 +18,20 @@ const Blog = () => {
     { id: 'system-design', name: 'System Design' },
     { id: 'edge-infra', name: 'Edge Infra' },
     { id: 'ai-ml', name: 'AI/ML' }
-  ];  
+  ];
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter, searchQuery]);
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  };
 
   const posts = [
     {
@@ -155,32 +171,41 @@ const Blog = () => {
         tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
       }
     ];
-    
-  
-  const filteredPosts = useMemo(() => {
-    const filterByCategory = posts.filter(
+  const filteredData = useMemo(() => {
+    const filtered = posts.filter(
       (post) => activeFilter === 'all' || post.category === activeFilter
-    );
-
-    const query = searchQuery.toLowerCase();
-    const filterBySearch = filterByCategory.filter(
-      (post) =>
+    ).filter((post) => {
+      const query = searchQuery.toLowerCase();
+      return (
         post.title.toLowerCase().includes(query) ||
         post.excerpt.toLowerCase().includes(query) ||
         post.tags.some((tag) => tag.toLowerCase().includes(query))
-    );
-
-    return activeFilter === 'all' && !searchQuery
-      ? filterBySearch.slice(1)
-      : filterBySearch;
-  }, [activeFilter, searchQuery]);
-
-  const formatDate = (dateString: string) =>
-    new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      );
     });
+
+    const featured = (activeFilter === 'all' && !searchQuery) ? filtered[0] : null;
+    const rest = (activeFilter === 'all' && !searchQuery) ? filtered.slice(1) : filtered;
+
+    let paginatedPosts: typeof posts = [];
+
+    if (currentPage === 1) {
+      paginatedPosts = rest.slice(0, 3); // page 1: 3 posts after featured
+    } else {
+      const start = 3 + (currentPage - 2) * 6;
+      const end = start + 6;
+      paginatedPosts = rest.slice(start, end);
+    }
+
+    const totalPages = Math.ceil((rest.length - 3) / 6) + 1;
+
+    return {
+      featured,
+      paginatedPosts,
+      totalPages
+    };
+  }, [activeFilter, searchQuery, currentPage]);
+
+  const { featured, paginatedPosts, totalPages } = filteredData;
 
   const handleCardClick = (postId: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -189,7 +214,7 @@ const Blog = () => {
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-20 pb-8"
+      className="min-h-[120vh] pt-20 pb-8"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -50 }}
@@ -243,136 +268,182 @@ const Blog = () => {
         </div>
 
         {/* Featured Post */}
-        {activeFilter === 'all' && !searchQuery && (
-          <motion.div
-            className="mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div
-              className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
-              onClick={() => handleCardClick(posts[0].id)}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div className="p-8 lg:p-12 text-white">
-                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium mb-4">
-                    Featured Post
-                  </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                    {posts[0].title}
-                  </h2>
-                  <p className="text-blue-100 text-lg mb-6 leading-relaxed">
-                    {posts[0].excerpt}
-                  </p>
-                  <div className="flex items-center gap-6 mb-6 text-blue-100">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>{formatDate(posts[0].date)}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" />
-                      <span>{posts[0].readTime}</span>
-                    </div>
-                  </div>
-                  <span className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                    Read Full Post
-                  </span>
-                </div>
-                <div className="relative">
-                  <img
-                    src={posts[0].image}
-                    alt={posts[0].title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent lg:bg-gradient-to-r lg:from-blue-600/20 lg:to-transparent"></div>
-                </div>
-              </div>
+        {currentPage === 1 && featured && (
+  <motion.div
+    className="mb-12" // slightly reduced margin-bottom
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.8, delay: 0.6 }}
+  >
+    <div
+      className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+      onClick={() => handleCardClick(featured.id)}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="p-6 lg:p-8 text-white"> {/* reduced padding */}
+          <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-medium mb-3">
+            Featured Post
+          </div>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-3"> {/* reduced size & margin */}
+            {featured.title}
+          </h2>
+          <p className="text-blue-100 text-base mb-4 leading-relaxed"> {/* reduced font & spacing */}
+            {featured.excerpt}
+          </p>
+          <div className="flex items-center gap-4 mb-4 text-blue-100"> {/* tighter spacing */}
+            <div className="flex items-center gap-1.5">
+              <Calendar className="w-4 h-4" />
+              <span className="text-sm">{formatDate(featured.date)}</span>
             </div>
-          </motion.div>
+            <div className="flex items-center gap-1.5">
+              <Clock className="w-4 h-4" />
+              <span className="text-sm">{featured.readTime}</span>
+            </div>
+          </div>
+          <span className="inline-block bg-white text-blue-600 px-4 py-2 rounded-md font-medium text-sm hover:bg-blue-50 transition-colors">
+            Read Full Post
+          </span>
+        </div>
+        <div className="relative max-h-64 overflow-hidden"> {/* limits image height */}
+          <img
+            src={featured.image}
+            alt={featured.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent lg:bg-gradient-to-r lg:from-blue-600/20 lg:to-transparent" />
+        </div>
+      </div>
+    </div>
+  </motion.div>
+)}
+
+        {/* Blog Grid */}
+        {paginatedPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="wait">
+              {paginatedPosts.map((post, index) => (
+                <motion.article
+                  key={`${activeFilter}-${searchQuery}-${post.id}`}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <div
+                    onClick={() => handleCardClick(post.id)}
+                    className="cursor-pointer"
+                  >
+                    <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden">
+                      <div className="relative overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
+                            {filters.find((f) => f.id === post.category)?.name}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                        <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              <span>{formatDate(post.date)}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              <span>{post.readTime}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {post.tags.slice(0, 2).map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {post.tags.length > 2 && (
+                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
+                              +{post.tags.length - 2}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex justify-end pt-4 border-t border-gray-100">
+                          <span className="text-blue-600 text-sm font-semibold group-hover:text-blue-800 transition-colors">
+                            Read More →
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </div>
+        ) : (
+          <p className="text-center text-gray-500">No posts found.</p>
         )}
 
-        {/* Blog Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="wait">
-            {filteredPosts.map((post, index) => (
-              <motion.article
-                key={`${activeFilter}-${searchQuery}-${post.id}`}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -50, opacity: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-10">
+            <div className="inline-flex gap-2">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded ${
+                  currentPage === 1
+                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
               >
-                <div
-                  onClick={() => handleCardClick(post.id)}
-                  className="cursor-pointer"
+                Prev
+              </button>
+
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`px-4 py-2 rounded ${
+                    currentPage === i + 1
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
                 >
-                  <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 overflow-hidden">
-  
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
-                          {filters.find((f) => f.id === post.category)?.name}
-                        </span>
-                      </div>
-                    </div>
+                  {i + 1}
+                </button>
+              ))}
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                        {post.excerpt}
-                      </p>
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded ${
+                  currentPage === totalPages
+                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
 
-                      <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                        <div className="flex items-center gap-4">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>{formatDate(post.date)}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-3 h-3" />
-                            <span>{post.readTime}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 2).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                        {post.tags.length > 2 && (
-                          <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">
-                            +{post.tags.length - 2}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <div className="flex items-center gap-4 text-sm text-gray-500">
-                        </div>
-                        <span className="text-blue-600 text-sm font-semibold group-hover:text-blue-800 transition-colors">
-                          Read More →
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </AnimatePresence>
-        </div>
+        {/* Footer */}
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>

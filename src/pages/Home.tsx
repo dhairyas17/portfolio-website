@@ -1,34 +1,64 @@
-import React, { useEffect } from 'react';
+// src/pages/Home.tsx
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ExternalLink, Download, MapPin, Calendar, Users, TrendingUp } from 'lucide-react';
+import {
+  ArrowDown,
+  ExternalLink,
+  Download,
+  MapPin,
+  Github,
+  Linkedin,
+  Mail,
+  ChevronUp
+} from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Github, Linkedin, Mail } from 'lucide-react';
+
+// ... (your experiences, tools, certifications, testimonials arrays remain unchanged)
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
 const Home = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
-  const location = useLocation();
-  const navigate = useNavigate();
-  
+
   useEffect(() => {
-    // Handle navigation via location.state (from other pages)
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Handle navigation via location.state
     if (location.state?.scrollTarget) {
       const targetId = location.state.scrollTarget;
       const targetElement = document.getElementById(targetId);
-  
+
       if (targetElement) {
-        // Wait until DOM is painted
         requestAnimationFrame(() => {
           targetElement.scrollIntoView({ behavior: 'smooth' });
         });
       }
-  
-      // Clear state so scroll doesn't happen again
+
       navigate(location.pathname, { replace: true, state: {} });
     }
-  
-    // Handle direct /#about hash (optional fallback)
+
+    // Fallback: handle direct /#about hash
     if (location.hash) {
       const hashElement = document.querySelector(location.hash);
       if (hashElement) {
@@ -38,6 +68,7 @@ const Home = () => {
       }
     }
   }, [location, navigate]);
+
 
   const experiences = [
     {
@@ -118,8 +149,8 @@ const Home = () => {
   const testimonials = [
     {
       quote: "Dhairya turned our product vision into a scalable edge solution. His leadership on Jetson deployments boosted compliance, cut manual work, and delivered real business impact.",
-      name: "Michael Rodriguez",
-      role: "CEO – Marco Herbst",
+      name: "Marco Herbst",
+      role: "CEO & Co-founder – Evercam",
       avatar: "/assets/marco.jpeg",
     },
     {
@@ -273,56 +304,65 @@ const Home = () => {
         transition={{ duration: 0.8 }}
       >
         <p>
-          Hello! I'm an engineer-turned-Product Manager with 4+ years of experience transforming complex technologies into high-impact digital products. 
-          With a strong foundation in system design, cloud infrastructure, AI and edge computing, I specialize in building scalable solutions that deliver measurable business results.
+          I’m Dhairya Sharma, a Product and Technical Product Manager with over 4 years of experience turning complex technologies into high-impact digital products.
+          With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
         </p>
         <p>
-          I lead with strategy, drive with execution, and align cross-functional teams to ship products that solve real-world problems. 
-          From global rollouts and ML infrastructure to UX optimization and go-to-market planning, I operate at the intersection of user needs, technical feasibility, and business goals.
+          I have led end-to-end product development and global rollouts across 1,200+ sites in the US, EU, and APAC regions. 
+          My work has delivered significant results, including a 60 percent reduction in manual effort, improved SLA compliance, and smoother deployment of machine learning models at the edge.
         </p>
         <p>
-          Outside of product execution, I mentor aspiring PMs, explore emerging tech, and break down successful product case studies. 
-          I believe in continuous learning, system thinking, and staying ahead of what’s next in product and tech.
+          I operate at the intersection of user needs, technical feasibility, and business goals.
+          From shaping product strategy and aligning with OKRs to collaborating with engineering, DevOps, and operations teams, I ensure every product is built for impact and scale.
+        </p>
+        <p>
+        If you're building complex products that need both strategic insight and technical depth, I’m your bridge.
         </p>
       </motion.div>
 
       {/* Right - Value Cards */}
       <motion.div
-        className="lg:w-1/2 grid grid-rows-3 gap-8 h-full"
-        initial={{ x: 50, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        {[
-          {
-            title: 'Strategic Vision',
-            icon: '💡',
-            desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
-          },
-          {
-            title: 'Cross-functional Leadership',
-            icon: '👥',
-            desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
-          },
-          {
-            title: 'Data-Driven Decisions',
-            icon: '📊',
-            desc: 'Leveraging customer insights, experimentation, and usage metrics to inform every product decision. My approach turns data into real product impact.'
-          }
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex flex-row items-start gap-4"
-          >
-            <div className="text-2xl mt-1">{item.icon}</div>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
-              <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
+  className="lg:w-1/2 grid grid-rows-3 gap-4 h-full"
+  initial={{ x: 50, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+>
+  {[
+    {
+      title: 'Strategic Vision',
+      icon: '💡',
+      desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
+    },
+    {
+      title: 'Cross-functional Leadership',
+      icon: '👥',
+      desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
+    },
+    {
+      title: 'Data-Driven Decisions',
+      icon: '📊',
+      desc: 'Leveraging customer insights, experimentation, and usage metrics to inform every product decision. My approach turns data into real product impact.'
+    },
+    {
+      title: 'User Obsession',
+      icon: '🎯',
+      desc: 'Rooted in real user problems, I translate needs into intuitive solutions that deliver value. Every feature starts and ends with the user.'
+    }
+  ].map((item, index) => (
+    <div
+      key={index}
+      className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex items-start gap-4"
+    >
+      <div className="text-2xl">{item.icon}</div>
+      <div>
+        <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
+        <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</motion.div>
+
     </div>
 
     {/* Bottom Stats with Buttons */}
@@ -579,7 +619,15 @@ const Home = () => {
     </motion.div>
   </div>
 </section>
-
+{showScrollTop && (
+  <button
+    onClick={scrollToTop}
+    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+    aria-label="Scroll to top"
+  >
+    <ChevronUp size={20} />
+  </button>
+)}
 {/* Closing Section */}
 <section className="pt-12 pb-10 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
