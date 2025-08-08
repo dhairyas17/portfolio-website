@@ -46,7 +46,7 @@ const CaseStudyDetail4 = () => {
   
   return (
 <motion.div
-  className="max-w-4xl mx-auto px-6 py-24 text-gray-900"
+  className="max-w-6xl mx-auto px-6 py-24 text-gray-900"
   initial="initial"
   animate="animate"
   transition={{ staggerChildren: 0.2 }}
@@ -61,7 +61,7 @@ const CaseStudyDetail4 = () => {
     Back to Case Studies
   </motion.button>
       {/* Header */}
-      <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
+      <motion.h1 className="text-6xl font-bold mb-6 leading-snug" {...fadeIn}>
         Building Real-Time Observability for OTA on 1300+ Edge Devices
       </motion.h1>
 

@@ -37,6 +37,7 @@ export interface Feature {
     results: Result[];
     architecture: string[];
     challenges: Challenge[];
+    keyTakeaways: string[];
     links: ProjectLinks;
   }
   

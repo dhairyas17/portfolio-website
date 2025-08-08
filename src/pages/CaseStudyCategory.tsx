@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Clock, Users, TrendingUp } from 'lucide-react';
 
 const CaseStudyCategory = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const caseStudiesPerPage = 3;
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage, activeFilter]);
+  const caseStudiesPerPage = 3;
 
   const categoryDisplayNames: { [key: string]: string } = {
     'ai-ml': 'AI & ML',
     'infra': 'Infrastructure',
     'mlops': 'MLOps',
-    'api': 'API Platform',
-    'product': 'Product Design',
+    'api': 'API Platform'
   };
 
   const caseStudies = [
@@ -81,34 +76,49 @@ const CaseStudyCategory = () => {
       impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
       tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
       image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
-    },
-    {
-      id: "6",
-      title: "Onboarding Redesign: Boosted Activation",
-      subtitle: "User Experience, Onboarding, Product Strategy",
-      category: 'product',
-      description: "Redesigned onboarding with AI assistant, progressive flows, and smart nudges to boost activation, reduce churn, and drive early adoption.",
-      duration: "4 months",
-      team: "9",
-      impact: ["Activation rate improved from 20% to 55%", "28% reduction in support tickets"],
-      tags: ["Onboarding", "User Experience", "GenAI", "React", "Amplitude", "Redis"],
-      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
     }
   ];
 
   const allCategories = Array.from(new Set(caseStudies.map((study) => study.category)));
 
+  // Initialize state **directly from URL params** (fix flicker)
+  const filterFromUrl = searchParams.get('filter') || null;
+  const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
+  const initialPage = pageFromUrl > 0 ? pageFromUrl : 1;
+
+  const [activeFilter, setActiveFilter] = useState<string | null>(filterFromUrl);
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
+
+  // Update URL params when user changes filter or page (avoid loops)
+  useEffect(() => {
+    const params: { [key: string]: string } = {};
+    if (activeFilter) params.filter = activeFilter;
+    if (currentPage && currentPage !== 1) params.page = currentPage.toString();
+
+    const newSearch = new URLSearchParams(params).toString();
+    if (newSearch !== searchParams.toString()) {
+      setSearchParams(params);
+    }
+  }, [activeFilter, currentPage, searchParams, setSearchParams]);
+
+  // On filter button click, set filter and reset page to 1
+  const onFilterChange = (filter: string | null) => {
+    setActiveFilter(filter);
+    setCurrentPage(1);
+  };
+
+  // Filter and paginate case studies
   const filteredCaseStudies = activeFilter
     ? caseStudies.filter((study) => study.category === activeFilter)
     : caseStudies;
 
-  const totalPages = Math.ceil(filteredCaseStudies.length / caseStudiesPerPage);
+  const totalPages = Math.max(1, Math.ceil(filteredCaseStudies.length / caseStudiesPerPage));
   const startIndex = (currentPage - 1) * caseStudiesPerPage;
   const currentCaseStudies = filteredCaseStudies.slice(startIndex, startIndex + caseStudiesPerPage);
 
+  // Navigate to case study detail page, passing current filter & page in URL
   const handleCardClick = (id: string) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate(`/portfolio/case-studies/${id}`);
+    navigate(`/portfolio/case-studies/${id}?filter=${activeFilter || ''}&page=${currentPage}`);
   };
 
   const goToPreviousPage = () => {
@@ -148,7 +158,7 @@ const CaseStudyCategory = () => {
         {/* Filter Buttons */}
         <div className="mb-12 flex flex-wrap justify-center gap-3">
           <button
-            onClick={() => setActiveFilter(null)}
+            onClick={() => onFilterChange(null)}
             className={`px-4 py-2 text-sm rounded-full font-semibold border ${
               activeFilter === null
                 ? 'bg-blue-600 text-white'
@@ -157,19 +167,19 @@ const CaseStudyCategory = () => {
           >
             All
           </button>
-{allCategories.map((cat) => (
-  <button
-    key={cat}
-    onClick={() => setActiveFilter(cat)}
-    className={`px-4 py-2 text-sm rounded-full font-semibold border capitalize ${
-      activeFilter === cat
-        ? 'bg-blue-600 text-white'
-        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
-    }`}
-  >
-    {categoryDisplayNames[cat] || cat}
-  </button>
-))}
+          {allCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => onFilterChange(cat)}
+              className={`px-4 py-2 text-sm rounded-full font-semibold border capitalize ${
+                activeFilter === cat
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+              }`}
+            >
+              {categoryDisplayNames[cat] || cat}
+            </button>
+          ))}
         </div>
 
         {/* Case Study Cards */}

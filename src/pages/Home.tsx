@@ -151,19 +151,19 @@ const Home = () => {
       quote: "Dhairya turned our product vision into a scalable edge solution. His leadership on Jetson deployments boosted compliance, cut manual work, and delivered real business impact.",
       name: "Marco Herbst",
       role: "CEO & Co-founder – Evercam",
-      avatar: "/assets/marco.jpeg",
+      avatar: "/assets/people/marco.jpeg",
     },
     {
       quote: "Dhairya bridges ML engineering and product strategy seamlessly. His execution on model rollouts and data pipelines drove accuracy, speed, and real-world reliability.",
       name: "Dhia Moumeni",
       role: "AI Team Lead – Evercam",
-      avatar: "/assets/dhia.jpeg",
+      avatar: "/assets/people/dhia.jpeg",
     },
     {
       quote: "Dhairya’s work on edge AI scaled our global operations. He improved SLAs, automated compliance, and reduced on-site dependencies with clarity and precision.",
       name: "Michael La Bertew",
       role: "Operations Director (USA) – Evercam",
-      avatar: "/assets/mike.jpeg",
+      avatar: "/assets/people/mike.jpeg",
     }
     
   ];

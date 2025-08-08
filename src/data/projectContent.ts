@@ -62,14 +62,20 @@ export const projectData: Record<string, Project> = {
       solution: 'Implemented strict version checks before update and post-validation',
     },
   ],
+  keyTakeaways: [
+    'Centralized AWX orchestration simplifies managing updates across 100+ distributed devices.',
+    'Automated rollback and retry mechanisms ensure update reliability despite network interruptions.',
+    'Scheduled update windows minimize downtime and avoid impacting business operations.',
+    'Strict version control prevents version drift and maintains consistency across deployments.',
+    'Real-time monitoring and logging improve visibility and troubleshooting during rollouts.',
+  ],
+  
   links: {
     github: 'https://github.com/dhairya/ota-ansible-awx',
     demo: 'https://ota-demo.com',
     documentation: 'https://docs.ota-demo.com',
   },
 },
-
-
 'edge-monitoring-platform': {
   id: 102,
   title: 'Edge Device Monitoring with Prometheus & Grafana',
@@ -139,6 +145,14 @@ export const projectData: Record<string, Project> = {
       solution: 'Used reverse SSH tunnels and static IP NAT routing for Prometheus access',
     },
   ],
+  keyTakeaways: [
+    'Lightweight monitoring tailored for resource-constrained edge devices ensures minimal performance impact.',
+    'Custom Grafana dashboards provide clear, real-time visibility into critical hardware metrics.',
+    'Early alerting via Prometheus and webhook/email notifications prevents costly device downtime.',
+    'Overcame network challenges with reverse SSH tunnels and static NAT routing for reliable metric collection.',
+    'Containerized deployment enabled easy rollout and updates across distributed edge environments.',
+  ],
+    
   links: {
     github: 'https://github.com/dhairya/edge-monitoring-prometheus',
     demo: 'https://monitoring-demo.com',
@@ -149,7 +163,7 @@ export const projectData: Record<string, Project> = {
   id: 103,
   title: 'Fisheye Distortion Correction on Wide Angle Cameras',
   description:
-    'Computer vision module using OpenCV to correct fisheye distortion on wide-angle camera feeds, improving spatial accuracy for downstream AI tasks.',
+    'Computer vision module using OpenCV to correct fisheye distortion on wide-angle images, improving spatial accuracy for downstream AI tasks in construction and measurement workflows.',
   image:
     'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
@@ -158,60 +172,60 @@ export const projectData: Record<string, Project> = {
   category: 'Computer Vision & Image Processing',
   tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
   overview:
-    'Designed and implemented a vision pipeline using OpenCV to undistort fisheye camera feeds in real-time. This correction enables more accurate object detection and tracking on surveillance and robotics platforms.',
+    'Designed and implemented an image undistortion pipeline using OpenCV to correct fisheye distortion on wide-angle camera images. The correction improved spatial accuracy and was integrated into Evercam’s BIM alignment and 2D measuring pipelines.',
   problem:
-    'Wide-angle cameras introduce fisheye distortion that warps perception, making it hard to accurately detect object size, shape, and distance—affecting AI model performance.',
+    'Wide-angle camera lenses introduce fisheye distortion that warps image geometry, reducing the accuracy of object detection, measurement, and alignment in construction workflows.',
   solution:
-    'Led the development of a fisheye correction module that applies camera matrix calibration and distortion coefficients to normalize incoming frames before passing them to detection models. Integrated with edge AI pipelines for real-time performance.',
+    'Led the development of a fisheye correction module applying camera matrix calibration and distortion coefficients to undistort images before downstream processing. This improved the precision and efficiency of BIM alignment and measurement tasks.',
   features: [
     {
       name: 'Camera Calibration',
-      description: 'Uses chessboard-based calibration to generate distortion maps for specific lenses.',
+      description: 'Used chessboard calibration to generate lens-specific distortion maps for precise correction.',
     },
     {
-      name: 'Real-time Undistortion',
-      description: 'Processes live RTSP video feeds or device input and corrects fisheye distortion in real time.',
+      name: 'Image Undistortion',
+      description: 'Processed individual wide-angle images to remove fisheye distortion and normalize spatial geometry.',
     },
     {
-      name: 'Edge Compatibility',
-      description: 'Optimized for Jetson devices and Raspberry Pi with hardware-accelerated decoding.',
+      name: 'BIM and Measurement Pipeline Integration',
+      description: 'Seamlessly integrated the undistortion module into Evercam’s BIM alignment and 2D measuring workflows.',
     },
     {
-      name: 'Flexible Integration',
-      description: 'Modular Python interface compatible with OpenCV pipelines or ML pre-processing layers.',
+      name: 'Modular Python Interface',
+      description: 'Provided a flexible module compatible with OpenCV-based pipelines and AI pre-processing layers.',
     },
   ],
   results: [
     {
-      metric: 'Object Detection Accuracy',
+      metric: 'Measurement Accuracy',
       improvement: '+22%',
-      description: 'Significant boost in precision after correcting warped image inputs.',
+      description: 'Significant improvement in 2D measurement precision after fisheye correction.',
+    },
+    {
+      metric: 'BIM Alignment Speed',
+      improvement: '-30%',
+      description: 'Reduced alignment time by normalizing distorted images prior to processing.',
     },
     {
       metric: 'Spatial Consistency',
       improvement: '+100%',
-      description: 'Linearity restored in frame edges and corners, improving reliability of spatial models.',
-    },
-    {
-      metric: 'Processing Latency',
-      improvement: '<50ms',
-      description: 'Real-time frame correction with negligible added delay.',
+      description: 'Restored geometric linearity across image edges and corners, improving downstream AI model reliability.',
     },
   ],
   architecture: [
-    'OpenCV-based calibration and undistortion pipeline',
-    'Calibration stage using pre-captured chessboard images',
-    'Live video capture and processing using RTSP or CSI camera interfaces',
-    'Optimized pipeline containerized with Docker for deployment on edge devices',
+    'OpenCV-based camera calibration and undistortion pipeline',
+    'Calibration via pre-captured chessboard images to compute distortion coefficients',
+    'Image-level processing for fisheye correction before AI workflows',
+    'Packaged as a Docker container for easy integration and deployment',
   ],
   challenges: [
     {
-      challenge: 'Non-standard Camera Lenses',
-      solution: 'Built dynamic calibration tool to adapt to various lens profiles in the field.',
+      challenge: 'Lens Variability',
+      solution: 'Developed dynamic calibration tools to handle multiple fisheye lens profiles encountered in the field.',
     },
     {
-      challenge: 'Performance on Low-power Devices',
-      solution: 'Used region of interest (ROI) optimization and multi-threaded capture buffers.',
+      challenge: 'Balancing Accuracy and Performance',
+      solution: 'Optimized undistortion routines for fast image processing with minimal latency.',
     },
   ],
   links: {
@@ -219,6 +233,13 @@ export const projectData: Record<string, Project> = {
     demo: 'https://fisheye-demo.com',
     documentation: 'https://docs.fisheye-correction.com',
   },
+  keyTakeaways: [
+    'Focused on undistorting images (not video) to enhance spatial accuracy in BIM alignment and 2D measuring workflows.',
+    'Adopted by Evercam, the solution reduced BIM alignment time significantly and improved measurement precision.',
+    'Camera calibration was made dynamic and adaptable to various fisheye lenses, ensuring field-ready robustness.',
+    'Optimized pipeline integrated seamlessly into existing AI workflows, boosting downstream model reliability.',
+    'Maintained low-latency processing with efficient OpenCV techniques, suitable for real-time industrial use cases.',
+  ],
 },
 'yolov4-onnx-tensorrt': {
   id: 104,
@@ -293,6 +314,13 @@ export const projectData: Record<string, Project> = {
       solution: 'Applied INT8/FP16 quantization and layer fusion for speed-memory trade-off.',
     },
   ],
+  keyTakeaways: [
+    'Optimizing the model pipeline (Darknet → ONNX → TensorRT) was essential for real-time edge deployment.',
+    'Quantization (INT8/FP16) and custom TensorRT plugins balanced accuracy with ultra-low latency.',
+    'Containerized deployment with Docker streamlined testing and OTA updates on Jetson devices.',
+    'Addressing hardware constraints early avoided bottlenecks in memory and compute resources.',
+    'Automated training-to-deployment pipeline cut rollout time by 70%, accelerating iterations.',
+  ],  
   links: {
     github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
     demo: 'https://yolov4-jetson-demo.com',
@@ -307,7 +335,7 @@ export const projectData: Record<string, Project> = {
   image:
     'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
-  team: '2 people',
+  team: '3 people',
   status: 'Live',
   category: 'Generative AI & NLP',
   tech: [
@@ -382,6 +410,14 @@ export const projectData: Record<string, Project> = {
       solution: 'Used quantized models and streaming inference for faster interaction.',
     },
   ],
+  keyTakeaways: [
+    'Prioritizing developer experience (DX) — e.g. Streamlit UI, clean APIs — accelerated internal adoption and testing.',
+    'RAG + prompt engineering was key to minimizing hallucinations and grounding responses in trusted data.',
+    'Early investment in modular architecture enabled seamless swaps between OpenAI and open-source LLMs.',
+    'Optimizing for latency (quantization, async I/O) made real-time voice + text interaction practical.',
+    'Building with integration in mind (LangChain tools, API hooks) ensured fast onboarding across business systems.',
+  ],
+  
   links: {
     github: 'https://github.com/dhairya/genai-chatbot',
     demo: 'https://genai-chatbot-demo.com',
@@ -396,7 +432,7 @@ export const projectData: Record<string, Project> = {
   image:
     'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
-  team: '1 person',
+  team: '4 person',
   status: 'Live',
   category: 'API Architecture, Video Intelligence, AI Integration',
   tech: [
@@ -491,6 +527,13 @@ export const projectData: Record<string, Project> = {
       challenge: 'Scalable Deployment & Observability',
       solution: 'Used Docker + K8s with Prometheus, Grafana, and retry/resilience logic at the gateway level.',
     },
+  ],
+  keyTakeaways: [
+    'Prioritizing developer experience (DX) — e.g. Swagger UI, unified API contracts — greatly accelerates adoption.',
+    'Investing early in observability pays off — it helped identify latency spikes and optimize throughput under load.',
+    'Designing for extensibility from day one made it easy to add new AI models and support edge deployments.',
+    'Balancing model accuracy with performance is critical — tuning batch sizes and Redis caching improved real-time use cases.',
+    'Security and integration support (JWT, webhooks) are not afterthoughts — they are core to enterprise-readiness.',
   ],
   links: {
     github: 'https://github.com/dhairya/video-intelligence-api',

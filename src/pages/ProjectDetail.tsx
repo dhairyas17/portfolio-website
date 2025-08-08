@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import {
   ArrowLeft,
   Calendar,
   Users,
   Tag,
-  Star,
   GitBranch,
   ChevronUp,
+  Star,
 } from 'lucide-react';
 import { projectData } from '../data/projectContent';
 import { Project } from '../types/project';
@@ -16,6 +16,13 @@ import { Project } from '../types/project';
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Extract page and filter from current URL query params
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get('page') || '1';
+  const filter = searchParams.get('filter') || 'all';
+
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -42,7 +49,7 @@ const ProjectDetail: React.FC = () => {
       <div className="text-center py-20">
         <h1 className="text-2xl font-semibold text-gray-700">Project not found</h1>
         <Link
-          to="/portfolio/projects"
+          to={`/portfolio/projects?filter=${filter}&page=${page}`}
           className="mt-4 inline-block text-blue-600 hover:underline"
         >
           Back to Projects
@@ -50,6 +57,7 @@ const ProjectDetail: React.FC = () => {
       </div>
     );
   }
+  
 
   return (
     <motion.div
@@ -59,7 +67,7 @@ const ProjectDetail: React.FC = () => {
       exit={{ opacity: 0, x: -50 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           className="mb-8"
@@ -68,13 +76,12 @@ const ProjectDetail: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Link
-            to="/portfolio/projects"
+            to={`/portfolio/projects?filter=${filter}&page=${page}`}
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Projects
           </Link>
-
           <div className="flex flex-col md:flex-row justify-between mb-6">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{project.title}</h1>
@@ -238,6 +245,8 @@ const ProjectDetail: React.FC = () => {
               ))}
             </div>
           </motion.section>
+
+          
           <div className="mt-10 flex flex-col sm:flex-row justify-between gap-4">
   {prevProject ? (
     <Link

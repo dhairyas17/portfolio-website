@@ -46,7 +46,7 @@ const CaseStudyDetail1 = () => {
   
   return (
 <motion.div
-  className="max-w-4xl mx-auto px-6 py-24 text-gray-900"
+  className="max-w-6xl mx-auto px-6 py-24 text-gray-900"
   initial="initial"
   animate="animate"
   transition={{ staggerChildren: 0.2 }}
