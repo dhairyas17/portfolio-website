@@ -1,27 +1,29 @@
 // src/pages/BlogPost.tsx
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { blogList } from '../data/blogList';
 import { blogContentMap } from '../data/blogContent';
-import { ArrowLeft, ArrowRight, Calendar, ChevronUp, Clock, User } from 'lucide-react';
+import { ArrowLeft, Calendar, ChevronUp, Clock, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const fromPage = location.state?.fromPage || 1;
+
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
     };
-  
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -33,7 +35,7 @@ const BlogPost = () => {
         <h1 className="text-3xl font-bold">Oops! Nothing here yet</h1>
         <p className="mt-4">Check the URL or go back to the blog list.</p>
         <button
-          onClick={() => navigate('/blog')}
+          onClick={() => navigate(`/blog?page=${fromPage}`)}
           className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
           Back to Blogs
@@ -41,6 +43,7 @@ const BlogPost = () => {
       </div>
     );
   }
+
 
   const markdown = blogContentMap[`./blogs/${blog.slug}`] as string;
 
@@ -52,11 +55,11 @@ const BlogPost = () => {
       exit={{ opacity: 0, x: -30 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <button
           className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 transition"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(`/blog?page=${fromPage}`)}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Blogs
@@ -93,7 +96,7 @@ const BlogPost = () => {
           <img
             src={blog.image}
             alt={blog.title}
-            className="w-full h-64 md:h-[400px] object-cover rounded-xl shadow-md"
+            className="w-full h-64 md:h-[600px] object-cover rounded-xl shadow-md"
           />
         </motion.div>
 
@@ -105,26 +108,6 @@ const BlogPost = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <ReactMarkdown>{markdown}</ReactMarkdown>
-
-          {/* Tags Section */}
-          <motion.div
-            className="mb-8"
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Tags</h4>
-            <div className="flex flex-wrap gap-2">
-              {blog.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors cursor-pointer"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
 {/* Blog Navigation Buttons */}
 <motion.div
   className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
@@ -199,11 +182,6 @@ const BlogPost = () => {
     <span className="block will-change-auto">Connect on LinkedIn</span>
   </a>
 </div>
-
-
-
-
-
   </div>
 </motion.div>
         </motion.article>

@@ -1,16 +1,24 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Clock, Search } from 'lucide-react';
 
 const Blog = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const postsPerPage = 6;
+  // Read page from URL query param, default to 1
+  const queryParams = new URLSearchParams(location.search);
+  const pageFromUrl = parseInt(queryParams.get('page') || '1', 10);
 
+  // State
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(pageFromUrl);
+
+  const postsPerPage = 6;
+  const isInitialMount = React.useRef(true);
+  // Filters list
   const filters = [
     { id: 'all', name: 'All Posts' },
     { id: 'leadership', name: 'Leadership' },
@@ -20,9 +28,34 @@ const Blog = () => {
     { id: 'ai-ml', name: 'AI/ML' }
   ];
 
+  // Whenever URL page param changes, update state
   useEffect(() => {
-    setCurrentPage(1);
-  }, [activeFilter, searchQuery]);
+    setCurrentPage(pageFromUrl);
+  }, [pageFromUrl]);
+  const prevFilter = React.useRef(activeFilter);
+  const prevSearch = React.useRef(searchQuery);  
+  // When active filter or search changes, reset page to 1 (and URL)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      // Only reset page if filter or search actually changed compared to previous
+      if (prevFilter.current !== activeFilter || prevSearch.current !== searchQuery) {
+        setCurrentPage(1);
+        navigate('/blog?page=1', { replace: true });
+      }
+    }
+  
+    prevFilter.current = activeFilter;
+    prevSearch.current = searchQuery;
+  }, [activeFilter, searchQuery, navigate]);
+
+  // When currentPage state changes, sync URL
+  useEffect(() => {
+    if (currentPage !== pageFromUrl) {
+      navigate(`/blog?page=${currentPage}`, { replace: true });
+    }
+  }, [currentPage, navigate, pageFromUrl]);
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
@@ -35,31 +68,52 @@ const Blog = () => {
 
   const posts = [
     {
-      id: '1',
-      title: 'Scaling Edge Deployments from 100 to 1,200+ – Lessons from the Trenches',
-      excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
-      image: 'https://images.pexels.com/photos/24224672/pexels-photo-24224672.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      category: 'edge-infra',
-      date: '2025-08-01',
-      readTime: '6 min read',
-      tags: ['Edge AI', 'TPM', 'Product Strategy']
+      id: '6',
+      title: 'From Engineer to TPM: Influencing Without Authority',
+      excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM, and how communication, trust, and alignment became my real tools.',
+      image: '/assets/blogs/6.png',
+      category: 'leadership',
+      date: '2025-08-06',
+      readTime: '5 min read',
+      tags: ['Career', 'TPM', 'Leadership']
     },
     {
       id: '2',
-      title: 'Feature Prioritization in Technical Products – Balancing OKRs, Tech Debt & Customer Feedback',
+      title: 'Feature Prioritization in Technical Products',
       excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
-      image: 'https://images.pexels.com/photos/5842330/pexels-photo-5842330.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: '/assets/blogs/2.png',
       category: 'product-strategy',
       date: '2025-08-02',
       readTime: '5 min read',
       tags: ['Prioritization', 'AI Products', 'TPM']
     },
     {
-      id: '3',
-      title: 'Leading AI Product Teams without Being the Smartest Engineer in the Room',
-      excerpt: 'Lessons on leading machine learning teams as a TPM/APM — from alignment to feasibility to trust-building without being the deepest technical expert.',
-      image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      id: '7',
+      title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
+      excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
+      image: '/assets/blogs/7.png',
       category: 'leadership',
+      date: '2025-08-07',
+      readTime: '6 min read',
+      tags: ['Stakeholders', 'TPM', 'Execution']
+    },
+    {
+      id: '12',
+      title: 'Cost-Effective System Design: Balancing Performance & Budget',
+      excerpt:
+        'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
+      image: '/assets/blogs/13.png',
+      category: 'system-design',
+      date: '2025-08-13',
+      readTime: '6 min read',
+      tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
+    },
+    {
+      id: '3',
+      title: 'Leading AI Teams Without Being the Smartest Engineer',
+      excerpt: 'Lessons on leading machine learning teams as a TPM/APM, from alignment to feasibility to trust-building without being the deepest technical expert.',
+      category: 'leadership',
+      image: '/assets/blogs/3.png',
       date: '2025-08-03',
       readTime: '6 min read',
       tags: ['Leadership', 'AI Teams', 'TPM']
@@ -68,7 +122,7 @@ const Blog = () => {
       id: '4',
       title: 'The Future of MLOps: From Research to Real-Time Alerts',
       excerpt: 'From MLflow to Airflow to TensorRT – how tools and workflows evolve in the world of real-time inference, versioning, and deployment at scale.',
-      image: 'https://images.pexels.com/photos/2381188/pexels-photo-2381188.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: '/assets/blogs/4.png',
       category: 'ai-ml',
       date: '2025-08-04',
       readTime: '7 min read',
@@ -77,38 +131,28 @@ const Blog = () => {
     {
       id: '5',
       title: 'Why Edge AI is Eating the Cloud – 5 Predictions from the Field',
-      excerpt: 'Drawing from Jetson/OTA experience — this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
-      image: 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      excerpt: 'Drawing from Edge/OTA experience, this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
+      image: '/assets/blogs/5.png',
       category: 'edge-infra',
       date: '2025-08-05',
       readTime: '5 min read',
       tags: ['Edge AI', 'Predictions', 'Cloud']
     },
     {
-      id: '6',
-      title: 'From Engineer to TPM: How I Learned to Influence without Authority',
-      excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM — and how communication, trust, and alignment became my real tools.',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      category: 'leadership',
-      date: '2025-08-06',
-      readTime: '5 min read',
-      tags: ['Career', 'TPM', 'Leadership']
-    },
-    {
-      id: '7',
-      title: 'Stakeholder Management for Technical PMs – From Chaos to Clarity',
-      excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
-      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      category: 'leadership',
-      date: '2025-08-07',
+      id: '1',
+      title: 'Scaling Edge Deployments: 100 to 1,200+',
+      excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
+      image: '/assets/blogs/1.png',
+      category: 'edge-infra',
+      date: '2025-08-01',
       readTime: '6 min read',
-      tags: ['Stakeholders', 'TPM', 'Execution']
+      tags: ['Edge AI', 'TPM', 'Product Strategy']
     },
     {
       id: '8',
-      title: 'How GenAI Will Reshape the Technical PM Role – Prompting is Just the Beginning',
-      excerpt: 'Beyond prompting — how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
-      image: 'https://images.pexels.com/photos/11035395/pexels-photo-11035395.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'How GenAI Will Reshape the TPM Role',
+      excerpt: 'Beyond prompting, how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
+      image: '/assets/blogs/8.png',
       category: 'ai-ml',
       date: '2025-08-08',
       readTime: '5 min read',
@@ -116,103 +160,81 @@ const Blog = () => {
     },
     {
       id: '9',
-      title: 'How We Built OTA & Observability for 1,200+ Jetson Devices – A SaaS Mindset for Edge Infra',
-      excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI — and how a SaaS mindset helped.',
-      image: 'https://images.pexels.com/photos/19713622/pexels-photo-19713622.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      title: 'A SaaS Mindset for Scaling Edge Infrastructure',
+      excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI, and how a SaaS mindset helped.',
+      image: '/assets/blogs/9.png',
       category: 'edge-infra',
       date: '2025-08-09',
       readTime: '7 min read',
       tags: ['Edge Infra', 'SaaS', 'TPM']
     },
-    {
-      id: '10',
-      title: '10 Tools I Can’t Live Without as a TPM in AI & Cloud',
-      excerpt: 'From Productboard to Grafana, here are the tools I rely on daily to prioritize, ship, align, and measure success in fast-moving AI environments.',
-      image: 'https://images.pexels.com/photos/6476267/pexels-photo-6476267.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      category: 'product-strategy',
-      date: '2025-08-10',
-      readTime: '4 min read',
-      tags: ['Tools', 'TPM', 'Productivity']
-    },
       {
-        id: '11',
+        id: '10',
         title: 'Choosing the Right Database for Your Product',
         excerpt:
-          'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase — with real trade-offs and mistakes made.',
-        image:
-          'https://images.pexels.com/photos/1708988/pexels-photo-1708988.jpeg?auto=compress&cs=tinysrgb&w=1200',
+          'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase, with real trade-offs and mistakes made.',
+        image: '/assets/blogs/11.png',
         category: 'system-design',
         date: '2025-08-11',
         readTime: '6 min read',
         tags: ['System Design', 'Databases', 'Product Decisions']
       },
       {
-        id: '12',
+        id: '11',
         title: 'Designing Clean API Integrations - from TPM point of view',
         excerpt:
           'From naming conventions to auth flows, these are the principles I follow when designing APIs that scale, evolve, and don’t break clients.',
-        image:
-          'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200',
+        image: '/assets/blogs/12.png',
         category: 'system-design',
         date: '2025-08-12',
         readTime: '5 min read',
         tags: ['API Design', 'Integration', 'Engineering Collaboration']
-      },
-      {
-        id: '13',
-        title: 'Cost-Effective System Design: Balancing Performance & Budget',
-        excerpt:
-          'This is the playbook I’ve used to design systems that scale without setting money on fire. Real-world trade-offs, metrics, and lessons for PMs and engineers.',
-        image:
-          'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200',
-        category: 'system-design',
-        date: '2025-08-13',
-        readTime: '6 min read',
-        tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
       }
     ];
-  const filteredData = useMemo(() => {
-    const filtered = posts.filter(
-      (post) => activeFilter === 'all' || post.category === activeFilter
-    ).filter((post) => {
-      const query = searchQuery.toLowerCase();
-      return (
-        post.title.toLowerCase().includes(query) ||
-        post.excerpt.toLowerCase().includes(query) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(query))
-      );
-    });
 
-    const featured = (activeFilter === 'all' && !searchQuery) ? filtered[0] : null;
-    const rest = (activeFilter === 'all' && !searchQuery) ? filtered.slice(1) : filtered;
-
-    let paginatedPosts: typeof posts = [];
-
-    if (currentPage === 1) {
-      paginatedPosts = rest.slice(0, 3); // page 1: 3 posts after featured
-    } else {
-      const start = 3 + (currentPage - 2) * 6;
-      const end = start + 6;
-      paginatedPosts = rest.slice(start, end);
-    }
-
-    const totalPages = Math.ceil((rest.length - 3) / 6) + 1;
-
-    return {
-      featured,
-      paginatedPosts,
-      totalPages
+    const filteredData = useMemo(() => {
+      const filtered = posts.filter(
+        (post) => activeFilter === 'all' || post.category === activeFilter
+      ).filter((post) => {
+        const query = searchQuery.toLowerCase();
+        return (
+          post.title.toLowerCase().includes(query) ||
+          post.excerpt.toLowerCase().includes(query) ||
+          post.tags.some((tag) => tag.toLowerCase().includes(query))
+        );
+      });
+  
+      const featured = (activeFilter === 'all' && !searchQuery) ? filtered[0] : null;
+      const rest = (activeFilter === 'all' && !searchQuery) ? filtered.slice(1) : filtered;
+  
+      let paginatedPosts = [];
+  
+      if (currentPage === 1) {
+        paginatedPosts = rest.slice(0, 3); // page 1: 3 posts after featured
+      } else {
+        const start = 3 + (currentPage - 2) * postsPerPage;
+        const end = start + postsPerPage;
+        paginatedPosts = rest.slice(start, end);
+      }
+  
+      const totalPages = Math.ceil((rest.length - 3) / postsPerPage) + 1;
+  
+      return {
+        featured,
+        paginatedPosts,
+        totalPages
+      };
+    }, [activeFilter, searchQuery, currentPage, posts]);
+  
+    const { featured, paginatedPosts, totalPages } = filteredData;
+  
+    const handleCardClick = (postId: string) => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate(`/blog/${postId}`, { state: { fromPage: currentPage } });
     };
-  }, [activeFilter, searchQuery, currentPage]);
+    
 
-  const { featured, paginatedPosts, totalPages } = filteredData;
-
-  const handleCardClick = (postId: string) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    navigate(`/blog/${postId}`);
-  };
-
-  return (
+return (
     <motion.div
       className="min-h-[120vh] pt-20 pb-8"
       initial={{ opacity: 0, x: 50 }}
@@ -269,53 +291,53 @@ const Blog = () => {
 
         {/* Featured Post */}
         {currentPage === 1 && featured && (
-  <motion.div
-    className="mb-12" // slightly reduced margin-bottom
-    initial={{ y: 50, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.8, delay: 0.6 }}
-  >
-    <div
-      className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
-      onClick={() => handleCardClick(featured.id)}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="p-6 lg:p-8 text-white"> {/* reduced padding */}
-          <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-medium mb-3">
-            Featured Post
-          </div>
-          <h2 className="text-2xl lg:text-3xl font-bold mb-3"> {/* reduced size & margin */}
-            {featured.title}
-          </h2>
-          <p className="text-blue-100 text-base mb-4 leading-relaxed"> {/* reduced font & spacing */}
-            {featured.excerpt}
-          </p>
-          <div className="flex items-center gap-4 mb-4 text-blue-100"> {/* tighter spacing */}
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" />
-              <span className="text-sm">{formatDate(featured.date)}</span>
+          <motion.div
+            className="mb-12"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div
+              className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+              onClick={() => handleCardClick(featured.id)}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-6 lg:p-8 text-white">
+                  <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-medium mb-3">
+                    Featured Post
+                  </div>
+                  <h2 className="text-2xl lg:text-3xl font-bold mb-3">
+                    {featured.title}
+                  </h2>
+                  <p className="text-blue-100 text-base mb-4 leading-relaxed">
+                    {featured.excerpt}
+                  </p>
+                  <div className="flex items-center gap-4 mb-4 text-blue-100">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4" />
+                      <span className="text-sm">{formatDate(featured.date)}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4" />
+                      <span className="text-sm">{featured.readTime}</span>
+                    </div>
+                  </div>
+                  <span className="inline-block bg-white text-blue-600 px-4 py-2 rounded-md font-medium text-sm hover:bg-blue-50 transition-colors">
+                    Read Full Post
+                  </span>
+                </div>
+                <div className="relative overflow-hidden">
+                  <img
+                    src={featured.image}
+                    alt={featured.title}
+                    className="w-full h-auto object-cover lg:h-full"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent lg:bg-gradient-to-r lg:from-blue-600/20 lg:to-transparent" />
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm">{featured.readTime}</span>
-            </div>
-          </div>
-          <span className="inline-block bg-white text-blue-600 px-4 py-2 rounded-md font-medium text-sm hover:bg-blue-50 transition-colors">
-            Read Full Post
-          </span>
-        </div>
-        <div className="relative max-h-64 overflow-hidden"> {/* limits image height */}
-          <img
-            src={featured.image}
-            alt={featured.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent lg:bg-gradient-to-r lg:from-blue-600/20 lg:to-transparent" />
-        </div>
-      </div>
-    </div>
-  </motion.div>
-)}
+          </motion.div>
+        )}
 
         {/* Blog Grid */}
         {paginatedPosts.length > 0 ? (
