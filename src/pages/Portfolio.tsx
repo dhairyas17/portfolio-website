@@ -72,14 +72,14 @@ const Portfolio = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
               >
                 <Link to={`/portfolio/${category.id}`}>
-                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[580px] flex flex-col">
+                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[550px] flex flex-col">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     />
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="flex flex-col items-center text-center mb-2">
                         <div
-                          className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${category.color} mb-6`}
+                          className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${category.color} mb-3`}
                         >
                           <category.icon className="w-8 h-8 text-white" />
                         </div>
