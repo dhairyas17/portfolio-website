@@ -10,7 +10,7 @@ export const projectData: Record<string, Project> = {
     'Robust firmware update mechanism for edge devices using Ansible playbooks and AWX for orchestration.',
   image:
     'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2025',
+  year: '2024',
   team: '3 people',
   duration: '3 weeks',
   deployment: 'Internal Tool',
@@ -104,7 +104,7 @@ export const projectData: Record<string, Project> = {
   image:
     'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
-  team: '2 people',
+  team: '4 people',
   duration: '12 weeks',
   deployment: '1300+ Edge Devices',
   status: 'Live',
@@ -295,7 +295,7 @@ export const projectData: Record<string, Project> = {
     'End-to-end pipeline to train YOLOv4, convert to ONNX, and deploy with TensorRT on Jetson for real-time object detection.',
   image:
     'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2025',
+  year: '2023',
   team: '3 people',
   duration: '2 weeks',
   deployment: 'Internal Tool',
@@ -383,7 +383,7 @@ export const projectData: Record<string, Project> = {
     'A platform offering a suite of AI-powered video processing capabilities through unified REST APIs, including object detection, face embedding, segmentation, inpainting, and motion tracking.',
   image:
     'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2025',
+  year: '2023',
   team: '4 person',
   duration: '12 weeks',
   deployment: '100+ Enterprise Clients',
@@ -601,7 +601,7 @@ export const projectData: Record<string, Project> = {
   'Designed and implemented an image undistortion pipeline using OpenCV to correct fisheye distortion on wide-angle camera images. The correction improved spatial accuracy and was integrated into Evercam’s BIM alignment and 2D measuring pipelines.',
   image:
     'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2025',
+  year: '2021',
   team: '2 people',
   duration: '4 weeks',
   deployment: 'internal tool',

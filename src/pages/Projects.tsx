@@ -27,7 +27,7 @@ const projects = [
     image:  '/assets/case-studies/Firmware Update Process in Action.png',
     category: 'infra',
     tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
-    year: '2025',
+    year: '2024',
     team: '3 people',
     status: 'Live',
     links: {
@@ -43,8 +43,8 @@ const projects = [
     image:  '/assets/case-studies/edge-monitoring-platform.png',
     category: 'infra',
     tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
-    year: '2025',
-    team: '2 people',
+    year: '2024',
+    team: '4 people',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/edge-monitoring-prometheus',
@@ -63,8 +63,8 @@ const projects = [
       'Python', 'FastAPI', 'YOLOv8', 'FaceNet', 'SAM', 'LaMa',
       'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'RabbitMQ', 'gRPC', 'Prometheus + Grafana',
     ],
-    year: '2025',
-    team: '1 person',
+    year: '2023',
+    team: '4 person',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/video-intelligence-api',
@@ -80,7 +80,7 @@ const projects = [
     category: 'ai-ml',
     tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
     year: '2025',
-    team: '2 people',
+    team: '3 people',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/genai-chatbot',
@@ -95,7 +95,7 @@ const projects = [
     image:  '/assets/case-studies/fisheye-correction-opencv.png',
     category: 'Computer Vision & Image Processing',
     tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
-    year: '2025',
+    year: '2021',
     team: '2 people',
     status: 'Live',
     links: {
@@ -111,7 +111,7 @@ const projects = [
     image:  '/assets/case-studies/yolov4-onnx-tensorrt.png',
     category: 'ai-ml',
     tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
-    year: '2025',
+    year: '2023',
     team: '3 people',
     status: 'Live',
     links: {

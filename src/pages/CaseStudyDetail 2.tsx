@@ -104,7 +104,7 @@ const CaseStudyDetail2 = () => {
     <div className="flex items-start gap-2">
       <Globe className="mt-1" size={16} />
       <span>
-        <strong>Scope:</strong> 100+ enterprise sites, scaling to 1000+
+        <strong>Scope:</strong> 627 Projects (1300+ kits)
       </span>
     </div>
   </div>
@@ -216,24 +216,14 @@ const CaseStudyDetail2 = () => {
         <h2 className="text-2xl font-semibold mb-3"><MessageCircle className="inline mr-2 mb-1 text-indigo-600" size={18} />Internal Feedback</h2>
         <blockquote className="italic text-gray-700 mb-4">
           “Standardizing the kits was a game-changer, we can now ship, install, and forget.”<br />
-          <span className="text-lg">,  Deployment Ops Lead</span>
+          <span className="text-lg"> - Global Operation Lead, Evercam</span>
         </blockquote>
         <blockquote className="italic text-gray-700 mb-4">
           “AWX made it possible for support to handle edge resets and push updates, no more dev bottleneck.”<br />
-          <span className="text-lg">,  Support Engineer</span>
+          <span className="text-lg">,  Support Engineer, Evercam</span>
         </blockquote>
       </motion.section>
 
-      {/* Key Learnings */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-500" size={18} />Key Learnings</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li>Standardization unlocks scale, what worked for 10 sites failed at 100+</li>
-          <li>TPMs need to drive operational architecture, not just features</li>
-          <li>Empowering non-engineers is a major force multiplier</li>
-          <li>Investing in infra as product pays off in speed, quality, and developer bandwidth</li>
-        </ul>
-      </motion.section>
 
       {/* Tags */}
       {/* <motion.section {...fadeIn}>
@@ -257,6 +247,20 @@ const CaseStudyDetail2 = () => {
   </button>
 )}
      
+{/* Key Takeaways */}
+<motion.section className="mb-10" {...fadeIn}>
+  <h2 className="text-2xl font-semibold mb-3">
+    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+  </h2>
+  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+    <li>Shift from ad-hoc, camera-based deployments to a standardized kit-based architecture drastically improved scalability and reliability.</li>
+    <li>Centralized version control for hardware, firmware, and software eliminated tech debt and inconsistency.</li>
+    <li>Automation via Ansible + AWX empowered non-technical teams to deploy configs and updates without developer support.</li>
+    <li>Cross-functional collaboration across firmware, DevOps, development, support, and QA teams accelerated rollout success.</li>
+    <li>Reduced deployment errors and support overhead, enabling faster site onboarding for 627+ projects worldwide.</li>
+  </ul>
+</motion.section>
+
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div
             className="mt-5 text-center"

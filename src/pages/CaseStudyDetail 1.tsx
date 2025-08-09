@@ -106,7 +106,7 @@ const CaseStudyDetail1 = () => {
     <div className="flex items-start gap-2">
       <Globe className="mt-1" size={16} />
       <span>
-        <strong>Deployment:</strong> 100+ industrial sites
+        <strong>Deployment:</strong> 100+ Construction Sites
       </span>
     </div>
   </div>
@@ -265,7 +265,7 @@ const CaseStudyDetail1 = () => {
               {[
                 ['NPS', '7%', '78%', '+71 pts'],
                 ['Monthly Recurring Revenue (MRR)', '1×', '8.5×', '+750%'],
-                ['Latency', '2–10 mins', '<1 sec', '↓ 90%'],
+                ['Latency', '7-8 hours', '<5 sec', '↓ 99.98%'],
                 ['Data usage per site', '3TB+/month', '<200GB/month', '↓ 94%'],
                 ['Event reliability', '70%', '99.3%', '↑ 29%'],
               ].map((row, i) => (
@@ -317,6 +317,34 @@ const CaseStudyDetail1 = () => {
     <ChevronUp size={20} />
   </button>
 )}
+
+      {/* Key Takeaways */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3">
+        <TrendingUp  className="inline mr-2 mb-1 text-green-500" size={18} />Key Takeaways
+        </h2>
+        <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
+          <li>
+            <strong>Customer-first over tech novelty</strong>: Dropping low-value features like FaceNet simplified the stack and boosted adoption.
+          </li>
+          <li>
+            <strong>Edge-first design slashes latency</strong>: Moving inference to Jetson cut delays from hours to seconds while adding offline resilience.
+          </li>
+          <li>
+            <strong>Data-light sync cuts costs</strong>: Switching from full video to metadata-only reduced bandwidth by over 90%.
+          </li>
+          <li>
+            <strong>Cross-functional loops</strong>: Weekly syncs with CS, Sales, and Engineering ensured the product stayed aligned with user needs.
+          </li>
+          <li>
+            <strong>Deployment tooling matters</strong>: Ansible + AWX gave non-devs the ability to update devices safely at scale.
+          </li>
+          <li>
+            <strong>Track & show results</strong>: NPS jump (+71 pts) and MRR growth (8.5×) built strong internal and client confidence.
+          </li>
+        </ul>
+      </motion.section>
+
 
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div

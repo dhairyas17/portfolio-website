@@ -62,7 +62,7 @@ const CaseStudyDetail3 = () => {
   </motion.button>
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        Building Real-Time Observability for OTA on 1300+ Edge Devices
+        Building Real-Time Observability for Edge Devices
       </motion.h1>
 
       {/* Summary */}
@@ -94,6 +94,12 @@ const CaseStudyDetail3 = () => {
         <strong>Duration:</strong> 4 months
       </span>
     </div>
+    <div className="flex items-start gap-2">
+      <CalendarDays className="mt-1" size={16} />
+      <span>
+        <strong>Deployments:</strong> 1300+ Devices
+      </span>
+    </div>
   </div>
 </motion.div>
 
@@ -101,10 +107,10 @@ const CaseStudyDetail3 = () => {
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 text-lg text-justify leading-relaxed">
           The edge device fleet was operating without real-time observability, leading to several challenges. There was a lack of visibility into device health for SiteOps teams, high costs associated with site visits due to undetected failures, poor NPS from customers, and a reactive alert system that relied on customers to raise issues rather than the system notifying the team.
         </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
+        <p className="mt-4 text-gray-700 text-lg text-justify leading-relaxed">
           As TPM, I led the design and implementation of a comprehensive observability system. The system was focused on providing real-time health monitoring, improving resolution times, and reducing the need for site visits, while minimizing manual intervention and increasing system transparency.
         </p>
       </motion.section>
@@ -167,7 +173,7 @@ const CaseStudyDetail3 = () => {
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <div className="bg-gray-50 p-4 border rounded">
+          <div className="bg-red-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Legacy Approach</h3>
             <p>
               - No real-time observability.<br />
@@ -226,16 +232,6 @@ const CaseStudyDetail3 = () => {
         </ul>
       </motion.section>
 
-      {/* Lessons Learned */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Lessons Learned</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg">
-          <li>The importance of balancing technical feasibility with user-centric design</li>
-          <li>How real-time monitoring can drastically improve operational efficiency</li>
-          <li>Why collaboration with non-technical teams (e.g., SiteOps) is essential for product success</li>
-          <li>Challenges in scaling observability systems across diverse device architectures</li>
-        </ul>
-      </motion.section>
       {showScrollTop && (
   <button
     onClick={scrollToTop}
@@ -245,6 +241,20 @@ const CaseStudyDetail3 = () => {
     <ChevronUp size={20} />
   </button>
 )}     
+{/* Key Takeaways */}
+<motion.section className="mb-10" {...fadeIn}>
+  <h2 className="text-2xl font-semibold mb-3">
+    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+  </h2>
+  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+    <li>Proactive real-time observability replaced reactive, customer-driven alerts.</li>
+    <li>Prometheus + Grafana provided full visibility into 1300+ edge devices.</li>
+    <li>Automated OTA deployment with Ansible & AWX enabled fast, large-scale rollout.</li>
+    <li>SiteOps teams empowered with intuitive dashboards, reducing reliance on engineering support.</li>
+    <li>Resulted in 75% fewer device failures, 80% fewer site visits, and a 35% boost in NPS.</li>
+  </ul>
+</motion.section>
+
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div
             className="mt-5 text-center"

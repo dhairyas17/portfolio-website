@@ -87,7 +87,7 @@ const CaseStudyDetail4 = () => {
     <div className="flex items-start gap-2">
       <Users className="mt-1" size={16} />
       <span>
-        <strong>Team:</strong> 1 (Solo Project)
+        <strong>Team:</strong> 1 TPM, 2 ML Engineers, 1 Backend Engineer
       </span>
     </div>
   </div>
@@ -97,7 +97,7 @@ const CaseStudyDetail4 = () => {
     <div className="flex items-start gap-2">
       <CalendarDays className="mt-1" size={16} />
       <span>
-        <strong>Duration:</strong> Self-Initiated Project (4 months)
+        <strong>Duration:</strong> 7 Months
       </span>
     </div>
   </div>
@@ -107,11 +107,11 @@ const CaseStudyDetail4 = () => {
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 text-lg text-justify leading-relaxed">
           AI pipelines for video intelligence are often fragmented, unscalable, and tightly coupled. They also lack developer-friendly APIs and flexible deployment options. The goal of this project was to build a modular and scalable system for real-time video analysis, featuring production-ready APIs for various video intelligence tasks like object detection, segmentation, inpainting, and motion tracking.
         </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Designed with modularity, scalability, and real-time performance in mind, this platform enables AI tasks such as object detection, face embedding (FaceNet), segmentation using SAM, and inpainting with LaMa, all through easy-to-use REST APIs.
+        <p className="mt-4 text-gray-700 text-lg text-justify leading-relaxed">
+          Designed with modularity, scalability, and real-time performance in mind, this platform enables AI tasks such as object detection, face embedding (FaceNet), segmentation using SAM, and inpainting with LaMa, all through easy-to-use REST APIs. It currently powers Evercam AI-API, serving clients worldwide.
         </p>
       </motion.section>
 
@@ -147,7 +147,7 @@ const CaseStudyDetail4 = () => {
           <li><strong>/inpaint:</strong> Remove objects or correct occlusions with LaMa</li>
           <li><strong>/motion:</strong> Detect camera panning, tilt, and zoom</li>
           <li><strong>/auth:</strong> JWT-based user authentication</li>
-          <li><strong>/integrations:</strong> Webhooks for third-party apps (Slack, Telegram, etc.)</li>
+          <li><strong>/integrations:</strong> Webhooks for third-party apps</li>
         </ul>
       </motion.section>
 
@@ -213,29 +213,20 @@ const CaseStudyDetail4 = () => {
           <li>Ops for scalable deployment and observability</li>
         </ul>
       </motion.section>
+{/* Key Takeaways */}
+<motion.section className="mb-10" {...fadeIn}>
+  <h2 className="text-2xl font-semibold mb-3">
+    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+  </h2>
+  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+    <li>Successfully unified multiple AI video intelligence tasks behind clean, developer-friendly APIs.</li>
+    <li>Achieved real-time inference (Less than "300ms" latency) for critical endpoints like /detect and /motion.</li>
+    <li>Designed platform to support both edge and cloud deployments for maximum flexibility.</li>
+    <li>Built modular architecture to easily integrate future ML models without major refactoring.</li>
+    <li>Established scalable, production-ready infrastructure with observability and CI/CD baked in.</li>
+  </ul>
+</motion.section>
 
-      {/* Lessons Learned */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Lessons Learned</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg">
-          <li>The importance of designing with extensibility and modularity in mind</li>
-          <li>How clear API documentation and SDKs drastically improve developer experience</li>
-          <li>The value of security and role-based access control in production APIs</li>
-          <li>Challenges in balancing speed and quality of AI inference tasks</li>
-        </ul>
-      </motion.section>
-
-      {/* Tags */}
-      {/* <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Tags</h2>
-        <div className="flex gap-3">
-          <span className="bg-indigo-100 text-indigo-600 text-xs px-3 py-1 rounded-full">AI</span>
-          <span className="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">API</span>
-          <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full">Security</span>
-          <span className="bg-red-100 text-red-600 text-xs px-3 py-1 rounded-full">Modularity</span>
-          <span className="bg-yellow-100 text-yellow-600 text-xs px-3 py-1 rounded-full">Extensibility</span>
-        </div>
-      </motion.section> */}
       {showScrollTop && (
   <button
     onClick={scrollToTop}

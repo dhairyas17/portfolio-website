@@ -88,7 +88,7 @@ const CaseStudyDetail5 = () => {
     <div className="flex items-start gap-2">
       <Users className="mt-1" size={16} />
       <span>
-        <strong>Team:</strong> 1 TPM (me), 5 Annotation Specialists, 2 ML Engineers, 2 DevOps Engineers
+        <strong>Team:</strong> 1 Product Owner - APM (me), 5 Annotation Specialists, 2 ML Engineers, 2 DevOps Engineers
       </span>
     </div>
     <div className="flex items-start gap-2">
@@ -110,7 +110,7 @@ const CaseStudyDetail5 = () => {
     <div className="flex items-start gap-2">
       <Globe className="mt-1" size={16} />
       <span>
-        <strong>Scope:</strong> 1000+ global edge nodes
+        <strong>Deployment:</strong> 100+ Jetson Orin Nano
       </span>
     </div>
   </div>
@@ -120,7 +120,7 @@ const CaseStudyDetail5 = () => {
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 text-lg text-justify leading-relaxed">
           To support industrial-grade edge deployments for smart surveillance, the existing ML pipeline needed a complete redesign. The current training system was hitting performance and scalability bottlenecks, and detection accuracy had stagnated at 67%. As the TPM, I led the effort to overhaul the ML training lifecycle, from data collection to deployment, resulting in a model accuracy increase to 96% and significantly improving both the volume and quality of the training data.
         </p>
       </motion.section>
@@ -150,7 +150,7 @@ const CaseStudyDetail5 = () => {
       {/* Solution: ML Lifecycle Overhaul */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Solution: ML Lifecycle Overhaul</h2>
-        <div className="space-y-6">
+        <div className="space-y-2">
           <h3 className="font-semibold text-lg">Redesigned Training Loop</h3>
           <p className="text-gray-700 leading-relaxed">
             Scaled the dataset from 80k to 980k+ frames via automated scraping pipelines pulling data from live edge feeds. Prioritized high-signal segments for annotation using model confidence thresholds.
@@ -189,7 +189,7 @@ const CaseStudyDetail5 = () => {
             <tbody>
               {[
                 ['Detection Accuracy', '67%', '96%', '+29%'],
-                ['Training Data Size', '80k frames', '980k+ frames', '↑ 10×'],
+                ['Training Data Size', '280k frames', '980k+ frames', '↑ 3.5×'],
                 ['Annotation Turnaround Time', 'High', '60% faster', '↓ 60%'],
                 ['Model Retraining Cycles', 'Manual', 'Automated', '✅'],
                 ['Deployment Reach', 'Limited', '1000+ edge nodes globally', '✅'],
@@ -237,7 +237,21 @@ const CaseStudyDetail5 = () => {
   >
     <ChevronUp size={20} />
   </button>
-)}            
+)}         
+{/* Key Takeaways */}
+<motion.section className="mb-10" {...fadeIn}>
+  <h2 className="text-2xl font-semibold mb-3">
+    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+  </h2>
+  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+    <li>Increased detection accuracy from 67% to 96% through data, tooling, and process redesign.</li>
+    <li>Scaled dataset from 80k to 980k+ frames, with automated collection and targeted annotation.</li>
+    <li>Cut annotation turnaround time by 60% using pre-labeling, QA gates, and workflow automation.</li>
+    <li>Implemented reproducible MLOps pipeline with Airflow, MLflow, and automated retraining.</li>
+    <li>Achieved global deployment to 1000+ edge nodes, ensuring real-time performance at scale.</li>
+  </ul>
+</motion.section>
+
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div
             className="mt-5 text-center"
