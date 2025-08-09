@@ -129,7 +129,7 @@ const CaseStudyDetail5 = () => {
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />The Problem</h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
-          <li>Reliant on inconsistent and insufficient training data (~80k frames).</li>
+          <li>Reliant on inconsistent and insufficient training data (~280k frames).</li>
           <li>Manually managed, causing annotation delays and inefficiencies.</li>
           <li>Siloed with fragmented tooling (CVAT, Airflow, local scripts).</li>
           <li>Lacked observability, leading to blind spots in model performance on edge devices.</li>

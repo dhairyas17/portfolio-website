@@ -114,10 +114,10 @@ const CaseStudyDetail2 = () => {
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 text-lg text-justify  leading-relaxed">
           Evercam’s video analytics platform relies heavily on edge devices deployed across industrial and construction sites. Initially, each site used custom hardware setups and camera configurations, resulting in inconsistent performance, high support overhead, and deployment delays.
         </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
+        <p className="mt-4 text-gray-700 text-lg text-justify leading-relaxed">
           As TPM, I initiated and led the Edge Standardization Program, moving the architecture from camera-based deployment to a kit-based modular system. I defined a unified spec across hardware, firmware, and software layers, and built a scalable configuration rollout using Ansible for devs and AWX for non-technical support staff, significantly improving speed, reliability, and manageability of edge deployments.
         </p>
       </motion.section>
@@ -220,7 +220,7 @@ const CaseStudyDetail2 = () => {
         </blockquote>
         <blockquote className="italic text-gray-700 mb-4">
           “AWX made it possible for support to handle edge resets and push updates, no more dev bottleneck.”<br />
-          <span className="text-lg">,  Support Engineer, Evercam</span>
+          <span className="text-lg"> - Support Engineer, Evercam</span>
         </blockquote>
       </motion.section>
 
