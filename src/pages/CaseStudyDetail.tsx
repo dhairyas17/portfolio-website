@@ -25,7 +25,7 @@ const fadeIn = {
   transition: { duration: 0.4 },
 };
 
-const tableRowStyles = "border px-3 py-2 text-sm text-gray-700";
+const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
 
 const CaseStudyDetail = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const CaseStudyDetail = () => {
     >
       {/* Back button */}
       <motion.button
-        className="flex items-center gap-2 text-sm text-blue-600 hover:underline mb-8"
+        className="flex items-center gap-2 text-lg text-blue-600 hover:underline mb-8"
         onClick={() => navigate(-1)}
         {...fadeIn}
       >
@@ -48,16 +48,16 @@ const CaseStudyDetail = () => {
 
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        📌 Case Study: Designing a Scalable AI-Driven Video Intelligence API Platform
+      Designing a Scalable AI-Driven Video Intelligence API Platform
       </motion.h1>
 
       {/* Subtitle */}
       <motion.div className="mb-10 text-lg text-gray-700" {...fadeIn}>
-        <strong>Subtitle:</strong> A self-initiated platform offering a suite of AI-powered video processing capabilities through unified APIs — including object detection, subclassification using FaceNet, segmentation via SAM, inpainting using LaMa, and motion tracking.
+        <strong>Subtitle:</strong> A self-initiated platform offering a suite of AI-powered video processing capabilities through unified APIs ,  including object detection, subclassification using FaceNet, segmentation via SAM, inpainting using LaMa, and motion tracking.
       </motion.div>
 
       {/* Summary */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700 mb-10" {...fadeIn}>
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-gray-700 mb-10" {...fadeIn}>
         <div className="flex items-start gap-2">
           <Brain className="mt-1" size={16} />
           <span><strong>Category:</strong> API Architecture, Video Intelligence, AI Integration</span>
@@ -86,8 +86,8 @@ const CaseStudyDetail = () => {
       {/* Problem Statement */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />Problem Statement</h2>
-        <h3 className="font-semibold mb-1 text-sm">🚨 Key Challenges:</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-sm mb-4 space-y-1">
+        <h3 className="font-semibold mb-1 text-lg">Key Challenges:</h3>
+        <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
           <li>Fragmented AI pipelines with no clear integration across video intelligence tasks</li>
           <li>Lack of modular, scalable, and production-ready APIs for real-time video analysis</li>
           <li>Difficulty in providing flexible deployment options (edge vs. cloud)</li>
@@ -97,7 +97,7 @@ const CaseStudyDetail = () => {
       {/* Product Thinking */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />Product Thinking</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li>User-first design: Abstracted AI complexities behind clean, intuitive APIs.</li>
           <li>Modularity: Enabled developers to plug in individual features (e.g., only SAM or object detection).</li>
           <li>Speed & Scalability: Optimized for real-time inference over RESTful APIs.</li>
@@ -108,7 +108,7 @@ const CaseStudyDetail = () => {
       {/* Key Features */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-cyan-600" size={18} />Key Features</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li><strong>/detect:</strong> Object detection using YOLOv8</li>
           <li><strong>/facenet:</strong> Face embedding + similarity matching</li>
           <li><strong>/segment:</strong> Segment anything with Meta’s SAM</li>
@@ -122,9 +122,9 @@ const CaseStudyDetail = () => {
       {/* System Architecture */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />System Architecture</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
           <div className="bg-gray-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">⚙️ Components</h3>
+            <h3 className="font-bold mb-2">Components</h3>
             <p>
               - <strong>Frontend (optional):</strong> Swagger UI for interactive API testing<br />
               - <strong>Backend (FastAPI + Python):</strong> REST endpoints calling containerized ML services<br />
@@ -137,7 +137,7 @@ const CaseStudyDetail = () => {
           </div>
 
           <div className="bg-gray-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">📦 Infrastructure</h3>
+            <h3 className="font-bold mb-2">Infrastructure</h3>
             <p>
               - <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
               - <strong>Container orchestration:</strong> Docker Compose (local), Kubernetes (cloud)<br />
@@ -151,7 +151,7 @@ const CaseStudyDetail = () => {
       {/* API Gateway */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-blue-600" size={18} />API Gateway</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm">
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
           <li>Rate limiting, request logging, and load balancing</li>
           <li>JWT-based authentication</li>
           <li>Retry logic and fallback handlers for long jobs</li>
@@ -161,7 +161,7 @@ const CaseStudyDetail = () => {
       {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm">
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
           <li>Built fully functional API-first platform for AI video features</li>
           <li>Achieved 300ms average latency on /detect and /motion endpoints</li>
           <li>Scalable to 100+ concurrent API calls with "1"s response time</li>
@@ -173,8 +173,8 @@ const CaseStudyDetail = () => {
       {/* Cross-Functional Touch */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-teal-600" size={18} />Cross-Functional Touch</h2>
-        <p className="text-sm text-gray-700">Collaborated with:</p>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
+        <p className="text-lg text-gray-700">Collaborated with:</p>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li>Designers to define an intuitive Swagger UI</li>
           <li>Backend Devs (peer reviewers) to optimize DB schema</li>
           <li>ML experts to validate SAM and LaMa performance</li>
@@ -185,7 +185,7 @@ const CaseStudyDetail = () => {
       {/* Lessons Learned */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Lessons Learned</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm">
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
           <li>The importance of designing with extensibility and modularity in mind</li>
           <li>How clear API documentation and SDKs drastically improve developer experience</li>
           <li>The value of security and role-based access control in production APIs</li>

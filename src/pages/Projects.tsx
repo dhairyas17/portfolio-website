@@ -13,16 +13,33 @@ const filters = [
   { id: 'ai-ml', name: 'AI & ML' },
   { id: 'infra', name: 'Infra' },
   { id: 'api', name: 'API Integration' },
+  { id: 'web', name: 'Web' },
 ];
 
 const projects = [
+
+  {
+    id: '103',
+    title: 'Interactive & Responsive Portfolio Website',
+    description:
+      'Developed a personal portfolio site with React, Tailwind, and Framer Motion,featuring smooth animations and responsive design.',  
+    image:  '/assets/case-studies/portfilio.png',
+    category: 'web',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS', 'JavaScript', 'CSS3'],
+    year: '2025',
+    team: 'Solo Project',
+    status: 'Live',
+    links: {
+      github: 'https://github.com/dhairya/portfolio-website',
+      demo: 'https://dhairyasharma.dev',
+    },
+  },    
   {
     id: '101',
     title: 'OTA Firmware Updates with AWX & Ansible',
     description:
-      'Automated OTA firmware updates for Jetson edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',
-    image:
-      'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      'Automated OTA firmware updates for Jetson edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',  
+    image:  '/assets/case-studies/Firmware Update Process in Action.png',
     category: 'infra',
     tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
     year: '2025',
@@ -38,8 +55,7 @@ const projects = [
     title: 'Edge Device Monitoring with Prometheus & Grafana',
     description:
       'Deployed lightweight monitoring on Jetson edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
-    image:
-      'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    image:  '/assets/case-studies/edge-monitoring-platform.png',
     category: 'infra',
     tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
     year: '2025',
@@ -50,64 +66,13 @@ const projects = [
       demo: 'https://monitoring-demo.com',
     },
   },
-  {
-    id: '103',
-    title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
-    description:
-      'Built and deployed real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving sub-50ms inference time and 60% smaller models.',
-    image:
-      'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    category: 'ai-ml',
-    tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
-    year: '2025',
-    team: '3 people',
-    status: 'Live',
-    links: {
-      github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
-      demo: 'https://yolov4-jetson-demo.com',
-    },
-  },
-  {
-    id: '104',
-    title: 'Fisheye Distortion Correction on Wide Angle Cameras',
-    description:
-      'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
-    image:
-      'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    category: 'Computer Vision & Image Processing',
-    tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
-    year: '2025',
-    team: '2 people',
-    status: 'Live',
-    links: {
-      github: 'https://github.com/dhairya/fisheye-correction-opencv',
-      demo: 'https://fisheye-demo.com',
-    },
-  },
+
   {
     id: '105',
-    title: 'AI Chatbot using GenAI & LLMs',
-    description:
-      'Built a domain-specific GenAI chatbot using LangChain and LLMs, with RAG pipeline and voice/text interaction — cutting query resolution time by 65%.',
-    image:
-      'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-    category: 'ai-ml',
-    tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
-    year: '2025',
-    team: '2 people',
-    status: 'Live',
-    links: {
-      github: 'https://github.com/dhairya/genai-chatbot',
-      demo: 'https://genai-chatbot-demo.com',
-    },
-  },
-  {
-    id: '106',
     title: 'Scalable AI-Driven Video Intelligence API Platform',
     description:
-      'Developed a modular FastAPI platform offering video AI features via REST APIs—YOLOv8, FaceNet, SAM, LaMa—running on cloud and edge.',
-    image:
-      'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+      'Developed a modular FastAPI platform offering video AI features via REST APIs,YOLOv8, FaceNet, SAM, LaMa,running on cloud and edge.',
+    image:  '/assets/case-studies/video-intelligence-api.png',
     category: 'api',
     tech: [
       'Python', 'FastAPI', 'YOLOv8', 'FaceNet', 'SAM', 'LaMa',
@@ -119,6 +84,55 @@ const projects = [
     links: {
       github: 'https://github.com/dhairya/video-intelligence-api',
       demo: 'https://video-api-demo.com',
+    },
+  },
+  {
+    id: '107',
+    title: 'Fisheye Distortion Correction on Wide Angle Cameras',
+    description:
+      'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
+    image:  '/assets/case-studies/fisheye-correction-opencv.png',
+    category: 'Computer Vision & Image Processing',
+    tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
+    year: '2025',
+    team: '2 people',
+    status: 'Live',
+    links: {
+      github: 'https://github.com/dhairya/fisheye-correction-opencv',
+      demo: 'https://fisheye-demo.com',
+    },
+  }, 
+  {
+    id: '104',
+    title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
+    description:
+      'Led the development and deployment of a real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving <50 ms inference.',
+    image:  '/assets/case-studies/yolov4-onnx-tensorrt.png',
+    category: 'ai-ml',
+    tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
+    year: '2025',
+    team: '3 people',
+    status: 'Live',
+    links: {
+      github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
+      demo: 'https://yolov4-jetson-demo.com',
+    },
+  },  
+ 
+  {
+    id: '106',
+    title: 'AI Chatbot using GenAI & LLMs',
+    description:
+      'Led the development of a domain-specific GenAI chatbot using LangChain and LLMs, integrating a RAG pipeline and voice/text interactions.',  
+    image:  '/assets/case-studies/genai.png',
+    category: 'ai-ml',
+    tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
+    year: '2025',
+    team: '2 people',
+    status: 'Live',
+    links: {
+      github: 'https://github.com/dhairya/genai-chatbot',
+      demo: 'https://genai-chatbot-demo.com',
     },
   },
 ];
@@ -256,7 +270,7 @@ const Projects = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4 text-justify line-clamp-3">
                     {project.description}
                   </p>
 

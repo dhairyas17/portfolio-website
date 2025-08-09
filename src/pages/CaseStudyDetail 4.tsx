@@ -25,7 +25,7 @@ const fadeIn = {
   transition: { duration: 0.4 },
 };
 
-const tableRowStyles = "border px-3 py-2 text-sm text-gray-700";
+const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
 
 const CaseStudyDetail4 = () => {
   const navigate = useNavigate();
@@ -53,172 +53,189 @@ const CaseStudyDetail4 = () => {
 >
   {/* Back button */}
   <motion.button
-    className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 mb-8 transition"
+    className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
     onClick={() => navigate(-1)}
     {...fadeIn}
   >
     <ArrowLeft size={16} />
     Back to Case Studies
   </motion.button>
+
       {/* Header */}
-      <motion.h1 className="text-6xl font-bold mb-6 leading-snug" {...fadeIn}>
-        Building Real-Time Observability for OTA on 1300+ Edge Devices
+      <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
+       Designing a Scalable AI-Driven Video Intelligence API Platform
       </motion.h1>
 
+      {/* Subtitle */}
+      {/* <motion.div className="mb-10 text-lg text-gray-700" {...fadeIn}>
+        <strong>Subtitle:</strong> A self-initiated platform offering a suite of AI-powered video processing capabilities through unified APIs, including object detection, subclassification using FaceNet, segmentation via SAM, inpainting using LaMa, and motion tracking.
+      </motion.div> */}
+
       {/* Summary */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700 mb-10" {...fadeIn}>
-        <div className="flex items-start gap-2">
-          <Brain className="mt-1" size={16} />
-          <span><strong>Category:</strong> System Design, Product Strategy, DevOps Enablement</span>
-        </div>
-        <div className="flex items-start gap-2">
-          <CalendarDays className="mt-1" size={16} />
-          <span><strong>Duration:</strong> 4 months</span>
-        </div>
-        <div className="flex items-start gap-2">
-          <Users className="mt-1" size={16} />
-          <span><strong>Team:</strong> 1 TPM, 3 DevOps Engineers, 2 Backend Engineers, 1 Embedded Engineer, Support Lead, QA Engineer</span>
-        </div>
-      </motion.div>
+      <motion.div
+  className="flex flex-col md:flex-row justify-between text-sm text-gray-700 mb-10"
+  {...fadeIn}
+>
+  {/* Left Column */}
+  <div className="flex flex-col gap-2 md:w-1/2">
+    <div className="flex items-start gap-2">
+      <Brain className="mt-1" size={16} />
+      <span>
+        <strong>Category:</strong> API Architecture, Video Intelligence, AI Integration
+      </span>
+    </div>
+    <div className="flex items-start gap-2">
+      <Users className="mt-1" size={16} />
+      <span>
+        <strong>Team:</strong> 1 (Solo Project)
+      </span>
+    </div>
+  </div>
+
+  {/* Right Column */}
+  <div className="flex flex-col gap-2 md:w-1/2 md:items-end md:text-right mt-4 md:mt-0">
+    <div className="flex items-start gap-2">
+      <CalendarDays className="mt-1" size={16} />
+      <span>
+        <strong>Duration:</strong> Self-Initiated Project (4 months)
+      </span>
+    </div>
+  </div>
+</motion.div>
+
 
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
         <p className="text-gray-700 leading-relaxed">
-          The edge device fleet was operating without real-time observability, leading to several challenges. There was a lack of visibility into device health for SiteOps teams, high costs associated with site visits due to undetected failures, poor NPS from customers, and a reactive alert system that relied on customers to raise issues rather than the system notifying the team.
+          AI pipelines for video intelligence are often fragmented, unscalable, and tightly coupled. They also lack developer-friendly APIs and flexible deployment options. The goal of this project was to build a modular and scalable system for real-time video analysis, featuring production-ready APIs for various video intelligence tasks like object detection, segmentation, inpainting, and motion tracking.
         </p>
         <p className="mt-4 text-gray-700 leading-relaxed">
-          As TPM, I led the design and implementation of a comprehensive observability system. The system was focused on providing real-time health monitoring, improving resolution times, and reducing the need for site visits, while minimizing manual intervention and increasing system transparency.
+          Designed with modularity, scalability, and real-time performance in mind, this platform enables AI tasks such as object detection, face embedding (FaceNet), segmentation using SAM, and inpainting with LaMa, all through easy-to-use REST APIs.
         </p>
       </motion.section>
 
-      {/* The Problem */}
+      {/* Problem Statement */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />The Problem</h2>
-        <h3 className="font-semibold mb-1 text-sm">🚨 Observability Gaps:</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-sm mb-4 space-y-1">
-          <li>Lack of visibility into device health for SiteOps teams</li>
-          <li>High costs associated with site visits due to undetected failures</li>
-          <li>Poor NPS due to long resolution times</li>
-          <li>Reactive alert system that relied on customers to raise issues</li>
-          <li>Limited accountability and no historical data during outages</li>
+        <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />Problem Statement</h2>
+        <h3 className="font-semibold mb-1 text-lg">Key Challenges:</h3>
+        <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
+          <li>Fragmented AI pipelines with no clear integration across video intelligence tasks</li>
+          <li>Lack of modular, scalable, and production-ready APIs for real-time video analysis</li>
+          <li>Difficulty in providing flexible deployment options (edge vs. cloud)</li>
         </ul>
       </motion.section>
 
-      {/* Role as TPM */}
+      {/* Product Thinking */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />My Role as TPM</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm space-y-1">
-          <li>Defined observability as a core product feature, focusing on both technical and user-centric requirements</li>
-          <li>Led cross-functional collaboration to ensure alignment across firmware, DevOps, backend, support, and QA teams</li>
-          <li>Spearheaded the system architecture using Prometheus, Grafana, and heartbeat daemon</li>
-          <li>Managed phased rollout using Ansible & AWX for safe, scalable OTA deployment</li>
-          <li>Ensured smooth stakeholder alignment and minimized friction through intuitive Grafana dashboards</li>
+        <h2 className="text-2xl font-semibold mb-3"><Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />Product Thinking</h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>User-first design: Abstracted AI complexities behind clean, intuitive APIs.</li>
+          <li>Modularity: Enabled developers to plug in individual features (e.g., only SAM or object detection).</li>
+          <li>Speed & Scalability: Optimized for real-time inference over RESTful APIs.</li>
+          <li>Deploy Anywhere: System built to support both edge and cloud deployments.</li>
         </ul>
       </motion.section>
 
-      {/* Product Design & Prioritization Table */}
+      {/* Key Features */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Product Design & Prioritization</h2>
-        <div className="overflow-x-auto text-sm">
-          <table className="w-full border border-gray-300 rounded shadow-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className={tableRowStyles}>Focus Area</th>
-                <th className={tableRowStyles}>Old Approach</th>
-                <th className={tableRowStyles}>New Product-Driven Approach</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Core Value', 'Reactive alert system based on customer issues', 'Proactive real-time health monitoring for all devices'],
-                ['Visibility', 'No real-time visibility for SiteOps', 'Complete transparency through Grafana dashboards'],
-                ['Alerting', 'Customer-initiated alerting', 'Automated system alerts sent for critical failures'],
-                ['UX Focus', 'Not tailored for non-technical teams', 'SiteOps-focused, user-friendly Grafana dashboard'],
-                ['Deployment', 'Manual updates and deployments', 'OTA deployment with Ansible + AWX'],
-              ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-cyan-600" size={18} />Key Features</h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li><strong>/detect:</strong> Object detection using YOLOv8</li>
+          <li><strong>/facenet:</strong> Face embedding + similarity matching</li>
+          <li><strong>/segment:</strong> Segment anything with Meta’s SAM</li>
+          <li><strong>/inpaint:</strong> Remove objects or correct occlusions with LaMa</li>
+          <li><strong>/motion:</strong> Detect camera panning, tilt, and zoom</li>
+          <li><strong>/auth:</strong> JWT-based user authentication</li>
+          <li><strong>/integrations:</strong> Webhooks for third-party apps (Slack, Telegram, etc.)</li>
+        </ul>
       </motion.section>
 
-      {/* Architecture Overview */}
+      {/* System Architecture */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture Overview</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />System Architecture</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
           <div className="bg-gray-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">❌ Legacy Approach</h3>
+            <h3 className="font-bold mb-2">Components</h3>
             <p>
-              - No real-time observability.<br />
-              - Reactive alerting system.<br />
-              - High operational costs due to site visits.
+              - <strong>Frontend (optional):</strong> Swagger UI for interactive API testing<br />
+              - <strong>Backend (FastAPI + Python):</strong> REST endpoints calling containerized ML services<br />
+              - <strong>Model Services:</strong> Dockerized microservices with shared gRPC protocol<br />
+              - <strong>Queue (RabbitMQ / Kafka):</strong> For async processing of large jobs<br />
+              - <strong>Database (PostgreSQL + Redis):</strong><br />
+              &nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL: User auth, metadata, job tracking<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;Redis: Caching frequent queries, session management
             </p>
           </div>
-          <div className="bg-green-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">✅ New Observability System</h3>
+
+          <div className="bg-gray-50 p-4 border rounded">
+            <h3 className="font-bold mb-2">Infrastructure</h3>
             <p>
-              - Real-time device health monitoring with Prometheus.<br />
-              - Visualizations in Grafana.<br />
-              - Automated alerts for failures.<br />
-              - OTA deployment with Ansible & AWX for scaling.
+              - <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
+              - <strong>Container orchestration:</strong> Docker Compose (local), Kubernetes (cloud)<br />
+              - <strong>CI/CD:</strong> GitHub Actions for tests, Docker builds, and push to registry<br />
+              - <strong>Monitoring:</strong> Prometheus + Grafana for API latency, inference time, and system health
             </p>
           </div>
         </div>
       </motion.section>
 
-      {/* Key Product Decisions */}
+      {/* API Gateway */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-orange-600" size={18} />Key Product & Technical Decisions</h2>
-        <div className="overflow-x-auto text-sm">
-          <table className="w-full border border-gray-300 rounded shadow-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className={tableRowStyles}>Decision</th>
-                <th className={tableRowStyles}>Reason</th>
-                <th className={tableRowStyles}>Trade-off</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Prometheus for Metrics', 'Highly flexible and scalable for real-time metrics', 'Requires careful setup and resource management'],
-                ['Grafana for Dashboards', 'Great for visualizing metrics in an intuitive way', 'Learning curve for non-technical users'],
-                ['OTA Deployment with Ansible', 'Enables seamless updates for large-scale device fleets', 'Complexity in configuration and deployment pipeline setup'],
-                ['Heartbeat Daemon', 'Low resource footprint for device-side health checks', 'Potential missed metrics in low-bandwidth situations'],
-              ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-blue-600" size={18} />API Gateway</h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
+          <li>Rate limiting, request logging, and load balancing</li>
+          <li>JWT-based authentication</li>
+          <li>Retry logic and fallback handlers for long jobs</li>
+        </ul>
       </motion.section>
 
-      {/* Results & Impact */}
+      {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Results & Impact</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm">
-          <li>75% reduction in device failures due to real-time health checks</li>
-          <li>80% reduction in field technician visits due to automated failure detection</li>
-          <li>Improved NPS by 35% due to faster issue resolution</li>
-          <li>Increased system transparency, enabling proactive management of the edge fleet</li>
+        <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
+          <li>Built fully functional API-first platform for AI video features</li>
+          <li>Achieved 300ms average latency on /detect and /motion endpoints</li>
+          <li>Scalable to 100+ concurrent API calls with "1"s response time</li>
+          <li>Deployed both locally and to AWS EC2 + EKS</li>
+          <li>Designed with future plug-and-play ML models in mind</li>
+        </ul>
+      </motion.section>
+
+      {/* Cross-Functional Touch */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-teal-600" size={18} />Cross-Functional Touch</h2>
+        <p className="text-lg text-gray-700">Collaborated with:</p>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>Designers to define an intuitive Swagger UI</li>
+          <li>Backend Devs (peer reviewers) to optimize DB schema</li>
+          <li>ML experts to validate SAM and LaMa performance</li>
+          <li>Ops for scalable deployment and observability</li>
         </ul>
       </motion.section>
 
       {/* Lessons Learned */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Lessons Learned</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-sm">
-          <li>The importance of balancing technical feasibility with user-centric design</li>
-          <li>How real-time monitoring can drastically improve operational efficiency</li>
-          <li>Why collaboration with non-technical teams (e.g., SiteOps) is essential for product success</li>
-          <li>Challenges in scaling observability systems across diverse device architectures</li>
+        <ul className="list-disc ml-6 text-gray-700 text-lg">
+          <li>The importance of designing with extensibility and modularity in mind</li>
+          <li>How clear API documentation and SDKs drastically improve developer experience</li>
+          <li>The value of security and role-based access control in production APIs</li>
+          <li>Challenges in balancing speed and quality of AI inference tasks</li>
         </ul>
       </motion.section>
+
+      {/* Tags */}
+      {/* <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Tags</h2>
+        <div className="flex gap-3">
+          <span className="bg-indigo-100 text-indigo-600 text-xs px-3 py-1 rounded-full">AI</span>
+          <span className="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">API</span>
+          <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full">Security</span>
+          <span className="bg-red-100 text-red-600 text-xs px-3 py-1 rounded-full">Modularity</span>
+          <span className="bg-yellow-100 text-yellow-600 text-xs px-3 py-1 rounded-full">Extensibility</span>
+        </div>
+      </motion.section> */}
       {showScrollTop && (
   <button
     onClick={scrollToTop}
@@ -227,7 +244,7 @@ const CaseStudyDetail4 = () => {
   >
     <ChevronUp size={20} />
   </button>
-)}     
+)}           
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div
             className="mt-5 text-center"

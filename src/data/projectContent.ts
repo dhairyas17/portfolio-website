@@ -16,25 +16,30 @@ export const projectData: Record<string, Project> = {
   category: 'Edge Infrastructure & DevOps',
   tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
   overview:
-    'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 100+ Jetson-based edge devices.',
+    'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 1300+ edge devices include NVIDIA Jetsons and raspberry pi',
   problem:
     'Manual firmware updates on distributed edge devices led to inconsistency, increased downtime, and operational delays.',
   solution:
     'As the TPM, I led the implementation of a fully automated OTA update pipeline using AWX and Ansible. It ensured version control, retry mechanisms, and live monitoring for successful rollouts across geographically distributed devices.',
-  features: [
-    {
-      name: 'OTA Deployment via AWX',
-      description: 'Trigger and manage Ansible playbooks from a central AWX interface.',
-    },
-    {
-      name: 'Rollback Mechanism',
-      description: 'Version-controlled deployments with rollback support on failure.',
-    },
-    {
-      name: 'Scheduled Updates',
-      description: 'Supports window-based scheduling to avoid downtime during work hours.',
-    },
-  ],
+    features: [
+      {
+        name: 'Centralized OTA Deployment via AWX',
+        description: 'Orchestrate firmware rollouts from a unified AWX dashboard with real-time execution logs and controls.',
+      },
+      {
+        name: 'Mass Parallel Updates',
+        description: 'Update hundreds of geographically distributed devices simultaneously without overloading the network.',
+      },
+      {
+        name: 'Differential Update Support',
+        description: 'Deploy only changed components instead of full firmware to reduce update time and bandwidth usage.',
+      },
+      {
+        name: 'Secure Package Delivery',
+        description: 'Firmware packages are cryptographically signed and verified before installation to prevent unauthorized changes.',
+      },
+    ],
+    
   results: [
     {
       metric: 'Deployment Success Rate',
@@ -48,10 +53,14 @@ export const projectData: Record<string, Project> = {
     },
   ],
   architecture: [
-    'AWX Dashboard for job control and logs',
-    'Ansible playbooks for update orchestration',
-    'Jetson edge devices with version-agent installed',
+    'AWX Dashboard for centralized job scheduling, execution, and logging',
+    'Ansible playbooks for orchestrating firmware deployment workflows',
+    'Secure file repository for hosting and versioning firmware packages',
+    'SSH-based secure connections to edge devices for remote execution',
+    'Rollback mechanism integrated into playbooks for failed updates',
+    'Real-time job status tracking and alerts through AWX event streams',
   ],
+  
   challenges: [
     {
       challenge: 'Network Interruption During Update',
@@ -61,7 +70,16 @@ export const projectData: Record<string, Project> = {
       challenge: 'Version Drift',
       solution: 'Implemented strict version checks before update and post-validation',
     },
+    {
+      challenge: 'Monitoring Failures in Large-Scale Deployments',
+      solution: 'Set up centralized logging with AWX job events and alerting for failed or delayed updates',
+    },
+    {
+      challenge: 'Security Risks in OTA Delivery',
+      solution: 'Enabled signed firmware packages and verified signatures before installation',
+    },
   ],
+  
   keyTakeaways: [
     'Centralized AWX orchestration simplifies managing updates across 100+ distributed devices.',
     'Automated rollback and retry mechanisms ensure update reliability despite network interruptions.',
@@ -87,13 +105,13 @@ export const projectData: Record<string, Project> = {
   team: '2 people',
   status: 'Live',
   category: 'DevOps & Observability',
-  tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
+  tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Systemd'],
   overview:
     'Developed a robust observability platform tailored for edge devices deployed in remote industrial environments. Integrated Prometheus and Grafana to track system health, GPU usage, temperature, and disk I/O in real time.',
   problem:
     'Remote edge devices faced silent failures due to lack of monitoring, leading to missed alerts and loss of video analytics data.',
   solution:
-    'I implemented a lightweight monitoring setup using Prometheus and Node Exporter to collect system metrics from Jetson devices. Dashboards in Grafana were customized for temperature, CPU/GPU load, and storage usage with real-time alerts configured via webhooks and email.',
+    'I implemented a lightweight monitoring setup using Prometheus and Node Exporter to collect system metrics from Jetson devices. Dashboards in Grafana were customized for temperature, CPU/GPU load, and storage usage with real-time alerts configured via webhooks and email. Services were installed natively on the device using systemd for persistent background execution.',
   features: [
     {
       name: 'Custom Grafana Dashboards',
@@ -108,8 +126,8 @@ export const projectData: Record<string, Project> = {
       description: 'Optimized exporters and polling interval for constrained edge environments.',
     },
     {
-      name: 'Deployment via Docker',
-      description: 'Prometheus and exporters containerized for easy rollouts and updates.',
+      name: 'Service-based Deployment',
+      description: 'Prometheus and exporters installed as system services for lightweight, persistent operation.',
     },
   ],
   results: [
@@ -130,7 +148,7 @@ export const projectData: Record<string, Project> = {
     },
   ],
   architecture: [
-    'Node Exporter installed on each Jetson device',
+    'Node Exporter installed as a service on each Jetson device',
     'Prometheus server polling metrics from all devices',
     'Grafana dashboards hosted centrally with organization-wide access',
     'Alertmanager configured for webhook and email notifications',
@@ -150,96 +168,116 @@ export const projectData: Record<string, Project> = {
     'Custom Grafana dashboards provide clear, real-time visibility into critical hardware metrics.',
     'Early alerting via Prometheus and webhook/email notifications prevents costly device downtime.',
     'Overcame network challenges with reverse SSH tunnels and static NAT routing for reliable metric collection.',
-    'Containerized deployment enabled easy rollout and updates across distributed edge environments.',
+    'Native system service installation ensures reliable operation without the overhead of containers.',
   ],
-    
   links: {
     github: 'https://github.com/dhairya/edge-monitoring-prometheus',
     demo: 'https://monitoring-demo.com',
     documentation: 'https://docs.edge-monitoring.com',
   },
 },
-'fisheye-correction-opencv': {
+'portfolio-website': {
   id: 103,
-  title: 'Fisheye Distortion Correction on Wide Angle Cameras',
+  title: 'Interactive & Responsive Portfolio Website',
   description:
-    'Computer vision module using OpenCV to correct fisheye distortion on wide-angle images, improving spatial accuracy for downstream AI tasks in construction and measurement workflows.',
+    'A visually engaging personal portfolio built with React and Tailwind CSS, featuring projects, blogs, and case studies with smooth animations, responsive design, and accessibility.',
   image:
-    'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+    'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
-  team: '2 people',
+  team: 'Solo Project',
   status: 'Live',
-  category: 'Computer Vision & Image Processing',
-  tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
+  category: 'Frontend Development, UI/UX Design, Personal Branding',
+  tech: [
+    'React.js',
+    'Tailwind CSS',
+    'Framer Motion',
+    'EmailJS',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Responsive Design Principles',
+  ],
   overview:
-    'Designed and implemented an image undistortion pipeline using OpenCV to correct fisheye distortion on wide-angle camera images. The correction improved spatial accuracy and was integrated into Evercam’s BIM alignment and 2D measuring pipelines.',
+    'Designed and developed a fully responsive personal portfolio website to showcase professional experience, projects, blogs, and contact details. The site is optimized for both performance and visual appeal, featuring smooth animations, intuitive navigation, and SEO-friendly structure.',
   problem:
-    'Wide-angle camera lenses introduce fisheye distortion that warps image geometry, reducing the accuracy of object detection, measurement, and alignment in construction workflows.',
+    'Many online portfolios fail to balance aesthetics with functionality, often lacking consistent branding, mobile optimization, or effective content organization. This can hinder first impressions for recruiters and collaborators.',
   solution:
-    'Led the development of a fisheye correction module applying camera matrix calibration and distortion coefficients to undistort images before downstream processing. This improved the precision and efficiency of BIM alignment and measurement tasks.',
+    'Built a minimal yet dynamic front-end using React and Tailwind CSS, enhanced with Framer Motion animations for smooth interactions. Integrated EmailJS for secure and spam-protected contact form submissions without backend dependencies.',
   features: [
     {
-      name: 'Camera Calibration',
-      description: 'Used chessboard calibration to generate lens-specific distortion maps for precise correction.',
+      name: 'Responsive UI',
+      description: 'Mobile-first design that adapts seamlessly to desktops, tablets, and smartphones.',
     },
     {
-      name: 'Image Undistortion',
-      description: 'Processed individual wide-angle images to remove fisheye distortion and normalize spatial geometry.',
+      name: 'Animated Components',
+      description: 'Framer Motion-powered page transitions, hover effects, and interactive elements.',
     },
     {
-      name: 'BIM and Measurement Pipeline Integration',
-      description: 'Seamlessly integrated the undistortion module into Evercam’s BIM alignment and 2D measuring workflows.',
+      name: 'Projects & Case Studies',
+      description: 'Organized project showcase with filterable categories and detailed write-ups.',
     },
     {
-      name: 'Modular Python Interface',
-      description: 'Provided a flexible module compatible with OpenCV-based pipelines and AI pre-processing layers.',
+      name: 'Blog Section',
+      description: 'SEO-optimized blog layout for technical articles and thought leadership posts.',
+    },
+    {
+      name: 'Contact Form',
+      description: 'EmailJS-powered form with client-side validation and instant email delivery.',
+    },
+    {
+      name: 'Dark Mode Support',
+      description: 'Theme toggle with persisted user preference via local storage.',
     },
   ],
   results: [
     {
-      metric: 'Measurement Accuracy',
-      improvement: '+22%',
-      description: 'Significant improvement in 2D measurement precision after fisheye correction.',
+      metric: 'Performance',
+      improvement: '90+ Lighthouse Score',
+      description: 'Achieved high scores in Performance, Accessibility, and SEO audits.',
     },
     {
-      metric: 'BIM Alignment Speed',
-      improvement: '-30%',
-      description: 'Reduced alignment time by normalizing distorted images prior to processing.',
+      metric: 'Responsiveness',
+      improvement: '100%',
+      description: 'Consistent UX across devices from 320px to 4K displays.',
     },
     {
-      metric: 'Spatial Consistency',
-      improvement: '+100%',
-      description: 'Restored geometric linearity across image edges and corners, improving downstream AI model reliability.',
+      metric: 'Engagement',
+      improvement: '+65% session duration',
+      description: 'Smooth animations and clear navigation increased average visitor time on site.',
     },
   ],
   architecture: [
-    'OpenCV-based camera calibration and undistortion pipeline',
-    'Calibration via pre-captured chessboard images to compute distortion coefficients',
-    'Image-level processing for fisheye correction before AI workflows',
-    'Packaged as a Docker container for easy integration and deployment',
+    'Frontend: React.js with functional components',
+    'Styling: Tailwind CSS for utility-first styling + custom CSS modules',
+    'Animations: Framer Motion for smooth transitions and micro-interactions',
+    'Forms: EmailJS integration for backend-free email handling',
+    'SEO: Meta tags, semantic HTML, and sitemap for discoverability',
+    'Hosting: Deployed on Vercel for fast global delivery',
   ],
   challenges: [
     {
-      challenge: 'Lens Variability',
-      solution: 'Developed dynamic calibration tools to handle multiple fisheye lens profiles encountered in the field.',
+      challenge: 'Balancing Animations with Performance',
+      solution: 'Optimized Framer Motion usage and reduced DOM re-renders using React.memo.',
     },
     {
-      challenge: 'Balancing Accuracy and Performance',
-      solution: 'Optimized undistortion routines for fast image processing with minimal latency.',
+      challenge: 'Responsive Layout Across Devices',
+      solution: 'Applied Tailwind’s responsive breakpoints and tested across multiple device sizes.',
+    },
+    {
+      challenge: 'Spam Protection in Contact Form',
+      solution: 'Added client-side validation and EmailJS templates with honeypot fields.',
     },
   ],
-  links: {
-    github: 'https://github.com/dhairya/fisheye-correction-opencv',
-    demo: 'https://fisheye-demo.com',
-    documentation: 'https://docs.fisheye-correction.com',
-  },
   keyTakeaways: [
-    'Focused on undistorting images (not video) to enhance spatial accuracy in BIM alignment and 2D measuring workflows.',
-    'Adopted by Evercam, the solution reduced BIM alignment time significantly and improved measurement precision.',
-    'Camera calibration was made dynamic and adaptable to various fisheye lenses, ensuring field-ready robustness.',
-    'Optimized pipeline integrated seamlessly into existing AI workflows, boosting downstream model reliability.',
-    'Maintained low-latency processing with efficient OpenCV techniques, suitable for real-time industrial use cases.',
+    'Well-structured design systems (Tailwind utility classes) accelerate development and ensure visual consistency.',
+    'Animations enhance engagement but require performance tuning to avoid sluggishness.',
+    'A backend-free contact form (EmailJS) simplifies deployment while maintaining professionalism.',
+    'Mobile-first development ensures accessibility and usability for the widest audience.',
+    'Showcasing projects in a clean, filterable format improves recruiter and client navigation.',
   ],
+  links: {
+    github: 'https://github.com/dhairya/portfolio-website',
+    demo: 'https://dhairyasharma.dev',
+  },
 },
 'yolov4-onnx-tensorrt': {
   id: 104,
@@ -327,108 +365,11 @@ export const projectData: Record<string, Project> = {
     documentation: 'https://docs.yolov4-jetson.com',
   },
 },
-'genai-chatbot': {
-  id: 105,
-  title: 'AI Chatbot using GenAI & LLMs',
-  description:
-    'Conversational AI assistant powered by a fine-tuned LLM, enabling domain-specific question answering, task automation, and natural language interaction.',
-  image:
-    'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2025',
-  team: '3 people',
-  status: 'Live',
-  category: 'Generative AI & NLP',
-  tech: [
-    'LLM (OpenAI/GPT-Neo)',
-    'LangChain',
-    'Python',
-    'FastAPI',
-    'VectorDB (FAISS)',
-    'Streamlit',
-    'HuggingFace Transformers',
-    'Docker',
-  ],
-  overview:
-    'Built a conversational chatbot using generative AI to provide intelligent, context-aware answers and automate knowledge tasks in a specific business domain. The bot supports both voice and text interactions and integrates with external APIs.',
-  problem:
-    'Traditional chatbots rely on rule-based flows, limiting their adaptability, scalability, and contextual understanding—especially for complex domains and user questions.',
-  solution:
-    'Led the product strategy and implementation of an LLM-based chatbot using LangChain and custom retrieval-augmented generation (RAG). The system was fine-tuned on domain data, integrated with a Vector DB for semantic search, and exposed via a Streamlit and API interface for both internal and customer-facing use.',
-  features: [
-    {
-      name: 'RAG Pipeline',
-      description: 'Combines LLM with document retrieval from a vector database for grounded responses.',
-    },
-    {
-      name: 'Natural Language Interface',
-      description: 'Supports complex question answering and task execution via chat UI.',
-    },
-    {
-      name: 'Multimodal Support',
-      description: 'Handles both text and voice input for accessibility and ease of use.',
-    },
-    {
-      name: 'API Integration',
-      description: 'Hooks into external systems (e.g. CRM, DBs) to fetch real-time info via LangChain tools.',
-    },
-    {
-      name: 'Interactive UI',
-      description: 'Frontend built with Streamlit for rapid prototyping and internal testing.',
-    },
-  ],
-  results: [
-    {
-      metric: 'Resolution Time',
-      improvement: '-65%',
-      description: 'Faster customer query resolution via AI-driven responses.',
-    },
-    {
-      metric: 'Automation Coverage',
-      improvement: '+80%',
-      description: 'Handled a wide range of FAQs and documentation queries without human support.',
-    },
-    {
-      metric: 'User Engagement',
-      improvement: '+50%',
-      description: 'More interactive and accurate compared to older rule-based chat flows.',
-    },
-  ],
-  architecture: [
-    'Frontend: Streamlit UI and REST API endpoint',
-    'LLM: GPT via OpenAI or open-source HuggingFace models',
-    'LangChain for orchestration and agent workflows',
-    'FAISS/Chroma for vector similarity search',
-    'FastAPI backend with Dockerized deployment',
-  ],
-  challenges: [
-    {
-      challenge: 'Hallucinations and Incorrect Answers',
-      solution: 'Implemented RAG pipeline and prompt templating to ground responses in real documents.',
-    },
-    {
-      challenge: 'Latency for Larger Models',
-      solution: 'Used quantized models and streaming inference for faster interaction.',
-    },
-  ],
-  keyTakeaways: [
-    'Prioritizing developer experience (DX) — e.g. Streamlit UI, clean APIs — accelerated internal adoption and testing.',
-    'RAG + prompt engineering was key to minimizing hallucinations and grounding responses in trusted data.',
-    'Early investment in modular architecture enabled seamless swaps between OpenAI and open-source LLMs.',
-    'Optimizing for latency (quantization, async I/O) made real-time voice + text interaction practical.',
-    'Building with integration in mind (LangChain tools, API hooks) ensured fast onboarding across business systems.',
-  ],
-  
-  links: {
-    github: 'https://github.com/dhairya/genai-chatbot',
-    demo: 'https://genai-chatbot-demo.com',
-    documentation: 'https://docs.genai-chatbot.com',
-  },
-},
 'video-intelligence-api': {
-  id: 106,
+  id: 105,
   title: 'Scalable AI-Driven Video Intelligence API Platform',
   description:
-    'A self-initiated platform offering a suite of AI-powered video processing capabilities through unified REST APIs — including object detection, face embedding, segmentation, inpainting, and motion tracking.',
+    'A self-initiated platform offering a suite of AI-powered video processing capabilities through unified REST APIs, including object detection, face embedding, segmentation, inpainting, and motion tracking.',
   image:
     'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
@@ -452,7 +393,7 @@ export const projectData: Record<string, Project> = {
     'Swagger UI',
   ],
   overview:
-    'Built a fully modular, scalable, and real-time platform for AI-powered video analysis tasks including object detection, segmentation, face embedding, inpainting, and motion detection — all accessible via developer-friendly REST APIs with cloud and edge deployment support.',
+    'Built a fully modular, scalable, and real-time platform for AI-powered video analysis tasks including object detection, segmentation, face embedding, inpainting, and motion detection, all accessible via developer-friendly REST APIs with cloud and edge deployment support.',
   problem:
     'Existing AI pipelines for video processing are often fragmented, non-scalable, and lack intuitive developer APIs. These solutions typically require deep ML knowledge and are difficult to deploy in production, especially at scale or in edge environments.',
   solution:
@@ -529,11 +470,11 @@ export const projectData: Record<string, Project> = {
     },
   ],
   keyTakeaways: [
-    'Prioritizing developer experience (DX) — e.g. Swagger UI, unified API contracts — greatly accelerates adoption.',
-    'Investing early in observability pays off — it helped identify latency spikes and optimize throughput under load.',
+    'Prioritizing developer experience (DX), e.g. Swagger UI, unified API contracts, greatly accelerates adoption.',
+    'Investing early in observability pays off, it helped identify latency spikes and optimize throughput under load.',
     'Designing for extensibility from day one made it easy to add new AI models and support edge deployments.',
-    'Balancing model accuracy with performance is critical — tuning batch sizes and Redis caching improved real-time use cases.',
-    'Security and integration support (JWT, webhooks) are not afterthoughts — they are core to enterprise-readiness.',
+    'Balancing model accuracy with performance is critical, tuning batch sizes and Redis caching improved real-time use cases.',
+    'Security and integration support (JWT, webhooks) are not afterthoughts, they are core to enterprise-readiness.',
   ],
   links: {
     github: 'https://github.com/dhairya/video-intelligence-api',
@@ -541,5 +482,183 @@ export const projectData: Record<string, Project> = {
     documentation: 'https://docs.video-intelligence-api.com',
   },
 },
-
+'genai-chatbot': {
+  id: 106,
+  title: 'AI Chatbot using GenAI & LLMs',
+  description:
+    'Conversational AI assistant powered by a fine-tuned LLM, enabling domain-specific question answering, task automation, and natural language interaction.',
+  image:
+    'https://images.pexels.com/photos/8386446/pexels-photo-8386446.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+  year: '2025',
+  team: '3 people',
+  status: 'Live',
+  category: 'Generative AI & NLP',
+  tech: [
+    'LLM (OpenAI/GPT-Neo)',
+    'LangChain',
+    'Python',
+    'FastAPI',
+    'VectorDB (FAISS)',
+    'Streamlit',
+    'HuggingFace Transformers',
+    'Docker',
+  ],
+  overview:
+    'Built a conversational chatbot using generative AI to provide intelligent, context-aware answers and automate knowledge tasks in a specific business domain. The bot supports both voice and text interactions and integrates with external APIs.',
+  problem:
+    'Traditional chatbots rely on rule-based flows, limiting their adaptability, scalability, and contextual understanding, especially for complex domains and user questions.',
+  solution:
+    'Led the product strategy and implementation of an LLM-based chatbot using LangChain and custom retrieval-augmented generation (RAG). The system was fine-tuned on domain data, integrated with a Vector DB for semantic search, and exposed via a Streamlit and API interface for both internal and customer-facing use.',
+  features: [
+    {
+      name: 'RAG Pipeline',
+      description: 'Combines LLM with document retrieval from a vector database for grounded responses.',
+    },
+    {
+      name: 'Natural Language Interface',
+      description: 'Supports complex question answering and task execution via chat UI.',
+    },
+    {
+      name: 'Multimodal Support',
+      description: 'Handles both text and voice input for accessibility and ease of use.',
+    },
+    {
+      name: 'API Integration',
+      description: 'Hooks into external systems (e.g. CRM, DBs) to fetch real-time info via LangChain tools.',
+    },
+    {
+      name: 'Interactive UI',
+      description: 'Frontend built with Streamlit for rapid prototyping and internal testing.',
+    },
+  ],
+  results: [
+    {
+      metric: 'Resolution Time',
+      improvement: '-65%',
+      description: 'Faster customer query resolution via AI-driven responses.',
+    },
+    {
+      metric: 'Automation Coverage',
+      improvement: '+80%',
+      description: 'Handled a wide range of FAQs and documentation queries without human support.',
+    },
+    {
+      metric: 'User Engagement',
+      improvement: '+50%',
+      description: 'More interactive and accurate compared to older rule-based chat flows.',
+    },
+  ],
+  architecture: [
+    'Frontend: Streamlit UI and REST API endpoint',
+    'LLM: GPT via OpenAI or open-source HuggingFace models',
+    'LangChain for orchestration and agent workflows',
+    'FAISS/Chroma for vector similarity search',
+    'FastAPI backend with Dockerized deployment',
+  ],
+  challenges: [
+    {
+      challenge: 'Hallucinations and Incorrect Answers',
+      solution: 'Implemented RAG pipeline and prompt templating to ground responses in real documents.',
+    },
+    {
+      challenge: 'Latency for Larger Models',
+      solution: 'Used quantized models and streaming inference for faster interaction.',
+    },
+  ],
+  keyTakeaways: [
+    'Prioritizing developer experience (DX), e.g. Streamlit UI, clean APIs, accelerated internal adoption and testing.',
+    'RAG + prompt engineering was key to minimizing hallucinations and grounding responses in trusted data.',
+    'Early investment in modular architecture enabled seamless swaps between OpenAI and open-source LLMs.',
+    'Optimizing for latency (quantization, async I/O) made real-time voice + text interaction practical.',
+    'Building with integration in mind (LangChain tools, API hooks) ensured fast onboarding across business systems.',
+  ],
+  
+  links: {
+    github: 'https://github.com/dhairya/genai-chatbot',
+    demo: 'https://genai-chatbot-demo.com',
+    documentation: 'https://docs.genai-chatbot.com',
+  },
+},
+'fisheye-correction-opencv': {
+  id: 107,
+  title: 'Fisheye Distortion Correction on Wide Angle Cameras',
+  description:
+  'Designed and implemented an image undistortion pipeline using OpenCV to correct fisheye distortion on wide-angle camera images. The correction improved spatial accuracy and was integrated into Evercam’s BIM alignment and 2D measuring pipelines.',
+  image:
+    'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
+  year: '2025',
+  team: '2 people',
+  status: 'Live',
+  category: 'Computer Vision & Image Processing',
+  tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
+  overview:
+    'Computer vision module using OpenCV to correct fisheye distortion on wide-angle images, improving spatial accuracy for downstream AI tasks in construction and measurement workflows. Adopted by Evercam and deployed across enterprise client servers globally, ensuring reliable performance in diverse industrial environments.',
+    
+  problem:
+    'Wide-angle camera lenses introduce fisheye distortion that warps image geometry, reducing the accuracy of object detection, measurement, and alignment in construction workflows.',
+  solution:
+    'Led the development of a fisheye correction module applying camera matrix calibration and distortion coefficients to undistort images before downstream processing. This improved the precision and efficiency of BIM alignment and measurement tasks.',
+  features: [
+    {
+      name: 'Camera Calibration',
+      description: 'Used chessboard calibration to generate lens-specific distortion maps for precise correction.',
+    },
+    {
+      name: 'Image Undistortion',
+      description: 'Processed individual wide-angle images to remove fisheye distortion and normalize spatial geometry.',
+    },
+    {
+      name: 'BIM and Measurement Pipeline Integration',
+      description: 'Seamlessly integrated the undistortion module into Evercam’s BIM alignment and 2D measuring workflows.',
+    },
+    {
+      name: 'Modular Python Interface',
+      description: 'Provided a flexible module compatible with OpenCV-based pipelines and AI pre-processing layers.',
+    },
+  ],
+  results: [
+    {
+      metric: 'Measurement Accuracy',
+      improvement: '+32%',
+      description: 'Significant improvement in 2D measurement precision after fisheye correction.',
+    },
+    {
+      metric: 'BIM Alignment Speed',
+      improvement: '-60%',
+      description: 'Reduced alignment time by normalizing distorted images prior to processing.',
+    },
+    {
+      metric: 'Spatial Consistency',
+      improvement: '+100%',
+      description: 'Restored geometric linearity across image edges and corners, improving downstream AI model reliability.',
+    },
+  ],
+  architecture: [
+    'OpenCV-based camera calibration and undistortion pipeline',
+    'Calibration via pre-captured chessboard images to compute distortion coefficients',
+    'Image-level processing for fisheye correction before AI workflows',
+    'Packaged as a Docker container for easy integration and deployment',
+  ],
+  challenges: [
+    {
+      challenge: 'Lens Variability',
+      solution: 'Developed dynamic calibration tools to handle multiple fisheye lens profiles encountered in the field.',
+    },
+    {
+      challenge: 'Balancing Accuracy and Performance',
+      solution: 'Optimized undistortion routines for fast image processing with minimal latency.',
+    },
+  ],
+  links: {
+    github: 'https://github.com/dhairya/fisheye-correction-opencv',
+    demo: 'https://fisheye-demo.com',
+    documentation: 'https://docs.fisheye-correction.com',
+  },
+  keyTakeaways: [
+    'Focused on undistorting images (not video) to enhance spatial accuracy in BIM alignment and 2D measuring workflows.',
+    'Adopted by Evercam, the solution reduced BIM alignment time significantly and improved measurement precision.',
+    'Camera calibration was made dynamic and adaptable to various fisheye lenses, ensuring field-ready robustness.',
+    'Maintained low-latency processing with efficient OpenCV techniques, suitable for real-time industrial use cases.',
+  ],
+}
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -12,6 +12,20 @@ import {
 } from 'lucide-react';
 import { projectData } from '../data/projectContent';
 import { Project } from '../types/project';
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (custom?: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: custom ?? 0, ease: 'easeOut' },
+  }),
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
 
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -50,122 +64,117 @@ const ProjectDetail: React.FC = () => {
         <h1 className="text-2xl font-semibold text-gray-700">Project not found</h1>
         <Link
           to={`/portfolio/projects?filter=${filter}&page=${page}`}
-          className="mt-4 inline-block text-blue-600 hover:underline"
+          className="mt-4 inline-block text-blue-600 hover:underline transition-colors duration-200"
         >
           Back to Projects
         </Link>
       </div>
     );
   }
-  
 
   return (
     <motion.div
-      className="min-h-[80vh] pt-[100px] md:pt-[90px] pb-8"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: -50 }}
-      transition={{ duration: 0.5 }}
+      className="min-h-[80vh] pt-[100px] md:pt-[90px] pb-8 bg-gradient-to-b from-white via-gray-50 to-gray-100"
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={{
+        hidden: { opacity: 0, x: 50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+      }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
           className="mb-8"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Link
-            to={`/portfolio/projects?filter=${filter}&page=${page}`}
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Projects
-          </Link>
-          <div className="flex flex-col md:flex-row justify-between mb-6">
+          <motion.div variants={fadeUp} custom={0}>
+            <Link
+              to={`/portfolio/projects?filter=${filter}&page=${page}`}
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Projects
+            </Link>
+          </motion.div>
+
+          <motion.div variants={fadeUp} custom={0.1} className="flex flex-col md:flex-row justify-between mb-6">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{project.title}</h1>
-              <p className="text-xl text-gray-600 mb-4">{project.description}</p>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{project.title}</h1>
+              <p className="text-xl text-gray-600 text-justify mb-4">{project.description}</p>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <div className="flex items-center gap-2">
+                <motion.div variants={fadeUp} custom={0.2} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
                   <Calendar className="w-4 h-4 text-gray-400" />
                   <span className="text-gray-600">{project.year}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </motion.div>
+                <motion.div variants={fadeUp} custom={0.25} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
                   <Users className="w-4 h-4 text-gray-400" />
                   <span className="text-gray-600">{project.team}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </motion.div>
+                <motion.div variants={fadeUp} custom={0.3} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
                   <Tag className="w-4 h-4 text-gray-400" />
                   <span className="text-gray-600">{project.category}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </motion.div>
+                <motion.div variants={fadeUp} custom={0.35} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
                   <Star className="w-4 h-4 text-green-500" />
                   <span className="text-green-600 font-semibold">{project.status}</span>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Tech Stack */}
-          <div className="mb-6">
+          <motion.div variants={fadeUp} custom={0.4} className="mb-6">
             <h3 className="text-sm font-semibold text-gray-500 mb-3">TECHNOLOGY STACK</h3>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((tech) => (
-                <span
+                <motion.span
                   key={tech}
+                  whileHover={{ scale: 1.04 }}
                   className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium"
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Hero Image */}
-        <motion.div
-          className="mb-12"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <img
+        <motion.div variants={fadeUp} custom={0.45} className="mb-12">
+          <motion.img
             src={project.image}
             alt={project.title}
             className="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
           />
         </motion.div>
 
         {/* Content */}
         <div className="space-y-12">
           {/* Overview */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
+          <motion.section variants={fadeUp} custom={0.5}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Overview</h2>
-            <p className="text-gray-700 leading-relaxed text-lg">{project.overview}</p>
+            <p className="text-gray-700 leading-relaxed text-justify text-lg">{project.overview}</p>
           </motion.section>
 
           {/* Problem & Solution */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
+          <motion.section variants={fadeUp} custom={0.6}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+              <div className="flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem</h2>
-                <div className="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-lg">
+                <div className="bg-red-50 border-l-4 border-red-400 p-6 text-justify rounded-r-lg flex-1">
                   <p className="text-gray-700 leading-relaxed">{project.problem}</p>
                 </div>
               </div>
-              <div>
+              <div className="flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
-                <div className="bg-green-50 border-l-4 border-green-400 p-6 rounded-r-lg">
+                <div className="bg-green-50 border-l-4 border-green-400 text-justify p-6 rounded-r-lg flex-1">
                   <p className="text-gray-700 leading-relaxed">{project.solution}</p>
                 </div>
               </div>
@@ -173,49 +182,42 @@ const ProjectDetail: React.FC = () => {
           </motion.section>
 
           {/* Key Features */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
+          <motion.section variants={fadeUp} custom={0.7}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 text-justify gap-6">
               {project.features.map((feature, index) => (
-                <div key={index} className="bg-white border-2 border-gray-100 p-6 rounded-lg">
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white border-2 border-gray-100 p-6 rounded-lg"
+                >
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h3>
                   <p className="text-gray-600">{feature.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.section>
 
           {/* Results */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
+          <motion.section variants={fadeUp} custom={0.8}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Results & Impact</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.results.map((result, index) => (
-                <div
+                <motion.div
                   key={index}
+                  whileHover={{ scale: 1.01 }}
                   className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
                   <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
                   <p className="text-gray-600 text-sm">{result.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.section>
 
           {/* Architecture */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
+          <motion.section variants={fadeUp} custom={0.9}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">System Architecture</h2>
             <div className="bg-gray-50 p-6 rounded-lg">
               <ul className="space-y-3">
@@ -230,11 +232,7 @@ const ProjectDetail: React.FC = () => {
           </motion.section>
 
           {/* Challenges */}
-          <motion.section
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-          >
+          <motion.section variants={fadeUp} custom={1.0}>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Challenges</h2>
             <div className="space-y-6">
               {project.challenges.map((item, index) => (
@@ -245,68 +243,85 @@ const ProjectDetail: React.FC = () => {
               ))}
             </div>
           </motion.section>
+        {/* Key Takeaways */}
+        <motion.section variants={fadeUp} custom={1.1}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Takeaways</h2>
+          <ul className="space-y-4">
+            {project.keyTakeaways.map((takeaway, index) => (
+              <li
+                key={index}
+                className="flex items-start gap-3 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400"
+              >
+                <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-700">{takeaway}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.section>
 
-          
-          <div className="mt-10 flex flex-col sm:flex-row justify-between gap-4">
-  {prevProject ? (
-    <Link
-      to={`/portfolio/projects/${prevProject.id}`}
-      className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
-    >
-      <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
-      <div className="flex flex-col items-start text-left max-w-full">
-        <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
-        <span className="font-medium truncate group-hover:text-blue-600">{prevProject.title}</span>
-      </div>
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
+          {/* Prev / Next Navigation */}
+          <motion.div variants={fadeUp} custom={1.05} className="mt-10 flex flex-col sm:flex-row justify-between gap-4">
+            {prevProject ? (
+              <Link
+                to={`/portfolio/projects/${prevProject.id}`}
+                className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+              >
+                <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+                <div className="flex flex-col items-start text-left max-w-full">
+                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
+                  <span className="font-medium truncate group-hover:text-blue-600">{prevProject.title}</span>
+                </div>
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
 
-  {nextProject ? (
-    <Link
-      to={`/portfolio/projects/${nextProject.id}`}
-      className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
-    >
-      <div className="flex flex-col items-end text-right max-w-full">
-        <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
-        <span className="font-medium truncate group-hover:text-blue-600">{nextProject.title}</span>
-      </div>
-      <ArrowLeft className="w-4 h-4 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
-</div>
+            {nextProject ? (
+              <Link
+                to={`/portfolio/projects/${nextProject.id}`}
+                className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
+              >
+                <div className="flex flex-col items-end text-right max-w-full">
+                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
+                  <span className="font-medium truncate group-hover:text-blue-600">{nextProject.title}</span>
+                </div>
+                <ArrowLeft className="w-4 h-4 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
+          </motion.div>
 
-{showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}
+          {/* Scroll to Top */}
+          {showScrollTop && (
+            <motion.button
+              onClick={scrollToTop}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+              aria-label="Scroll to top"
+            >
+              <ChevronUp size={20} />
+            </motion.button>
+          )}
 
           {/* CTA */}
           <motion.div
             className="mt-12 pt-6 border-t text-center"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
+            variants={fadeUp}
+            custom={1.15}
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Want to discuss a similar solution?</h2>
             <p className="text-gray-600 mb-6 text-lg">
               I’m always open to connecting, sharing insights, or tackling new product challenges together.
             </p>
             <Link
-  to="/contact"
-  className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
->
-  <span className="block will-change-auto">Let’s Connect</span>
-</Link>
-
+              to="/contact"
+              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+            >
+              <span className="block will-change-auto">Let’s Connect</span>
+            </Link>
           </motion.div>
         </div>
 

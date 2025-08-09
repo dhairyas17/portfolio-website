@@ -27,7 +27,9 @@ const CaseStudyCategory = () => {
       team: '14',
       impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
       tags: ['Edge AI', 'System Design', 'YOLOv5', 'Jetson', 'RabbitMQ', 'OTA Deployment'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      // image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      image:  '/assets/case-studies/gate-report.png',
+
     },
     {
       id: '2',
@@ -39,7 +41,8 @@ const CaseStudyCategory = () => {
       team: '10',
       impact: ['Reduced deployment time by 70%', 'Enabled 1000+ site scalability', 'Empowered non-devs to manage edge ops'],
       tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
-      image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      // image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      image:  '/assets/case-studies/standardizing-edge.png',
     },
     {
       id: '3',
@@ -51,22 +54,12 @@ const CaseStudyCategory = () => {
       team: '7',
       impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
       tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
-      image: 'https://images.pexels.com/photos/1581094/pexels-photo-1581094.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      // image: 'https://images.pexels.com/photos/1581094/pexels-photo-1581094.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      image:  '/assets/case-studies/edge-monitoring-platform.png',
+
     },
     {
-      id: '4',
-      title: 'Scaling ML Pipelines & MLOps Lifecycle',
-      subtitle: 'Boosted Detection Accuracy from 67% to 96%',
-      category: 'mlops',
-      description: "Redesigned the ML pipeline using Airflow, CVAT, and MLflow to scale model training and boost accuracy by 29%.",
-      duration: '6 months',
-      team: '10',
-      impact: ['10× data scale', '29% accuracy lift', '60% faster annotation'],
-      tags: ['MLOps', 'Airflow', 'MLflow', 'Edge AI', 'CVAT', 'Data Pipeline'],
-      image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
-    },
-    {
-      id: "5",
+      id: "4",
       title: "Designing a Scalable AI-Driven  API Platform",
       subtitle: "Product Design, System Design, AI/Edge Architecture",
       category: 'api',
@@ -75,8 +68,26 @@ const CaseStudyCategory = () => {
       team: "5",
       impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
       tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
-      image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+      // image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+    image:  '/assets/case-studies/video-intelligence-api.png',
+    },
+    {
+      id: '5',
+      title: 'Scaling ML Pipelines & MLOps Lifecycle',
+      subtitle: 'Boosted Detection Accuracy from 67% to 96%',
+      category: 'mlops',
+      description: "Redesigned the ML pipeline using Airflow, CVAT, and MLflow to scale model training and boost accuracy by 29%.",
+      duration: '6 months',
+      team: '10',
+      impact: ['10× data scale', '29% accuracy lift', '60% faster annotation'],
+      tags: ['MLOps', 'Airflow', 'MLflow', 'Edge AI', 'CVAT', 'Data Pipeline'],
+      // image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
+      image:  '/assets/case-studies/Scaling MLOps Pipeline in Blue.png',
+    
     }
+
+
+
   ];
 
   const allCategories = Array.from(new Set(caseStudies.map((study) => study.category)));

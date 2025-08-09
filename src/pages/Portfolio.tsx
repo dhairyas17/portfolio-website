@@ -58,7 +58,7 @@ const Portfolio = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-5xl font-bold text-gray-900 mb-6">Portfolio</h1>
-            <p className="text-lg text-gray-500 max-w-4xl mx-auto">
+            <p className="text-lg text-gray-500 max-w-4xl text-center mx-auto">
               A curated collection of my most impactful case studies and personal projects.
             </p>
           </motion.div>
