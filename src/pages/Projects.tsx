@@ -18,22 +18,7 @@ const filters = [
 
 const projects = [
 
-  {
-    id: '103',
-    title: 'Interactive & Responsive Portfolio Website',
-    description:
-      'Developed a personal portfolio site with React, Tailwind, and Framer Motion,featuring smooth animations and responsive design.',  
-    image:  '/assets/case-studies/portfilio.png',
-    category: 'web',
-    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS', 'JavaScript', 'CSS3'],
-    year: '2025',
-    team: 'Solo Project',
-    status: 'Live',
-    links: {
-      github: 'https://github.com/dhairya/portfolio-website',
-      demo: 'https://dhairyasharma.dev',
-    },
-  },    
+  
   {
     id: '101',
     title: 'OTA Firmware Updates with AWX & Ansible',
@@ -68,7 +53,7 @@ const projects = [
   },
 
   {
-    id: '105',
+    id: '103',
     title: 'Scalable AI-Driven Video Intelligence API Platform',
     description:
       'Developed a modular FastAPI platform offering video AI features via REST APIs,YOLOv8, FaceNet, SAM, LaMa,running on cloud and edge.',
@@ -86,8 +71,24 @@ const projects = [
       demo: 'https://video-api-demo.com',
     },
   },
+    {
+    id: '104',
+    title: 'AI Chatbot using GenAI & LLMs',
+    description:
+      'Led the development of a domain-specific GenAI chatbot using LangChain and LLMs, integrating a RAG pipeline and voice/text interactions.',  
+    image:  '/assets/case-studies/genai.png',
+    category: 'ai-ml',
+    tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
+    year: '2025',
+    team: '2 people',
+    status: 'Live',
+    links: {
+      github: 'https://github.com/dhairya/genai-chatbot',
+      demo: 'https://genai-chatbot-demo.com',
+    },
+  },
   {
-    id: '107',
+    id: '105',
     title: 'Fisheye Distortion Correction on Wide Angle Cameras',
     description:
       'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
@@ -103,7 +104,7 @@ const projects = [
     },
   }, 
   {
-    id: '104',
+    id: '106',
     title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
     description:
       'Led the development and deployment of a real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving <50 ms inference.',
@@ -119,22 +120,23 @@ const projects = [
     },
   },  
  
+
   {
-    id: '106',
-    title: 'AI Chatbot using GenAI & LLMs',
+    id: '107',
+    title: 'Interactive & Responsive Portfolio Website',
     description:
-      'Led the development of a domain-specific GenAI chatbot using LangChain and LLMs, integrating a RAG pipeline and voice/text interactions.',  
-    image:  '/assets/case-studies/genai.png',
-    category: 'ai-ml',
-    tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
+      'Developed a personal portfolio site with React, Tailwind, and Framer Motion,featuring smooth animations and responsive design.',  
+    image:  '/assets/case-studies/portfilio.png',
+    category: 'web',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS', 'JavaScript', 'CSS3'],
     year: '2025',
-    team: '2 people',
+    team: 'Solo Project',
     status: 'Live',
     links: {
-      github: 'https://github.com/dhairya/genai-chatbot',
-      demo: 'https://genai-chatbot-demo.com',
+      github: 'https://github.com/dhairya/portfolio-website',
+      demo: 'https://dhairyasharma.dev',
     },
-  },
+  }
 ];
 
 const Projects = () => {

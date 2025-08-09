@@ -90,12 +90,6 @@ const Contact = () => {
       color: 'text-blue-600 hover:text-blue-700'
     },
     {
-      icon: Github,
-      name: 'GitHub',
-      url: 'https://github.com/dhairyas17',
-      color: 'text-gray-700 hover:text-gray-900'
-    },
-    {
       icon: Twitter,
       name: 'Twitter',
       url: 'https://x.com/Dhairya76327149',

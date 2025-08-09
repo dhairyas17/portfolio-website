@@ -9,7 +9,7 @@ const Portfolio = () => {
       id: 'case-studies',
       title: 'Case Studies',
       description:
-        'In-depth problem-solving stories showcasing how I approached technical and product challenges end-to-end from problem framing to outcome delivery.',
+        'Detailed case studies demonstrating my end-to-end approach to technical and product challenge, from framing the problem, designing and iterating solutions, to delivering measurable outcomes.',
       icon: Layers,
       color: 'from-blue-500 to-indigo-600',
       items: [
@@ -17,27 +17,27 @@ const Portfolio = () => {
         'Standardizing Edge Setup at Evercam',
         'Real-Time Observability for Edge Devices',
         'Scaling ML Pipelines & MLOps Lifecycle',
-        'Designing a Scalable AI-Driven API Platform',
-        'Onboarding Redesign: Boosted Activation'
+        'Designing a Scalable AI-Driven API Platform'
       ],
-      count: 6,
+      count: 5,
     },
     {
       id: 'projects',
       title: 'Projects',
       description:
-        'Self-initiated and collaborative tech projects demonstrating hands-on skills in architecture, AI, edge computing, and workflow automation.',
+        'Independent and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, and workflow automation, delivering tangible results and measurable impact',
       icon: FolderKanban,
       color: 'from-purple-500 to-pink-600',
       items: [
         "OTA Firmware Updates with AWX & Ansible",
         "Edge Device Monitoring with Prometheus & Grafana",
-        "Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT",
-        "Fisheye Distortion Correction on Wide Angle Cameras",
+        "Scalable AI-Driven Video Intelligence API Platform",
         "AI Chatbot using GenAI & LLMs",
-        "Scalable AI-Driven Video Intelligence API Platform"
+        "Fisheye Distortion Correction on Wide Angle Cameras",
+        "Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT",
+        'Interactive & Responsive Portfolio Website'
       ],
-      count: 6,
+      count: 7,
     },
   ];
 
@@ -59,11 +59,11 @@ const Portfolio = () => {
           >
             <h1 className="text-5xl font-bold text-gray-900 mb-6">Portfolio</h1>
             <p className="text-lg text-gray-500 max-w-4xl text-center mx-auto">
-              A curated collection of my most impactful case studies and personal projects.
+              A curated collection of my most impactful case studies and projects.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mb-2 mx-auto w-full">
             {categories.map((category, index) => (
               <motion.div
                 key={category.id}
@@ -72,7 +72,7 @@ const Portfolio = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
               >
                 <Link to={`/portfolio/${category.id}`}>
-                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[530px] flex flex-col">
+                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[580px] flex flex-col">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     />
@@ -83,12 +83,17 @@ const Portfolio = () => {
                         >
                           <category.icon className="w-8 h-8 text-white" />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
                           {category.title}
                         </h3>
                       </div>
 
-                      <p className="text-gray-600 leading-relaxed justify-center mb-6">{category.description}</p>
+                      <p
+                        className="text-gray-600 leading-relaxed mb-6"
+                        style={{ textAlign: "justify" }}
+                      >
+                        {category.description}
+                      </p>
 
                       <ul className="text-sm text-gray-500 space-y-2 mb-6 list-disc list-inside text-left">
                         {category.items.map((item, i) => (
@@ -116,7 +121,7 @@ const Portfolio = () => {
             ))}
           </div>
 
-          <p className="text-xs text-center text-gray-400 mt-20 pt-10 border-t border-gray-200">
+          <p className="text-xs text-center text-gray-400 mt-12 pt-10 border-t border-gray-200">
     © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
   </p>
         </div>

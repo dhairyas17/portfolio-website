@@ -39,5 +39,9 @@ export interface Feature {
     challenges: Challenge[];
     keyTakeaways: string[];
     links: ProjectLinks;
+      // New fields
+  duration?: string;
+  deployment?: string;
+  stack?: string;
   }
   

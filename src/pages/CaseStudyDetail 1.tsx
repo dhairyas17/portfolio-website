@@ -295,11 +295,11 @@ const CaseStudyDetail1 = () => {
         <h2 className="text-2xl font-semibold mb-3"><MessageCircle className="inline mr-2 mb-1 text-blue-600" size={18} />Customer Feedback</h2>
         <blockquote className="border-l-4 pl-4 italic text-gray-700 mb-3">
           "Before this, we had to wait and guess. Now we get the data in real time. It's exactly what we needed."
-          <br />,  Construction Site Manager, Enterprise Client
+          <br /> - Construction Site Manager, Skanska USA
         </blockquote>
         <blockquote className="border-l-4 pl-4 italic text-gray-700">
           "This is a product we can sell and scale."
-          <br />,  Head of Sales, Evercam
+          <br /> - Head of Sales, Evercam
         </blockquote>
       </motion.section>
 

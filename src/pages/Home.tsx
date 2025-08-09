@@ -196,7 +196,7 @@ const Home = () => {
         </span>
       </h1>
       <h2 className="text-xl md:text-2xl text-gray-700 mb-4 font-medium">
-        Technical Product Manager & Strategy Leader
+        Product Manager & Strategy Leader
       </h2>
 
       <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
@@ -237,14 +237,6 @@ const Home = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.9 }}
     >
-      <a
-        href="https://github.com/dhairyas17"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-gray-900 transition-transform transform hover:scale-110"
-      >
-        <Github size={26} />
-      </a>
       <a
         href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
         target="_blank"
@@ -304,7 +296,7 @@ const Home = () => {
         transition={{ duration: 0.8 }}
       >
         <p>
-          I’m Dhairya Sharma, a Product and Technical Product Manager with over 4 years of experience turning complex technologies into high-impact digital products.
+          I’m Dhairya Sharma, Product Manager with over 4 years of experience turning complex technologies into high-impact digital products.
           With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
         </p>
         <p>

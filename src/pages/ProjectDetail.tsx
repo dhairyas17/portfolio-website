@@ -9,6 +9,10 @@ import {
   GitBranch,
   ChevronUp,
   Star,
+  Brain,
+  Hammer,
+  CalendarDays,
+  Globe,
 } from 'lucide-react';
 import { projectData } from '../data/projectContent';
 import { Project } from '../types/project';
@@ -20,6 +24,11 @@ const fadeUp: Variants = {
     y: 0,
     transition: { duration: 0.6, delay: custom ?? 0, ease: 'easeOut' },
   }),
+};
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const staggerContainer: Variants = {
@@ -101,30 +110,51 @@ const ProjectDetail: React.FC = () => {
             </Link>
           </motion.div>
 
-          <motion.div variants={fadeUp} custom={0.1} className="flex flex-col md:flex-row justify-between mb-6">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{project.title}</h1>
-              <p className="text-xl text-gray-600 text-justify mb-4">{project.description}</p>
+          <motion.div variants={fadeUp} custom={0.1} className="mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{project.title}</h1>
+            <p className="text-xl text-gray-600 text-justify italic mb-6">
+  {project.description}
+</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                <motion.div variants={fadeUp} custom={0.2} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
-                  <Calendar className="w-4 h-4 text-gray-400" />
-                  <span className="text-gray-600">{project.year}</span>
-                </motion.div>
-                <motion.div variants={fadeUp} custom={0.25} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
-                  <Users className="w-4 h-4 text-gray-400" />
-                  <span className="text-gray-600">{project.team}</span>
-                </motion.div>
-                <motion.div variants={fadeUp} custom={0.3} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
-                  <Tag className="w-4 h-4 text-gray-400" />
-                  <span className="text-gray-600">{project.category}</span>
-                </motion.div>
-                <motion.div variants={fadeUp} custom={0.35} className="flex items-center gap-2 bg-white/60 backdrop-blur-sm p-3 rounded-lg shadow-sm hover:shadow-md transition">
-                  <Star className="w-4 h-4 text-green-500" />
-                  <span className="text-green-600 font-semibold">{project.status}</span>
-                </motion.div>
+            {/* Summary */}
+            <motion.div
+              className="flex flex-col md:flex-row justify-between text-sm text-gray-700 mb-6 gap-6"
+              variants={fadeIn}
+              initial="hidden"
+              animate="visible"
+            >
+              {/* Left Column */}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-start gap-2">
+                  <Brain className="mt-1" size={16} />
+                  <span>
+                    <strong>Category:</strong> {project.category || 'Product Design, System Design, AI/Edge Architecture'}
+                  </span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Users className="mt-1" size={16} />
+                  <span>
+                    <strong>Team:</strong> {project.team || '1 TPM (myself), 6 Engineers, 2 AI Researchers, 2 DevOps, 1 Designer, 1 CS Manager, 3 Annotation + QA'}
+                  </span>
+                </div>
               </div>
-            </div>
+
+              {/* Right Column */}
+              <div className="flex flex-col gap-2 items-start md:items-end text-left md:text-right">
+                <div className="flex items-start gap-2">
+                  <CalendarDays className="mt-1" size={16} />
+                  <span>
+                    <strong>Duration:</strong> {project.duration || '6 months'}
+                  </span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Globe className="mt-1" size={16} />
+                  <span>
+                    <strong>Deployment:</strong> {project.deployment || '100+ industrial sites'}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Tech Stack */}
@@ -144,153 +174,153 @@ const ProjectDetail: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Hero Image */}
-        <motion.div variants={fadeUp} custom={0.45} className="mb-12">
-          <motion.img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          />
+{/* Content */}
+<div className="space-y-12">
+  {/* Overview */}
+  <motion.section variants={fadeUp} custom={0.5}>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">Project Overview</h2>
+    <p className="text-gray-700 leading-relaxed text-justify text-lg">{project.overview}</p>
+  </motion.section>
+
+  <motion.section variants={fadeUp} custom={0.6} className="space-y-8">
+  {/* Problem */}
+  <div className="flex flex-col">
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem</h2>
+    <div className="bg-red-50 border-l-4 border-red-400 p-6 text-justify rounded-r-lg">
+      <p className="text-gray-700 leading-relaxed">{project.problem}</p>
+    </div>
+  </div>
+
+  {/* Solution */}
+  <div className="flex flex-col">
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
+    <div className="bg-green-50 border-l-4 border-green-400 p-6 text-justify rounded-r-lg">
+      <p className="text-gray-700 leading-relaxed">{project.solution}</p>
+    </div>
+  </div>
+</motion.section>
+
+
+
+  {/* Key Features */}
+  <motion.section variants={fadeUp} custom={0.7}>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+      {project.features.map((feature, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.02 }}
+          className="bg-white border-2 border-gray-100 p-6 rounded-lg"
+        >
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h3>
+          <p className="text-gray-600">{feature.description}</p>
         </motion.div>
+      ))}
+    </div>
+  </motion.section>
 
-        {/* Content */}
-        <div className="space-y-12">
-          {/* Overview */}
-          <motion.section variants={fadeUp} custom={0.5}>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Overview</h2>
-            <p className="text-gray-700 leading-relaxed text-justify text-lg">{project.overview}</p>
-          </motion.section>
+{/* Architecture */}
+<motion.section variants={fadeUp} custom={0.9} className="space-y-4">
+  <h2 className="text-2xl font-bold text-gray-900 mt-2">System Architecture</h2>
+  <div className="bg-gray-50 p-5 rounded-lg">
+    <ul className="space-y-3">
+      {project.architecture.map((item, index) => (
+        <li key={index} className="flex items-start gap-3">
+          <GitBranch className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+          <span className="text-gray-700">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</motion.section>
 
-          {/* Problem & Solution */}
-          <motion.section variants={fadeUp} custom={0.6}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-              <div className="flex flex-col">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem</h2>
-                <div className="bg-red-50 border-l-4 border-red-400 p-6 text-justify rounded-r-lg flex-1">
-                  <p className="text-gray-700 leading-relaxed">{project.problem}</p>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
-                <div className="bg-green-50 border-l-4 border-green-400 text-justify p-6 rounded-r-lg flex-1">
-                  <p className="text-gray-700 leading-relaxed">{project.solution}</p>
-                </div>
-              </div>
-            </div>
-          </motion.section>
+  {/* Results */}
+  <motion.section variants={fadeUp} custom={0.8}>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {project.results.map((result, index) => (
+        <motion.div
+          key={index}
+          whileHover={{ scale: 1.01 }}
+          className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
+        >
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
+          <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
+          <p className="text-gray-600 text-sm">{result.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </motion.section>
 
-          {/* Key Features */}
-          <motion.section variants={fadeUp} custom={0.7}>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Features</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 text-justify gap-6">
-              {project.features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white border-2 border-gray-100 p-6 rounded-lg"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
 
-          {/* Results */}
-          <motion.section variants={fadeUp} custom={0.8}>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Results & Impact</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.results.map((result, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.01 }}
-                  className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
-                  <p className="text-gray-600 text-sm">{result.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.section>
+{/* Challenges */}
+<motion.section variants={fadeUp} custom={1.0} className="space-y-4">
+  <h2 className="text-2xl font-bold text-gray-900 mb-2">Technical Challenges</h2>
+  <div className="space-y-5">
+    {project.challenges.map((item, index) => (
+      <div key={index} className="border-l-4 border-orange-400 pl-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-1">{item.challenge}</h3>
+        <p className="text-gray-700">{item.solution}</p>
+      </div>
+    ))}
+  </div>
+</motion.section>
 
-          {/* Architecture */}
-          <motion.section variants={fadeUp} custom={0.9}>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">System Architecture</h2>
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <ul className="space-y-3">
-                {project.architecture.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <GitBranch className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.section>
 
-          {/* Challenges */}
-          <motion.section variants={fadeUp} custom={1.0}>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Technical Challenges</h2>
-            <div className="space-y-6">
-              {project.challenges.map((item, index) => (
-                <div key={index} className="border-l-4 border-orange-400 pl-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.challenge}</h3>
-                  <p className="text-gray-700">{item.solution}</p>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-        {/* Key Takeaways */}
-        <motion.section variants={fadeUp} custom={1.1}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Takeaways</h2>
-          <ul className="space-y-4">
-            {project.keyTakeaways.map((takeaway, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400"
-              >
-                <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-                <span className="text-gray-700">{takeaway}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.section>
+  {/* Key Takeaways */}
+  <motion.section variants={fadeUp} custom={1.1}>
+    <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+    <ul className="space-y-4">
+      {project.keyTakeaways.map((takeaway, index) => (
+        <li
+          key={index}
+          className="flex items-start gap-3 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400"
+        >
+          <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+          <span className="text-gray-700">{takeaway}</span>
+        </li>
+      ))}
+    </ul>
+  </motion.section>
+
+
 
           {/* Prev / Next Navigation */}
-          <motion.div variants={fadeUp} custom={1.05} className="mt-10 flex flex-col sm:flex-row justify-between gap-4">
-            {prevProject ? (
-              <Link
-                to={`/portfolio/projects/${prevProject.id}`}
-                className="group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
-              >
-                <ArrowLeft className="w-4 h-4 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
-                <div className="flex flex-col items-start text-left max-w-full">
-                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Previous</span>
-                  <span className="font-medium truncate group-hover:text-blue-600">{prevProject.title}</span>
-                </div>
-              </Link>
-            ) : (
-              <div className="hidden sm:block" />
-            )}
+          <motion.div
+  variants={fadeUp}
+  custom={1.05}
+  className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
+>
+  {/* Previous Button */}
+  {prevProject ? (
+    <Link
+      to={`/portfolio/projects/${prevProject.id}`}
+      className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+    >
+      <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+        Previous
+      </span>
+    </Link>
+  ) : (
+    <div className="hidden sm:block" />
+  )}
 
-            {nextProject ? (
-              <Link
-                to={`/portfolio/projects/${nextProject.id}`}
-                className="group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-sm text-gray-800"
-              >
-                <div className="flex flex-col items-end text-right max-w-full">
-                  <span className="text-xs text-gray-400 group-hover:text-blue-500">Next</span>
-                  <span className="font-medium truncate group-hover:text-blue-600">{nextProject.title}</span>
-                </div>
-                <ArrowLeft className="w-4 h-4 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            ) : (
-              <div className="hidden sm:block" />
-            )}
-          </motion.div>
+  {/* Next Button */}
+  {nextProject ? (
+    <Link
+      to={`/portfolio/projects/${nextProject.id}`}
+      className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+    >
+      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+        Next
+      </span>
+      <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+    </Link>
+  ) : (
+    <div className="hidden sm:block" />
+  )}
+</motion.div>
 
           {/* Scroll to Top */}
           {showScrollTop && (
@@ -318,9 +348,9 @@ const ProjectDetail: React.FC = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200"
             >
-              <span className="block will-change-auto">Let’s Connect</span>
+              Let’s Connect
             </Link>
           </motion.div>
         </div>

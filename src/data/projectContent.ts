@@ -12,9 +12,11 @@ export const projectData: Record<string, Project> = {
     'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '3 people',
+  duration: '3 weeks',
+  deployment: 'Internal Tool',
   status: 'Live',
   category: 'Edge Infrastructure & DevOps',
-  tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
+  tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting'],
   overview:
     'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 1300+ edge devices include NVIDIA Jetsons and raspberry pi',
   problem:
@@ -98,20 +100,22 @@ export const projectData: Record<string, Project> = {
   id: 102,
   title: 'Edge Device Monitoring with Prometheus & Grafana',
   description:
-    'Monitoring and alerting system for Jetson-based edge deployments using Prometheus and Grafana to ensure uptime and performance visibility.',
+    'Monitoring and alerting system for edge deployments using Prometheus and Grafana to ensure uptime and performance visibility.',
   image:
     'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '2 people',
+  duration: '12 weeks',
+  deployment: '1300+ Edge Devices',
   status: 'Live',
   category: 'DevOps & Observability',
-  tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Systemd'],
+  tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Python', 'Shell Scripting'],
   overview:
     'Developed a robust observability platform tailored for edge devices deployed in remote industrial environments. Integrated Prometheus and Grafana to track system health, GPU usage, temperature, and disk I/O in real time.',
   problem:
     'Remote edge devices faced silent failures due to lack of monitoring, leading to missed alerts and loss of video analytics data.',
   solution:
-    'I implemented a lightweight monitoring setup using Prometheus and Node Exporter to collect system metrics from Jetson devices. Dashboards in Grafana were customized for temperature, CPU/GPU load, and storage usage with real-time alerts configured via webhooks and email. Services were installed natively on the device using systemd for persistent background execution.',
+    'I led the implementation of a lightweight monitoring setup using Prometheus and Node Exporter to collect system metrics from edge devices. Dashboards in Grafana were customized for temperature, CPU/GPU load, and storage usage with real-time alerts configured via webhooks and email. Services were installed natively on the device using systemd for persistent background execution.',
   features: [
     {
       name: 'Custom Grafana Dashboards',
@@ -132,6 +136,11 @@ export const projectData: Record<string, Project> = {
   ],
   results: [
     {
+      metric: 'Deployment',
+      improvement: '1300+',
+      description: 'Edge devices across US, EU and APAC',
+    },
+    {
       metric: 'Downtime',
       improvement: '-90%',
       description: 'Critical device failures prevented through early alerting and intervention.',
@@ -148,14 +157,14 @@ export const projectData: Record<string, Project> = {
     },
   ],
   architecture: [
-    'Node Exporter installed as a service on each Jetson device',
+    'Node Exporter installed as a service on each edge device',
     'Prometheus server polling metrics from all devices',
     'Grafana dashboards hosted centrally with organization-wide access',
     'Alertmanager configured for webhook and email notifications',
   ],
   challenges: [
     {
-      challenge: 'Limited resources on Jetson devices',
+      challenge: 'Limited resources on edge devices',
       solution: 'Tuned exporter polling frequency and reduced data retention to fit memory budget',
     },
     {
@@ -177,7 +186,7 @@ export const projectData: Record<string, Project> = {
   },
 },
 'portfolio-website': {
-  id: 103,
+  id: 107,
   title: 'Interactive & Responsive Portfolio Website',
   description:
     'A visually engaging personal portfolio built with React and Tailwind CSS, featuring projects, blogs, and case studies with smooth animations, responsive design, and accessibility.',
@@ -185,6 +194,8 @@ export const projectData: Record<string, Project> = {
     'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: 'Solo Project',
+  duration: '2 weeks',
+  deployment: 'Personal Project',
   status: 'Live',
   category: 'Frontend Development, UI/UX Design, Personal Branding',
   tech: [
@@ -192,8 +203,6 @@ export const projectData: Record<string, Project> = {
     'Tailwind CSS',
     'Framer Motion',
     'EmailJS',
-    'CSS3',
-    'JavaScript (ES6+)',
     'Responsive Design Principles',
   ],
   overview:
@@ -280,7 +289,7 @@ export const projectData: Record<string, Project> = {
   },
 },
 'yolov4-onnx-tensorrt': {
-  id: 104,
+  id: 106,
   title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
   description:
     'End-to-end pipeline to train YOLOv4, convert to ONNX, and deploy with TensorRT on Jetson for real-time object detection.',
@@ -288,13 +297,15 @@ export const projectData: Record<string, Project> = {
     'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '3 people',
+  duration: '2 weeks',
+  deployment: 'Internal Tool',
   status: 'Live',
   category: 'Edge AI & Deep Learning',
-  tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
+  tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Orin Nano', 'OpenCV', 'Python', 'Docker'],
   overview:
-    'Built a high-performance object detection system by training YOLOv4 on a custom dataset, converting it to ONNX, and optimizing with TensorRT for edge inference on Jetson Xavier and Nano.',
+    'Built a high-performance object detection system by training YOLOv4 on a custom dataset, converting it to ONNX, and optimizing with TensorRT for edge inference on Jetson Orin Nano.',
   problem:
-    'Standard YOLOv4 inference using Darknet was too slow for real-time applications on Jetson edge devices, limiting use in low-latency safety-critical deployments.',
+    'Standard YOLOv4 inference using Darknet was too slow for real-time applications on Jetson devices, limiting use in low-latency safety-critical deployments.',
   solution:
     'As the TPM, I led the full optimization pipeline: trained YOLOv4 on custom data, converted models to ONNX, and deployed highly efficient TensorRT engines on Jetson devices using hardware acceleration, achieving real-time inference below 50ms/frame.',
   features: [
@@ -312,7 +323,7 @@ export const projectData: Record<string, Project> = {
     },
     {
       name: 'Real-time Inference',
-      description: 'Achieved sub-50ms inference time on Jetson Xavier with minimal memory footprint.',
+      description: 'Achieved sub-50ms inference time on Jetson orin nano with minimal memory footprint.',
     },
     {
       name: 'Edge Deployment',
@@ -323,7 +334,7 @@ export const projectData: Record<string, Project> = {
     {
       metric: 'Inference Latency',
       improvement: '<50ms',
-      description: 'Consistent detection at >20 FPS on Jetson Xavier NX.',
+      description: 'Consistent detection at >20 FPS on Jetson orin nano.',
     },
     {
       metric: 'Model Size',
@@ -366,14 +377,16 @@ export const projectData: Record<string, Project> = {
   },
 },
 'video-intelligence-api': {
-  id: 105,
+  id: 103,
   title: 'Scalable AI-Driven Video Intelligence API Platform',
   description:
-    'A self-initiated platform offering a suite of AI-powered video processing capabilities through unified REST APIs, including object detection, face embedding, segmentation, inpainting, and motion tracking.',
+    'A platform offering a suite of AI-powered video processing capabilities through unified REST APIs, including object detection, face embedding, segmentation, inpainting, and motion tracking.',
   image:
     'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '4 person',
+  duration: '12 weeks',
+  deployment: '100+ Enterprise Clients',
   status: 'Live',
   category: 'API Architecture, Video Intelligence, AI Integration',
   tech: [
@@ -425,7 +438,7 @@ export const projectData: Record<string, Project> = {
     },
     {
       name: '/integrations',
-      description: 'Webhooks for third-party integrations (e.g., Slack, Telegram).',
+      description: 'Webhooks for third-party integrations.',
     },
   ],
   results: [
@@ -483,7 +496,7 @@ export const projectData: Record<string, Project> = {
   },
 },
 'genai-chatbot': {
-  id: 106,
+  id: 104,
   title: 'AI Chatbot using GenAI & LLMs',
   description:
     'Conversational AI assistant powered by a fine-tuned LLM, enabling domain-specific question answering, task automation, and natural language interaction.',
@@ -492,6 +505,8 @@ export const projectData: Record<string, Project> = {
   year: '2025',
   team: '3 people',
   status: 'Live',
+  duration: '6 weeks',
+  deployment: 'Personal Project',
   category: 'Generative AI & NLP',
   tech: [
     'LLM (OpenAI/GPT-Neo)',
@@ -580,7 +595,7 @@ export const projectData: Record<string, Project> = {
   },
 },
 'fisheye-correction-opencv': {
-  id: 107,
+  id: 105,
   title: 'Fisheye Distortion Correction on Wide Angle Cameras',
   description:
   'Designed and implemented an image undistortion pipeline using OpenCV to correct fisheye distortion on wide-angle camera images. The correction improved spatial accuracy and was integrated into Evercam’s BIM alignment and 2D measuring pipelines.',
@@ -588,6 +603,8 @@ export const projectData: Record<string, Project> = {
     'https://images.pexels.com/photos/5968376/pexels-photo-5968376.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '2 people',
+  duration: '4 weeks',
+  deployment: 'internal tool',
   status: 'Live',
   category: 'Computer Vision & Image Processing',
   tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
