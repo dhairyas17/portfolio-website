@@ -151,28 +151,51 @@ const CaseStudyDetail5 = () => {
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Solution: ML Lifecycle Overhaul</h2>
         <div className="space-y-2">
-          <h3 className="font-semibold text-lg">Redesigned Training Loop</h3>
+          <h3 className="font-semibold text-lg">→ Redesigned Training Loop</h3>
           <p className="text-gray-700 leading-relaxed">
             Scaled the dataset from 80k to 980k+ frames via automated scraping pipelines pulling data from live edge feeds. Prioritized high-signal segments for annotation using model confidence thresholds.
           </p>
           
-          <h3 className="font-semibold text-lg">Data Annotation Strategy</h3>
+          <h3 className="font-semibold text-lg">→ Data Annotation Strategy</h3>
           <p className="text-gray-700 leading-relaxed">
             Built custom CVAT workflows to improve annotator efficiency (pre-labeling, auto-suggest). Developed quality gates (QA sampling, reannotation pipeline) to maintain label accuracy.
           </p>
 
-          <h3 className="font-semibold text-lg">MLOps Integration</h3>
+          <h3 className="font-semibold text-lg">→ MLOps Integration</h3>
           <p className="text-gray-700 leading-relaxed">
             Re-architected the pipeline using Apache Airflow for reproducible DAGs: Data collection → Preprocessing → Training → Evaluation → Deployment. Introduced experiment tracking via MLflow, enabling versioned datasets and models.
           </p>
 
-          <h3 className="font-semibold text-lg">Noise Reduction</h3>
+          <h3 className="font-semibold text-lg">→ Noise Reduction</h3>
           <p className="text-gray-700 leading-relaxed">
             Removed noisy classes and false positives by eliminating low-confidence Facenet embeddings and redundant edge logs. Filtered high-bias data sources to reduce annotation debt.
           </p>
         </div>
       </motion.section>
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/obj_detection.png"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Dashboard UI
+    </p>
+  </motion.div>
+  <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-indigo-600" size={18} /> System Architecture</h2>
 
+      </motion.section>
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/br.png"
+      alt="System Architecture"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-10 text-center">
+
+    </p>
+  </motion.div>
       {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>
@@ -204,11 +227,6 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* Architecture Overview */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-indigo-600" size={18} />Architecture Overview</h2>
-        <pre className="bg-gray-800 text-white p-6 rounded-lg">
-        </pre>
-      </motion.section>
 
       {/* Key Product Thinking & Trade-offs */}
       <motion.section className="mb-10" {...fadeIn}>

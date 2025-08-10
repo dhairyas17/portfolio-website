@@ -158,11 +158,11 @@ const CaseStudyDetail4 = () => {
           <div className="bg-gray-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Components</h3>
             <p>
-              - <strong>Frontend (optional):</strong> Swagger UI for interactive API testing<br />
-              - <strong>Backend (FastAPI + Python):</strong> REST endpoints calling containerized ML services<br />
-              - <strong>Model Services:</strong> Dockerized microservices with shared gRPC protocol<br />
-              - <strong>Queue (RabbitMQ / Kafka):</strong> For async processing of large jobs<br />
-              - <strong>Database (PostgreSQL + Redis):</strong><br />
+            →  <strong> Frontend :</strong> Swagger UI for interactive API testing<br />
+            →  <strong>Backend (FastAPI + Python):</strong> REST endpoints calling containerized ML services<br />
+            →  <strong>Model Services:</strong> Dockerized microservices with shared gRPC protocol<br />
+            →  <strong>Queue (RabbitMQ / Kafka):</strong> For async processing of large jobs<br />
+            →  <strong>Database (PostgreSQL + Redis):</strong><br />
               &nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL: User auth, metadata, job tracking<br />
               &nbsp;&nbsp;&nbsp;&nbsp;Redis: Caching frequent queries, session management
             </p>
@@ -171,15 +171,24 @@ const CaseStudyDetail4 = () => {
           <div className="bg-gray-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Infrastructure</h3>
             <p>
-              - <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
-              - <strong>Container orchestration:</strong> Docker Compose (local), Kubernetes (cloud)<br />
-              - <strong>CI/CD:</strong> GitHub Actions for tests, Docker builds, and push to registry<br />
-              - <strong>Monitoring:</strong> Prometheus + Grafana for API latency, inference time, and system health
+            →  <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
+            →  <strong>Container orchestration:</strong> Docker Compose (local), Kubernetes (cloud)<br />
+            →  <strong>CI/CD:</strong> GitHub Actions for tests, Docker builds, and push to registry<br />
+            →  <strong>Monitoring:</strong> Prometheus + Grafana for API latency, inference time, and system health
             </p>
           </div>
         </div>
       </motion.section>
-
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/api_diagram.svg"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      System Architecture
+    </p>
+  </motion.div>
       {/* API Gateway */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-blue-600" size={18} />API Gateway</h2>
@@ -189,7 +198,16 @@ const CaseStudyDetail4 = () => {
           <li>Retry logic and fallback handlers for long jobs</li>
         </ul>
       </motion.section>
-
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/counting.png"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Dashboard UI
+    </p>
+  </motion.div>
       {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>

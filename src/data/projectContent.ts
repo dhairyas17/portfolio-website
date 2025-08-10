@@ -260,7 +260,6 @@ export const projectData: Record<string, Project> = {
     'Animations: Framer Motion for smooth transitions and micro-interactions',
     'Forms: EmailJS integration for backend-free email handling',
     'SEO: Meta tags, semantic HTML, and sitemap for discoverability',
-    'Hosting: Deployed on Vercel for fast global delivery',
   ],
   challenges: [
     {

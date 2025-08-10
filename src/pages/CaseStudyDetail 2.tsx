@@ -184,16 +184,22 @@ const CaseStudyDetail2 = () => {
           <div className="bg-gray-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Old Model (Camera-Centric)</h3>
             <p>
-              Each site → Custom camera → Custom config → Manual install & setup → No version control
+              → Each site had Custom camera & Custom config <br /> 
+              → No standard hardware components <br />
+              → Manual install & setup <br /> 
+              → No version control <br />
             </p>
           </div>
           <div className="bg-green-50 p-4 border rounded">
             <h3 className="font-bold mb-2">New Model (Kit-Centric)</h3>
             <p>
-              Pre-approved Edge Kit (Jetson + Camera) → Standard firmware → Auto-config (Ansible) → UI-driven OTA (AWX)<br />
-              1-click config deployment via web UI<br />
-              No dev needed for pushing updates or resets<br />
-              Full reproducibility of hardware setup across clients
+              →Pre-approved Edge Kit (SBC + Camera) <br />
+              → Standard firmware <br />
+              → Auto-config (Ansible) <br />
+              → UI-driven OTA (AWX)<br />
+              → 1-click config deployment via web UI<br />
+              →  No dev needed for pushing updates or resets<br />
+              → Full reproducibility of hardware setup across clients
             </p>
           </div>
         </div>

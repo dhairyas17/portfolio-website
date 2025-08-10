@@ -103,7 +103,6 @@ const CaseStudyDetail3 = () => {
   </div>
 </motion.div>
 
-
       {/* Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
@@ -134,7 +133,7 @@ const CaseStudyDetail3 = () => {
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li>Defined observability as a core product feature, focusing on both technical and user-centric requirements</li>
           <li>Led cross-functional collaboration to ensure alignment across firmware, DevOps, backend, support, and QA teams</li>
-          <li>Spearheaded the system architecture using Prometheus, Grafana, and heartbeat daemon</li>
+          <li>led the system architecture using Prometheus, Grafana, and heartbeat daemon</li>
           <li>Managed phased rollout using Ansible & AWX for safe, scalable OTA deployment</li>
           <li>Ensured smooth stakeholder alignment and minimized friction through intuitive Grafana dashboards</li>
         </ul>
@@ -172,27 +171,45 @@ const CaseStudyDetail3 = () => {
       {/* Architecture Overview */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture Overview</h2>
+        <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/monitoring.jpeg"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-10 text-center">
+    </p>
+  </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
           <div className="bg-red-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Legacy Approach</h3>
             <p>
-              - No real-time observability.<br />
-              - Reactive alerting system.<br />
-              - High operational costs due to site visits.
+              → No real-time observability.<br />
+              → Reactive alerting system.<br />
+              → High operational costs due to site visits.
             </p>
           </div>
           <div className="bg-green-50 p-4 border rounded">
             <h3 className="font-bold mb-2">New Observability System</h3>
             <p>
-              - Real-time device health monitoring with Prometheus.<br />
-              - Visualizations in Grafana.<br />
-              - Automated alerts for failures.<br />
-              - OTA deployment with Ansible & AWX for scaling.
+            → Real-time device health monitoring with Prometheus.<br />
+            →  Visualizations in Grafana.<br />
+            →  Automated alerts for failures.<br />
+            →  OTA deployment with Ansible & AWX for scaling.
             </p>
           </div>
         </div>
       </motion.section>
-
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/OTA_OBV.jpeg"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Grafana Dashboard
+    </p>
+  </motion.div>
       {/* Key Product Decisions */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-orange-600" size={18} />Key Product & Technical Decisions</h2>

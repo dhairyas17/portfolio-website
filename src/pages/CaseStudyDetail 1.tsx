@@ -195,27 +195,45 @@ const CaseStudyDetail1 = () => {
       {/* Architecture Before vs After */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture (Before vs After)</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <div className="bg-gray-50 p-4 border rounded">
+        <div className="grid grid-cols-1 gap-6 text-lg">
+          <div className="bg-red-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Legacy Cloud Architecture</h3>
             <p>
-              Camera → Video Upload → Cloud Inference (FaceNet, YOLO, Classifier) → Database → UI<br />
-              - Single point of failure (network/cloud)<br />
-              - Video-heavy sync<br />
-              - Complex and costly
+              →  Single point of failure (network/cloud)<br />
+              → Video-heavy sync<br />
+              → Complex and costly
             </p>
           </div>
+          <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/gr-d1.png"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Cloud based Gate Report
+    </p>
+    <hr className="my-6 border-t border-gray-300" /> {/* Divider line */}
+  </motion.div>
           <div className="bg-green-50 p-4 border rounded">
             <h3 className="font-bold mb-2">New Edge-First Architecture</h3>
             <p>
-              Camera → Jetson SBC → YOLOv5 (on-device inference) → RabbitMQ (local event queue)<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↳ Local Storage → Sync Engine → Admin DB → UI<br />
-              - Real-time detection<br />
-              - Works offline and resyncs later<br />
-              - Low bandwidth footprint<br />
-              - Scalable and OTA-deployable
+            → Real-time detection<br />
+            → Works offline and resyncs later<br />
+            → Low bandwidth footprint<br />
+            → Scalable and OTA-deployable
             </p>
           </div>
+          <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/gr-d2.png"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Edge based Gate Report
+    </p>
+  </motion.div>
         </div>
       </motion.section>
 
@@ -247,7 +265,16 @@ const CaseStudyDetail1 = () => {
           </table>
         </div>
       </motion.section>
-
+      <motion.div className="mt-6" {...fadeIn}>
+    <img
+      src="/assets/case-studies/gate-report-ui.png"
+      alt="Key Product Decisions Diagram"
+      className="rounded-lg shadow-lg border border-gray-200 w-full"
+    />
+    <p className="text-sm text-gray-500 mt-2 text-center">
+      Gate Report Dashboard
+    </p>
+  </motion.div>
       {/* Outcomes */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Outcomes & Impact</h2>

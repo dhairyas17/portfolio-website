@@ -90,7 +90,7 @@ const Home = () => {
       period: 'July 2022 – March 2024',
       description: 'Led ML model and CV platform development for real-time edge deployments',
       metrics: [
-        'lad OTA deployment for Gate report on 70+ sites',
+        'led OTA deployment for Gate report on 100+ sites',
         '980K+ frames labeled at 96% accuracy',
         '92% model performance, 50% faster training',
         'Stable ML releases with rollback & alerting'
@@ -195,16 +195,16 @@ const Home = () => {
           Dhairya
         </span>
       </h1>
-      <h2 className="text-xl md:text-2xl text-gray-700 mb-4 font-medium">
+      <h2 className="text-2xl md:text-2xl text-gray-500 mb-4 font-medium">
         Product Manager & Strategy Leader
       </h2>
 
       <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
-      Bridging business strategy and technical execution through data-driven product leadership.
+      Bridging strategy and execution with data-driven product leadership.
       </p>
 
       <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-      From vision to launch, I align stakeholders and systems thinking to deliver data-driven products with lasting impact.
+      From vision to launch, I align stakeholders and lead global teams to deliver impactful, data-driven products.
       </p>
     </motion.div>
 
