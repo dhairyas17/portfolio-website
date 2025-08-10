@@ -88,7 +88,7 @@ const CaseStudyDetail2 = () => {
     <div className="flex items-start gap-2">
       <Hammer className="mt-1" size={16} />
       <span>
-        <strong>Stack:</strong> SBCs (Jetson/Nano), RTSP, Ansible, AWX, Docker, Custom Firmware, YAML Configs
+        <strong>Stack:</strong> SBCs (Jetson/Raspberry pi), RTSP, Ansible, AWX, Docker, Custom Firmware, YAML Configs
       </span>
     </div>
   </div>

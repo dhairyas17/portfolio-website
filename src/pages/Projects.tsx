@@ -23,10 +23,10 @@ const projects = [
     id: '101',
     title: 'OTA Firmware Updates with AWX & Ansible',
     description:
-      'Automated OTA firmware updates for Jetson edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',  
+      'Automated OTA firmware updates for edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',  
     image:  '/assets/case-studies/Firmware Update Process in Action.png',
     category: 'infra',
-    tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting', 'Jetson'],
+    tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting'],
     year: '2024',
     team: '3 people',
     status: 'Live',
@@ -39,10 +39,10 @@ const projects = [
     id: '102',
     title: 'Edge Device Monitoring with Prometheus & Grafana',
     description:
-      'Deployed lightweight monitoring on Jetson edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
+      'Deployed lightweight monitoring on edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
     image:  '/assets/case-studies/edge-monitoring-platform.png',
     category: 'infra',
-    tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Jetson', 'Python', 'Docker'],
+    tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Python', 'Docker'],
     year: '2024',
     team: '4 people',
     status: 'Live',
@@ -110,7 +110,7 @@ const projects = [
       'Led the development and deployment of a real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving <50 ms inference.',
     image:  '/assets/case-studies/yolov4-onnx-tensorrt.png',
     category: 'ai-ml',
-    tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Xavier', 'OpenCV', 'Python', 'Docker'],
+    tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Orin Nano', 'OpenCV', 'Python', 'Docker'],
     year: '2023',
     team: '3 people',
     status: 'Live',
@@ -187,9 +187,7 @@ const Projects = () => {
 
   const handleCardClick = (id: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      // Pass page and filter info as query params to detail page      navigate(`/portfolio/projects/${id}?page=${currentPage}&filter=${activeFilter}`);
-    }, 100);
+    navigate(`/portfolio/projects/${id}?page=${currentPage}&filter=${activeFilter}`);
   };
 
   return (

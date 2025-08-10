@@ -139,16 +139,16 @@ const Home = () => {
   
 
   const certifications = [
-    { name: 'Certified Scrum Master (CSM)', provider: 'Scrum Alliance', year: '2023', link: '#' },
-    { name: 'AWS Cloud Practitioner', provider: 'AWS', year: '2022', link: '#' },
-    { name: 'GCP Associate Cloud Engineer', provider: 'Google', year: '2022', link: '#' },
-    { name: 'Product Strategy & Roadmap', provider: 'LinkedIn Learning', year: '2023', link: '#' },
-    { name: 'Building RAG Agents with LLMs', provider: 'NVIDIA', year: '2024', link: '#' }
+    { name: 'Certified Scrum Master (CSM)', provider: 'Scrum Alliance', year: '2023', link: 'https://certification.scrumalliance.org/accounts/1767537-dhairya-sharma/certifications/2096385-csm' },
+    { name: 'Atlassian Agile Project Management Professional Certificate', provider: 'Atlassian', year: '2022', link: 'https://www.linkedin.com/learning/certificates/25517d85a79ff68e9823461e0354ef5de8cfcaf012ecb817bf41edc6eec1c569?trk=share_certificate' },
+    { name: 'Agile Software Development', provider: 'CompTIA CEU', year: '2022', link: 'https://www.linkedin.com/learning/certificates/5a956e1fceadd4cb29a060438dcf6fe371faee172a08bc269f18e95bcefad46a?trk=share_certificate' },
+    { name: 'Product Roadmap', provider: 'PMI CEU', year: '2023', link: 'https://www.linkedin.com/learning/certificates/a533051894e6362f155eef251924989c292112deff070956b165ca76cb1387a8?trk=share_certificate' },
+    { name: 'Data-Driven Product Management', provider: 'NASBA CEU', year: '2024', link: 'https://www.linkedin.com/learning/certificates/158ce664cb5b7c3feba879a93300641e63d58dca6e71786f3b1bf84656e5a29c?trk=share_certificate' }
   ];
 
   const testimonials = [
     {
-      quote: "Dhairya turned our product vision into a scalable edge solution. His leadership on Jetson deployments boosted compliance, cut manual work, and delivered real business impact.",
+      quote: "Dhairya turned our product vision into a scalable edge solution. His leadership on edge deployments boosted compliance, cut manual work, and delivered real business impact.",
       name: "Marco Herbst",
       role: "CEO & Co-founder – Evercam",
       avatar: "/assets/people/marco.jpeg",

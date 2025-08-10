@@ -26,7 +26,7 @@ const CaseStudyCategory = () => {
       duration: '6 months',
       team: '14',
       impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
-      tags: ['Edge AI', 'System Design', 'YOLOv5', 'Jetson', 'RabbitMQ', 'OTA Deployment'],
+      tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
       image:  '/assets/case-studies/gate-report.png',
 
     },
