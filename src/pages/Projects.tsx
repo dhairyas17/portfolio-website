@@ -172,12 +172,6 @@ const Projects = () => {
     currentPage * projectsPerPage
   );
 
-  // Remove this useEffect to prevent resetting page on filter change:
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [activeFilter]);
-
-  // Instead, reset page manually when filter button is clicked:
   const onFilterClick = (filterId: string) => {
     setActiveFilter(filterId);
     setCurrentPage(1);
@@ -194,8 +188,7 @@ const Projects = () => {
   const handleCardClick = (id: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
-      // Pass page and filter info as query params to detail page
-      navigate(`/portfolio/projects/${id}?page=${currentPage}&filter=${activeFilter}`);
+      // Pass page and filter info as query params to detail page      navigate(`/portfolio/projects/${id}?page=${currentPage}&filter=${activeFilter}`);
     }, 100);
   };
 
