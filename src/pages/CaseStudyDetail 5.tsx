@@ -248,27 +248,27 @@ const CaseStudyDetail5 = () => {
         </ul>
       </motion.section>
       {showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}         
-{/* Key Takeaways */}
-<motion.section className="mb-10" {...fadeIn}>
-  <h2 className="text-2xl font-semibold mb-3">
-    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
-  </h2>
-  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-    <li>Increased detection accuracy from 67% to 96% through data, tooling, and process redesign.</li>
-    <li>Scaled dataset from 80k to 980k+ frames, with automated collection and targeted annotation.</li>
-    <li>Cut annotation turnaround time by 60% using pre-labeling, QA gates, and workflow automation.</li>
-    <li>Implemented reproducible MLOps pipeline with Airflow, MLflow, and automated retraining.</li>
-    <li>Achieved global deployment to 1000+ edge nodes, ensuring real-time performance at scale.</li>
-  </ul>
-</motion.section>
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={20} />
+        </button>
+      )}         
+      {/* Key Takeaways */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3">
+          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+        </h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>Increased detection accuracy from 67% to 96% through data, tooling, and process redesign.</li>
+          <li>Scaled dataset from 80k to 980k+ frames, with automated collection and targeted annotation.</li>
+          <li>Cut annotation turnaround time by 60% using pre-labeling, QA gates, and workflow automation.</li>
+          <li>Implemented reproducible MLOps pipeline with Airflow, MLflow, and automated retraining.</li>
+          <li>Achieved global deployment to 1000+ edge nodes, ensuring real-time performance at scale.</li>
+        </ul>
+      </motion.section>
 
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div

@@ -155,7 +155,7 @@ const CaseStudyDetail4 = () => {
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />System Architecture</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <div className="bg-gray-50 p-4 border rounded">
+          <div className="bg-yellow-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Components</h3>
             <p>
             →  <strong> Frontend :</strong> Swagger UI for interactive API testing<br />
@@ -168,7 +168,7 @@ const CaseStudyDetail4 = () => {
             </p>
           </div>
 
-          <div className="bg-gray-50 p-4 border rounded">
+          <div className="bg-green-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Infrastructure</h3>
             <p>
             →  <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
@@ -231,29 +231,29 @@ const CaseStudyDetail4 = () => {
           <li>Ops for scalable deployment and observability</li>
         </ul>
       </motion.section>
-{/* Key Takeaways */}
-<motion.section className="mb-10" {...fadeIn}>
-  <h2 className="text-2xl font-semibold mb-3">
-    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
-  </h2>
-  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-    <li>Successfully unified multiple AI video intelligence tasks behind clean, developer-friendly APIs.</li>
-    <li>Achieved real-time inference (Less than "300ms" latency) for critical endpoints like /detect and /motion.</li>
-    <li>Designed platform to support both edge and cloud deployments for maximum flexibility.</li>
-    <li>Built modular architecture to easily integrate future ML models without major refactoring.</li>
-    <li>Established scalable, production-ready infrastructure with observability and CI/CD baked in.</li>
-  </ul>
-</motion.section>
+      {/* Key Takeaways */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3">
+          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+        </h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>Successfully unified multiple AI video intelligence tasks behind clean, developer-friendly APIs.</li>
+          <li>Achieved real-time inference (Less than "300ms" latency) for critical endpoints like /detect and /motion.</li>
+          <li>Designed platform to support both edge and cloud deployments for maximum flexibility.</li>
+          <li>Built modular architecture to easily integrate future ML models without major refactoring.</li>
+          <li>Established scalable, production-ready infrastructure with observability and CI/CD baked in.</li>
+        </ul>
+      </motion.section>
 
       {showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}           
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={20} />
+        </button>
+      )}           
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div
             className="mt-5 text-center"

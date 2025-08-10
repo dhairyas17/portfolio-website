@@ -205,35 +205,35 @@ const CaseStudyDetail1 = () => {
             </p>
           </div>
           <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/gr-d1.png"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      Cloud based Gate Report
-    </p>
-    <hr className="my-6 border-t border-gray-300" /> {/* Divider line */}
-  </motion.div>
-          <div className="bg-green-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">New Edge-First Architecture</h3>
-            <p>
-            → Real-time detection<br />
-            → Works offline and resyncs later<br />
-            → Low bandwidth footprint<br />
-            → Scalable and OTA-deployable
-            </p>
-          </div>
-          <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/gr-d2.png"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      Edge based Gate Report
-    </p>
-  </motion.div>
+          <img
+            src="/assets/case-studies/gr-d1.png"
+            alt="Key Product Decisions Diagram"
+            className="rounded-lg shadow-lg border border-gray-200 w-full"
+          />
+          <p className="text-sm text-gray-500 mt-2 text-center">
+            Cloud based Gate Report
+          </p>
+          <hr className="my-6 border-t border-gray-300" /> {/* Divider line */}
+        </motion.div>
+                <div className="bg-green-50 p-4 border rounded">
+                  <h3 className="font-bold mb-2">New Edge-First Architecture</h3>
+                  <p>
+                  → Real-time detection<br />
+                  → Works offline and resyncs later<br />
+                  → Low bandwidth footprint<br />
+                  → Scalable and OTA-deployable
+                  </p>
+                </div>
+                <motion.div className="mt-6" {...fadeIn}>
+          <img
+            src="/assets/case-studies/gr-d2.png"
+            alt="Key Product Decisions Diagram"
+            className="rounded-lg shadow-lg border border-gray-200 w-full"
+          />
+          <p className="text-sm text-gray-500 mt-2 text-center">
+            Edge based Gate Report
+          </p>
+        </motion.div>
         </div>
       </motion.section>
 
@@ -266,84 +266,79 @@ const CaseStudyDetail1 = () => {
         </div>
       </motion.section>
       <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/gate-report-ui.png"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      Gate Report Dashboard
-    </p>
-  </motion.div>
-      {/* Outcomes */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Outcomes & Impact</h2>
-        <div className="overflow-x-auto text-lg">
-          <table className="w-full border border-gray-300 rounded shadow-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className={tableRowStyles}>Metric</th>
-                <th className={tableRowStyles}>Before</th>
-                <th className={tableRowStyles}>After</th>
-                <th className={tableRowStyles}>Change</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['NPS', '7%', '78%', '+71 pts'],
-                ['Monthly Recurring Revenue (MRR)', '1×', '8.5×', '+750%'],
-                ['Latency', '7-8 hours', '<5 sec', '↓ 99.98%'],
-                ['Data usage per site', '3TB+/month', '<200GB/month', '↓ 94%'],
-                ['Event reliability', '70%', '99.3%', '↑ 29%'],
-              ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </motion.section>
+          <img
+            src="/assets/case-studies/gate-report-ui.png"
+            alt="Key Product Decisions Diagram"
+            className="rounded-lg shadow-lg border border-gray-200 w-full"
+          />
+          <p className="text-sm text-gray-500 mt-2 text-center">
+            Gate Report Dashboard
+          </p>
+          </motion.div>
+            {/* Outcomes */}
+            <motion.section className="mb-10" {...fadeIn}>
+              <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Outcomes & Impact</h2>
+              <div className="overflow-x-auto text-lg">
+                <table className="w-full border border-gray-300 rounded shadow-sm">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className={tableRowStyles}>Metric</th>
+                      <th className={tableRowStyles}>Before</th>
+                      <th className={tableRowStyles}>After</th>
+                      <th className={tableRowStyles}>Change</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ['NPS', '7%', '78%', '+71 pts'],
+                      ['Monthly Recurring Revenue (MRR)', '1×', '8.5×', '+750%'],
+                      ['Latency', '7-8 hours', '<5 sec', '↓ 99.98%'],
+                      ['Data usage per site', '3TB+/month', '<200GB/month', '↓ 94%'],
+                      ['Event reliability', '70%', '99.3%', '↑ 29%'],
+                    ].map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.section>
       
             {/* Cross Functional */}
             <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-violet-600" size={18} />Cross-Functional Collaboration</h2>
-        <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
-          <li>AI/ML Team: Pruned unnecessary models, optimized YOLO for Jetson</li>
-          <li>DevOps: Built AWX-based OTA rollout pipeline</li>
-          <li>CS Team: Weekly syncs to prioritize UX improvements</li>
-          <li>QA & Annotation: Helped validate detection quality across deployments</li>
-          <li>Design: Created new event-centric UI with filters, search, and sync indicators</li>
-        </ul>
-      </motion.section>
+              <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-violet-600" size={18} />Cross-Functional Collaboration</h2>
+              <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
+                <li>AI/ML Team: Pruned unnecessary models, optimized YOLO for Jetson</li>
+                <li>DevOps: Built AWX-based OTA rollout pipeline</li>
+                <li>CS Team: Weekly syncs to prioritize UX improvements</li>
+                <li>QA & Annotation: Helped validate detection quality across deployments</li>
+                <li>Design: Created new event-centric UI with filters, search, and sync indicators</li>
+              </ul>
+            </motion.section>
 
-      {/* Feedback */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><MessageCircle className="inline mr-2 mb-1 text-blue-600" size={18} />Customer Feedback</h2>
-        <blockquote className="border-l-4 pl-4 italic text-gray-700 mb-3">
-          "Before this, we had to wait and guess. Now we get the data in real time. It's exactly what we needed."
-          <br /> - Construction Site Manager, Skanska USA
-        </blockquote>
-        <blockquote className="border-l-4 pl-4 italic text-gray-700">
-          "This is a product we can sell and scale."
-          <br /> - Head of Sales, Evercam
-        </blockquote>
-      </motion.section>
+            {/* Feedback */}
+            <motion.section className="mb-10" {...fadeIn}>
+              <h2 className="text-2xl font-semibold mb-3"><MessageCircle className="inline mr-2 mb-1 text-blue-600" size={18} />Customer Feedback</h2>
+              <blockquote className="border-l-4 pl-4 italic text-gray-700 mb-3">
+                "Before this, we had to wait and guess. Now we get the data in real time. It's exactly what we needed."
+                <br /> - Construction Site Manager, Skanska USA
+              </blockquote>
+              <blockquote className="border-l-4 pl-4 italic text-gray-700">
+                "This is a product we can sell and scale."
+                <br /> - Head of Sales, Evercam
+              </blockquote>
+            </motion.section>
 
-      {/* Tags */}
-      {/* <motion.div className="mt-10 text-lg text-gray-600 flex items-start gap-2" {...fadeIn}>
-        <Tags size={16} className="mt-1" />
-        <span><strong>Tags:</strong> Edge AI, Real-Time Systems, Product Design, System Design, Offline Sync, RabbitMQ, YOLOv5, Jetson, TPM, NPS Growth, OTA Deployment, AI Simplification</span>
-      </motion.div> */}
-      {showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp size={20} />
+          </button>
+        )}
 
       {/* Key Takeaways */}
       <motion.section className="mb-10" {...fadeIn}>

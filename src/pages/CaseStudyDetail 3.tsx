@@ -250,27 +250,27 @@ const CaseStudyDetail3 = () => {
       </motion.section>
 
       {showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}     
-{/* Key Takeaways */}
-<motion.section className="mb-10" {...fadeIn}>
-  <h2 className="text-2xl font-semibold mb-3">
-    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
-  </h2>
-  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-    <li>Proactive real-time observability replaced reactive, customer-driven alerts.</li>
-    <li>Prometheus + Grafana provided full visibility into 1300+ edge devices.</li>
-    <li>Automated OTA deployment with Ansible & AWX enabled fast, large-scale rollout.</li>
-    <li>SiteOps teams empowered with intuitive dashboards, reducing reliance on engineering support.</li>
-    <li>Resulted in 75% fewer device failures, 80% fewer site visits, and a 35% boost in NPS.</li>
-  </ul>
-</motion.section>
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={20} />
+        </button>
+      )}     
+      {/* Key Takeaways */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3">
+          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+        </h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>Proactive real-time observability replaced reactive, customer-driven alerts.</li>
+          <li>Prometheus + Grafana provided full visibility into 1300+ edge devices.</li>
+          <li>Automated OTA deployment with Ansible & AWX enabled fast, large-scale rollout.</li>
+          <li>SiteOps teams empowered with intuitive dashboards, reducing reliance on engineering support.</li>
+          <li>Resulted in 75% fewer device failures, 80% fewer site visits, and a 35% boost in NPS.</li>
+        </ul>
+      </motion.section>
 
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div

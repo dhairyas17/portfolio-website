@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
-
 import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Projects from './pages/Projects';

@@ -27,7 +27,6 @@ const CaseStudyCategory = () => {
       team: '14',
       impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
       tags: ['Edge AI', 'System Design', 'YOLOv5', 'Jetson', 'RabbitMQ', 'OTA Deployment'],
-      // image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
       image:  '/assets/case-studies/gate-report.png',
 
     },
@@ -39,9 +38,8 @@ const CaseStudyCategory = () => {
       description: "Standardized edge deployments with kit-based setup and OTA config via Ansible & AWX, making it easy for non-engineers to manage devices at scale.",
       duration: '4 months',
       team: '10',
-      impact: ['Reduced deployment time by 70%', 'Enabled 1000+ site scalability', 'Empowered non-devs to manage edge ops'],
+      impact: ['Reduced deployment time by 70%', 'Enabled 500+ site scalability', 'Empowered non-devs to manage edge ops'],
       tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
-      // image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
       image:  '/assets/case-studies/standardizing-edge.png',
     },
     {
@@ -54,7 +52,6 @@ const CaseStudyCategory = () => {
       team: '7',
       impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
       tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
-      // image: 'https://images.pexels.com/photos/1581094/pexels-photo-1581094.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
       image:  '/assets/case-studies/edge-monitoring-platform.png',
 
     },
@@ -68,7 +65,6 @@ const CaseStudyCategory = () => {
       team: "5",
       impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
       tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
-      // image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
     image:  '/assets/case-studies/video-intelligence-api.png',
     },
     {
@@ -81,7 +77,6 @@ const CaseStudyCategory = () => {
       team: '10',
       impact: ['10× data scale', '29% accuracy lift', '60% faster annotation'],
       tags: ['MLOps', 'Airflow', 'MLflow', 'Edge AI', 'CVAT', 'Data Pipeline'],
-      // image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
       image:  '/assets/case-studies/Scaling MLOps Pipeline in Blue.png',
     
     }
@@ -92,7 +87,7 @@ const CaseStudyCategory = () => {
 
   const allCategories = Array.from(new Set(caseStudies.map((study) => study.category)));
 
-  // Initialize state **directly from URL params** (fix flicker)
+
   const filterFromUrl = searchParams.get('filter') || null;
   const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
   const initialPage = pageFromUrl > 0 ? pageFromUrl : 1;
@@ -100,7 +95,6 @@ const CaseStudyCategory = () => {
   const [activeFilter, setActiveFilter] = useState<string | null>(filterFromUrl);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
 
-  // Update URL params when user changes filter or page (avoid loops)
   useEffect(() => {
     const params: { [key: string]: string } = {};
     if (activeFilter) params.filter = activeFilter;
@@ -112,7 +106,6 @@ const CaseStudyCategory = () => {
     }
   }, [activeFilter, currentPage, searchParams, setSearchParams]);
 
-  // On filter button click, set filter and reset page to 1
   const onFilterChange = (filter: string | null) => {
     setActiveFilter(filter);
     setCurrentPage(1);

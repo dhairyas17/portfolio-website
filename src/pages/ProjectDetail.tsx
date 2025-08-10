@@ -174,153 +174,151 @@ const ProjectDetail: React.FC = () => {
           </motion.div>
         </motion.div>
 
-{/* Content */}
-<div className="space-y-12">
-  {/* Overview */}
-  <motion.section variants={fadeUp} custom={0.5}>
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Project Overview</h2>
-    <p className="text-gray-700 leading-relaxed text-justify text-lg">{project.overview}</p>
-  </motion.section>
+        {/* Content */}
+        <div className="space-y-12">
+          {/* Overview */}
+          <motion.section variants={fadeUp} custom={0.5}>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Project Overview</h2>
+            <p className="text-gray-700 leading-relaxed text-justify text-lg">{project.overview}</p>
+          </motion.section>
 
-  <motion.section variants={fadeUp} custom={0.6} className="space-y-8">
-  {/* Problem */}
-  <div className="flex flex-col">
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem</h2>
-    <div className="bg-red-50 border-l-4 border-red-400 p-6 text-justify rounded-r-lg">
-      <p className="text-gray-700 leading-relaxed">{project.problem}</p>
-    </div>
-  </div>
+          <motion.section variants={fadeUp} custom={0.6} className="space-y-8">
+          {/* Problem */}
+          <div className="flex flex-col">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Problem</h2>
+            <div className="bg-red-50 border-l-4 border-red-400 p-6 text-justify rounded-r-lg">
+              <p className="text-gray-700 leading-relaxed">{project.problem}</p>
+            </div>
+          </div>
 
-  {/* Solution */}
-  <div className="flex flex-col">
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
-    <div className="bg-green-50 border-l-4 border-green-400 p-6 text-justify rounded-r-lg">
-      <p className="text-gray-700 leading-relaxed">{project.solution}</p>
-    </div>
-  </div>
-</motion.section>
-
-
-
-  {/* Key Features */}
-  <motion.section variants={fadeUp} custom={0.7}>
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
-      {project.features.map((feature, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.02 }}
-          className="bg-white border-2 border-gray-100 p-6 rounded-lg"
-        >
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h3>
-          <p className="text-gray-600">{feature.description}</p>
-        </motion.div>
-      ))}
-    </div>
-  </motion.section>
-
-{/* Architecture */}
-<motion.section variants={fadeUp} custom={0.9} className="space-y-4">
-  <h2 className="text-2xl font-bold text-gray-900 mt-2">System Architecture</h2>
-  <div className="bg-gray-50 p-5 rounded-lg">
-    <ul className="space-y-3">
-      {project.architecture.map((item, index) => (
-        <li key={index} className="flex items-start gap-3">
-          <GitBranch className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-          <span className="text-gray-700">{item}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-</motion.section>
-
-  {/* Results */}
-  <motion.section variants={fadeUp} custom={0.8}>
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {project.results.map((result, index) => (
-        <motion.div
-          key={index}
-          whileHover={{ scale: 1.01 }}
-          className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
-        >
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
-          <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
-          <p className="text-gray-600 text-sm">{result.description}</p>
-        </motion.div>
-      ))}
-    </div>
-  </motion.section>
+          {/* Solution */}
+          <div className="flex flex-col">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
+            <div className="bg-green-50 border-l-4 border-green-400 p-6 text-justify rounded-r-lg">
+              <p className="text-gray-700 leading-relaxed">{project.solution}</p>
+            </div>
+          </div>
+        </motion.section>
 
 
-{/* Challenges */}
-<motion.section variants={fadeUp} custom={1.0} className="space-y-4">
-  <h2 className="text-2xl font-bold text-gray-900 mb-2">Technical Challenges</h2>
-  <div className="space-y-5">
-    {project.challenges.map((item, index) => (
-      <div key={index} className="border-l-4 border-orange-400 pl-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-1">{item.challenge}</h3>
-        <p className="text-gray-700">{item.solution}</p>
-      </div>
-    ))}
-  </div>
-</motion.section>
+
+          {/* Key Features */}
+          <motion.section variants={fadeUp} custom={0.7}>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Features</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+              {project.features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white border-2 border-gray-100 p-6 rounded-lg"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.name}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+        {/* Architecture */}
+        <motion.section variants={fadeUp} custom={0.9} className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900 mt-2">System Architecture</h2>
+          <div className="bg-gray-50 p-5 rounded-lg">
+            <ul className="space-y-3">
+              {project.architecture.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <GitBranch className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.section>
+
+          {/* Results */}
+          <motion.section variants={fadeUp} custom={0.8}>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.results.map((result, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.01 }}
+                  className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{result.metric}</h3>
+                  <div className="text-3xl font-bold text-blue-600 mb-2">{result.improvement}</div>
+                  <p className="text-gray-600 text-sm">{result.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
 
 
-  {/* Key Takeaways */}
-  <motion.section variants={fadeUp} custom={1.1}>
-    <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
-    <ul className="space-y-4">
-      {project.keyTakeaways.map((takeaway, index) => (
-        <li
-          key={index}
-          className="flex items-start gap-3 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400"
-        >
-          <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-          <span className="text-gray-700">{takeaway}</span>
-        </li>
-      ))}
-    </ul>
-  </motion.section>
+        {/* Challenges */}
+        <motion.section variants={fadeUp} custom={1.0} className="space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Technical Challenges</h2>
+          <div className="space-y-5">
+            {project.challenges.map((item, index) => (
+              <div key={index} className="border-l-4 border-orange-400 pl-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">{item.challenge}</h3>
+                <p className="text-gray-700">{item.solution}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
 
 
+        {/* Key Takeaways */}
+        <motion.section variants={fadeUp} custom={1.1}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h2>
+          <ul className="space-y-4">
+            {project.keyTakeaways.map((takeaway, index) => (
+              <li
+                key={index}
+                className="flex items-start gap-3 bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400"
+              >
+                <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-700">{takeaway}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.section>
 
           {/* Prev / Next Navigation */}
           <motion.div
-  variants={fadeUp}
-  custom={1.05}
-  className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
->
-  {/* Previous Button */}
-  {prevProject ? (
-    <Link
-      to={`/portfolio/projects/${prevProject.id}`}
-      className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-    >
-      <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
-      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-        Previous
-      </span>
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
+            variants={fadeUp}
+            custom={1.05}
+            className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
+          >
+            {/* Previous Button */}
+            {prevProject ? (
+              <Link
+                to={`/portfolio/projects/${prevProject.id}`}
+                className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+              >
+                <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+                  Previous
+                </span>
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
 
-  {/* Next Button */}
-  {nextProject ? (
-    <Link
-      to={`/portfolio/projects/${nextProject.id}`}
-      className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-    >
-      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-        Next
-      </span>
-      <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
-</motion.div>
+            {/* Next Button */}
+            {nextProject ? (
+              <Link
+                to={`/portfolio/projects/${nextProject.id}`}
+                className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+              >
+                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+                  Next
+                </span>
+                <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
+          </motion.div>
 
           {/* Scroll to Top */}
           {showScrollTop && (

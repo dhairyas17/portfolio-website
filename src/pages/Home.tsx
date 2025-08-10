@@ -75,7 +75,7 @@ const Home = () => {
       role: 'Technical Product Manager (edge)',
       company: 'Evercam',
       period: 'March 2024 – July 2025',
-      description: 'Led Gate Report AI platform and scaled edge deployments across 1300+ global sites',
+      description: 'Led Gate Report AI platform and scaled edge deployments across 500+ contruction sites globally.',
       metrics: [
         '60% reduction in manual reporting',
         '70% faster incident response',
@@ -300,7 +300,7 @@ const Home = () => {
           With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
         </p>
         <p>
-          I have led end-to-end product development and global rollouts across 1,200+ sites in the US, EU, and APAC regions. 
+          I have led end-to-end product development and global rollouts across 500+ sites in the US, EU, and APAC regions. 
           My work has delivered significant results, including a 60 percent reduction in manual effort, improved SLA compliance, and smoother deployment of machine learning models at the edge.
         </p>
         <p>

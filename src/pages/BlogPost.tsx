@@ -108,82 +108,82 @@ const BlogPost = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <ReactMarkdown>{markdown}</ReactMarkdown>
-{/* Blog Navigation Buttons */}
-<motion.div
-  className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
-  initial={{ y: 30, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ delay: 0.75, duration: 0.6 }}
->
-  {/* Previous Button */}
-  {blogList.findIndex((item) => item.id === blog.id) > 0 ? (
-    <Link
-      to={`/blog/${blogList[blogList.findIndex((item) => item.id === blog.id) - 1].id}`}
-      className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-    >
-      <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
-      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-        Previous
-      </span>
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
+          {/* Blog Navigation Buttons */}
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.75, duration: 0.6 }}
+          >
+            {/* Previous Button */}
+            {blogList.findIndex((item) => item.id === blog.id) > 0 ? (
+              <Link
+                to={`/blog/${blogList[blogList.findIndex((item) => item.id === blog.id) - 1].id}`}
+                className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+              >
+                <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+                  Previous
+                </span>
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
 
-  {/* Next Button */}
-  {blogList.findIndex((item) => item.id === blog.id) < blogList.length - 1 ? (
-    <Link
-      to={`/blog/${blogList[blogList.findIndex((item) => item.id === blog.id) + 1].id}`}
-      className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-    >
-      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-        Next
-      </span>
-      <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
-    </Link>
-  ) : (
-    <div className="hidden sm:block" />
-  )}
-</motion.div>
-{showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}
+            {/* Next Button */}
+            {blogList.findIndex((item) => item.id === blog.id) < blogList.length - 1 ? (
+              <Link
+                to={`/blog/${blogList[blogList.findIndex((item) => item.id === blog.id) + 1].id}`}
+                className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
+              >
+                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+                  Next
+                </span>
+                <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <div className="hidden sm:block" />
+            )}
+          </motion.div>
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+              aria-label="Scroll to top"
+            >
+              <ChevronUp size={20} />
+            </button>
+          )}
           {/* CTA Section */}
           <motion.div
-  className="border-t pt-1 mt-8 text-center"
-  initial={{ y: 30, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.6, delay: 1 }}
->
-  <div className="mt-8 text-center"> {/* Reduced from mt-16 to mt-6 */}
-    <h4 className="text-2xl font-semibold text-gray-800 mb-2">Enjoyed the read?</h4>
-    <p className="text-gray-600 mb-8">
-      Explore more insights or connect with me to discuss AI product thinking.
-    </p>
-    <div className="flex justify-center gap-4">
-  <Link
-    to="/blog"
-    className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
-  >
-    <span className="block will-change-auto">View All Posts</span>
-  </Link>
-  <a
-    href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block px-6 py-3 border border-gray-300 text-gray-700 text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
-  >
-    <span className="block will-change-auto">Connect on LinkedIn</span>
-  </a>
-</div>
-  </div>
-</motion.div>
+          className="border-t pt-1 mt-8 text-center"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
+          <div className="mt-8 text-center"> {/* Reduced from mt-16 to mt-6 */}
+            <h4 className="text-2xl font-semibold text-gray-800 mb-2">Enjoyed the read?</h4>
+            <p className="text-gray-600 mb-8">
+              Explore more insights or connect with me to discuss AI product thinking.
+            </p>
+            <div className="flex justify-center gap-4">
+          <Link
+            to="/blog"
+            className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+          >
+            <span className="block will-change-auto">View All Posts</span>
+          </Link>
+          <a
+            href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 border border-gray-300 text-gray-700 text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+          >
+            <span className="block will-change-auto">Connect on LinkedIn</span>
+          </a>
+        </div>
+          </div>
+        </motion.div>
         </motion.article>
 
         {/* Footer */}

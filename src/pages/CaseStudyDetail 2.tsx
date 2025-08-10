@@ -181,7 +181,7 @@ const CaseStudyDetail2 = () => {
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture Shift: From Camera-Based to Kit-Based</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <div className="bg-gray-50 p-4 border rounded">
+          <div className="bg-red-50 p-4 border rounded">
             <h3 className="font-bold mb-2">Old Model (Camera-Centric)</h3>
             <p>
               → Each site had Custom camera & Custom config <br /> 
@@ -229,43 +229,29 @@ const CaseStudyDetail2 = () => {
           <span className="text-lg"> - Support Engineer, Evercam</span>
         </blockquote>
       </motion.section>
-
-
-      {/* Tags */}
-      {/* <motion.section {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><TagIcon className="inline mr-2 mb-1 text-indigo-600" size={18} />Tags</h2>
-        <div className="flex flex-wrap gap-2 text-lg text-gray-700">
-          {[
-            "Edge Infrastructure", "Ansible", "AWX", "SBC", "TPM", "OTA", "Hardware Standardization", 
-            "DevOps", "Support Enablement", "Kit-Based Architecture", "Process Optimization"
-          ].map((tag, idx) => (
-            <span key={idx} className="bg-gray-200 px-3 py-1 rounded-lg">{tag}</span>
-          ))}
-        </div>
-      </motion.section> */}
       {showScrollTop && (
-  <button
-    onClick={scrollToTop}
-    className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-    aria-label="Scroll to top"
-  >
-    <ChevronUp size={20} />
-  </button>
-)}
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp size={20} />
+          </button>
+        )}
      
-{/* Key Takeaways */}
-<motion.section className="mb-10" {...fadeIn}>
-  <h2 className="text-2xl font-semibold mb-3">
-    <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
-  </h2>
-  <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-    <li>Shift from ad-hoc, camera-based deployments to a standardized kit-based architecture drastically improved scalability and reliability.</li>
-    <li>Centralized version control for hardware, firmware, and software eliminated tech debt and inconsistency.</li>
-    <li>Automation via Ansible + AWX empowered non-technical teams to deploy configs and updates without developer support.</li>
-    <li>Cross-functional collaboration across firmware, DevOps, development, support, and QA teams accelerated rollout success.</li>
-    <li>Reduced deployment errors and support overhead, enabling faster site onboarding for 627+ projects worldwide.</li>
-  </ul>
-</motion.section>
+      {/* Key Takeaways */}
+      <motion.section className="mb-10" {...fadeIn}>
+        <h2 className="text-2xl font-semibold mb-3">
+          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Key Takeaways
+        </h2>
+        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
+          <li>Shift from ad-hoc, camera-based deployments to a standardized kit-based architecture drastically improved scalability and reliability.</li>
+          <li>Centralized version control for hardware, firmware, and software eliminated tech debt and inconsistency.</li>
+          <li>Automation via Ansible + AWX empowered non-technical teams to deploy configs and updates without developer support.</li>
+          <li>Cross-functional collaboration across firmware, DevOps, development, support, and QA teams accelerated rollout success.</li>
+          <li>Reduced deployment errors and support overhead, enabling faster site onboarding for 627+ projects worldwide.</li>
+        </ul>
+      </motion.section>
 
       <hr className="mt-10 border-t border-gray-200" />
       <motion.div

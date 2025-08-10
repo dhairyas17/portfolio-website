@@ -126,128 +126,128 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
 
-            <div className="bg-white rounded-2xl shadow-lg p-8 min-h-[660px]">
-  <h2 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h2>
-  {isSubmitted ? (
-    <motion.div
-      className="flex items-center justify-center p-8"
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="text-center">
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
-        <p className="text-gray-600">Thanks for reaching out. I'll get back to you soon.</p>
-      </div>
-    </motion.div>
-  ) : (
-    <form ref={form} onSubmit={handleSubmit} className="space-y-11">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-            Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-            placeholder="Your name"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-            Email *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-            placeholder="your@email.com"
-          />
-        </div>
-      </div>
+          <div className="bg-white rounded-2xl shadow-lg p-8 min-h-[660px]">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send me a message</h2>
+            {isSubmitted ? (
+              <motion.div
+                className="flex items-center justify-center p-8"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="text-center">
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
+                  <p className="text-gray-600">Thanks for reaching out. I'll get back to you soon.</p>
+                </div>
+              </motion.div>
+            ) : (
+              <form ref={form} onSubmit={handleSubmit} className="space-y-11">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
 
-      <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-          Subject *
-        </label>
-        <select
-          id="subject"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-        >
-          <option value="">Select a subject</option>
-          <option value="collaboration">Collaboration Opportunity</option>
-          <option value="consulting">Product Consulting</option>
-          <option value="speaking">Speaking Engagement</option>
-          <option value="job">Job Opportunity</option>
-          <option value="mentorship">Mentorship</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject *
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="collaboration">Collaboration Opportunity</option>
+                    <option value="consulting">Product Consulting</option>
+                    <option value="speaking">Speaking Engagement</option>
+                    <option value="job">Job Opportunity</option>
+                    <option value="mentorship">Mentorship</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
 
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Message *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          rows={6}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-          placeholder="Tell me more about your project or how I can help..."
-        />
-      </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    placeholder="Tell me more about your project or how I can help..."
+                  />
+                </div>
 
-      <button
-        type="submit"
-        className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors transition-transform duration-200 font-semibold flex items-center justify-center gap-3 hover:scale-105 disabled:opacity-50"
-        disabled={isSending}
-      >
-        {isSending ? (
-          <>
-            <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              />
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              />
-            </svg>
-            Sending...
-          </>
-        ) : (
-          <>
-            <Send className="w-5 h-5" />
-            Send Message
-          </>
-        )}
-      </button>
-    </form>
-  )}
-</div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors transition-transform duration-200 font-semibold flex items-center justify-center gap-3 hover:scale-105 disabled:opacity-50"
+                  disabled={isSending}
+                >
+                  {isSending ? (
+                    <>
+                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
 
           </motion.div>
 
@@ -306,8 +306,8 @@ const Contact = () => {
           </motion.div>
         </div>
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
-  © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-</p>
+          © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+        </p>
       </div>
     </motion.div>
     
