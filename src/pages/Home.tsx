@@ -260,36 +260,34 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
 
-      
-{/* Hero Section */}
-{/* Hero Section */}
-<section
-  id="home"
-  className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 px-4"
->
-  <div className="max-w-5xl w-full mx-auto text-center">
-    <motion.div
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-    >
-      <h1 className="text-5xl md:text-6xl font-bold text-gray-700 mb-3">
-        Hi, I'm{' '}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-          Dhairya
-        </span>
-      </h1>
-      <h2 className="text-2xl md:text-2xl text-gray-500 mb-4 font-medium">
-        Product Manager & Strategy Leader
-      </h2>
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 px-4"
+      >
+        <div className="max-w-5xl w-full mx-auto text-center">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-700 mb-3">
+              Hi, I'm{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                Dhairya
+              </span>
+            </h1>
+            <h2 className="text-2xl md:text-2xl text-gray-500 mb-4 font-medium">
+              Product Manager & Strategy Leader
+            </h2>
 
-      <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
-        Bridging strategy and execution with data-driven product leadership.
-      </p>
+            <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
+              Bridging strategy and execution with data-driven product leadership.
+            </p>
 
-      <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-      Leading international teams to transform strategic visions into impactful, data-driven product launches.
-      </p>
+            <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
+            Leading international teams to transform strategic visions into impactful, data-driven product launches.
+            </p>
     </motion.div>
 
     <motion.div
@@ -405,41 +403,41 @@ For complex products that require both strategic vision and technical expertise,
 
       {/* Right - Value Cards */}
       <motion.div
-  className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[430px]"
-  initial={{ x: 50, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8, delay: 0.2 }}
->
-  {[
-    {
-      title: 'Strategic Vision',
-      icon: '💡',
-      desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
-    },
-    {
-      title: 'Cross-functional Leadership',
-      icon: '👥',
-      desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
-    },
-    {
-      title: 'User Obsession',
-      icon: '🎯',
-      desc: 'Rooted in real user problems, I translate needs into intuitive solutions that deliver value. Every feature starts and ends with the user.'
-    }
-  ].map((item, index) => (
-    <div
-      key={index}
-      className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex items-start gap-4"
-    >
-      <div className="text-2xl">{item.icon}</div>
-      <div>
-        <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
-        <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
-      </div>
-    </div>
-  ))}
-</motion.div>
+        className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[430px]"
+        initial={{ x: 50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        {[
+          {
+            title: 'Strategic Vision',
+            icon: '💡',
+            desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
+          },
+          {
+            title: 'Cross-functional Leadership',
+            icon: '👥',
+            desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
+          },
+          {
+            title: 'User Obsession',
+            icon: '🎯',
+            desc: 'Rooted in real user problems, I translate needs into intuitive solutions that deliver value. Every feature starts and ends with the user.'
+          }
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex items-start gap-4"
+          >
+            <div className="text-2xl">{item.icon}</div>
+            <div>
+              <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
+              <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </motion.div>
 
     </div>
 
@@ -496,57 +494,56 @@ For complex products that require both strategic vision and technical expertise,
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {experiences.map((exp, index) => (
                   <motion.div
-  key={index}
-  className="relative flex flex-col items-center"
-  initial={{ y: 50, opacity: 0 }}
-  whileInView={{ y: 0, opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6, delay: index * 0.1 }}
->
-  <div className="hidden md:flex absolute top-[24px] z-10">
-    {/* <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div> */}
-    <div
-  className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
-  style={{
-    boxShadow: '0 0 0 rgba(59,130,246,0.4)',
-    animation: 'glow 2s infinite ease-in-out',
-  }}
-></div>
+                    key={index}
+                    className="relative flex flex-col items-center"
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <div className="hidden md:flex absolute top-[24px] z-10">
+                      {/* <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div> */}
+                      <div
+                    className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
+                    style={{
+                      boxShadow: '0 0 0 rgba(59,130,246,0.4)',
+                      animation: 'glow 2s infinite ease-in-out',
+                    }}
+                  ></div>
+              </div>
 
-  </div>
+          <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between"
+            >
+              <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
 
-  <motion.div
-  whileHover={{ scale: 1.05 }}
-  className="mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between"
->
-  <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
 
-  <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+              <div className="text-gray-600 mb-2 flex items-center gap-1">
+                <span>{exp.company}</span>
+              </div>
 
-  <div className="text-gray-600 mb-2 flex items-center gap-1">
-    <span>{exp.company}</span>
-  </div>
+              <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+                <MapPin size={14} />
+                <span>{exp.location}</span>
+              </div>
 
-  <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-    <MapPin size={14} />
-    <span>{exp.location}</span>
-  </div>
+              <p className="text-gray-700 text-sm mb-3 text-justify">{exp.description}</p>
 
-  <p className="text-gray-700 text-sm mb-3 text-justify">{exp.description}</p>
+              <div className="space-y-1">
+                {exp.metrics.map((metric, idx) => (
+                  <div
+                    key={idx}
+                    className="text-xs text-green-700 bg-green-50 px-3 py-1 rounded text-left"
+                  >
+                    {metric}
+                  </div>
+                ))}
+              </div>
+          </motion.div>
 
-  <div className="space-y-1">
-    {exp.metrics.map((metric, idx) => (
-      <div
-        key={idx}
-        className="text-xs text-green-700 bg-green-50 px-3 py-1 rounded text-left"
-      >
-        {metric}
-      </div>
-    ))}
-  </div>
-</motion.div>
-
-</motion.div>
+        </motion.div>
 
                 
               ))}
