@@ -49,6 +49,7 @@ const posts = [
     tags: ['Stakeholders', 'TPM', 'Execution']
   }
 ] 
+
 const caseStudies = [
   {
     id: '1',
@@ -61,7 +62,7 @@ const caseStudies = [
     impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
     tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
     image:  '/assets/case-studies/gate-report.png',
-    link: '/portfolio/case-studies/1'
+    link: '/case-studies/1'
 
   },
   {
@@ -75,7 +76,7 @@ const caseStudies = [
     impact: ['Reduced deployment time by 70%', 'Enabled 500+ site scalability', 'Empowered non-devs to manage edge ops'],
     tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
     image:  '/assets/case-studies/standardizing-edge.png',
-    link: '/portfolio/case-studies/2'
+    link: '/case-studies/2'
   },
   {
     id: '3',
@@ -88,12 +89,10 @@ const caseStudies = [
     impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
     tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
     image:  '/assets/case-studies/edge-monitoring-platform.png',
-    link: '/portfolio/case-studies/3'
-
+    link: '/case-studies/3'
   }
-
 ];
-// ... (your experiences, tools, certifications, testimonials arrays remain unchanged)
+
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -110,6 +109,7 @@ const Home = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Show/hide scroll-to-top button
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -123,8 +123,8 @@ const Home = () => {
     };
   }, []);
 
+  // Scroll if coming from a route with state.scrollTarget
   useEffect(() => {
-    // Handle navigation via location.state
     if (location.state?.scrollTarget) {
       const targetId = location.state.scrollTarget;
       const targetElement = document.getElementById(targetId);
@@ -135,19 +135,22 @@ const Home = () => {
         });
       }
 
+      // Clear state so it doesn't scroll again
       navigate(location.pathname, { replace: true, state: {} });
     }
+  }, [location.state, location.pathname, navigate]);
 
-    // Fallback: handle direct /#about hash
+  // Scroll if URL contains a hash (#blogs, #about, etc.)
+  useEffect(() => {
     if (location.hash) {
-      const hashElement = document.querySelector(location.hash);
-      if (hashElement) {
-        requestAnimationFrame(() => {
-          hashElement.scrollIntoView({ behavior: 'smooth' });
-        });
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 50); // wait for DOM to render
       }
     }
-  }, [location, navigate]);
+  }, [location]);
 
 
   const experiences = [
@@ -562,7 +565,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section id="case-study" className="py-20 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.h2
       className="text-3xl font-semibold mb-20 text-center"
@@ -747,7 +750,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-gray-50">
+      <section id="blogs" className="py-20 bg-gray-50">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.h2
       className="text-3xl font-semibold mb-20 text-center"
@@ -766,7 +769,7 @@ const Home = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
           className="cursor-pointer"
-          onClick={() => window.location.href = `/blog/${post.id}`}
+          onClick={() => window.location.href = `/blogs/${post.id}`}
         >
           <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[480px] flex flex-col">
             <div className="relative overflow-hidden h-48">

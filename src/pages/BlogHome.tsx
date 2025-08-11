@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Clock, Search } from 'lucide-react';
 
-const Blog = () => {
+const BlogHome = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -96,17 +96,6 @@ const Blog = () => {
       date: '2025-07-17',
       readTime: '6 min read',
       tags: ['Stakeholders', 'TPM', 'Execution']
-    },
-    {
-      id: '12',
-      title: 'Cost-Effective System Design: Balancing Performance & Budget',
-      excerpt:
-        'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
-      image: '/assets/blogs/13.png',
-      category: 'system-design',
-      date: '2025-04-13',
-      readTime: '6 min read',
-      tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
     }
     ];
 
@@ -392,4 +381,4 @@ return (
   );
 };
 
-export default Blog;
+export default BlogHome;
