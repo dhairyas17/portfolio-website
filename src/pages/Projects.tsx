@@ -56,7 +56,7 @@ const projects = [
     id: '103',
     title: 'Scalable AI-Driven Video Intelligence API Platform',
     description:
-      'Developed a modular FastAPI platform offering video AI features via REST APIs,YOLOv8, FaceNet, SAM, LaMa,running on cloud and edge.',
+      'Developed a modular FastAPI platform offering video AI features via REST APIs, YOLOv8, FaceNet, SAM, LaMa,running on cloud and edge.',
     image:  '/assets/case-studies/video-intelligence-api.png',
     category: 'api',
     tech: [

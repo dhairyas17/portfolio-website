@@ -104,7 +104,7 @@ const CaseStudyDetail2 = () => {
     <div className="flex items-start gap-2">
       <Globe className="mt-1" size={16} />
       <span>
-        <strong>Scope:</strong> 627 Projects (1300+ kits)
+        <strong>Scope:</strong> 627 Projects (1200+ kits)
       </span>
     </div>
   </div>

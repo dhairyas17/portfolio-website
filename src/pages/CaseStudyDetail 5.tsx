@@ -215,7 +215,7 @@ const CaseStudyDetail5 = () => {
                 ['Training Data Size', '280k frames', '980k+ frames', '↑ 3.5×'],
                 ['Annotation Turnaround Time', 'High', '60% faster', '↓ 60%'],
                 ['Model Retraining Cycles', 'Manual', 'Automated', '✅'],
-                ['Deployment Reach', 'Limited', '1300+ edge nodes globally', '✅'],
+                ['Deployment Reach', 'Limited', '1200+ edge nodes globally', '✅'],
               ].map((row, i) => (
                 <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                   {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
@@ -266,7 +266,7 @@ const CaseStudyDetail5 = () => {
           <li>Scaled dataset from 80k to 980k+ frames, with automated collection and targeted annotation.</li>
           <li>Cut annotation turnaround time by 60% using pre-labeling, QA gates, and workflow automation.</li>
           <li>Implemented reproducible MLOps pipeline with Airflow, MLflow, and automated retraining.</li>
-          <li>Achieved global deployment to 1300+ edge nodes, ensuring real-time performance at scale.</li>
+          <li>Achieved global deployment to 1200+ edge nodes, ensuring real-time performance at scale.</li>
         </ul>
       </motion.section>
 

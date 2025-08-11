@@ -9,10 +9,90 @@ import {
   Github,
   Linkedin,
   Mail,
-  ChevronUp
+  ChevronUp,
+  TrendingUp,
+  Clock,
+  Users,
+  ArrowRight,
+  Calendar
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+const posts = [
+  {
+    id: '6',
+    title: 'From Engineer to TPM: Influencing Without Authority',
+    excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM, and how communication, trust, and alignment became my real tools.',
+    image: '/assets/blogs/6.png',
+    category: 'leadership',
+    date: '2025-08-06',
+    readTime: '5 min read',
+    tags: ['Career', 'TPM', 'Leadership']
+  },
+  {
+    id: '2',
+    title: 'Feature Prioritization in Technical Products',
+    excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
+    image: '/assets/blogs/2.png',
+    category: 'product-strategy',
+    date: '2025-02-02',
+    readTime: '5 min read',
+    tags: ['Prioritization', 'AI Products', 'TPM']
+  },
+  {
+    id: '7',
+    title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
+    excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
+    image: '/assets/blogs/7.png',
+    category: 'leadership',
+    date: '2025-07-17',
+    readTime: '6 min read',
+    tags: ['Stakeholders', 'TPM', 'Execution']
+  }
+] 
+const caseStudies = [
+  {
+    id: '1',
+    title: "Redesigning Evercam's Gate Report",
+    subtitle: 'Real-Time Edge-Based Object Detection for 100+ Sites',
+    category: 'ai-ml',
+    description: 'Redesigned Evercam’s Gate Report from cloud to edge, cutting latency and bandwidth, and boosting user satisfaction and revenue.',
+    duration: '6 months',
+    team: '14',
+    impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
+    tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
+    image:  '/assets/case-studies/gate-report.png',
+    link: '/portfolio/case-studies/1'
 
+  },
+  {
+    id: '2',
+    title: "Standardizing Edge Setup at Evercam",
+    subtitle: 'Scalable Kit-Based Deployment Across 500+ Sites',
+    category: 'infra',
+    description: "Standardized edge deployments with kit-based setup and OTA config via Ansible & AWX, making it easy for non-engineers to manage devices at scale.",
+    duration: '4 months',
+    team: '10',
+    impact: ['Reduced deployment time by 70%', 'Enabled 500+ site scalability', 'Empowered non-devs to manage edge ops'],
+    tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
+    image:  '/assets/case-studies/standardizing-edge.png',
+    link: '/portfolio/case-studies/2'
+  },
+  {
+    id: '3',
+    title: 'Real-Time Observability for Edge Devices',
+    subtitle: 'Built Scalable Monitoring for 1200+ Devices globally',
+    category: 'infra',
+    description: "Built a real-time observability system with Grafana and OTA updates to monitor Evercam’s edge fleet, cut failures and support costs, and improve NPS.",
+    duration: '4 months',
+    team: '7',
+    impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
+    tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
+    image:  '/assets/case-studies/edge-monitoring-platform.png',
+    link: '/portfolio/case-studies/3'
+
+  }
+
+];
 // ... (your experiences, tools, certifications, testimonials arrays remain unchanged)
 const scrollToTop = () => {
   window.scrollTo({
@@ -79,7 +159,7 @@ const Home = () => {
       metrics: [
         '60% reduction in manual reporting',
         '70% faster incident response',
-        '1300+ edge deployments (up from 150)',
+        '1200+ edge deployments (up from 150)',
         '35% less on-site support'
       ],
       location: 'Dublin, Ireland'
@@ -179,6 +259,7 @@ const Home = () => {
 
       
 {/* Hero Section */}
+{/* Hero Section */}
 <section
   id="home"
   className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 px-4"
@@ -200,11 +281,11 @@ const Home = () => {
       </h2>
 
       <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
-      Bridging strategy and execution with data-driven product leadership.
+        Bridging strategy and execution with data-driven product leadership.
       </p>
 
       <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-      From vision to launch, I align stakeholders and lead global teams to deliver impactful, data-driven products.
+        From vision to launch, I align stakeholders and lead global teams to deliver impactful, data-driven products.
       </p>
     </motion.div>
 
@@ -214,12 +295,21 @@ const Home = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.6 }}
     >
+           <Link
+        to="/portfolio"
+        className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition-transform transform hover:scale-105 font-medium"
+      >
+        Explore My Work
+      </Link>
       <Link
         to="/contact"
         className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-transform transform hover:scale-105 font-medium"
       >
         Let’s Connect
       </Link>
+
+ 
+
       <a
         href="/resume.pdf"
         target="_blank"
@@ -264,6 +354,7 @@ const Home = () => {
     </motion.div>
   </div>
 </section>
+
 
 
 
@@ -382,7 +473,7 @@ const Home = () => {
         <div className="text-sm text-gray-600 mt-2">Global Teams</div>
       </div> 
       <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-        <div className="text-indigo-600 text-4xl font-bold">1300+</div>
+        <div className="text-indigo-600 text-4xl font-bold">1200+</div>
         <div className="text-sm text-gray-600 mt-2">Global Deployments</div>
       </div>
     </motion.div>
@@ -471,8 +562,112 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.h2
+      className="text-3xl font-semibold mb-20 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      Featured Product Case Studies
+    </motion.h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {caseStudies.length > 0 ? (
+        caseStudies.map((study, index) => (
+          <motion.div
+            key={study.id}
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+            className="cursor-pointer"
+            onClick={() => window.location.href = study.link}
+          >
+            <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[530px] flex flex-col">
+              <div className="relative overflow-hidden h-48">
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              <div className="p-6 flex flex-col flex-grow justify-between">
+                <div className="flex flex-col gap-1">
+                  <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
+                    {study.title}
+                  </h3>
+                  <p className="text-xs text-blue-600 font-semibold mb-2">{study.subtitle}</p>
+                  <p className="text-gray-600 text-sm text-justify mb-2 line-clamp-3">{study.description}</p>
+
+                  <div className="flex flex-col gap-1 mb-2 text-xs">
+                    {study.impact.map((point, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <TrendingUp className="w-3 h-3 text-green-500" />
+                        <span className="text-green-600 font-semibold">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-3 h-3 text-gray-500" />
+                      <span className="font-medium">Duration:</span> {study.duration}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-3 h-3 text-gray-500" />
+                      <span className="font-medium">Team:</span> {study.team}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {study.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {study.tags.length > 3 && (
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                        +{study.tags.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
+                  <span className="text-sm font-semibold mr-2">View Detailed Case Study</span>
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))
+      ) : (
+        <p className="text-center text-gray-500 col-span-full">No case studies found.</p>
+      )}
+    </div>
+
+    {/* CTA Button */}
+    <div className="mt-10 text-center">
+      <a
+        href="/case-studies"
+        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
+      >
+        View All Case Studies
+        <ArrowRight className="ml-2 w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</section>
+
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -510,7 +705,8 @@ const Home = () => {
 
         </div>
       </section>
-      <section className="py-20 bg-gray-50">
+
+      <section className="py-20 bg-white-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -551,12 +747,102 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="py-20 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.h2
+      className="text-3xl font-semibold mb-20 text-center"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      Product Leadership Insights
+    </motion.h2>
 
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {posts.map((post, index) => (
+        <motion.div
+          key={post.id}
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+          className="cursor-pointer"
+          onClick={() => window.location.href = `/blog/${post.id}`}
+        >
+          <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[480px] flex flex-col">
+            <div className="relative overflow-hidden h-48">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+
+            <div className="p-6 flex flex-col flex-grow justify-between">
+              <div className="flex flex-col gap-1">
+                <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
+                  {post.category.replace('-', ' ')}
+                </p>
+                <p className="text-gray-600 text-sm text-justify mb-2 line-clamp-3">{post.excerpt}</p>
+
+                <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-3 h-3 text-gray-500" />
+                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3 h-3 text-gray-500" />
+                    <span>{post.readTime}</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {post.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {post.tags.length > 3 && (
+                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                      +{post.tags.length - 3} more
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
+                <span className="text-sm font-semibold mr-2">Read More</span>
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* CTA Button */}
+    <div className="mt-10 text-center">
+      <a
+        href="/blog"
+        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
+      >
+        View All Blogs
+        <ArrowRight className="ml-2 w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</section>
 {/* Certifications */}
 <section className="pt-24 pb-16 bg-white">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div
-      className="text-center mb-16"
+      className="text-center mb-20"
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
@@ -637,18 +923,6 @@ const Home = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-  <Link
-    to="/portfolio"
-    className="min-w-[150px] text-center px-6 py-3 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-  >
-    View Portfolio
-  </Link>
-  <Link
-    to="/blog"
-    className="min-w-[150px] text-center px-6 py-3 rounded-full border border-gray-300 text-gray-900 hover:bg-gray-100 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-  >
-    Blogs
-  </Link>
   <Link
     to="/contact"
     className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"

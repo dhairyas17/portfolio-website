@@ -97,7 +97,7 @@ const CaseStudyDetail3 = () => {
     <div className="flex items-start gap-2">
       <CalendarDays className="mt-1" size={16} />
       <span>
-        <strong>Deployments:</strong> 1300+ Devices
+        <strong>Deployments:</strong> 1200+ Devices
       </span>
     </div>
   </div>
@@ -265,7 +265,7 @@ const CaseStudyDetail3 = () => {
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li>Proactive real-time observability replaced reactive, customer-driven alerts.</li>
-          <li>Prometheus + Grafana provided full visibility into 1300+ edge devices.</li>
+          <li>Prometheus + Grafana provided full visibility into 1200+ edge devices.</li>
           <li>Automated OTA deployment with Ansible & AWX enabled fast, large-scale rollout.</li>
           <li>SiteOps teams empowered with intuitive dashboards, reducing reliance on engineering support.</li>
           <li>Resulted in 75% fewer device failures, 80% fewer site visits, and a 35% boost in NPS.</li>

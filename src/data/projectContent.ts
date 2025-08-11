@@ -18,7 +18,7 @@ export const projectData: Record<string, Project> = {
   category: 'Edge Infrastructure & DevOps',
   tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting'],
   overview:
-    'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 1300+ edge devices include NVIDIA Jetsons and raspberry pi',
+    'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 1200+ edge devices include NVIDIA Jetsons and raspberry pi',
   problem:
     'Manual firmware updates on distributed edge devices led to inconsistency, increased downtime, and operational delays.',
   solution:
@@ -106,7 +106,7 @@ export const projectData: Record<string, Project> = {
   year: '2025',
   team: '4 people',
   duration: '12 weeks',
-  deployment: '1300+ Edge Devices',
+  deployment: '1200+ Edge Devices',
   status: 'Live',
   category: 'DevOps & Observability',
   tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Python', 'Shell Scripting'],
@@ -137,7 +137,7 @@ export const projectData: Record<string, Project> = {
   results: [
     {
       metric: 'Deployment',
-      improvement: '1300+',
+      improvement: '1200+',
       description: 'Edge devices across US, EU and APAC',
     },
     {

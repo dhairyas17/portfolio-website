@@ -83,7 +83,7 @@ const Blog = () => {
       excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
       image: '/assets/blogs/2.png',
       category: 'product-strategy',
-      date: '2025-08-02',
+      date: '2025-02-02',
       readTime: '5 min read',
       tags: ['Prioritization', 'AI Products', 'TPM']
     },
@@ -93,7 +93,7 @@ const Blog = () => {
       excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
       image: '/assets/blogs/7.png',
       category: 'leadership',
-      date: '2025-08-07',
+      date: '2025-07-17',
       readTime: '6 min read',
       tags: ['Stakeholders', 'TPM', 'Execution']
     },
@@ -104,7 +104,7 @@ const Blog = () => {
         'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
       image: '/assets/blogs/13.png',
       category: 'system-design',
-      date: '2025-08-13',
+      date: '2025-04-13',
       readTime: '6 min read',
       tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
     },
@@ -124,7 +124,7 @@ const Blog = () => {
       excerpt: 'From MLflow to Airflow to TensorRT – how tools and workflows evolve in the world of real-time inference, versioning, and deployment at scale.',
       image: '/assets/blogs/4.png',
       category: 'ai-ml',
-      date: '2025-08-04',
+      date: '2025-04-10',
       readTime: '7 min read',
       tags: ['MLOps', 'AI Infra', 'Model Deployment']
     },
@@ -134,7 +134,7 @@ const Blog = () => {
       excerpt: 'Drawing from Edge/OTA experience, this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
       image: '/assets/blogs/5.png',
       category: 'edge-infra',
-      date: '2025-08-05',
+      date: '2024-12-29',
       readTime: '5 min read',
       tags: ['Edge AI', 'Predictions', 'Cloud']
     },
@@ -144,7 +144,7 @@ const Blog = () => {
       excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
       image: '/assets/blogs/1.png',
       category: 'edge-infra',
-      date: '2025-08-01',
+      date: '2025-08-06',
       readTime: '6 min read',
       tags: ['Edge AI', 'TPM', 'Product Strategy']
     },
@@ -154,7 +154,7 @@ const Blog = () => {
       excerpt: 'Beyond prompting, how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
       image: '/assets/blogs/8.png',
       category: 'ai-ml',
-      date: '2025-08-08',
+      date: '2025-08-11',
       readTime: '5 min read',
       tags: ['GenAI', 'Future of Work', 'TPM']
     },
@@ -164,7 +164,7 @@ const Blog = () => {
       excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI, and how a SaaS mindset helped.',
       image: '/assets/blogs/9.png',
       category: 'edge-infra',
-      date: '2025-08-09',
+      date: '2025-06-09',
       readTime: '7 min read',
       tags: ['Edge Infra', 'SaaS', 'TPM']
     },
@@ -175,7 +175,7 @@ const Blog = () => {
           'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase, with real trade-offs and mistakes made.',
         image: '/assets/blogs/11.png',
         category: 'system-design',
-        date: '2025-08-11',
+        date: '2025-03-11',
         readTime: '6 min read',
         tags: ['System Design', 'Databases', 'Product Decisions']
       },
@@ -186,7 +186,7 @@ const Blog = () => {
           'From naming conventions to auth flows, these are the principles I follow when designing APIs that scale, evolve, and don’t break clients.',
         image: '/assets/blogs/12.png',
         category: 'system-design',
-        date: '2025-08-12',
+        date: '2024-05-12',
         readTime: '5 min read',
         tags: ['API Design', 'Integration', 'Engineering Collaboration']
       }

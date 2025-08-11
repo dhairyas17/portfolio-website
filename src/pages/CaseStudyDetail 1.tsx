@@ -135,7 +135,7 @@ const CaseStudyDetail1 = () => {
         <h3 className="font-semibold mb-1 text-lg">Cloud-Centric Pain Points:</h3>
         <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
           <li>Entire video footage was uploaded to cloud for processing</li>
-          <li>High latency (24 - 36 hours delay)</li>
+          <li>High latency (7-8 hours delay)</li>
           <li>Expensive bandwidth (~3TB/month per site)</li>
           <li>Failed frequently in areas with poor network</li>
           <li>Low NPS (~7%), due to unreliability and user frustration</li>

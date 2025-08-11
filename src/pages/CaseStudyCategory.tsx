@@ -45,7 +45,7 @@ const CaseStudyCategory = () => {
     {
       id: '3',
       title: 'Real-Time Observability for Edge Devices',
-      subtitle: 'Built Scalable Monitoring for 1300+ Devices globally',
+      subtitle: 'Built Scalable Monitoring for 1200+ Devices globally',
       category: 'infra',
       description: "Built a real-time observability system with Grafana and OTA updates to monitor Evercam’s edge fleet, cut failures and support costs, and improve NPS.",
       duration: '4 months',
