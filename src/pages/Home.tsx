@@ -14,15 +14,34 @@ import {
   Clock,
   Users,
   ArrowRight,
-  Calendar
+  Calendar,
+  Lightbulb,
+  Target
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+const valueCards = [
+  {
+    title: "Strategic Vision",
+    icon: <Lightbulb className="w-6 h-6 text-indigo-600" />,
+    desc: "Architect industry-defining product roadmaps that outpace market trends, align with business ambition, and create category leadership with measurable growth."
+  },
+  {
+    title: "Cross-Functional Leadership",
+    icon: <Users className="w-6 h-6 text-indigo-600" />,
+    desc: "Bridge engineering, design, and business teams to deliver complex products at speed, with uncompromising quality, across global markets.."
+  },
+  {
+    title: "User Obsession",
+    icon: <Target className="w-6 h-6 text-indigo-600" />,
+    desc: "Translate deep user insights into intuitive, scalable solutions that drive adoption, strengthen retention, and accelerate revenue growth."
+  }
+];
 
 const posts = [
   {
-    id: '6',
+    id: '1',
     title: 'From Engineer to TPM: Influencing Without Authority',
-    excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM, and how communication, trust, and alignment became my real tools.',
+    excerpt: 'Aligned engineering, design, and ops teams to deliver AI/edge products to 500+ sites, without formal authority. Built trust, drove alignment, and enabled execution through clear communication.',
     image: '/assets/blogs/6.png',
     category: 'leadership',
     date: '2025-08-06',
@@ -32,7 +51,7 @@ const posts = [
   {
     id: '2',
     title: 'Feature Prioritization in Complex Technical Products',
-    excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
+    excerpt: 'Cut prioritization cycle time by 40% by integrating RICE, MoSCoW, and Productboard across firmware, DevOps, and UX teams, accelerating AI product delivery and scaling decision-making efficiency.',
     image: '/assets/blogs/2.png',
     category: 'product-strategy',
     date: '2025-02-02',
@@ -40,9 +59,9 @@ const posts = [
     tags: ['Prioritization', 'AI Products', 'TPM']
   },
   {
-    id: '7',
+    id: '3',
     title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
-    excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
+    excerpt: 'Aligned firmware, DevOps, data science, and business teams into a single execution roadmap, improving delivery speed, reducing rework, and increasing cross-team trust for global AI/edge rollouts.',
     image: '/assets/blogs/7.png',
     category: 'leadership',
     date: '2025-07-17',
@@ -54,10 +73,10 @@ const posts = [
 const caseStudies = [
   {
     id: '1',
-    title: "Redesigning Evercam's Gate Report",
-    subtitle: 'Real-Time Edge-Based Object Detection for 100+ Sites',
+    title: "Redesigned Gate Report for Real-Time Edge-Based Object Detection",
+    subtitle: 'Edge-powered detection for faster, leaner event reporting',
     category: 'ai-ml',
-    description: 'Redesigned Evercam’s Gate Report from cloud to edge, cutting latency and bandwidth, and boosting user satisfaction and revenue.',
+    description: 'Led product strategy to move Evercam’s Gate Report from cloud to edge, speeding up performance, cutting bandwidth, and boosting revenue.',
     duration: '6 months',
     team: '14',
     impact: ['350% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
@@ -68,23 +87,23 @@ const caseStudies = [
   },
   {
     id: '2',
-    title: "Standardizing Edge Setup at Evercam",
-    subtitle: 'Scalable Kit-Based Deployment Across 500+ Sites',
+    title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
+    subtitle: 'Unified hardware, firmware, and configs for global rollout.',
     category: 'infra',
-    description: "Standardized edge deployments with kit-based setup and OTA config via Ansible & AWX, making it easy for non-engineers to manage devices at scale.",
+    description: 'Drove org-wide shift from camera- to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
     duration: '4 months',
     team: '10',
-    impact: ['Reduced deployment time by 70%', 'Enabled 500+ site scalability', 'Empowered non-devs to manage edge ops'],
+    impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
     tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
     image:  '/assets/case-studies/standardizing-edge.png',
     link: '/case-studies/2'
   },
   {
     id: '3',
-    title: 'Real-Time Observability for Edge Devices',
-    subtitle: 'Built Scalable Monitoring for 1200+ Devices globally',
+    title: 'Real-Time Edge Fleet Observability: From Blind Spots to Instant Insights',
+    subtitle: 'Fleet-wide observability to boost reliability and uptime',
     category: 'infra',
-    description: "Built a real-time observability system with Grafana and OTA updates to monitor Evercam’s edge fleet, cut failures and support costs, and improve NPS.",
+    description: "Delivered real-time observability with Grafana and OTA updates for Evercam’s edge fleet, reducing failures, support costs, and boosting NPS.",
     duration: '4 months',
     team: '7',
     impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
@@ -158,7 +177,7 @@ const Home = () => {
       role: 'Technical Product Manager',
       company: 'Evercam',
       period: 'March 2024 – July 2025',
-      description: 'Led Gate Report AI platform and scaled edge deployments across 500+ contruction sites globally.',
+      description: "Led AI and edge product strategy from concept to scale, reaching 500+ global sites and reducing operational overhead.",
       metrics: [
         '60% reduction in manual reporting',
         '70% faster incident response',
@@ -171,7 +190,7 @@ const Home = () => {
       role: 'Product Owner (APM-Equivalent)',
       company: 'Evercam',
       period: 'July 2022 – March 2024',
-      description: 'Led ML model and CV platform development for real-time edge deployments',
+      description: 'Drove ML and CV product strategy, delivering real-time Jetson deployments and cutting model training time by 50%.',
       metrics: [
         'led OTA deployment for Gate report on 100+ sites',
         '980K+ frames labeled at 96% accuracy',
@@ -184,7 +203,7 @@ const Home = () => {
       role: 'Computer Vision Engineer - R&D',
       company: 'Evercam',
       period: 'May 2021 – July 2022',
-      description: 'Owned end-to-end R&D of CV infrastructure, delivering PoCs like DroneView and 360° view',
+      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
       metrics: [
         'Improved measuring accuracy by 79%',
         'NPS score increased by 55%',
@@ -259,213 +278,200 @@ const Home = () => {
     >
 
       {/* Hero Section */}
+      
+{/* Hero Section */}
       <section
-        id="home"
-        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 px-4"
-      >
-        <div className="max-w-5xl w-full mx-auto text-center">
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-700 mb-3">
-              Hi, I'm{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Dhairya
-              </span>
-            </h1>
-            <h2 className="text-2xl md:text-2xl text-gray-500 mb-4 font-medium">
-              Product Manager & Strategy Leader
-            </h2>
-
-            <p className="text-base md:text-lg text-gray-500 mb-1 max-w-6xl mx-auto leading-relaxed">
-              Bridging strategy and execution with data-driven product leadership.
-            </p>
-
-            <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-            Leading international teams to transform strategic visions into impactful, data-driven product launches.
-            </p>
-    </motion.div>
-
-    <motion.div
-      className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
-      initial={{ y: 30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
+      id="home"
+      className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-12"
     >
-           <Link
-        to="/portfolio"
-        className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-700 transition-transform transform hover:scale-105 font-medium"
-      >
-        Explore My Work
-      </Link>
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-transform transform hover:scale-105 font-medium"
-      >
-        Let’s Connect
-      </Link>
+      <div className="max-w-4xl w-full mx-auto text-center">
+        {/* Intro */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 mb-1">
+            Hi, I&apos;m{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
+              Dhairya
+            </span>
+          </h1>
 
- 
+          <h2 className="text-2xl md:text-3xl text-gray-600 mb-2 font-semibold">
+            Product Manager & Strategy Leader
+          </h2>
 
-      <a
-        href="/resume.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 px-6 py-3 rounded-md hover:bg-gray-900 hover:text-white transition-transform transform hover:scale-105 font-medium"
-      >
-        <Download size={18} />
-        Resume
-      </a>
-    </motion.div>
+          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
+            Leading global teams to turn vision into scalable, data-driven products with measurable impact.
+          </p>
 
-    <motion.div
-      className="flex justify-center items-center gap-6 mb-12"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.9 }}
-    >
-      <a
-        href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-700 transition-transform transform hover:scale-110"
-      >
-        <Linkedin size={26} />
-      </a>
-      <a
-        href="mailto:dhairyasharma008@gmail.com"
-        className="text-gray-700 hover:text-red-600 transition-transform transform hover:scale-110"
-      >
-        <Mail size={26} />
-      </a>
-    </motion.div>
-
-    <motion.div
-      className="animate-bounce absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
-            onClick={scrollToAbout}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <ArrowDown size={40} className="text-gray-700" />
-          </motion.div>
-        </div>
-      </section>
-
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Heading */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
-            <p className="text-lg text-gray-500">
-              A timeline of learning, building, and scaling impactful products.
-            </p>
-          </motion.div>
-
-          {/* Main Section */}
-          <div className="flex flex-col lg:flex-row gap-10 items-stretch">
-            {/* Left - Paragraph */}
-            <motion.div
-              className="lg:w-1/2 text-gray-700 text-lg space-y-10 text-justify"
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/portfolio"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300"
             >
-              <p>
-                I’m Dhairya Sharma, Product Manager with over 4 years of experience turning complex technologies into high-impact digital products.
-                With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
-              </p>
-              <p>At Evercam, a European construction tech company, I lead scalable product initiatives and manage global rollouts across 500+ sites in the US, EU, and APAC, adopted by enterprise clients.
-                  I drive end-to-end product development focused on efficiency and impact.
-                  My efforts have cut manual work by 60% and boosted SLA compliance.
-              </p>
-              <p>
-                I balance user needs, technical feasibility, and business goals to create impactful products.
-                I shape strategy, align OKRs, and work closely with engineering and operations to deliver scalable solutions.
-                For complex products that require both strategic vision and technical expertise, I’m the bridge you need.
-              </p>
-            </motion.div>
-
-            {/* Right - Value Cards */}
-            <motion.div
-              className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[480px]"
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              Explore My Work
+            </Link>
+            <Link
+              to="/contact"
+              className="px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 hover:scale-105 transform transition duration-300"
             >
-              {[
-                {
-                  title: 'Strategic Vision',
-                  icon: '💡',
-                  desc: 'Crafting strategies that align business goals with actionable roadmaps. I bring clarity by connecting vision to execution.'
-                },
-                {
-                  title: 'Cross-functional Leadership',
-                  icon: '👥',
-                  desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
-                },
-                {
-                  title: 'User Obsession',
-                  icon: '🎯',
-                  desc: 'Rooted in real user problems, I translate needs into intuitive solutions that deliver value. Every feature starts and ends with the user.'
-                }
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-100 rounded-lg p-5 border border-gray-200 shadow-sm hover:shadow-md transition flex items-start gap-4"
-                >
-                  <div className="text-2xl">{item.icon}</div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed mt-2">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-
+              Let&apos;s Connect
+            </Link>
+            <Link
+              to="/resume.pdf"
+              className="px-6 py-3 rounded-full border border-gray-400 text-gray-600 font-medium hover:bg-gray-50 hover:scale-105 transform transition duration-300"
+            >
+              Resume
+            </Link>
           </div>
+        </motion.div>
 
-          {/* Bottom Stats with Buttons */}
-          <motion.div
-            className="mt-16 grid grid-cols-1 sm:grid-cols-5 gap-8 text-center"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+        {/* Social Links */}
+        <motion.div
+          className="flex justify-center items-center gap-6 mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
+          <a
+            href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-700 hover:text-blue-700 transition-transform transform hover:scale-110"
           >
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">4+</div>
-              <div className="text-sm text-gray-600 mt-2">Years Experience</div>
-            </div>      
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">10+</div>
-              <div className="text-sm text-gray-600 mt-2">Products</div>
+            <Linkedin size={26} />
+          </a>
+          <a
+            href="mailto:dhairyasharma008@gmail.com"
+            className="text-gray-700 hover:text-red-600 transition-transform transform hover:scale-110"
+          >
+            <Mail size={26} />
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Scroll Down Arrow */}
+      <motion.div
+        className="animate-bounce absolute bottom-10 cursor-pointer"
+        onClick={scrollToAbout}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
+      </motion.div>
+    </section>
+    <section id="about" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Heading */}
+    <motion.div
+      className="text-center mb-16"
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-4xl font-extrabold text-gray-900 mb-4">About Me</h2>
+      <p className="text-lg text-gray-500">
+        Engineering roots, product leadership, and scaling global impact.
+      </p>
+    </motion.div>
+
+    {/* Main Section */}
+    <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
+      {/* Left Content */}
+      <motion.div
+        className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
+        initial={{ x: -50, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <p>
+          I'm Dhairya Sharma, an engineer turned Product Manager with 4+ years building and scaling AI/ML, edge computing, and cloud infrastructure products. Delivered enterprise adoption in <strong>25+ countries</strong> and <strong>1200+ site deployments</strong> through scalable system design and data-driven strategy.
+        </p>
+        <p>
+          At Evercam, owned end-to-end SaaS product strategy for global enterprises, cutting manual work <strong>60%</strong>, ensuring SLA compliance, and aligning teams across the US, EU, and APAC. Trusted by leaders in construction and tech to deliver high-availability, mission-critical solutions.
+        </p>
+        <p>
+        I operate at the intersection of technology, strategy, and user experience, turning complex problems into impactful, global-scale products. With a focus on measurable outcomes, rapid iteration, and customer insight. I lead solutions that drive adoption, set technical standards, and create lasting business value.
+        </p>
+
+
+      </motion.div>
+
+      {/* Right Value Cards */}
+      <motion.div
+        className="lg:w-1/2 grid grid-rows-3 gap-9 h-full"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { staggerChildren: 0.15 }
+          }
+        }}
+      >
+        {valueCards.map((item, index) => (
+          <motion.div
+            key={index}
+            className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition h-full"
+            whileHover={{ scale: 1.02 }}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 }
+            }}
+          >
+            <div className="flex items-center gap-4">
+              {item.icon}
+              <h4 className="text-lg font-semibold text-gray-900">
+                {item.title}
+              </h4>
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">50+</div>
-              <div className="text-sm text-gray-600 mt-2">Countries</div>
-            </div>     
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">100+</div>
-              <div className="text-sm text-gray-600 mt-2">Global Teams</div>
-            </div> 
-            <div className="bg-white border border-gray-200 rounded-lg py-6 shadow-sm hover:shadow-md transition">
-              <div className="text-indigo-600 text-4xl font-bold">1200+</div>
-              <div className="text-sm text-gray-600 mt-2">Global Deployments</div>
-            </div>
+            <p className="text-gray-600 text-sm leading-relaxed mt-3">
+              {item.desc}
+            </p>
           </motion.div>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* Stats Section */}
+    <motion.div
+      className="mt-16 grid grid-cols-2 sm:grid-cols-5 gap-8 text-center place-items-center"
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      {[
+        { value: "4+", label: "Years Experience" },
+        { value: "10+", label: "Products" },
+        { value: "25+", label: "Countries" },
+        { value: "100+", label: "Global Teams" },
+        { value: "1200+", label: "Deployments" }
+      ].map((stat, idx) => (
+        <div
+          key={idx}
+          className="bg-white border border-gray-200 rounded-2xl py-6 shadow-sm hover:shadow-lg transition w-full"
+        >
+          <div className="text-indigo-600 text-4xl font-extrabold">
+            {stat.value}
+          </div>
+          <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
         </div>
-      </section>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
+
 
       {/* Experience Timeline */}
       <section className="py-20 pt-16 bg-gray-50">
@@ -736,73 +742,79 @@ const Home = () => {
       Product Leadership Insights
     </motion.h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {posts.map((post, index) => (
-        <motion.div
-          key={post.id}
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-          className="cursor-pointer"
-          onClick={() => window.location.href = `/blogs/${post.id}`}
-        >
-          <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[480px] flex flex-col">
-            <div className="relative overflow-hidden h-48">
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+  {posts.map((post, index) => (
+    <motion.div
+      key={post.id}
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+      className="cursor-pointer h-full"
+      onClick={() => window.location.href = `/blogs/${post.id}`}
+    >
+      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 flex flex-col h-[500px]">
+        
+        {/* Image */}
+        <div className="relative overflow-hidden h-48 flex-shrink-0">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-grow">
+          <div className="flex flex-col gap-1 flex-grow">
+            <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
+              {post.title}
+            </h3>
+            <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
+              {post.category.replace('-', ' ')}
+            </p>
+            <p className="text-gray-600 text-sm text-justify mb-5 line-clamp-4">
+              {post.excerpt}
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-3 h-3 text-gray-500" />
+                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-3 h-3 text-gray-500" />
+                <span>{post.readTime}</span>
+              </div>
             </div>
 
-            <div className="p-6 flex flex-col flex-grow justify-between">
-              <div className="flex flex-col gap-1">
-                <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
-                  {post.category.replace('-', ' ')}
-                </p>
-                <p className="text-gray-600 text-sm text-justify mb-2 line-clamp-3">{post.excerpt}</p>
-
-                <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3 h-3 text-gray-500" />
-                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-3 h-3 text-gray-500" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {post.tags.slice(0, 3).map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {post.tags.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                      +{post.tags.length - 3} more
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
-                <span className="text-sm font-semibold mr-2">Read More</span>
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </div>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {post.tags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+              {post.tags.length > 3 && (
+                <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                  +{post.tags.length - 3} more
+                </span>
+              )}
             </div>
           </div>
-        </motion.div>
-      ))}
-    </div>
+
+          {/* Read More pinned to bottom */}
+          <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
+            <span className="text-sm font-semibold mr-2">Read More</span>
+            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  ))}
+</div>
 
     {/* CTA Button */}
       <div className="mt-10 text-center">
@@ -898,7 +910,7 @@ const Home = () => {
               Bridging ambition and execution through product leadership
             </h2>
             <p className="text-base text-gray-600 mb-10 max-w-xl mx-auto">
-              Let's connect if you're working on ambitious products or transformative ideas.
+            Let’s connect if you’re pushing tech to new frontiers.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">

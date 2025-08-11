@@ -79,7 +79,7 @@ const Blog = () => {
     {
       id: '1',
       title: 'From Engineer to TPM: Influencing Without Authority',
-      excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM, and how communication, trust, and alignment became my real tools.',
+      excerpt: 'Aligned engineering, design, and ops teams to deliver AI/edge products to 500+ sites, without formal authority. Built trust, drove alignment, and enabled execution through clear communication.',
       image: '/assets/blogs/6.png',
       category: 'leadership',
       date: '2025-08-06',
@@ -88,8 +88,8 @@ const Blog = () => {
     },
     {
       id: '2',
-      title: 'Feature Prioritization in Technical Products',
-      excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
+      title: 'Feature Prioritization in Complex Technical Products',
+      excerpt: 'Cut prioritization cycle time by 40% by integrating RICE, MoSCoW, and Productboard across firmware, DevOps, and UX teams, accelerating AI product delivery and scaling decision-making efficiency.',
       image: '/assets/blogs/2.png',
       category: 'product-strategy',
       date: '2025-02-02',
@@ -99,7 +99,7 @@ const Blog = () => {
     {
       id: '3',
       title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
-      excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
+      excerpt: 'Aligned firmware, DevOps, data science, and business teams into a single execution roadmap, improving delivery speed, reducing rework, and increasing cross-team trust for global AI/edge rollouts.',
       image: '/assets/blogs/7.png',
       category: 'leadership',
       date: '2025-07-17',
