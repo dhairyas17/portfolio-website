@@ -20,6 +20,8 @@ import CaseStudyDetailHome2 from './pages/CaseStudyDetailHome 2';
 import CaseStudyDetailHome3 from './pages/CaseStudyDetailHome 3';
 import CaseStudyCategoryHome from './pages/CaseStudyCategoryHome';
 import BlogPostHome from './pages/BlogPostHome';
+import CaseStudyDetailHome4 from './pages/CaseStudyDetailHome 4';
+import CaseStudyDetailHome5 from './pages/CaseStudyDetailHome 5';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -41,6 +43,8 @@ const AppRoutes = () => {
         <Route path="/case-studies/1" element={<CaseStudyDetailHome1 />} />
         <Route path="/case-studies/2" element={<CaseStudyDetailHome2 />} />
         <Route path="/case-studies/3" element={<CaseStudyDetailHome3 />} />
+        <Route path="/case-studies/4" element={<CaseStudyDetailHome4 />} />
+        <Route path="/case-studies/5" element={<CaseStudyDetailHome5 />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/blogs/:id" element={<BlogPostHome />} />
