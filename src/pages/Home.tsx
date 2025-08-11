@@ -59,7 +59,7 @@ const caseStudies = [
     description: 'Redesigned Evercam’s Gate Report from cloud to edge, cutting latency and bandwidth, and boosting user satisfaction and revenue.',
     duration: '6 months',
     team: '14',
-    impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
+    impact: ['350% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
     tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
     image:  '/assets/case-studies/gate-report.png',
     link: '/case-studies/1'
@@ -288,7 +288,7 @@ const Home = () => {
       </p>
 
       <p className="text-base md:text-lg text-gray-500 mb-8 max-w-6xl mx-auto leading-relaxed">
-        From vision to launch, I align stakeholders and lead global teams to deliver impactful, data-driven products.
+      Leading international teams to transform strategic visions into impactful, data-driven product launches.
       </p>
     </motion.div>
 

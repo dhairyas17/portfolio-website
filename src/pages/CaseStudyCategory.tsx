@@ -25,7 +25,7 @@ const CaseStudyCategory = () => {
       description: 'Redesigned Evercam’s Gate Report from cloud to edge, cutting latency and bandwidth, and boosting user satisfaction and revenue.',
       duration: '6 months',
       team: '14',
-      impact: ['750% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
+      impact: ['350% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
       tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
       image:  '/assets/case-studies/gate-report.png',
 

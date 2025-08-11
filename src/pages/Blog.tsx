@@ -1,23 +1,26 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Clock, Search } from 'lucide-react';
 
 const Blog = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Read page from URL query param, default to 1
+  // Read params from URL
   const queryParams = new URLSearchParams(location.search);
   const pageFromUrl = parseInt(queryParams.get('page') || '1', 10);
+  const filterFromUrl = queryParams.get('filter') || 'all';
+  const searchFromUrl = queryParams.get('search') || '';
 
-  // State
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  // State initialized from URL params
+  const [activeFilter, setActiveFilter] = useState(filterFromUrl);
+  const [searchQuery, setSearchQuery] = useState(searchFromUrl);
   const [currentPage, setCurrentPage] = useState(pageFromUrl);
 
   const postsPerPage = 6;
-  const isInitialMount = React.useRef(true);
+  const isInitialMount = useRef(true);
+
   // Filters list
   const filters = [
     { id: 'all', name: 'All Posts' },
@@ -28,35 +31,40 @@ const Blog = () => {
     { id: 'ai-ml', name: 'AI/ML' }
   ];
 
-  // Whenever URL page param changes, update state
-  useEffect(() => {
-    setCurrentPage(pageFromUrl);
-  }, [pageFromUrl]);
-  const prevFilter = React.useRef(activeFilter);
-  const prevSearch = React.useRef(searchQuery);  
-  // When active filter or search changes, reset page to 1 (and URL)
+  // Keep previous filter/search to reset page when either changes
+  const prevFilter = useRef(activeFilter);
+  const prevSearch = useRef(searchQuery);
+
+  // Reset page to 1 if filter or search changed (except on initial mount)
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
-    } else {
-      // Only reset page if filter or search actually changed compared to previous
-      if (prevFilter.current !== activeFilter || prevSearch.current !== searchQuery) {
-        setCurrentPage(1);
-        navigate('/blog?page=1', { replace: true });
-      }
+    } else if (prevFilter.current !== activeFilter || prevSearch.current !== searchQuery) {
+      setCurrentPage(1);
     }
-  
     prevFilter.current = activeFilter;
     prevSearch.current = searchQuery;
-  }, [activeFilter, searchQuery, navigate]);
+  }, [activeFilter, searchQuery]);
 
-  // When currentPage state changes, sync URL
+  // Sync URL whenever activeFilter, searchQuery, or currentPage changes
   useEffect(() => {
-    if (currentPage !== pageFromUrl) {
-      navigate(`/blog?page=${currentPage}`, { replace: true });
-    }
-  }, [currentPage, navigate, pageFromUrl]);
+    const params = new URLSearchParams();
 
+    if (activeFilter && activeFilter !== 'all') params.set('filter', activeFilter);
+    if (searchQuery) params.set('search', searchQuery);
+    if (currentPage && currentPage !== 1) params.set('page', currentPage.toString());
+
+    const url = params.toString() ? `/blog?${params.toString()}` : '/blog';
+
+    navigate(url, { replace: true });
+  }, [activeFilter, searchQuery, currentPage, navigate]);
+
+  // Scroll to top on page change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
+  // Date formatting helper
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', {
@@ -65,6 +73,7 @@ const Blog = () => {
       year: 'numeric',
     });
   };
+
 
   const posts = [
     {
@@ -100,57 +109,137 @@ const Blog = () => {
     {
       id: '12',
       title: 'Cost-Effective System Design: Balancing Performance & Budget',
-      excerpt:
-        'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
+      excerpt: 'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
       image: '/assets/blogs/13.png',
       category: 'system-design',
       date: '2025-04-13',
       readTime: '6 min read',
       tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
+    },
+    {
+      id: '3',
+      title: 'Leading AI Teams Without Being the Smartest Engineer',
+      excerpt: 'Lessons on leading machine learning teams as a TPM/APM, from alignment to feasibility to trust-building without being the deepest technical expert.',
+      category: 'leadership',
+      image: '/assets/blogs/3.png',
+      date: '2025-08-03',
+      readTime: '6 min read',
+      tags: ['Leadership', 'AI Teams', 'TPM']
+    },
+    {
+      id: '4',
+      title: 'The Future of MLOps: From Research to Real-Time Alerts',
+      excerpt: 'From MLflow to Airflow to TensorRT – how tools and workflows evolve in the world of real-time inference, versioning, and deployment at scale.',
+      image: '/assets/blogs/4.png',
+      category: 'ai-ml',
+      date: '2025-04-10',
+      readTime: '7 min read',
+      tags: ['MLOps', 'AI Infra', 'Model Deployment']
+    },
+    {
+      id: '5',
+      title: 'Why Edge AI is Eating the Cloud – 5 Predictions from the Field',
+      excerpt: 'Drawing from Edge/OTA experience, this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
+      image: '/assets/blogs/5.png',
+      category: 'edge-infra',
+      date: '2024-12-29',
+      readTime: '5 min read',
+      tags: ['Edge AI', 'Predictions', 'Cloud']
+    },
+    {
+      id: '1',
+      title: 'Scaling Edge Deployments: 100 to 1,200+',
+      excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
+      image: '/assets/blogs/1.png',
+      category: 'edge-infra',
+      date: '2025-08-06',
+      readTime: '6 min read',
+      tags: ['Edge AI', 'TPM', 'Product Strategy']
+    },
+    {
+      id: '8',
+      title: 'How GenAI Will Reshape the TPM Role',
+      excerpt: 'Beyond prompting, how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
+      image: '/assets/blogs/8.png',
+      category: 'ai-ml',
+      date: '2025-08-11',
+      readTime: '5 min read',
+      tags: ['GenAI', 'Future of Work', 'TPM']
+    },
+    {
+      id: '9',
+      title: 'A SaaS Mindset for Scaling Edge Infrastructure',
+      excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI, and how a SaaS mindset helped.',
+      image: '/assets/blogs/9.png',
+      category: 'edge-infra',
+      date: '2025-06-09',
+      readTime: '7 min read',
+      tags: ['Edge Infra', 'SaaS', 'TPM']
+    },
+    {
+      id: '10',
+      title: 'Choosing the Right Database for Your Product',
+      excerpt: 'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase, with real trade-offs and mistakes made.',
+      image: '/assets/blogs/11.png',
+      category: 'system-design',
+      date: '2025-03-11',
+      readTime: '6 min read',
+      tags: ['System Design', 'Databases', 'Product Decisions']
+    },
+    {
+      id: '11',
+      title: 'Designing Clean API Integrations - from TPM point of view',
+      excerpt: 'From naming conventions to auth flows, these are the principles I follow when designing APIs that scale, evolve, and don’t break clients.',
+      image: '/assets/blogs/12.png',
+      category: 'system-design',
+      date: '2024-05-12',
+      readTime: '5 min read',
+      tags: ['API Design', 'Integration', 'Engineering Collaboration']
     }
-    ];
+  ];
+   
 
-    const filteredData = useMemo(() => {
-      const filtered = posts.filter(
-        (post) => activeFilter === 'all' || post.category === activeFilter
-      ).filter((post) => {
-        const query = searchQuery.toLowerCase();
-        return (
-          post.title.toLowerCase().includes(query) ||
-          post.excerpt.toLowerCase().includes(query) ||
-          post.tags.some((tag) => tag.toLowerCase().includes(query))
-        );
-      });
-  
-      const featured = (activeFilter === 'all' && !searchQuery) ? filtered[0] : null;
-      const rest = (activeFilter === 'all' && !searchQuery) ? filtered.slice(1) : filtered;
-  
-      let paginatedPosts = [];
-  
-      if (currentPage === 1) {
-        paginatedPosts = rest.slice(0, 3); // page 1: 3 posts after featured
-      } else {
-        const start = 3 + (currentPage - 2) * postsPerPage;
-        const end = start + postsPerPage;
-        paginatedPosts = rest.slice(start, end);
-      }
-  
-      const totalPages = Math.ceil((rest.length - 3) / postsPerPage) + 1;
-  
-      return {
-        featured,
-        paginatedPosts,
-        totalPages
-      };
-    }, [activeFilter, searchQuery, currentPage, posts]);
-  
-    const { featured, paginatedPosts, totalPages } = filteredData;
-  
-    const handleCardClick = (postId: string) => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      navigate(`/blog/${postId}`, { state: { fromPage: currentPage } });
+  // Filter, search and paginate posts
+  const filteredData = useMemo(() => {
+    const filtered = posts.filter(
+      (post) => activeFilter === 'all' || post.category === activeFilter
+    ).filter((post) => {
+      const query = searchQuery.toLowerCase();
+      return (
+        post.title.toLowerCase().includes(query) ||
+        post.excerpt.toLowerCase().includes(query) ||
+        post.tags.some((tag) => tag.toLowerCase().includes(query))
+      );
+    });
+
+    const featured = (activeFilter === 'all' && !searchQuery) ? filtered[0] : null;
+    const rest = (activeFilter === 'all' && !searchQuery) ? filtered.slice(1) : filtered;
+
+    let paginatedPosts = [];
+
+    if (currentPage === 1) {
+      paginatedPosts = rest.slice(0, 3); // page 1: 3 posts after featured
+    } else {
+      const start = 3 + (currentPage - 2) * postsPerPage;
+      const end = start + postsPerPage;
+      paginatedPosts = rest.slice(start, end);
+    }
+
+    const totalPages = Math.ceil((rest.length - 3) / postsPerPage) + 1;
+
+    return {
+      featured,
+      paginatedPosts,
+      totalPages
     };
-    
+  }, [activeFilter, searchQuery, currentPage, posts]);
+
+  const { featured, paginatedPosts, totalPages } = filteredData;
+
+  const handleCardClick = (postId: string) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+      navigate(`/blog/${postId}`, { state: { fromPage: currentPage, fromFilter: activeFilter } });
+    };
 
 return (
     <motion.div

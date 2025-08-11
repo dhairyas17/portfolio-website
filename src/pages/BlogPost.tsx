@@ -12,7 +12,7 @@ const BlogPost = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const fromPage = location.state?.fromPage || 1;
-
+  const fromFilter = location.state?.fromFilter || 'all';
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const BlogPost = () => {
     );
   }
 
-
+ 
   const markdown = blogContentMap[`./blogs/${blog.slug}`] as string;
 
   return (
@@ -56,14 +56,14 @@ const BlogPost = () => {
       transition={{ duration: 0.4 }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back Button */}
-        <button
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 transition"
-          onClick={() => navigate(`/blog?page=${fromPage}`)}
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Blogs
-        </button>
+      <button
+  className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8 transition"
+  onClick={() => navigate(`/blog?page=${fromPage}&filter=${fromFilter}`)}
+>
+  <ArrowLeft className="w-4 h-4 mr-2" />
+  Back to Blogs
+</button>
+
 
         {/* Title & Meta */}
         <motion.div

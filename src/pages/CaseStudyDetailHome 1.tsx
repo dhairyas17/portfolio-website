@@ -292,7 +292,7 @@ const CaseStudyDetailHome1 = () => {
                   <tbody>
                     {[
                       ['NPS', '7%', '78%', '+71 pts'],
-                      ['Monthly Recurring Revenue (MRR)', '1×', '8.5×', '+750%'],
+                      ['Monthly Recurring Revenue (MRR)', '1×', '4.5×', '+450%'],
                       ['Latency', '7-8 hours', '<5 sec', '↓ 99.98%'],
                       ['Data usage per site', '3TB+/month', '<200GB/month', '↓ 94%'],
                       ['Event reliability', '70%', '99.3%', '↑ 29%'],
@@ -363,7 +363,7 @@ const CaseStudyDetailHome1 = () => {
             <strong>Deployment tooling matters</strong>: Ansible + AWX gave non-devs the ability to update devices safely at scale.
           </li>
           <li>
-            <strong>Track & show results</strong>: NPS jump (+71 pts) and MRR growth (8.5×) built strong internal and client confidence.
+            <strong>Track & show results</strong>: NPS jump (+71 pts) and MRR growth (4.5×) built strong internal and client confidence.
           </li>
         </ul>
       </motion.section>
