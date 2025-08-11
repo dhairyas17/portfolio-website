@@ -165,13 +165,6 @@ const Header = () => {
                 Product Portfolio
               </Link>
               <Link
-                to="/system-product-design"
-                className="block px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                System & Product Design
-              </Link>
-              <Link
                 to="/blog"
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}

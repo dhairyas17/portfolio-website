@@ -17,6 +17,7 @@ import {
   Calendar
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 const posts = [
   {
     id: '6',
@@ -152,7 +153,6 @@ const Home = () => {
     }
   }, [location]);
 
-
   const experiences = [
     {
       role: 'Technical Product Manager',
@@ -195,7 +195,6 @@ const Home = () => {
     }
     
   ];
-  
 
   const tools = [
     { name: 'Jira', logo: '/assets/logos/jira.png' },
@@ -220,7 +219,6 @@ const Home = () => {
     { name: 'GitLab', logo: '/assets/logos/gitlab.png' }
   ];
   
-
   const certifications = [
     { name: 'Certified Scrum Master (CSM)', provider: 'Scrum Alliance', year: '2023', link: 'https://certification.scrumalliance.org/accounts/1767537-dhairya-sharma/certifications/2096385-csm' },
     { name: 'Atlassian Agile Project Management Professional Certificate', provider: 'Atlassian', year: '2022', link: 'https://www.linkedin.com/learning/certificates/25517d85a79ff68e9823461e0354ef5de8cfcaf012ecb817bf41edc6eec1c569?trk=share_certificate' },
@@ -376,7 +374,7 @@ const Home = () => {
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">
             {/* Left - Paragraph */}
             <motion.div
-              className="lg:w-1/2 text-gray-700 text-lg space-y-5 text-justify"
+              className="lg:w-1/2 text-gray-700 text-lg space-y-10 text-justify"
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -399,7 +397,7 @@ const Home = () => {
 
             {/* Right - Value Cards */}
             <motion.div
-              className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[430px]"
+              className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[480px]"
               initial={{ x: 50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
@@ -646,8 +644,6 @@ const Home = () => {
         </div>
       </section>
 
-
-
       {/* Testimonials */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -809,7 +805,7 @@ const Home = () => {
     </div>
 
     {/* CTA Button */}
-    <div className="mt-10 text-center">
+      <div className="mt-10 text-center">
         <a
           href="/blog"
           className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
