@@ -394,8 +394,7 @@ const Home = () => {
           With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
         </p>
         <p>
-          I have led end-to-end product development and global rollouts across 500+ sites in the US, EU, and APAC regions. 
-          My work has delivered significant results, including a 60 percent reduction in manual effort, improved SLA compliance, and smoother deployment of machine learning models at the edge.
+        At Evercam, a European construction technology company, I lead product initiatives focused on delivering scalable and efficient solutions. I have successfully driven end-to-end product development and managed global rollouts across 500+ sites in the US, EU, and APAC regions. My work has resulted in a 60% reduction in manual effort and improved SLA compliance.
         </p>
         <p>
           I operate at the intersection of user needs, technical feasibility, and business goals.
@@ -408,7 +407,7 @@ const Home = () => {
 
       {/* Right - Value Cards */}
       <motion.div
-  className="lg:w-1/2 grid grid-rows-3 gap-4 h-full"
+  className="lg:w-1/2 grid grid-rows-3 gap-5 h-full"
   initial={{ x: 50, opacity: 0 }}
   whileInView={{ x: 0, opacity: 1 }}
   viewport={{ once: true }}
