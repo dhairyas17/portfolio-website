@@ -30,7 +30,7 @@ const posts = [
   },
   {
     id: '2',
-    title: 'Feature Prioritization in Technical Products',
+    title: 'Feature Prioritization in Complex Technical Products',
     excerpt: 'How I used RICE, MoSCoW and Productboard to manage priorities across firmware, DevOps and user experience in AI product development.',
     image: '/assets/blogs/2.png',
     category: 'product-strategy',
@@ -155,7 +155,7 @@ const Home = () => {
 
   const experiences = [
     {
-      role: 'Technical Product Manager (edge)',
+      role: 'Technical Product Manager',
       company: 'Evercam',
       period: 'March 2024 – July 2025',
       description: 'Led Gate Report AI platform and scaled edge deployments across 500+ contruction sites globally.',
@@ -380,10 +380,10 @@ const Home = () => {
     </motion.div>
 
     {/* Main Section */}
-    <div className="flex flex-col lg:flex-row gap-12 items-stretch">
+    <div className="flex flex-col lg:flex-row gap-10 items-stretch">
       {/* Left - Paragraph */}
       <motion.div
-        className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify"
+        className="lg:w-1/2 text-gray-700 text-lg space-y-5 text-justify"
         initial={{ x: -50, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true }}
@@ -393,21 +393,19 @@ const Home = () => {
           I’m Dhairya Sharma, Product Manager with over 4 years of experience turning complex technologies into high-impact digital products.
           With a background in engineering and deep expertise in AI/ML, edge computing, cloud infrastructure, and system design, I specialize in building scalable solutions that drive measurable business outcomes.
         </p>
+<p>At Evercam, a European construction tech company, I lead scalable product initiatives and manage global rollouts across 500+ sites in the US, EU, and APAC, adopted by enterprise clients.
+I drive end-to-end product development focused on efficiency and impact.
+My efforts have cut manual work by 60% and boosted SLA compliance.</p>
         <p>
-        At Evercam, a European construction technology company, I lead product initiatives focused on delivering scalable and efficient solutions. I have successfully driven end-to-end product development and managed global rollouts across 500+ sites in the US, EU, and APAC regions. My work has resulted in a 60% reduction in manual effort and improved SLA compliance.
-        </p>
-        <p>
-          I operate at the intersection of user needs, technical feasibility, and business goals.
-          From shaping product strategy and aligning with OKRs to collaborating with engineering, DevOps, and operations teams, I ensure every product is built for impact and scale.
-        </p>
-        <p>
-        If you're building complex products that need both strategic insight and technical depth, I’m your bridge.
+        I balance user needs, technical feasibility, and business goals to create impactful products.
+I shape strategy, align OKRs, and work closely with engineering and operations to deliver scalable solutions.
+For complex products that require both strategic vision and technical expertise, I’m the bridge you need.
         </p>
       </motion.div>
 
       {/* Right - Value Cards */}
       <motion.div
-  className="lg:w-1/2 grid grid-rows-3 gap-5 h-full"
+  className="lg:w-1/2 grid grid-rows-3 mt-3 gap-9 h-[430px]"
   initial={{ x: 50, opacity: 0 }}
   whileInView={{ x: 0, opacity: 1 }}
   viewport={{ once: true }}
@@ -423,11 +421,6 @@ const Home = () => {
       title: 'Cross-functional Leadership',
       icon: '👥',
       desc: 'Bridging technical and non-technical teams to drive alignment and fast delivery. I excel at uniting design, engineering, and operations.'
-    },
-    {
-      title: 'Data-Driven Decisions',
-      icon: '📊',
-      desc: 'Leveraging customer insights, experimentation, and usage metrics to inform every product decision. My approach turns data into real product impact.'
     },
     {
       title: 'User Obsession',

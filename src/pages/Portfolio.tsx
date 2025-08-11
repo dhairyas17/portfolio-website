@@ -25,7 +25,7 @@ const Portfolio = () => {
       id: 'projects',
       title: 'Projects',
       description:
-        'Independent and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, and workflow automation, delivering tangible results and measurable impact',
+        'Self-initiated and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, and workflow automation, delivering tangible results and measurable impact',
       icon: FolderKanban,
       color: 'from-purple-500 to-pink-600',
       items: [
@@ -72,7 +72,7 @@ const Portfolio = () => {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
               >
                 <Link to={`/portfolio/${category.id}`}>
-                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[550px] flex flex-col">
+                  <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[580px] flex flex-col">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                     />
