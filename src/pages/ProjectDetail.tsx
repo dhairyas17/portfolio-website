@@ -113,8 +113,8 @@ const ProjectDetail: React.FC = () => {
           <motion.div variants={fadeUp} custom={0.1} className="mb-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{project.title}</h1>
             <p className="text-xl text-gray-600 text-justify italic mb-6">
-  {project.description}
-</p>
+              {project.description}
+            </p>
 
             {/* Summary */}
             <motion.div

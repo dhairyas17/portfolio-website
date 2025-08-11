@@ -1,7 +1,7 @@
 // src/pages/CaseStudyDetails.tsx
 import { useEffect, useState } from 'react';
 import { ChevronUp } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -31,6 +31,24 @@ const CaseStudyDetailHome3 = () => {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // inside your component
+  const location = useLocation();
+  
+  // Extract current query params or default
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get('page') || '1';
+  const filter = searchParams.get('filter') || '';
+  
+  const goBack = () => {
+    // Build query string preserving filter and page
+    const query = new URLSearchParams();
+    if (filter) query.set('filter', filter);
+    if (page) query.set('page', page);
+  
+    // Navigate to /case-studies with query and hash
+    navigate(`/case-studies?${query.toString()}#case-study`);
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -51,15 +69,14 @@ const CaseStudyDetailHome3 = () => {
   animate="animate"
   transition={{ staggerChildren: 0.2 }}
 >
-        {/* Back Button */}
-        <motion.button
-      className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
-          onClick={() => navigate("/#case-study")}
-          {...fadeIn}
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to home
-          </motion.button>
+<motion.button
+  className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
+  onClick={goBack}
+  {...fadeIn}
+>
+  <ArrowLeft className="w-4 h-4 mr-2" />
+  Back to case studies
+</motion.button>
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
         Building Real-Time Observability for Edge Devices

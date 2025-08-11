@@ -64,7 +64,7 @@ const CaseStudyDetail1 = () => {
 
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        Redesigning Evercam's Gate Report for Real-Time Edge-Based Object Detection
+        Redesigning Evercam's Gate Report
       </motion.h1>
 
       {/* Summary */}

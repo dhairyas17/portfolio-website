@@ -1,7 +1,7 @@
 // src/pages/CaseStudyDetails.tsx
 import { useEffect, useState } from 'react';
 import { ChevronUp } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -30,7 +30,24 @@ const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
 const CaseStudyDetailHome5 = () => {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  // inside your component
+  const location = useLocation();
+  
+  // Extract current query params or default
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get('page') || '1';
+  const filter = searchParams.get('filter') || '';
+  
+  const goBack = () => {
+    // Build query string preserving filter and page
+    const query = new URLSearchParams();
+    if (filter) query.set('filter', filter);
+    if (page) query.set('page', page);
+  
+    // Navigate to /case-studies with query and hash
+    navigate(`/case-studies?${query.toString()}#case-study`);
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -54,23 +71,19 @@ const CaseStudyDetailHome5 = () => {
 >
   {/* Back button */}
   <motion.button
-    className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
-    onClick={() => navigate(-1)}
-    {...fadeIn}
-  >
-    <ArrowLeft size={16} />
-    Back to Case Studies
-  </motion.button>
+  className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
+  onClick={goBack}
+  {...fadeIn}
+>
+  <ArrowLeft className="w-4 h-4 mr-2" />
+  Back to case studies
+</motion.button>
+
 
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-      Scaling ML Data Pipelines & MLOps Lifecycle for Improved Detection Accuracy
+      Scaling ML Data Pipelines & MLOps Lifecycle
       </motion.h1>
-
-      {/* Subtitle */}
-      {/* <motion.h2 className="text-lg font-semibold text-gray-700 mb-6 leading-snug" {...fadeIn}>
-        Redesigning the ML Training Lifecycle to Boost Detection Accuracy from 67% to 96%
-      </motion.h2> */}
 
       {/* Summary */}
       <motion.div
@@ -173,29 +186,29 @@ const CaseStudyDetailHome5 = () => {
         </div>
       </motion.section>
       <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/obj_detection.png"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      Dashboard UI
-    </p>
-  </motion.div>
-  <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-indigo-600" size={18} /> System Architecture</h2>
+        <img
+          src="/assets/case-studies/obj_detection.png"
+          alt="Key Product Decisions Diagram"
+          className="rounded-lg shadow-lg border border-gray-200 w-full"
+        />
+        <p className="text-sm text-gray-500 mt-2 text-center">
+          Dashboard UI
+        </p>
+      </motion.div>
+      <motion.section className="mb-10" {...fadeIn}>
+            <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-indigo-600" size={18} /> System Architecture</h2>
 
-      </motion.section>
-      <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/br.png"
-      alt="System Architecture"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-10 text-center">
+          </motion.section>
+          <motion.div className="mt-6" {...fadeIn}>
+        <img
+          src="/assets/case-studies/br.png"
+          alt="System Architecture"
+          className="rounded-lg shadow-lg border border-gray-200 w-full"
+        />
+        <p className="text-sm text-gray-500 mt-10 text-center">
 
-    </p>
-  </motion.div>
+        </p>
+      </motion.div>
       {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>

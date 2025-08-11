@@ -20,7 +20,7 @@ export interface BlogMeta {
 
 export const blogList: BlogMeta[] = [
   {
-    id: '1',
+    id: '8',
     slug: '1.md',
     title: 'Scaling Edge Deployments: 100 to 1,200+',
     subtitle: 'How we scaled SBC-based products across 1,200+ edge deployments',
@@ -56,7 +56,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '3',
+    id: '5',
     slug: '3.md',
     title: 'Leading AI Teams Without Being the Smartest Engineer',
     subtitle: 'How I led ML teams by facilitating clarity, not code',
@@ -74,7 +74,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '4',
+    id: '6',
     slug: '4.md',
     title: 'The Future of MLOps: From Research to Real-Time Alerts',
     subtitle: 'Where MLOps is going and how to keep up',
@@ -92,7 +92,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '5',
+    id: '7',
     slug: '5.md',
     title: 'Why Edge AI is Eating the Cloud – 5 Predictions from the Field',
     subtitle: 'Latency, privacy, and the shift to on-device intelligence',
@@ -110,7 +110,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '6',
+    id: '1',
     slug: '6.md',
     title: 'From Engineer to TPM: Influencing Without Authority',
     subtitle: 'My journey from IC to strategic leader in product and AI',
@@ -128,7 +128,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '7',
+    id: '3',
     slug: '7.md',
     title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
     subtitle: 'Real tools and rituals to build cross-functional trust',
@@ -146,7 +146,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '8',
+    id: '9',
     slug: '8.md',
     title: 'How GenAI Will Reshape the TPM Role',
     subtitle: 'The new toolkit for AI-native product leaders',
@@ -164,7 +164,7 @@ export const blogList: BlogMeta[] = [
     },
   },
   {
-    id: '9',
+    id: '10',
     slug: '9.md',
     title: 'A SaaS Mindset for Scaling Edge Infrastructure',
     subtitle: 'Making Edge AI reliable with cloud-native practices',
@@ -182,7 +182,7 @@ export const blogList: BlogMeta[] = [
     },
   },
 {
-  id: '10',
+  id: '11',
   slug: '10.md',
   title: 'Choosing the Right Database for Your Product',
   subtitle: 'A decision-making guide for PMs and engineers',
@@ -200,7 +200,7 @@ export const blogList: BlogMeta[] = [
   },
 },
 {
-  id: '11',
+  id: '12',
   slug:'11.md',
   title: 'Designing Clean API Integrations',
   subtitle: 'Lessons from building and consuming APIs at scale',
@@ -218,7 +218,7 @@ export const blogList: BlogMeta[] = [
   },
 },
 {
-  id: '12',
+  id: '4',
   slug: '12.md',
   title: 'Cost-Effective System Design: Balancing Performance & Budget',
   subtitle: 'This is the system design playbook I wish I had earlier',

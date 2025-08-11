@@ -63,7 +63,7 @@ const CaseStudyDetail2 = () => {
     </motion.button>
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        Standardizing Edge Setup at Evercam for Scalable Video Deployment
+        Standardizing Edge Setup at Evercam
       </motion.h1>
 
       {/* Summary */}

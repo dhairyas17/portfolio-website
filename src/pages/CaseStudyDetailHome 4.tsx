@@ -1,7 +1,7 @@
 // src/pages/CaseStudyDetails.tsx
 import { useEffect, useState } from 'react';
 import { ChevronUp } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -30,7 +30,24 @@ const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
 const CaseStudyDetailHome4 = () => {
   const navigate = useNavigate();
   const [showScrollTop, setShowScrollTop] = useState(false);
-
+  // inside your component
+  const location = useLocation();
+  
+  // Extract current query params or default
+  const searchParams = new URLSearchParams(location.search);
+  const page = searchParams.get('page') || '1';
+  const filter = searchParams.get('filter') || '';
+  
+  const goBack = () => {
+    // Build query string preserving filter and page
+    const query = new URLSearchParams();
+    if (filter) query.set('filter', filter);
+    if (page) query.set('page', page);
+  
+    // Navigate to /case-studies with query and hash
+    navigate(`/case-studies?${query.toString()}#case-study`);
+  };
+  
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -45,63 +62,59 @@ const CaseStudyDetailHome4 = () => {
   };
   
   return (
-<motion.div
-  className="max-w-6xl mx-auto px-6 py-24 text-gray-900"
-  initial="initial"
-  animate="animate"
-  transition={{ staggerChildren: 0.2 }}
+      <motion.div
+        className="max-w-6xl mx-auto px-6 py-24 text-gray-900"
+        initial="initial"
+        animate="animate"
+        transition={{ staggerChildren: 0.2 }}
+      >
+        {/* Back button */}
+        <motion.button
+  className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
+  onClick={goBack}
+  {...fadeIn}
 >
-  {/* Back button */}
-  <motion.button
-    className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
-    onClick={() => navigate(-1)}
-    {...fadeIn}
-  >
-    <ArrowLeft size={16} />
-    Back to Case Studies
-  </motion.button>
+  <ArrowLeft className="w-4 h-4 mr-2" />
+  Back to case studies
+</motion.button>
+
 
       {/* Header */}
       <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
        Designing a Scalable AI-Driven Video Intelligence API Platform
       </motion.h1>
 
-      {/* Subtitle */}
-      {/* <motion.div className="mb-10 text-lg text-gray-700" {...fadeIn}>
-        <strong>Subtitle:</strong> A self-initiated platform offering a suite of AI-powered video processing capabilities through unified APIs, including object detection, subclassification using FaceNet, segmentation via SAM, inpainting using LaMa, and motion tracking.
-      </motion.div> */}
-
       {/* Summary */}
       <motion.div
-  className="flex flex-col md:flex-row justify-between text-sm text-gray-700 mb-10"
-  {...fadeIn}
->
-  {/* Left Column */}
-  <div className="flex flex-col gap-2 md:w-1/2">
-    <div className="flex items-start gap-2">
-      <Brain className="mt-1" size={16} />
-      <span>
-        <strong>Category:</strong> API Architecture, Video Intelligence, AI Integration
-      </span>
-    </div>
-    <div className="flex items-start gap-2">
-      <Users className="mt-1" size={16} />
-      <span>
-        <strong>Team:</strong> 1 TPM, 2 ML Engineers, 1 Backend Engineer
-      </span>
-    </div>
-  </div>
+        className="flex flex-col md:flex-row justify-between text-sm text-gray-700 mb-10"
+        {...fadeIn}
+      >
+        {/* Left Column */}
+        <div className="flex flex-col gap-2 md:w-1/2">
+          <div className="flex items-start gap-2">
+            <Brain className="mt-1" size={16} />
+            <span>
+              <strong>Category:</strong> API Architecture, Video Intelligence, AI Integration
+            </span>
+          </div>
+          <div className="flex items-start gap-2">
+            <Users className="mt-1" size={16} />
+            <span>
+              <strong>Team:</strong> 1 TPM, 2 ML Engineers, 1 Backend Engineer
+            </span>
+          </div>
+        </div>
 
-  {/* Right Column */}
-  <div className="flex flex-col gap-2 md:w-1/2 md:items-end md:text-right mt-4 md:mt-0">
-    <div className="flex items-start gap-2">
-      <CalendarDays className="mt-1" size={16} />
-      <span>
-        <strong>Duration:</strong> 7 Months
-      </span>
-    </div>
-  </div>
-</motion.div>
+        {/* Right Column */}
+        <div className="flex flex-col gap-2 md:w-1/2 md:items-end md:text-right mt-4 md:mt-0">
+          <div className="flex items-start gap-2">
+            <CalendarDays className="mt-1" size={16} />
+            <span>
+              <strong>Duration:</strong> 7 Months
+            </span>
+          </div>
+        </div>
+      </motion.div>
 
 
       {/* Overview */}
@@ -180,15 +193,15 @@ const CaseStudyDetailHome4 = () => {
         </div>
       </motion.section>
       <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/api_diagram.svg"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      System Architecture
-    </p>
-  </motion.div>
+        <img
+          src="/assets/case-studies/api_diagram.svg"
+          alt="Key Product Decisions Diagram"
+          className="rounded-lg shadow-lg border border-gray-200 w-full"
+        />
+        <p className="text-sm text-gray-500 mt-2 text-center">
+          System Architecture
+        </p>
+      </motion.div>
       {/* API Gateway */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-blue-600" size={18} />API Gateway</h2>
@@ -199,15 +212,15 @@ const CaseStudyDetailHome4 = () => {
         </ul>
       </motion.section>
       <motion.div className="mt-6" {...fadeIn}>
-    <img
-      src="/assets/case-studies/counting.png"
-      alt="Key Product Decisions Diagram"
-      className="rounded-lg shadow-lg border border-gray-200 w-full"
-    />
-    <p className="text-sm text-gray-500 mt-2 text-center">
-      Dashboard UI
-    </p>
-  </motion.div>
+        <img
+          src="/assets/case-studies/counting.png"
+          alt="Key Product Decisions Diagram"
+          className="rounded-lg shadow-lg border border-gray-200 w-full"
+        />
+        <p className="text-sm text-gray-500 mt-2 text-center">
+          Dashboard UI
+        </p>
+      </motion.div>
       {/* Impact */}
       <motion.section className="mb-10" {...fadeIn}>
         <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>

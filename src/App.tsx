@@ -25,7 +25,6 @@ import CaseStudyDetailHome5 from './pages/CaseStudyDetailHome 5';
 
 const AppRoutes = () => {
   const location = useLocation();
-
   return (
     <AnimatePresence mode="wait" initial={true}>
       <Routes location={location} key={location.pathname}>

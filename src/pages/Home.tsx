@@ -646,16 +646,17 @@ For complex products that require both strategic vision and technical expertise,
 
     {/* CTA Button */}
     <div className="mt-10 text-center">
-      <a
-        href="/case-studies"
-        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
-      >
-        View All Case Studies
-        <ArrowRight className="ml-2 w-5 h-5" />
-      </a>
-    </div>
+  <a
+    href="/case-studies"
+    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg transition-colors transition-transform duration-200 hover:bg-blue-700 hover:scale-105"
+  >
+    View All Case Studies
+    <ArrowRight className="ml-2 w-5 h-5" />
+  </a>
+</div>
   </div>
 </section>
+
 
 
       {/* Testimonials */}
@@ -820,15 +821,15 @@ For complex products that require both strategic vision and technical expertise,
 
     {/* CTA Button */}
     <div className="mt-10 text-center">
-      <a
-        href="/blog"
-        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
-      >
-        View All Blogs
-        <ArrowRight className="ml-2 w-5 h-5" />
-      </a>
+        <a
+          href="/blog"
+          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
+        >
+          View All Blogs
+          <ArrowRight className="ml-2 w-5 h-5" />
+        </a>
+      </div>
     </div>
-  </div>
 </section>
 {/* Certifications */}
 <section className="pt-24 pb-16 bg-white">
@@ -915,13 +916,13 @@ For complex products that require both strategic vision and technical expertise,
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-  <Link
-    to="/contact"
-    className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
-  >
-    Get in Touch
-  </Link>
-</div>
+        <Link
+          to="/contact"
+          className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
+        >
+          Get in Touch
+        </Link>
+      </div>
 
     </motion.div>
     <p className="text-xs text-center text-gray-400 mt-8 pt-4 border-t border-gray-200">

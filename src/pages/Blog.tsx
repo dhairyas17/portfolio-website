@@ -77,7 +77,7 @@ const Blog = () => {
 
   const posts = [
     {
-      id: '6',
+      id: '1',
       title: 'From Engineer to TPM: Influencing Without Authority',
       excerpt: 'A personal story of transitioning from CV engineer to product owner to TPM, and how communication, trust, and alignment became my real tools.',
       image: '/assets/blogs/6.png',
@@ -97,7 +97,7 @@ const Blog = () => {
       tags: ['Prioritization', 'AI Products', 'TPM']
     },
     {
-      id: '7',
+      id: '3',
       title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
       excerpt: 'Tips, rituals, and lessons from aligning firmware, DevOps, data science and business teams while scaling AI/edge products as a TPM.',
       image: '/assets/blogs/7.png',
@@ -107,7 +107,7 @@ const Blog = () => {
       tags: ['Stakeholders', 'TPM', 'Execution']
     },
     {
-      id: '12',
+      id: '4',
       title: 'Cost-Effective System Design: Balancing Performance & Budget',
       excerpt: 'This is my playbook for designing systems that scale without burning money, with real-world trade-offs, metrics, and lessons for PMs and engineers.',
       image: '/assets/blogs/13.png',
@@ -117,7 +117,7 @@ const Blog = () => {
       tags: ['System Design', 'Cost Optimization', 'Performance', 'Cloud Architecture']
     },
     {
-      id: '3',
+      id: '5',
       title: 'Leading AI Teams Without Being the Smartest Engineer',
       excerpt: 'Lessons on leading machine learning teams as a TPM/APM, from alignment to feasibility to trust-building without being the deepest technical expert.',
       category: 'leadership',
@@ -127,7 +127,7 @@ const Blog = () => {
       tags: ['Leadership', 'AI Teams', 'TPM']
     },
     {
-      id: '4',
+      id: '6',
       title: 'The Future of MLOps: From Research to Real-Time Alerts',
       excerpt: 'From MLflow to Airflow to TensorRT – how tools and workflows evolve in the world of real-time inference, versioning, and deployment at scale.',
       image: '/assets/blogs/4.png',
@@ -137,7 +137,7 @@ const Blog = () => {
       tags: ['MLOps', 'AI Infra', 'Model Deployment']
     },
     {
-      id: '5',
+      id: '7',
       title: 'Why Edge AI is Eating the Cloud – 5 Predictions from the Field',
       excerpt: 'Drawing from Edge/OTA experience, this post explores why Edge AI is beating the cloud in real-world scenarios, and where things are heading.',
       image: '/assets/blogs/5.png',
@@ -147,7 +147,7 @@ const Blog = () => {
       tags: ['Edge AI', 'Predictions', 'Cloud']
     },
     {
-      id: '1',
+      id: '8',
       title: 'Scaling Edge Deployments: 100 to 1,200+',
       excerpt: 'Real stories and strategy from scaling AI infrastructure in the field, covering deployment challenges, observability, and cross-functional alignment.',
       image: '/assets/blogs/1.png',
@@ -157,7 +157,7 @@ const Blog = () => {
       tags: ['Edge AI', 'TPM', 'Product Strategy']
     },
     {
-      id: '8',
+      id: '9',
       title: 'How GenAI Will Reshape the TPM Role',
       excerpt: 'Beyond prompting, how GenAI is transforming technical PM workflows, from customer discovery to engineering velocity.',
       image: '/assets/blogs/8.png',
@@ -167,7 +167,7 @@ const Blog = () => {
       tags: ['GenAI', 'Future of Work', 'TPM']
     },
     {
-      id: '9',
+      id: '10',
       title: 'A SaaS Mindset for Scaling Edge Infrastructure',
       excerpt: 'A deep dive into how we built firmware OTA, telemetry, and observability for distributed edge AI, and how a SaaS mindset helped.',
       image: '/assets/blogs/9.png',
@@ -177,7 +177,7 @@ const Blog = () => {
       tags: ['Edge Infra', 'SaaS', 'TPM']
     },
     {
-      id: '10',
+      id: '11',
       title: 'Choosing the Right Database for Your Product',
       excerpt: 'Relational or NoSQL? Postgres or DynamoDB? Here’s how I choose the right database for every product phase, with real trade-offs and mistakes made.',
       image: '/assets/blogs/11.png',
@@ -187,7 +187,7 @@ const Blog = () => {
       tags: ['System Design', 'Databases', 'Product Decisions']
     },
     {
-      id: '11',
+      id: '12',
       title: 'Designing Clean API Integrations - from TPM point of view',
       excerpt: 'From naming conventions to auth flows, these are the principles I follow when designing APIs that scale, evolve, and don’t break clients.',
       image: '/assets/blogs/12.png',
