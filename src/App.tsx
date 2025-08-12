@@ -10,18 +10,10 @@ import CaseStudyCategory from './pages/CaseStudyCategory';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
-import CaseStudyDetail1 from './pages/CaseStudyDetail 1';
-import CaseStudyDetail2 from './pages/CaseStudyDetail 2';
-import CaseStudyDetail3 from './pages/CaseStudyDetail 3';
-import CaseStudyDetail4 from './pages/CaseStudyDetail 4';
-import CaseStudyDetail5 from './pages/CaseStudyDetail 5';
-import CaseStudyDetailHome1 from './pages/CaseStudyDetailHome 1';
-import CaseStudyDetailHome2 from './pages/CaseStudyDetailHome 2';
-import CaseStudyDetailHome3 from './pages/CaseStudyDetailHome 3';
+import CaseStudyDetail1 from './pages/CaseStudyDetail';
 import CaseStudyCategoryHome from './pages/CaseStudyCategoryHome';
 import BlogPostHome from './pages/BlogPostHome';
-import CaseStudyDetailHome4 from './pages/CaseStudyDetailHome 4';
-import CaseStudyDetailHome5 from './pages/CaseStudyDetailHome 5';
+import CaseStudyHomeComponent from './pages/CaseStudyDetailHome';
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -34,16 +26,8 @@ const AppRoutes = () => {
         <Route path="/portfolio/projects/:id" element={<ProjectDetail />} />
         <Route path="/portfolio/case-studies" element={<CaseStudyCategory />} />
         <Route path="/case-studies" element={<CaseStudyCategoryHome />} />
-        <Route path="/portfolio/case-studies/1" element={<CaseStudyDetail1 />} />
-        <Route path="/portfolio/case-studies/2" element={<CaseStudyDetail2 />} />
-        <Route path="/portfolio/case-studies/3" element={<CaseStudyDetail3 />} />
-        <Route path="/portfolio/case-studies/4" element={<CaseStudyDetail4 />} />
-        <Route path="/portfolio/case-studies/5" element={<CaseStudyDetail5 />} />
-        <Route path="/case-studies/1" element={<CaseStudyDetailHome1 />} />
-        <Route path="/case-studies/2" element={<CaseStudyDetailHome2 />} />
-        <Route path="/case-studies/3" element={<CaseStudyDetailHome3 />} />
-        <Route path="/case-studies/4" element={<CaseStudyDetailHome4 />} />
-        <Route path="/case-studies/5" element={<CaseStudyDetailHome5 />} />
+        <Route path="/portfolio/case-studies/:id" element={<CaseStudyDetail1 />} />
+        <Route path="/case-studies/:id" element={<CaseStudyHomeComponent/>} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/blogs/:id" element={<BlogPostHome />} />

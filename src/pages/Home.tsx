@@ -292,18 +292,18 @@ const Home = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 mb-1">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
             Hi, I&apos;m{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
               Dhairya
             </span>
           </h1>
 
-          <h2 className="text-2xl md:text-3xl text-gray-600 mb-2 font-semibold">
+          <h2 className="text-2xl md:text-3xl text-gray-600 mb-1 font-semibold">
             Product Manager & Strategy Leader
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
+          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8">
             Leading global teams to turn vision into scalable, data-driven products with measurable impact.
           </p>
 
@@ -321,12 +321,14 @@ const Home = () => {
             >
               Let&apos;s Connect
             </Link>
-            <Link
-              to="/resume.pdf"
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3 rounded-full border border-gray-400 text-gray-600 font-medium hover:bg-gray-50 hover:scale-105 transform transition duration-300"
             >
               Resume
-            </Link>
+            </a>
           </div>
         </motion.div>
 
@@ -455,7 +457,7 @@ const Home = () => {
         { value: "4+", label: "Years Experience" },
         { value: "10+", label: "Products" },
         { value: "25+", label: "Countries" },
-        { value: "100+", label: "Global Teams" },
+        { value: "50+", label: "Global Teams" },
         { value: "1200+", label: "Deployments" }
       ].map((stat, idx) => (
         <div
@@ -547,8 +549,46 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="py-20 bg-white-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Tools & Platforms</h2>
+          </motion.div>
 
-      <section id="case-study" className="py-20 pt-16 pb-16 bg-white">
+          <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6">
+            {tools.map((tool, index) => (
+              <motion.div
+                key={tool.name}
+                className="group flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-lg transition-all cursor-pointer"
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <img
+                  src={tool.logo}
+                  alt={`${tool.name} logo`}
+                  className="h-10 w-10 mb-2 object-contain"
+                />
+                <div className="text-sm font-medium text-gray-700 text-center">
+                  {tool.name}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+
+        </div>
+      </section>      
+
+      <section id="case-study" className="py-20 pt-16 pb-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             className="text-3xl font-semibold mb-20 text-center"
@@ -652,87 +692,9 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Tools & Platforms</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6">
-            {tools.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                className="group flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-lg transition-all cursor-pointer"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <img
-                  src={tool.logo}
-                  alt={`${tool.name} logo`}
-                  className="h-10 w-10 mb-2 object-contain"
-                />
-                <div className="text-sm font-medium text-gray-700 text-center">
-                  {tool.name}
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
 
-        </div>
-      </section>
-
-      <section className="py-20 bg-white-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Testimonials</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                className="bg-white shadow-md p-6 rounded-xl flex flex-col justify-between h-full transition hover:shadow-xl"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <div className="flex-grow">
-                  <div className="text-gray-700 mb-6 italic">"{testimonial.quote}"</div>
-                </div>
-                <div className="flex items-center mt-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="blogs" className="py-20 bg-gray-50">
+      <section id="blogs" className="py-20 bg-white-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.h2
       className="text-3xl font-semibold mb-20 text-center"
@@ -818,20 +780,63 @@ const Home = () => {
 </div>
 
     {/* CTA Button */}
-      <div className="mt-10 text-center">
-        <a
-          href="/blog"
-          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg hover:bg-blue-700 transition-colors"
-        >
-          View All Blogs
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </a>
-      </div>
+    <div className="mt-10 text-center">
+      <a
+        href="/blog"
+        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg 
+                  hover:bg-blue-700 hover:scale-105 transform transition duration-200 ease-in-out"
+      >
+        View All Blogs
+        <ArrowRight className="ml-2 w-5 h-5" />
+      </a>
+    </div>
+
         </div>
       </section>
 
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Testimonials</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                className="bg-white shadow-md p-6 rounded-xl flex flex-col justify-between h-full transition hover:shadow-xl"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <div className="flex-grow">
+                  <div className="text-gray-700 mb-6 italic">"{testimonial.quote}"</div>
+                </div>
+                <div className="flex items-center mt-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                  />
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Certifications */}
-      <section className="pt-16 pb-16 bg-white">
+      <section className="pt-16 pb-16 bg-white-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-20"

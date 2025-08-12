@@ -222,11 +222,7 @@ export const projectData: Record<string, Project> = {
     {
       name: 'Instant Contact Form',
       description: 'EmailJS integration with client-side validation and spam protection.',
-    },
-    {
-      name: 'Dark Mode',
-      description: 'Theme toggle with persisted preference using local storage.',
-    },
+    }
   ],
   results: [
     {

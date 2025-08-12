@@ -1,211 +1,571 @@
-// src/pages/CaseStudyDetails.tsx
-
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
-  ArrowLeft,
-  Brain,
-  CalendarDays,
+  Target,
+  AlertCircle,
+  ClipboardList,
+  Settings,
   Users,
-  Globe,
-  Hammer,
-  LayoutDashboard,
   AlertTriangle,
   Lightbulb,
   TrendingUp,
-  ServerCog,
+  Calendar,
+  Tag,
+  ArrowLeft,
   MessageCircle,
-  Tags
-} from 'lucide-react';
+  ChevronUp,
+  Menu,
+  X,
+} from "lucide-react";
+import { caseStudies, CaseStudy, TableData } from "../data/caseStudyData";
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4 },
-};
+// ----------------------
+// Table Section Component
+// ----------------------
+interface TableSectionProps {
+  title: string;
+  data: TableData;
+}
 
-const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
+const TableSection: React.FC<TableSectionProps> = ({ title, data }) => (
+  <section className="space-y-4">
+    <h2 className="text-2xl font-semibold text-gray-900 mb-4">{title}</h2>
+    <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md">
+      <table className="min-w-full border-collapse text-base text-gray-800">
+        <thead className="bg-gray-100">
+          <tr>
+            {data.table[0].map((_, i) => (
+              <th
+                key={i}
+                className="border px-6 py-3 text-left font-semibold text-gray-700"
+              >
+                {title === "Results"
+                  ? ["Metric", "Before", "After", "Change"][i]
+                  : ["Focus Area", "Approach", "Outcome / Impact"][i]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.table.map((row, ri) => (
+            <tr key={ri} className={ri % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+              {row.map((cell, ci) => (
+                <td
+                  key={ci}
+                  className="border px-6 py-3 whitespace-pre-line"
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {data.context && (
+      <p className="text-gray-600 whitespace-pre-line text-lg mt-3">
+        {data.context}
+      </p>
+    )}
+  </section>
+);
 
-const CaseStudyDetail = () => {
+// ----------------------
+// Icon + Heading Helper
+// ----------------------
+const SectionHeading: React.FC<{ icon: React.ReactNode; children: React.ReactNode }> = ({
+  icon,
+  children,
+}) => (
+  <h2 className="flex items-center text-3xl font-bold space-x-3 mb-6 text-gray-900">
+    {icon}
+    <span>{children}</span>
+  </h2>
+);
+
+// ----------------------
+// CardSection Component
+// ----------------------
+interface CardSectionProps {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
+
+function CardSection({
+  id,
+  title,
+  icon,
+  children,
+}: CardSectionProps & { id?: string }) {
+  return (
+    <motion.section
+      id={id}
+      className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+    >
+      <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+        {icon}
+        {title}
+      </h2>
+      <div>{children}</div>
+    </motion.section>
+  );
+}
+
+// ----------------------
+// Main Component
+// ----------------------
+export default function CaseStudyComponent() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+
+  const caseId = Number(id);
+  const cs = caseStudies.find((c) => c.id === caseId);
+
+  if (!cs) {
+    return (
+      <div className="text-center py-20 text-xl font-semibold text-red-600">
+        Case Study Not Found
+      </div>
+    );
+  }
+
+  const currentIndex = caseStudies.findIndex((item) => item.id === cs.id);
+  const hasPrev = currentIndex > 0;
+  const hasNext = currentIndex < caseStudies.length - 1;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const sections = [
+    { id: "overview", label: "Overview" },
+    { id: "my-role", label: "My Role" },
+    { id: "situation", label: "Situation" },
+    { id: "task", label: "Task" },
+    { id: "actions", label: "Actions & System Thinking" },
+    { id: "results", label: "Results & Outcomes" },
+    { id: "takeaways", label: "Key Takeaways" },
+  ];
 
   return (
-    <motion.div
-      className="max-w-6xl mx-auto px-6 py-12 text-gray-900"
-      initial="initial"
-      animate="animate"
-      transition={{ staggerChildren: 0.2 }}
-    >
-      {/* Back button */}
-      <motion.button
-        className="flex items-center gap-2 text-lg text-blue-600 hover:underline mb-8"
-        onClick={() => navigate(-1)}
-        {...fadeIn}
+    <>
+      {/* Page Wrapper with enter animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <ArrowLeft size={16} /> Back to Case Studies
-      </motion.button>
+        {/* Side Navigation */}
+        <motion.nav
+          initial={{ width: sidebarOpen ? 280 : 40 }}
+          animate={{ width: sidebarOpen ? 280 : 40 }}
+          transition={{ type: "spring", stiffness: 260, damping: 30 }}
+          className="fixed top-24 right-8 z-50 rounded-xl bg-white shadow-xl flex flex-col items-center"
+          style={{
+            maxHeight: "70vh",
+            overflowY: sidebarOpen ? "auto" : "visible",
+            border: "1px solid #e2e8f0",
+          }}
+        >
+          {/* Toggle Button */}
+          <motion.button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+            className="flex items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300 focus:outline-none shadow"
+            initial={false}
+            animate={{
+              width: sidebarOpen ? 30 : 34,
+              height: sidebarOpen ? 30 : 34,
+              margin: sidebarOpen ? "16px 0 8px 0" : "8px auto",
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            <motion.div
+              animate={{ scale: sidebarOpen ? 0.8 : 1 }}
+              transition={{ duration: 0.2 }}
+            >
+              {sidebarOpen ? <X size={14} /> : <Menu size={16} />}
+            </motion.div>
+          </motion.button>
 
-      {/* Header */}
-      <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-      Designing a Scalable AI-Driven Video Intelligence API Platform
-      </motion.h1>
+          {/* Quick Access title */}
+          {sidebarOpen && (
+            <motion.h2
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-lg font-semibold text-gray-700 mb-4"
+            >
+              Quick Access
+            </motion.h2>
+          )}
 
-      {/* Subtitle */}
-      <motion.div className="mb-10 text-lg text-gray-700" {...fadeIn}>
-        <strong>Subtitle:</strong> A self-initiated platform offering a suite of AI-powered video processing capabilities through unified APIs ,  including object detection, subclassification using FaceNet, segmentation via SAM, inpainting using LaMa, and motion tracking.
-      </motion.div>
+          {/* Links */}
+          {sidebarOpen && (
+            <motion.ul
+              key="links"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="w-full space-y-4 text-base font-medium text-blue-600 px-4"
+            >
+              {sections.map(({ id, label }) => (
+                <motion.li
+                  key={id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const el = document.getElementById(id);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                      setSidebarOpen(false);
+                    }}
+                    className="block px-2 py-1 rounded-md hover:bg-blue-50 transition-colors"
+                  >
+                    {label}
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
+          )}
+        </motion.nav>
 
-      {/* Summary */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg text-gray-700 mb-10" {...fadeIn}>
-        <div className="flex items-start gap-2">
-          <Brain className="mt-1" size={16} />
-          <span><strong>Category:</strong> API Architecture, Video Intelligence, AI Integration</span>
-        </div>
-        <div className="flex items-start gap-2">
-          <CalendarDays className="mt-1" size={16} />
-          <span><strong>Duration:</strong> Self-Initiated Project (4 months)</span>
-        </div>
-        <div className="flex items-start gap-2">
-          <Users className="mt-1" size={16} />
-          <span><strong>Team:</strong> 1 (Solo Project)</span>
-        </div>
-      </motion.div>
+        <div className="max-w-7xl mx-auto px-8 py-12 font-sans text-gray-900 space-y-10">
+          <div key={cs.id} className="space-y-10">
+            {/* Header */}
+            <header className="space-y-2 border-b border-gray-300 mt-12 pb-8">
+            <Link
+              to="/portfolio/case-studies/"
+              className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 cursor-pointer mb-12"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Case Studies</span>
+            </Link>
+              <div className="flex justify-center">
+  <h1 className="text-4xl font-bold text-gray-900 mb-9">
+    {cs.title}
+  </h1>
+</div>
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-14 text-sm text-gray-700">
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <Tag className="w-4 h-4 text-gray-500" />
+                    <span>
+                      <strong>Category:</strong> {cs.category}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4 text-gray-500" />
+                    <span>
+                      <strong>Team:</strong> {cs.team}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 sm:items-end">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <span>
+                      <strong>Duration:</strong> {cs.duration}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-gray-500" />
+                    <span>
+                      <strong>Deployments:</strong> {cs.deployment}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </header>
 
-      {/* Overview */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 leading-relaxed">
-          AI pipelines for video intelligence are often fragmented, unscalable, and tightly coupled. They also lack developer-friendly APIs and flexible deployment options. The goal of this project was to build a modular and scalable system for real-time video analysis, featuring production-ready APIs for various video intelligence tasks like object detection, segmentation, inpainting, and motion tracking.
-        </p>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Designed with modularity, scalability, and real-time performance in mind, this platform enables AI tasks such as object detection, face embedding (FaceNet), segmentation using SAM, and inpainting with LaMa, all through easy-to-use REST APIs.
-        </p>
-      </motion.section>
+            {/* Overview */}
+            <CardSection
+              id="overview"
+              title="Overview"
+              icon={<Target className="w-8 h-8 text-gray-900" />}
+            >
+              <p className="text-gray-700 text-lg leading-relaxed">{cs.summary}</p>
+            </CardSection>
 
-      {/* Problem Statement */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />Problem Statement</h2>
-        <h3 className="font-semibold mb-1 text-lg">Key Challenges:</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
-          <li>Fragmented AI pipelines with no clear integration across video intelligence tasks</li>
-          <li>Lack of modular, scalable, and production-ready APIs for real-time video analysis</li>
-          <li>Difficulty in providing flexible deployment options (edge vs. cloud)</li>
-        </ul>
-      </motion.section>
+            <CardSection
+              id="my-role"
+              title="My Role"
+              icon={<Users className="w-8 h-8 text-teal-600" />}
+            >
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {cs.roleDescription || cs.role}
+              </p>
+            </CardSection>
 
-      {/* Product Thinking */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />Product Thinking</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li>User-first design: Abstracted AI complexities behind clean, intuitive APIs.</li>
-          <li>Modularity: Enabled developers to plug in individual features (e.g., only SAM or object detection).</li>
-          <li>Speed & Scalability: Optimized for real-time inference over RESTful APIs.</li>
-          <li>Deploy Anywhere: System built to support both edge and cloud deployments.</li>
-        </ul>
-      </motion.section>
+            {/* Situation */}
+            <CardSection
+              id="situation"
+              title="Situation"
+              icon={<AlertCircle className="w-8 h-8 text-red-600" />}
+            >
+              <p className="leading-relaxed mb-2 text-lg">{cs.situation[0]}</p>
+              <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700 mb-4">
+                {cs.situation.slice(1, 5).map((point, i) => (
+                  <li key={i} className="leading-relaxed">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              {cs.situation[5] && (
+                <p className="leading-relaxed text-lg">{cs.situation[5]}</p>
+              )}
+            </CardSection>
 
-      {/* Key Features */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-cyan-600" size={18} />Key Features</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li><strong>/detect:</strong> Object detection using YOLOv8</li>
-          <li><strong>/facenet:</strong> Face embedding + similarity matching</li>
-          <li><strong>/segment:</strong> Segment anything with Meta’s SAM</li>
-          <li><strong>/inpaint:</strong> Remove objects or correct occlusions with LaMa</li>
-          <li><strong>/motion:</strong> Detect camera panning, tilt, and zoom</li>
-          <li><strong>/auth:</strong> JWT-based user authentication</li>
-          <li><strong>/integrations:</strong> Webhooks for third-party apps (Slack, Telegram, etc.)</li>
-        </ul>
-      </motion.section>
+            {/* Task */}
+            <CardSection
+              id="task"
+              title="Task"
+              icon={<ClipboardList className="w-8 h-8 text-yellow-600" />}
+            >
+              <p className="leading-relaxed mb-2 text-lg">{cs.task[0]}</p>
+              <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700">
+                {cs.task.slice(1).map((point, i) => (
+                  <li key={i} className="leading-relaxed">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </CardSection>
 
-      {/* System Architecture */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />System Architecture</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-          <div className="bg-gray-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">Components</h3>
-            <p>
-              - <strong>Frontend (optional):</strong> Swagger UI for interactive API testing<br />
-              - <strong>Backend (FastAPI + Python):</strong> REST endpoints calling containerized ML services<br />
-              - <strong>Model Services:</strong> Dockerized microservices with shared gRPC protocol<br />
-              - <strong>Queue (RabbitMQ / Kafka):</strong> For async processing of large jobs<br />
-              - <strong>Database (PostgreSQL + Redis):</strong><br />
-              &nbsp;&nbsp;&nbsp;&nbsp;PostgreSQL: User auth, metadata, job tracking<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;Redis: Caching frequent queries, session management
-            </p>
+            {/* Actions & System Thinking */}
+            <CardSection
+              id="actions"
+              title="Actions & Thinking"
+              icon={<Settings className="w-8 h-8 text-blue-600" />}
+            >
+              {/* Actions */}
+              <div className="mb-8">
+                {/* <h3 className="text-xl font-semibold mb-3">Actions</h3> */}
+                <ul className="list-disc pl-6 space-y-3 text-lg text-gray-700">
+                  {cs.actions.map((action, i) => (
+                    <li key={i} className="leading-relaxed">
+                      <strong className="font-semibold">{action.heading}:</strong>{" "}
+                      {action.details}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* System Thinking */}
+              <div className="mb-8">
+                <TableSection title="System Thinking" data={cs.systemThinking} />
+                {cs.systemThinking.image && (
+                  <img
+                    src={cs.systemThinking.image}
+                    alt="System Thinking Illustration"
+                    className="mt-4 rounded-lg shadow-md max-w-full h-auto"
+                  />
+                )}
+              </div>
+
+              {/* Product Thinking */}
+              <div className="mb-8">
+                <TableSection title="Product Thinking" data={cs.productThinking} />
+                {cs.productThinking.image && (
+                  <img
+                    src={cs.productThinking.image}
+                    alt="Product Thinking Illustration"
+                    className="mt-4 rounded-lg shadow-md max-w-full h-auto"
+                  />
+                )}
+              </div>
+
+              {/* Tradeoffs */}
+              <div className="mb-8">
+                <TableSection title="Tradeoffs" data={cs.tradeoffs} />
+              </div>
+
+              {/* Challenges & Mitigations */}
+              <div>
+                <SectionHeading icon={<AlertTriangle className="w-8 h-8 text-orange-600" />}>
+                  Challenges & Mitigations
+                </SectionHeading>
+                <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-sm mt-4">
+                  <table className="min-w-full border-collapse text-base text-gray-800">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        <th className="border px-4 py-2 text-left font-semibold text-gray-700">
+                          Challenge
+                        </th>
+                        <th className="border px-4 py-2 text-left font-semibold text-gray-700">
+                          Mitigation
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cs.challenges.map((item, i) => (
+                        <tr
+                          key={i}
+                          className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                        >
+                          <td className="border px-4 py-2 whitespace-pre-line">
+                            {item.challenge}
+                          </td>
+                          <td className="border px-4 py-2 whitespace-pre-line">
+                            {item.mitigation}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </CardSection>
+
+            {/* Results & Outcomes */}
+            <CardSection
+              id="results"
+              title="Results & Outcomes"
+              icon={<TrendingUp className="w-8 h-8 text-indigo-600" />}
+            >
+              <div className="mb-8">
+                <TableSection title="Results" data={cs.results} />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-3">Outcomes</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">{cs.outcomes}</p>
+              </div>
+            </CardSection>
+
+            {/* Cross-Functional Collaboration */}
+            <CardSection
+              id="collaboration"
+              title="Cross-Functional Collaboration"
+              icon={<Users className="w-8 h-8 text-teal-600" />}
+            >
+              <ul className="list-disc pl-6 space-y-2 text-lg text-gray-700">
+                {cs.crossFunctionalCollaboration.map((point, i) => (
+                  <li key={i} className="leading-relaxed">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </CardSection>
+
+            {/* Internal Feedback */}
+            <motion.section
+              id="feedback"
+              className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+            >
+              <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+                <MessageCircle className="text-indigo-600" size={24} />
+                Internal Feedback
+              </h2>
+
+              <div className="flex flex-col gap-6"> {/* column layout */}
+                {cs.customerFeedback.map(({ text, author }, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col justify-between p-6 rounded-lg shadow-md border border-gray-100 bg-indigo-50"
+                    style={{ minHeight: '50px' }} // ensures card is tall enough
+                  >
+                    <blockquote className="italic text-gray-700 mb-4 text-lg leading-relaxed flex-grow">
+                      "{text}"
+                    </blockquote>
+                    <p className="text-indigo-700 font-semibold text-right mt-auto">
+                      — {author}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+
+
+
+            {/* Key Takeaways */}
+            <CardSection
+              id="takeaways"
+              title="Key Takeaways"
+              icon={<Lightbulb className="w-8 h-8 text-green-600" />}
+            >
+              <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700">
+                {cs.takeaways.map((takeaway, i) => (
+                  <li key={i} className="leading-relaxed">
+                    {takeaway}
+                  </li>
+                ))}
+              </ul>
+            </CardSection>
+
+            {/* Prev/Next Buttons */}
+            <div className="flex justify-between mt-8">
+              <button
+                onClick={() =>
+                  hasPrev && navigate(`/portfolio/case-studies/${caseStudies[currentIndex - 1].id}`)
+                }
+                disabled={!hasPrev}
+                className={`px-6 py-3 rounded-md text-white font-semibold ${
+                  hasPrev ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"
+                } transition-colors duration-300`}
+              >
+                ← Previous
+              </button>
+
+              <button
+                onClick={() =>
+                  hasNext && navigate(`/portfolio/case-studies/${caseStudies[currentIndex + 1].id}`)
+                }
+                disabled={!hasNext}
+                className={`px-6 py-3 rounded-md text-white font-semibold ${
+                  hasNext ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"
+                } transition-colors duration-300`}
+              >
+                Next →
+              </button>
+            </div>
+
+            {showScrollTop && (
+              <button
+                onClick={scrollToTop}
+                className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+                aria-label="Scroll to top"
+              >
+                <ChevronUp size={20} />
+              </button>
+            )}
+
+            {/* Final Call to Action */}
+            <hr className="border-gray-300 mt-8" />
+            <div className="mt-6 text-center">
+              <h2 className="text-3xl font-bold mb-3">Solving a similar challenge?</h2>
+              <p className="text-lg text-gray-700 mb-6">
+                I’d love to exchange ideas or collaborate on building the next big thing.
+              </p>
+              <button
+                type="button"
+                className="px-8 py-3 bg-blue-600 text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400"
+              >
+                Let’s Connect
+              </button>
+              <p className="text-xs text-gray-400 mt-8 pt-4 border-t border-gray-200">
+                © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+              </p>
+            </div>
           </div>
-
-          <div className="bg-gray-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">Infrastructure</h3>
-            <p>
-              - <strong>Inference at scale:</strong> Load-balanced using Gunicorn + Uvicorn<br />
-              - <strong>Container orchestration:</strong> Docker Compose (local), Kubernetes (cloud)<br />
-              - <strong>CI/CD:</strong> GitHub Actions for tests, Docker builds, and push to registry<br />
-              - <strong>Monitoring:</strong> Prometheus + Grafana for API latency, inference time, and system health
-            </p>
-          </div>
         </div>
-      </motion.section>
-
-      {/* API Gateway */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-blue-600" size={18} />API Gateway</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg">
-          <li>Rate limiting, request logging, and load balancing</li>
-          <li>JWT-based authentication</li>
-          <li>Retry logic and fallback handlers for long jobs</li>
-        </ul>
-      </motion.section>
-
-      {/* Impact */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Impact</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg">
-          <li>Built fully functional API-first platform for AI video features</li>
-          <li>Achieved 300ms average latency on /detect and /motion endpoints</li>
-          <li>Scalable to 100+ concurrent API calls with "1"s response time</li>
-          <li>Deployed both locally and to AWS EC2 + EKS</li>
-          <li>Designed with future plug-and-play ML models in mind</li>
-        </ul>
-      </motion.section>
-
-      {/* Cross-Functional Touch */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-teal-600" size={18} />Cross-Functional Touch</h2>
-        <p className="text-lg text-gray-700">Collaborated with:</p>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li>Designers to define an intuitive Swagger UI</li>
-          <li>Backend Devs (peer reviewers) to optimize DB schema</li>
-          <li>ML experts to validate SAM and LaMa performance</li>
-          <li>Ops for scalable deployment and observability</li>
-        </ul>
-      </motion.section>
-
-      {/* Lessons Learned */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Lessons Learned</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg">
-          <li>The importance of designing with extensibility and modularity in mind</li>
-          <li>How clear API documentation and SDKs drastically improve developer experience</li>
-          <li>The value of security and role-based access control in production APIs</li>
-          <li>Challenges in balancing speed and quality of AI inference tasks</li>
-        </ul>
-      </motion.section>
-
-      {/* Tags */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Tags className="inline mr-2 mb-1 text-yellow-400" size={18} />Tags</h2>
-        <div className="flex gap-3">
-          <span className="bg-indigo-100 text-indigo-600 text-xs px-3 py-1 rounded-full">AI</span>
-          <span className="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full">API</span>
-          <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full">Security</span>
-          <span className="bg-red-100 text-red-600 text-xs px-3 py-1 rounded-full">Modularity</span>
-          <span className="bg-yellow-100 text-yellow-600 text-xs px-3 py-1 rounded-full">Extensibility</span>
-        </div>
-      </motion.section>
-    </motion.div>
+      </motion.div>
+    </>
   );
-};
-
-export default CaseStudyDetail;
+}
