@@ -15,8 +15,6 @@ import {
   Lightbulb,
   TrendingUp,
   ServerCog,
-  MessageCircle,
-  Tags,
 } from 'lucide-react';
 
 const fadeIn = {
@@ -25,7 +23,7 @@ const fadeIn = {
   transition: { duration: 0.4 },
 };
 
-const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
+const tableRowStyles = 'border px-3 py-2 text-lg text-gray-700';
 
 const CaseStudyDetail5 = () => {
   const navigate = useNavigate();
@@ -35,14 +33,11 @@ const CaseStudyDetail5 = () => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <motion.div
@@ -53,61 +48,60 @@ const CaseStudyDetail5 = () => {
     >
       {/* Back button */}
       <motion.button
-        className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
+        aria-label="Back to case studies"
         onClick={() => navigate(-1)}
         {...fadeIn}
+        className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition focus:outline-none focus:ring-2 focus:ring-blue-200 rounded"
       >
-        <ArrowLeft size={16} />
+        <ArrowLeft size={16} aria-hidden="true" />
         Back to Case Studies
       </motion.button>
 
       {/* Header */}
-      <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
+      <motion.h1
+        className="text-4xl font-bold mb-6 leading-snug"
+        {...fadeIn}
+      >
         Scaling ML Data Pipelines & MLOps Lifecycle
       </motion.h1>
-
-      {/* Subtitle */}
-      {/* <motion.h2 className="text-lg font-semibold text-gray-700 mb-6 leading-snug" {...fadeIn}>
-        Redesigning the ML Training Lifecycle to Boost Detection Accuracy from 67% to 96%
-      </motion.h2> */}
 
       {/* Summary */}
       <motion.div
         className="flex flex-col md:flex-row justify-between text-sm text-gray-700 mb-10"
         {...fadeIn}
       >
-        {/* Left Column */}
+        {/* Left column */}
         <div className="flex flex-col gap-2 md:w-1/2">
           <div className="flex items-start gap-2">
-            <Brain className="mt-1" size={16} />
+            <Brain className="mt-1" size={16} aria-hidden="true" />
             <span>
               <strong>Category:</strong> AI/ML Systems · MLOps · Edge AI
             </span>
           </div>
           <div className="flex items-start gap-2">
-            <Users className="mt-1" size={16} />
+            <Users className="mt-1" size={16} aria-hidden="true" />
             <span>
               <strong>Team:</strong> 1 Product Owner - APM (me), 5 Annotation Specialists, 2 ML Engineers, 2 DevOps Engineers
             </span>
           </div>
           <div className="flex items-start gap-2">
-            <Hammer className="mt-1" size={16} />
+            <Hammer className="mt-1" size={16} aria-hidden="true" />
             <span>
               <strong>Stack:</strong> Apache Airflow, MLflow, Jetson, CVAT, Python, Docker
             </span>
           </div>
         </div>
 
-        {/* Right Column */}
+        {/* Right column */}
         <div className="flex flex-col gap-2 md:w-1/2 md:items-end md:text-right mt-4 md:mt-0">
           <div className="flex items-start gap-2">
-            <CalendarDays className="mt-1" size={16} />
+            <CalendarDays className="mt-1" size={16} aria-hidden="true" />
             <span>
               <strong>Duration:</strong> 6 months
             </span>
           </div>
           <div className="flex items-start gap-2">
-            <Globe className="mt-1" size={16} />
+            <Globe className="mt-1" size={16} aria-hidden="true" />
             <span>
               <strong>Deployment:</strong> 100+ Jetson Orin Nano
             </span>
@@ -116,9 +110,20 @@ const CaseStudyDetail5 = () => {
       </motion.div>
 
       {/* Overview */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />
+      <motion.section
+        aria-labelledby="overview-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="overview-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <LayoutDashboard
+            className="inline mr-2 mb-1 text-indigo-600"
+            size={18}
+            aria-hidden="true"
+          />
           Overview
         </h2>
         <p className="text-gray-700 text-lg text-justify leading-relaxed">
@@ -127,9 +132,20 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* The Problem */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />
+      <motion.section
+        aria-labelledby="problem-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="problem-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <AlertTriangle
+            className="inline mr-2 mb-1 text-red-600"
+            size={18}
+            aria-hidden="true"
+          />
           The Problem
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
@@ -141,9 +157,20 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* My Role as TPM */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />
+      <motion.section
+        aria-labelledby="role-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="role-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <Lightbulb
+            className="inline mr-2 mb-1 text-yellow-500"
+            size={18}
+            aria-hidden="true"
+          />
           My Role as TPM
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
@@ -155,63 +182,99 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* Solution: ML Lifecycle Overhaul */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />
+      <motion.section
+        aria-labelledby="solution-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="solution-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <LayoutDashboard
+            className="inline mr-2 mb-1 text-indigo-600"
+            size={18}
+            aria-hidden="true"
+          />
           Solution: ML Lifecycle Overhaul
         </h2>
-        <div className="space-y-2">
-          <h3 className="font-semibold text-lg">→ Redesigned Training Loop</h3>
-          <p className="text-gray-700 leading-relaxed">
-            Scaled the dataset from 80k to 980k+ frames via automated scraping pipelines pulling data from live edge feeds. Prioritized high-signal segments for annotation using model confidence thresholds.
-          </p>
-
-          <h3 className="font-semibold text-lg">→ Data Annotation Strategy</h3>
-          <p className="text-gray-700 leading-relaxed">
-            Built custom CVAT workflows to improve annotator efficiency (pre-labeling, auto-suggest). Developed quality gates (QA sampling, reannotation pipeline) to maintain label accuracy.
-          </p>
-
-          <h3 className="font-semibold text-lg">→ MLOps Integration</h3>
-          <p className="text-gray-700 leading-relaxed">
-            Re-architected the pipeline using Apache Airflow for reproducible DAGs: Data collection → Preprocessing → Training → Evaluation → Deployment. Introduced experiment tracking via MLflow, enabling versioned datasets and models.
-          </p>
-
-          <h3 className="font-semibold text-lg">→ Noise Reduction</h3>
-          <p className="text-gray-700 leading-relaxed">
-            Removed noisy classes and false positives by eliminating low-confidence Facenet embeddings and redundant edge logs. Filtered high-bias data sources to reduce annotation debt.
-          </p>
+        <div className="space-y-4">
+          <div>
+            <h3 className="font-semibold text-lg">→ Redesigned Training Loop</h3>
+            <p className="text-gray-700 leading-relaxed">
+              Scaled the dataset from 80k to 980k+ frames via automated scraping pipelines pulling data from live edge feeds. Prioritized high-signal segments for annotation using model confidence thresholds.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">→ Data Annotation Strategy</h3>
+            <p className="text-gray-700 leading-relaxed">
+              Built custom CVAT workflows to improve annotator efficiency (pre-labeling, auto-suggest). Developed quality gates (QA sampling, reannotation pipeline) to maintain label accuracy.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">→ MLOps Integration</h3>
+            <p className="text-gray-700 leading-relaxed">
+              Re-architected the pipeline using Apache Airflow for reproducible DAGs: Data collection → Preprocessing → Training → Evaluation → Deployment. Introduced experiment tracking via MLflow, enabling versioned datasets and models.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">→ Noise Reduction</h3>
+            <p className="text-gray-700 leading-relaxed">
+              Removed noisy classes and false positives by eliminating low-confidence Facenet embeddings and redundant edge logs. Filtered high-bias data sources to reduce annotation debt.
+            </p>
+          </div>
         </div>
       </motion.section>
 
       <motion.div className="mt-6" {...fadeIn}>
         <img
           src="/assets/case-studies/obj_detection.png"
-          alt="Key Product Decisions Diagram"
+          alt="Dashboard UI"
           className="rounded-lg shadow-lg border border-gray-200 w-full"
         />
         <p className="text-sm text-gray-500 mt-2 text-center">Dashboard UI</p>
       </motion.div>
 
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <ServerCog className="inline mr-2 mb-1 text-indigo-600" size={18} />
+      <motion.section
+        aria-labelledby="system-architecture-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="system-architecture-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <ServerCog
+            className="inline mr-2 mb-1 text-indigo-600"
+            size={18}
+            aria-hidden="true"
+          />
           System Architecture
         </h2>
+        <motion.div className="mt-6" {...fadeIn}>
+          <img
+            src="/assets/case-studies/br.png"
+            alt="System Architecture Diagram"
+            className="rounded-lg shadow-lg border border-gray-200 w-full"
+          />
+        </motion.div>
       </motion.section>
 
-      <motion.div className="mt-6" {...fadeIn}>
-        <img
-          src="/assets/case-studies/br.png"
-          alt="System Architecture"
-          className="rounded-lg shadow-lg border border-gray-200 w-full"
-        />
-        <p className="text-sm text-gray-500 mt-10 text-center"></p>
-      </motion.div>
-
       {/* Impact */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />
+      <motion.section
+        aria-labelledby="impact-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="impact-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <TrendingUp
+            className="inline mr-2 mb-1 text-green-600"
+            size={18}
+            aria-hidden="true"
+          />
           Impact
         </h2>
         <div className="overflow-x-auto text-lg">
@@ -232,7 +295,10 @@ const CaseStudyDetail5 = () => {
                 ['Model Retraining Cycles', 'Manual', 'Automated', '✅'],
                 ['Deployment Reach', 'Limited', '1200+ edge nodes globally', '✅'],
               ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <tr
+                  key={i}
+                  className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
+                >
                   {row.map((cell, j) => (
                     <td key={j} className={tableRowStyles}>
                       {cell}
@@ -246,9 +312,20 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* Key Product Thinking & Trade-offs */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <Hammer className="inline mr-2 mb-1 text-yellow-600" size={18} />
+      <motion.section
+        aria-labelledby="product-thinking-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="product-thinking-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <Hammer
+            className="inline mr-2 mb-1 text-yellow-600"
+            size={18}
+            aria-hidden="true"
+          />
           Key Product Thinking & Trade-offs
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
@@ -265,9 +342,20 @@ const CaseStudyDetail5 = () => {
       </motion.section>
 
       {/* Key Learnings & Takeaways */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />
+      <motion.section
+        aria-labelledby="key-learnings-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="key-learnings-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <Lightbulb
+            className="inline mr-2 mb-1 text-yellow-500"
+            size={18}
+            aria-hidden="true"
+          />
           Key Learnings & Takeaways
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
@@ -276,34 +364,45 @@ const CaseStudyDetail5 = () => {
           <li>MLOps isn’t an engineering problem alone, product-led systems thinking delivers long-term value.</li>
         </ul>
       </motion.section>
-
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-          aria-label="Scroll to top"
-        >
-          <ChevronUp size={20} />
-        </button>
-      )}
-
       {/* Key Takeaways */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-          <TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />
+      <motion.section
+        id="key-takeaways"
+        aria-labelledby="key-takeaways-heading"
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        {...fadeIn}
+      >
+        <h2
+          id="key-takeaways-heading"
+          className="text-2xl font-semibold mb-3"
+        >
+          <TrendingUp
+            className="inline mr-2 mb-1 text-green-600"
+            size={18}
+            aria-hidden="true"
+          />
           Key Takeaways
         </h2>
         <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
           <li>Increased detection accuracy from 67% to 96% through data, tooling, and process redesign.</li>
-          <li>Scaled dataset from 80k to 980k+ frames, with automated collection and targeted annotation.</li>
+          <li>Scaled dataset from 280k to 980k+ frames, with automated collection and targeted annotation.</li>
           <li>Cut annotation turnaround time by 60% using pre-labeling, QA gates, and workflow automation.</li>
           <li>Implemented reproducible MLOps pipeline with Airflow, MLflow, and automated retraining.</li>
           <li>Achieved global deployment to 1200+ edge nodes, ensuring real-time performance at scale.</li>
         </ul>
       </motion.section>
+      {/* Scroll to Top */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          <ChevronUp size={20} aria-hidden="true" />
+        </button>
+      )}
 
+      {/* Final CTA */}
       <hr className="mt-10 border-t border-gray-200" />
-
       <motion.div
         className="mt-5 text-center"
         initial={{ y: 50, opacity: 0 }}
@@ -316,13 +415,12 @@ const CaseStudyDetail5 = () => {
         </p>
         <Link
           to="/contact"
-          className="inline-block rounded-lg no-underline transform transition-transform duration-200 hover:scale-105 will-change-transform preserve-3d"
+          className="inline-block rounded-lg no-underline transform transition-transform duration-200 hover:scale-105 will-change-transform preserve-3d focus:outline-none focus:ring-2 focus:ring-blue-600"
         >
           <div className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
             <span className="block will-change-auto">Let’s Connect</span>
           </div>
         </Link>
-
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
           © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
         </p>

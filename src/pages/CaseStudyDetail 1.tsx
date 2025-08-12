@@ -1,398 +1,550 @@
-// src/pages/CaseStudyDetails.tsx
-import { useEffect, useState } from 'react';
-import { ChevronUp, TagIcon } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion, Variants } from "framer-motion";
 import {
-  ArrowLeft,
-  Brain,
-  CalendarDays,
+  Target,
+  AlertCircle,
+  ClipboardList,
+  Settings,
   Users,
-  Globe,
-  Hammer,
-  LayoutDashboard,
   AlertTriangle,
   Lightbulb,
   TrendingUp,
-  ServerCog,
+  Calendar,
+  Tag,
+  ArrowLeft,
   MessageCircle,
-  Tags
-} from 'lucide-react';
+} from "lucide-react";
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4 },
-};
+// ----------------------
+// Type Definitions
+// ----------------------
+interface TableData {
+  table: string[][];
+  context?: string;
+  image?: string;  // Add this line
+}
 
-const tableRowStyles = "border px-3 py-2 text-lg text-gray-700";
+interface TableSectionProps {
+  title: string;
+  data: TableData;
+}
 
-const CaseStudyDetail1 = () => {
-  const navigate = useNavigate();
-  const [showScrollTop, setShowScrollTop] = useState(false);
+interface Action {
+  heading: string;
+  details: string;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
-  
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+interface ChallengeMitigation {
+  challenge: string;
+  mitigation: string;
+}
+
+interface CaseStudy {
+  title: string;
+  category: string;
+  role: string;
+  team: string;
+  duration: string;
+  stack: string;
+  deployment: string;
+  summary: string;
+  situation: string[];
+  roleDescription: string;
+  task: string[];
+  actions: Action[];
+  crossFunctionalCollaboration: string[];
+  systemThinking: TableData;
+  productThinking: TableData;
+  tradeoffs: TableData;
+  challenges: ChallengeMitigation[];
+  results: TableData;
+  outcomes: string;
+  customerFeedback: string[];
+  takeaways: string[];
+}
+
+// ----------------------
+// Data
+// ----------------------
+const caseStudy: CaseStudy[] = [
+  {
+    // your case study data as before...
+    title: "Case Study: Redesigning Evercam’s Gate Report",
+    category: "Product Design, System Design, Edge AI",
+    role: "TPM (Product + Program Leadership)",
+    team: "6 Engineers, 2 AI Researchers, 2 DevOps, 1 Designer, 1 CS Manager, 3 QA",
+    duration: "6 months",
+    stack: "Jetson, YOLOv5, RabbitMQ, PostgreSQL, Ansible, RTSP, REST APIs",
+    deployment: "100+ Construction Sites",
+    summary: `Redesigned a high-latency, high-cost video analytics system into a scalable, edge-first product for construction site monitoring. 
+    Delivered a 99.98% latency reduction, 94% lower bandwidth usage, 4.5x MRR growth, and 71-point NPS increase. Led full product and 
+    technical transformation across a 14-person cross-functional team.`,
+    roleDescription: "Led the full product and technical transformation as Technical Program Manager, owning the end-to-end roadmap, cross-functional execution, and architecture redesign. Coordinated engineering, AI, DevOps, design, QA, and customer success teams to deliver a scalable, reliable edge-first solution that dramatically improved latency, cost, and user experience.",
+    situation: [
+      "Evercam’s Gate Report is a vehicle monitoring system used at enterprise and construction site gates. It originally relied on uploading full video footage to the cloud for inference and processing.",
+      "As deployments grew, customers faced:",
+      "7–8 hour delays in event availability",
+      "Massive bandwidth usage (3TB+/site/month)",
+      "Low reliability due to poor network connectivity",
+      "Poor user experience due to raw detections and no offline support",
+      "As a result, the product had low adoption and a 7% NPS. It was over-engineered, hard to support, and failing in the field.",
+    ],
+    task: [
+      "As TPM, I led a full product and architecture redesign to:",
+      "Eliminate latency and bandwidth bottlenecks",
+      "Improve reliability and offline support on unstable networks",
+      "Simplify the tech stack to reduce cost and ops overhead",
+      "Make the UX actionable for non-technical site managers",
+      "Drive adoption, improve satisfaction, and grow recurring revenue",
+    ],
+    actions: [
+      {
+        heading: "Built Edge-First System for Fast Inference",
+        details: `Migrated from cloud to on-device YOLOv5 on Jetson, cutting latency from 7+ hours to under 5 seconds. Added RabbitMQ for reliable offline queuing and reduced bandwidth by 94% by sending metadata instead of video.`,
+      },
+      {
+        heading: "Optimized AI Stack for Performance",
+        details: `Removed underused FaceNet re-ID to focus on vehicle detection, improving inference speed and system stability.`,
+      },
+      {
+        heading: "Developed Scalable OTA Update Pipeline",
+        details: `Created Ansible + AWX pipeline with safe rollbacks, enabling DevOps and CS teams to deploy updates independently with minimal downtime.`,
+      },
+      {
+        heading: "Simplified UX for Non-Technical Users",
+        details: `Collaborated on dashboard redesign to add clear sync status and event-focused views, making the tool intuitive for site managers.`,
+      },
+      {
+        heading: "Established Weekly Customer Feedback Loops",
+        details: `Led sessions with customers and CS to align features with user needs and pain points.`,
+      },
+    ],
+    
+    crossFunctionalCollaboration: [
+      "Facilitated alignment between engineering, AI, DevOps, design, and CS teams through weekly syncs and transparent roadmap sharing.",
+      "Resolved blockers across functions by establishing shared OKRs and priorities.",
+      "Enabled rapid, coordinated execution across 14-person cross-functional team.",
+    ],
+    systemThinking: {
+      table: [
+        [
+          "Hardware Constraints",
+          "Optimized YOLOv5 model to run efficiently on Jetson Nano devices",
+          "Achieved <5 second real-time detection despite limited compute power"
+        ],
+        [
+          "Network Variability",
+          "Implemented RabbitMQ event queue with offline persistence and automatic resync",
+          "Ensured >99% reliable event delivery under unstable, low-bandwidth networks"
+        ],
+        [
+          "User Context",
+          "Built for rugged construction sites with intermittent connectivity and power",
+          "Created fault-tolerant architecture that operates autonomously and resyncs data"
+        ],
+        [
+          "Cross-team Input",
+          "Aligned Engineering, AI, DevOps, Design, QA, and CS teams via regular syncs",
+          "Ensured coordinated architecture decisions and timely, user-driven delivery"
+        ],
+      ],
+      image: '/assets/case-studies/gr-d2.png',
+    },
+    
+    productThinking: {
+      table: [
+        [
+          "User Needs",
+          "Focused on vehicle entry/exit detection only, removing extraneous AI features",
+          "Simplified product to core Jobs-to-be-Done, reducing complexity and cost"
+        ],
+        [
+          "UX Design",
+          "Developed event-driven dashboard with filtering, search, and sync status indicators",
+          "Enabled users to quickly find actionable events and monitor system health"
+        ],
+        [
+          "Feedback Loop",
+          "Held weekly feedback sessions with end users and Customer Success team",
+          "Used Agile and Lean Startup cycles to iterate rapidly based on real user data"
+        ],
+        [
+          "Outcome Focus",
+          "Set and tracked OKRs for adoption, latency, reliability, and revenue impact",
+          "Delivered measurable business growth: NPS +71 pts, MRR 4.5×, latency ↓ 99.98%"
+        ],
+      ],
+      image: '/assets/case-studies/gate-report-ui.png',
+    },
+    
+    tradeoffs: {
+      table: [
+        ["AI Complexity vs Reliability", "Removed FaceNet and complex ML", "Improved compute performance and stability"],
+        ["Feature Scope vs Performance", "Narrowed focus to essential insights", "Faster inference, reduced cost"],
+        ["Edge Complexity vs Network Dependency", "Edge-first with offline sync", "Resilient on poor networks, near real-time data"],
+        ["Scalability vs Customization", "Standardized OTA update pipeline", "Fast rollout to 100+ sites with low ops overhead"],
+      ],
+    },
+    challenges: [
+      {
+        challenge: "Unstable site network connectivity",
+        mitigation: "RabbitMQ buffering with auto-resync ensured zero event loss and smooth offline/online sync."
+      },
+      {
+        challenge: "Low compute on NVIDIA Jetson",
+        mitigation: "Optimized inference pipeline, pruned classifiers, cut load 40% with no accuracy loss."
+      },
+      {
+        challenge: "Risky OTA firmware updates",
+        mitigation: "Built rollback-capable OTA system via Ansible + AWX for safe, autonomous updates."
+      },
+      {
+        challenge: "Raw data unusable for non-technical users",
+        mitigation: "Revamped UI to show high-signal, actionable events, boosting decision speed 60%."
+      }
+    ],
+    results: {
+      table: [
+        ["NPS", "7%", "78%", "+71 pts"],
+        ["MRR", "1×", "4.5×", "+450%"],
+        ["Latency", "7–8 hours", "<5 seconds", "↓ 99.98%"],
+        ["Data Usage/Site", "3TB+/month", "<200GB/month", "↓ 94%"],
+        ["Event Reliability", "70%", "99.3%", "+29%"],
+      ],
+    },
+    outcomes: `The redesign transformed a high-latency, high-cost system into a fast, scalable, and user-friendly product. Latency dropped by 99.98%, bandwidth usage was cut by 94%, and reliability rose to over 99%. These improvements led to a 4.5x increase in monthly recurring revenue and an NPS surge from 7% to 78%. The system now supports 100+ active deployments with minimal operational load.`,
+    customerFeedback: [
+      `"Before this, we had to wait and guess. Now we get the data in real time. It's exactly what we needed." – Skanska Site Manager`,
+      `"This is a product we can sell and scale." – Head of Sales, Evercam`,
+    ],
+    takeaways: [
+      "📌 Customer-First, Not AI-First: Focused on delivering reliable, usable event data over novelty in ML.",
+      "🚀 Edge AI at Scale: On-device inference with offline support cut latency and bandwidth dramatically.",
+      "🤝 Cross-Functional Execution: Weekly iteration across CS, DevOps, AI, and design ensured delivery and adoption.",
+      "📈 Impact-Driven Decisions: Every tradeoff aligned with adoption, usability, and revenue growth.",
+    ],
+  },
+];
+
+// ----------------------
+// Table Section Component
+// ----------------------
+const TableSection: React.FC<TableSectionProps> = ({ title, data }) => (
+  <section className="space-y-4">
+    <h2 className="text-2xl font-semibold text-gray-900 mb-4">{title}</h2>
+    <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md">
+      <table className="min-w-full border-collapse text-base text-gray-800">
+        <thead className="bg-gray-100">
+          <tr>
+            {data.table[0].map((_, i) => (
+              <th
+                key={i}
+                className="border px-6 py-3 text-left font-semibold text-gray-700"
+              >
+                {title === "Results"
+                  ? ["Metric", "Before", "After", "Change"][i]
+                  : ["Focus Area", "Approach", "Outcome / Impact"][i]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.table.map((row, ri) => (
+            <tr
+              key={ri}
+              className={ri % 2 === 0 ? "bg-white" : "bg-gray-50"}
+            >
+              {row.map((cell, ci) => (
+                <td
+                  key={ci}
+                  className="border px-6 py-3 whitespace-pre-line"
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {data.context && (
+      <p className="text-gray-600 whitespace-pre-line text-lg mt-3">{data.context}</p>
+    )}
+  </section>
+);
+
+// ----------------------
+// Icon + Heading Helper
+// ----------------------
+const SectionHeading: React.FC<{ icon: React.ReactNode; children: React.ReactNode }> = ({
+  icon,
+  children,
+}) => (
+  <h2 className="flex items-center text-3xl font-bold space-x-3 mb-6 text-gray-900">
+    {icon}
+    <span>{children}</span>
+  </h2>
+);
+
+// ----------------------
+// CardSection Component (animated container for each major section)
+// ----------------------
+interface CardSectionProps {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
+
+// ----------------------
+// Main Component
+// ----------------------
+export default function CaseStudyComponent() {
+  const cardVariants: Variants = {
+    offscreen: { opacity: 0, y: 50 },
+    onscreen: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", bounce: 0.2, duration: 0.8 },
+    },
   };
-  
+
+  function CardSection({ title, icon, children }: CardSectionProps) {
+    return (
+      <motion.section
+        className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={cardVariants}
+      >
+        <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+          {icon}
+          {title}
+        </h2>
+        <div>{children}</div>
+      </motion.section>
+    );
+  }
 
   return (
-    <motion.div
-    className="max-w-6xl mx-auto px-6 py-24 text-gray-900"
-    initial="initial"
-    animate="animate"
-    transition={{ staggerChildren: 0.2 }}
-  >
-    {/* Back button */}
-    <motion.button
-      className="flex items-center gap-2 text-lg text-blue-600 hover:text-blue-800 mb-8 transition"
-      onClick={() => navigate(-1)}
-      {...fadeIn}
-    >
-      <ArrowLeft size={16} />
-      Back to Case Studies
-    </motion.button>
-
-      {/* Header */}
-      <motion.h1 className="text-4xl font-bold mb-6 leading-snug" {...fadeIn}>
-        Redesigning Evercam's Gate Report
-      </motion.h1>
-
-      {/* Summary */}
-      <motion.div
-  className="flex justify-between text-sm text-gray-700 mb-10"
-  {...fadeIn}
->
-  {/* Left Column */}
-  <div className="flex flex-col gap-2">
-    <div className="flex items-start gap-2">
-      <Brain className="mt-1" size={16} />
-      <span>
-        <strong>Category:</strong> Product Design, System Design, AI/Edge Architecture
-      </span>
-    </div>
-    <div className="flex items-start gap-2">
-      <Users className="mt-1" size={16} />
-      <span>
-        <strong>Team:</strong> 1 TPM (myself), 6 Engineers, 2 AI Researchers, 2 DevOps,
-        1 Designer, 1 CS Manager, 3 Annotation + QA
-      </span>
-    </div>
-    <div className="flex items-start gap-2">
-      <Hammer className="mt-1" size={16} />
-      <span>
-        <strong>Stack:</strong> Jetson, YOLOv5, RabbitMQ, PostgreSQL, Ansible, RTSP, REST APIs
-      </span>
-    </div>
-  </div>
-
-  {/* Right Column */}
-  <div className="flex flex-col gap-2 items-end text-right">
-    <div className="flex items-start gap-2">
-      <CalendarDays className="mt-1" size={16} />
-      <span>
-        <strong>Duration:</strong> 6 months
-      </span>
-    </div>
-    <div className="flex items-start gap-2">
-      <Globe className="mt-1" size={16} />
-      <span>
-        <strong>Deployment:</strong> 100+ Construction Sites
-      </span>
-    </div>
-  </div>
-</motion.div>
-
-
-      {/* Overview */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Overview</h2>
-        <p className="text-gray-700 text-lg text-justify leading-relaxed">
-          Gate Report is Evercam’s flagship product designed for vehicle monitoring at enterprise and construction site gates. 
-          Initially a cloud-based solution, it suffered from high latency, huge data costs, and poor reliability under variable 
-          network conditions, resulting in low adoption and poor NPS.
-        </p>
-        <p className="mt-4 text-gray-700 text-lg text-justify leading-relaxed">
-          As TPM, I led a product and system redesign, transforming Gate Report into an edge-based, event-driven solution. We 
-          removed technical noise like FaceNet re-identification that did not serve core customer needs and focused instead on 
-          real-time, reliable event delivery. The result was a resilient, scalable product with a massive improvement in user 
-          satisfaction and revenue.
-        </p>
-      </motion.section>
-
-      {/* The Problem */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><AlertTriangle className="inline mr-2 mb-1 text-red-600" size={18} />The Problem</h2>
-        <h3 className="font-semibold mb-1 text-lg">Cloud-Centric Pain Points:</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-lg mb-4 space-y-1">
-          <li>Entire video footage was uploaded to cloud for processing</li>
-          <li>High latency (7-8 hours delay)</li>
-          <li>Expensive bandwidth (~3TB/month per site)</li>
-          <li>Failed frequently in areas with poor network</li>
-          <li>Low NPS (~7%), due to unreliability and user frustration</li>
-        </ul>
-
-        <h3 className="font-semibold mb-1 text-lg">Over-Engineered Tech Stack:</h3>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li>Included FaceNet-based face re-identification, advanced classifiers, and full-frame object detection pipelines</li>
-          <li>These were technically impressive but added cost, complexity, and little customer value</li>
-          <li>No clear product prioritization, built like an AI research project, not a user-facing product</li>
-        </ul>
-      </motion.section>
-
-      {/* Role as TPM */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Lightbulb className="inline mr-2 mb-1 text-yellow-500" size={18} />My Role as TPM</h2>
-        <ul className="list-disc ml-6 text-gray-700 text-lg space-y-1">
-          <li>Redefined the product direction from “tech-first” to “customer-first”</li>
-          <li>Prioritized real-time, reliable detection over full-frame processing</li>
-          <li>Worked closely with AI/ML, DevOps, Design, QA, and CS to align vision and execution</li>
-          <li>Balanced technical feasibility, business impact, and user feedback</li>
-        </ul>
-      </motion.section>
-
-      {/* Product Design & Prioritization Table */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><LayoutDashboard className="inline mr-2 mb-1 text-indigo-600" size={18} />Product Design & Prioritization</h2>
-        <div className="overflow-x-auto text-lg">
-          <table className="w-full border border-gray-300 rounded shadow-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className={tableRowStyles}>Focus Area</th>
-                <th className={tableRowStyles}>Old Approach</th>
-                <th className={tableRowStyles}>New Product-Driven Approach</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Core Value', 'Full footage reprocessing + FaceNet re-ID', 'Real-time event detection (in/out with object type)'],
-                ['Inference Location', 'Cloud only', 'On-device (Edge)'],
-                ['Data Sync', 'Video-heavy sync, often failed', 'Lightweight metadata with sync queues'],
-                ['Offline Support', 'None', 'Yes, with local RabbitMQ + re-sync'],
-                ['Tech Prioritization', 'Included advanced but unused AI modules', 'Removed non-critical ML (e.g., FaceNet) to simplify, reduce cost'],
-                ['UX Goals', 'Engineer-focused, raw detections', 'Event-focused, actionable, filterable by time/type'],
-                ['Customer Feedback Integration', 'Missing', 'Weekly feedback loops with CS and key clients'],
-              ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="mt-4 text-lg italic text-gray-600">Key Prioritization Principle: Deliver valuable, reliable, real-time events, not “cool AI”.</p>
-      </motion.section>
-
-      {/* Architecture Before vs After */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><ServerCog className="inline mr-2 mb-1 text-cyan-600" size={18} />Architecture (Before vs After)</h2>
-        <div className="grid grid-cols-1 gap-6 text-lg">
-          <div className="bg-red-50 p-4 border rounded">
-            <h3 className="font-bold mb-2">Legacy Cloud Architecture</h3>
-            <p>
-              →  Single point of failure (network/cloud)<br />
-              → Video-heavy sync<br />
-              → Complex and costly
-            </p>
-          </div>
-          <motion.div className="mt-6" {...fadeIn}>
-          <img
-            src="/assets/case-studies/gr-d1.png"
-            alt="Key Product Decisions Diagram"
-            className="rounded-lg shadow-lg border border-gray-200 w-full"
-          />
-          <p className="text-sm text-gray-500 mt-2 text-center">
-            Cloud based Gate Report
-          </p>
-          <hr className="my-6 border-t border-gray-300" /> {/* Divider line */}
-        </motion.div>
-                <div className="bg-green-50 p-4 border rounded">
-                  <h3 className="font-bold mb-2">New Edge-First Architecture</h3>
-                  <p>
-                  → Real-time detection<br />
-                  → Works offline and resyncs later<br />
-                  → Low bandwidth footprint<br />
-                  → Scalable and OTA-deployable
-                  </p>
+    <div className="max-w-7xl mx-auto px-8 py-12 font-sans text-gray-900 space-y-10">
+      {caseStudy.map((cs, idx) => (
+        <div key={idx} className="space-y-10">
+          {/* Header */}
+          <header className="space-y-2 border-b border-gray-300 mt-12 pb-8">
+            <div className="flex items-center space-x-2 text-blue-600 hover:underline cursor-pointer mb-12">
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Case Studies</span>
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">{cs.title}</h1>
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-14 text-sm text-gray-700">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  <Tag className="w-4 h-4 text-gray-500" />
+                  <span>
+                    <strong>Category:</strong> {cs.category}
+                  </span>
                 </div>
-                <motion.div className="mt-6" {...fadeIn}>
-          <img
-            src="/assets/case-studies/gr-d2.png"
-            alt="Key Product Decisions Diagram"
-            className="rounded-lg shadow-lg border border-gray-200 w-full"
-          />
-          <p className="text-sm text-gray-500 mt-2 text-center">
-            Edge based Gate Report
-          </p>
-        </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Key Product Decisions */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3"><Hammer className="inline mr-2 mb-1 text-orange-600" size={18} />Key Product & Technical Decisions</h2>
-        <div className="overflow-x-auto text-lg">
-          <table className="w-full border border-gray-300 rounded shadow-sm">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className={tableRowStyles}>Decision</th>
-                <th className={tableRowStyles}>Reason</th>
-                <th className={tableRowStyles}>Trade-off</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ['Removed FaceNet + complex classifiers', 'Not aligned with actual customer use cases', 'Reduced "AI novelty" but improved speed & simplicity'],
-                ['Real-time detection on Jetson devices', 'Reduced latency, better reliability', 'Required careful model optimization for edge'],
-                ['Event-level sync via RabbitMQ + Sync Service', 'Resilience in poor networks', 'Increased local system complexity'],
-                ['Rebuilt UX for actionability (events, filters)', 'Focus on what users need to act on', 'Dropped advanced debug views used internally'],
-                ['Ansible + AWX for OTA deployments', 'Empowered non-dev teams to push updates', 'Needed training and access control setup'],
-              ].map((row, i) => (
-                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
-                </tr>
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-gray-500" />
+                  <span>
+                    <strong>Team:</strong> {cs.team}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 sm:items-end">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-gray-500" />
+                  <span>
+                    <strong>Duration:</strong> {cs.duration}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-gray-500" />
+                  <span>
+                    <strong>Deployments:</strong> {cs.deployment}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </header>
+  
+          {/* Overview */}
+          <CardSection title="Overview" icon={<Target className="w-8 h-8 text-gray-900" />}>
+            <p className="text-gray-700 text-lg leading-relaxed">{cs.summary}</p>
+          </CardSection>
+          <CardSection title="My Role" icon={<Users className="w-8 h-8 text-teal-600" />}>
+            <p className="text-gray-700 text-lg leading-relaxed">{cs.roleDescription || cs.role}</p>
+          </CardSection>
+  
+          {/* Situation */}
+          <CardSection title="Situation" icon={<AlertCircle className="w-8 h-8 text-red-600" />}>
+            <p className="leading-relaxed mb-2 text-lg">{cs.situation[0]}</p>
+            <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700 mb-4">
+              {cs.situation.slice(1, 5).map((point, i) => (
+                <li key={i} className="leading-relaxed">{point}</li>
               ))}
-            </tbody>
-          </table>
-        </div>
-      </motion.section>
-      <motion.div className="mt-6" {...fadeIn}>
-          <img
-            src="/assets/case-studies/gate-report-ui.png"
-            alt="Key Product Decisions Diagram"
-            className="rounded-lg shadow-lg border border-gray-200 w-full"
-          />
-          <p className="text-sm text-gray-500 mt-2 text-center">
-            Gate Report Dashboard
-          </p>
-          </motion.div>
-            {/* Outcomes */}
-            <motion.section className="mb-10" {...fadeIn}>
-              <h2 className="text-2xl font-semibold mb-3"><TrendingUp className="inline mr-2 mb-1 text-green-600" size={18} />Outcomes & Impact</h2>
-              <div className="overflow-x-auto text-lg">
-                <table className="w-full border border-gray-300 rounded shadow-sm">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className={tableRowStyles}>Metric</th>
-                      <th className={tableRowStyles}>Before</th>
-                      <th className={tableRowStyles}>After</th>
-                      <th className={tableRowStyles}>Change</th>
+            </ul>
+            {cs.situation[5] && (
+              <p className="leading-relaxed text-lg">{cs.situation[5]}</p>
+            )}
+          </CardSection>
+  
+          {/* Task */}
+          <CardSection title="Task" icon={<ClipboardList className="w-8 h-8 text-yellow-600" />}>
+            <p className="leading-relaxed mb-2 text-lg">{cs.task[0]}</p>
+            <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700">
+              {cs.task.slice(1).map((point, i) => (
+                <li key={i} className="leading-relaxed">{point}</li>
+              ))}
+            </ul>
+          </CardSection>
+  
+          {/* Combined Card for Actions + System Thinking + Product Thinking + Tradeoffs + Challenges & Mitigations */}
+          <CardSection title="Actions & System Thinking" icon={<Settings className="w-8 h-8 text-blue-600" />}>
+            {/* Actions */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-3">Actions</h3>
+              <ul className="list-disc pl-6 space-y-3 text-lg text-gray-700">
+                {cs.actions.map((action, i) => (
+                  <li key={i} className="leading-relaxed">
+                    <strong className="font-semibold">{action.heading}:</strong> {action.details}
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+          {/* System Thinking */}
+          <div className="mb-8">
+            <TableSection title="System Thinking" data={cs.systemThinking} />
+            {cs.systemThinking.image && (
+              <img
+                src={cs.systemThinking.image}
+                alt="System Thinking Illustration"
+                className="mt-4 rounded-lg shadow-md max-w-full h-auto"
+              />
+            )}
+          </div>
+
+          {/* Product Thinking */}
+          <div className="mb-8">
+            <TableSection title="Product Thinking" data={cs.productThinking} />
+            {cs.productThinking.image && (
+              <img
+                src={cs.productThinking.image}
+                alt="Product Thinking Illustration"
+                className="mt-4 rounded-lg shadow-md max-w-full h-auto"
+              />
+            )}
+          </div>
+            {/* Tradeoffs */}
+            <div className="mb-8">
+              <TableSection title="Tradeoffs" data={cs.tradeoffs} />
+            </div>
+  
+            {/* Challenges & Mitigations */}
+            <div>
+              <SectionHeading icon={<AlertTriangle className="w-8 h-8 text-orange-600" />}>
+                Challenges & Mitigations
+              </SectionHeading>
+              <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-sm mt-4">
+                <table className="min-w-full border-collapse text-base text-gray-800">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="border px-4 py-2 text-left font-semibold text-gray-700">Challenge</th>
+                      <th className="border px-4 py-2 text-left font-semibold text-gray-700">Mitigation</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {[
-                      ['NPS', '7%', '78%', '+71 pts'],
-                      ['Monthly Recurring Revenue (MRR)', '1×', '4.5×', '+350%'],
-                      ['Latency', '7-8 hours', '<5 sec', '↓ 99.98%'],
-                      ['Data usage per site', '3TB+/month', '<200GB/month', '↓ 94%'],
-                      ['Event reliability', '70%', '99.3%', '↑ 29%'],
-                    ].map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        {row.map((cell, j) => <td key={j} className={tableRowStyles}>{cell}</td>)}
+                    {cs.challenges.map((item, i) => (
+                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+                        <td className="border px-4 py-2 whitespace-pre-line">{item.challenge}</td>
+                        <td className="border px-4 py-2 whitespace-pre-line">{item.mitigation}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-            </motion.section>
-      
-            {/* Cross Functional */}
-            <motion.section className="mb-10" {...fadeIn}>
-              <h2 className="text-2xl font-semibold mb-3"><Users className="inline mr-2 mb-1 text-violet-600" size={18} />Cross-Functional Collaboration</h2>
-              <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
-                <li>AI/ML Team: Pruned unnecessary models, optimized YOLO for Jetson</li>
-                <li>DevOps: Built AWX-based OTA rollout pipeline</li>
-                <li>CS Team: Weekly syncs to prioritize UX improvements</li>
-                <li>QA & Annotation: Helped validate detection quality across deployments</li>
-                <li>Design: Created new event-centric UI with filters, search, and sync indicators</li>
-              </ul>
-            </motion.section>
-
-            {/* Feedback */}
-            <motion.section className="mb-10" {...fadeIn}>
-              <h2 className="text-2xl font-semibold mb-3"><MessageCircle className="inline mr-2 mb-1 text-blue-600" size={18} />Customer Feedback</h2>
-              <blockquote className="border-l-4 pl-4 italic text-gray-700 mb-3">
-                "Before this, we had to wait and guess. Now we get the data in real time. It's exactly what we needed."
-                <br /> - Construction Site Manager, Skanska USA
-              </blockquote>
-              <blockquote className="border-l-4 pl-4 italic text-gray-700">
-                "This is a product we can sell and scale."
-                <br /> - Head of Sales, Evercam
-              </blockquote>
-            </motion.section>
-
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-            aria-label="Scroll to top"
+            </div>
+          </CardSection>
+  
+          {/* Combined Card for Results + Outcomes */}
+          <CardSection title="Results & Outcomes" icon={<TrendingUp className="w-8 h-8 text-indigo-600" />}>
+            <div className="mb-8">
+              <TableSection title="Results" data={cs.results} />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-3">Outcomes</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">{cs.outcomes}</p>
+            </div>
+          </CardSection>
+  
+          {/* Cross-Functional Collaboration */}
+          <CardSection
+            title="Cross-Functional Collaboration"
+            icon={<Users className="w-8 h-8 text-teal-600" />}
           >
-            <ChevronUp size={20} />
-          </button>
-        )}
-
-      {/* Key Takeaways */}
-      <motion.section className="mb-10" {...fadeIn}>
-        <h2 className="text-2xl font-semibold mb-3">
-        <TrendingUp  className="inline mr-2 mb-1 text-green-500" size={18} />Key Takeaways
-        </h2>
-        <ul className="list-disc ml-6 space-y-2 text-gray-700 text-lg">
-          <li>
-            <strong>Customer-first over tech novelty</strong>: Dropping low-value features like FaceNet simplified the stack and boosted adoption.
-          </li>
-          <li>
-            <strong>Edge-first design slashes latency</strong>: Moving inference to Jetson cut delays from hours to seconds while adding offline resilience.
-          </li>
-          <li>
-            <strong>Data-light sync cuts costs</strong>: Switching from full video to metadata-only reduced bandwidth by over 90%.
-          </li>
-          <li>
-            <strong>Cross-functional loops</strong>: Weekly syncs with CS, Sales, and Engineering ensured the product stayed aligned with user needs.
-          </li>
-          <li>
-            <strong>Deployment tooling matters</strong>: Ansible + AWX gave non-devs the ability to update devices safely at scale.
-          </li>
-          <li>
-            <strong>Track & show results</strong>: NPS jump (+71 pts) and MRR growth (4.5×) built strong internal and client confidence.
-          </li>
-        </ul>
-      </motion.section>
-
-
-      <hr className="mt-10 border-t border-gray-200" />
-      <motion.div
-            className="mt-5 text-center"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
+            <ul className="list-disc pl-6 space-y-2 text-lg text-gray-700">
+              {cs.crossFunctionalCollaboration.map((point, i) => (
+                <li key={i} className="leading-relaxed">{point}</li>
+              ))}
+            </ul>
+          </CardSection>
+  
+          {/* Internal Feedback */}
+          <motion.section
+            className="mb-10 p-6 rounded-lg shadow-lg bg-white border border-gray-200"
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={cardVariants}
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Solving a similar challenge?</h2>
-            <p className="text-gray-600 mb-6 text-lg">I’d love to exchange ideas or collaborate on building the next big thing.</p>
-            <Link
-              to="/contact"
-              className="inline-block rounded-lg no-underline transform transition-transform duration-200 hover:scale-105 will-change-transform preserve-3d"
+            <h2 className="text-2xl font-semibold mb-3 flex items-center gap-2">
+              <MessageCircle className="text-indigo-600" size={24} />
+              Internal Feedback
+            </h2>
+            <blockquote className="italic text-gray-700 mb-4">
+              “Standardizing the kits was a game-changer, we can now ship, install, and forget.”
+              <br />
+              <span className="text-lg"> - Global Operation Lead, Evercam</span>
+            </blockquote>
+            <blockquote className="italic text-gray-700 mb-4">
+              “AWX made it possible for support to handle edge resets and push updates, no more dev bottleneck.”
+              <br />
+              <span className="text-lg"> - Support Engineer, Evercam</span>
+            </blockquote>
+          </motion.section>
+  
+          {/* Key Takeaways */}
+          <CardSection title="Key Takeaways" icon={<Lightbulb className="w-8 h-8 text-green-600" />}>
+            <ul className="list-disc pl-6 space-y-1 text-lg text-gray-700">
+              {cs.takeaways.map((takeaway, i) => (
+                <li key={i} className="leading-relaxed">{takeaway}</li>
+              ))}
+            </ul>
+          </CardSection>
+  
+          {/* Final Call to Action */}
+          <hr className="border-gray-300 mt-8" />
+          <div className="mt-6 text-center">
+            <h2 className="text-3xl font-bold mb-3">Solving a similar challenge?</h2>
+            <p className="text-lg text-gray-700 mb-6">
+              I’d love to exchange ideas or collaborate on building the next big thing.
+            </p>
+            <button
+              type="button"
+              className="px-8 py-3 bg-blue-600 text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400"
             >
-              <div className="px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200">
-                <span className="block will-change-auto">Let’s Connect</span>
-              </div>
-            </Link>
-
-            <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">
+              Let’s Connect
+            </button>
+            <p className="text-xs text-gray-400 mt-8 pt-4 border-t border-gray-200">
               © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
             </p>
-          </motion.div>
-      
-    </motion.div>
+          </div>
+        </div>
+      ))}
+    </div>
   );
-};
-
-export default CaseStudyDetail1;
+  
+  
+}
