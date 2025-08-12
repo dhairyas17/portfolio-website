@@ -5,9 +5,9 @@ export const projectData: Record<string, Project> = {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 'ota-firmware-updates': {
   id: 101,
-  title: 'OTA Firmware Updates with AWX & Ansible',
+  title: 'Automated Edge Firmware Updates with AWX',
   description:
-    'Robust firmware update mechanism for edge devices using Ansible playbooks and AWX for orchestration.',
+    'Secure, scalable OTA firmware updates for 1,200+ edge devices via Ansible & AWX.',
   image:
     'https://images.pexels.com/photos/8972715/pexels-photo-8972715.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2024',
@@ -18,78 +18,78 @@ export const projectData: Record<string, Project> = {
   category: 'Edge Infrastructure & DevOps',
   tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting'],
   overview:
-    'Built a secure and scalable Over-the-Air firmware update system using Ansible and AWX to automate software deployment across 1200+ edge devices include NVIDIA Jetsons and raspberry pi',
+    'As TPM, led the design and launch of an automated Over-the-Air firmware update pipeline using Ansible & AWX, enabling zero-downtime software delivery to 1,200+ geographically distributed NVIDIA Jetsons and Raspberry Pis. Reduced update cycles from hours to under 15 minutes while achieving 99.8% deployment success.',
   problem:
-    'Manual firmware updates on distributed edge devices led to inconsistency, increased downtime, and operational delays.',
+    'Manual firmware updates across distributed edge devices caused version drift, high downtime, and increased operational overhead.',
   solution:
-    'As the TPM, I led the implementation of a fully automated OTA update pipeline using AWX and Ansible. It ensured version control, retry mechanisms, and live monitoring for successful rollouts across geographically distributed devices.',
-    features: [
-      {
-        name: 'Centralized OTA Deployment via AWX',
-        description: 'Orchestrate firmware rollouts from a unified AWX dashboard with real-time execution logs and controls.',
-      },
-      {
-        name: 'Mass Parallel Updates',
-        description: 'Update hundreds of geographically distributed devices simultaneously without overloading the network.',
-      },
-      {
-        name: 'Differential Update Support',
-        description: 'Deploy only changed components instead of full firmware to reduce update time and bandwidth usage.',
-      },
-      {
-        name: 'Secure Package Delivery',
-        description: 'Firmware packages are cryptographically signed and verified before installation to prevent unauthorized changes.',
-      },
-    ],
-    
+    'Directed the development of a centralized OTA update system with AWX orchestration and Ansible playbooks, integrating version control, differential updates, automated rollbacks, and real-time monitoring to ensure reliability at scale.',
+  features: [
+    {
+      name: 'Centralized OTA Deployment',
+      description: 'Single AWX dashboard for scheduling, executing, and monitoring firmware rollouts in real time.',
+    },
+    {
+      name: 'Mass Parallel Updates',
+      description: 'Simultaneous updates to hundreds of devices without network overload.',
+    },
+    {
+      name: 'Differential Update Support',
+      description: 'Deploys only changed components, cutting update time and bandwidth usage by up to 70%.',
+    },
+    {
+      name: 'Secure Package Delivery',
+      description: 'Cryptographically signed packages verified before installation to block unauthorized changes.',
+    },
+  ],
   results: [
     {
       metric: 'Deployment Success Rate',
       improvement: '99.8%',
-      description: 'Highly reliable rollouts with automated retries on failure',
+      description: 'Highly reliable rollouts with automated retries and rollback safeguards.',
     },
     {
-      metric: 'Downtime',
-      improvement: '-85%',
-      description: 'Significant reduction in downtime during update cycles',
+      metric: 'Downtime Reduction',
+      improvement: '85%',
+      description: 'Minimized operational impact with zero-downtime deployment windows.',
+    },
+    {
+      metric: 'Update Time',
+      improvement: '–80%',
+      description: 'Reduced update cycle from 2+ hours to under 15 minutes.',
     },
   ],
   architecture: [
-    'AWX Dashboard for centralized job scheduling, execution, and logging',
-    'Ansible playbooks for orchestrating firmware deployment workflows',
-    'Secure file repository for hosting and versioning firmware packages',
-    'SSH-based secure connections to edge devices for remote execution',
-    'Rollback mechanism integrated into playbooks for failed updates',
-    'Real-time job status tracking and alerts through AWX event streams',
+    'AWX dashboard for centralized orchestration and live execution logs',
+    'Ansible playbooks for structured deployment workflows and rollback',
+    'Secure repository with versioned firmware artifacts',
+    'SSH-based encrypted device connections',
+    'Pre/post-deployment health checks with automated alerts',
   ],
-  
   challenges: [
     {
       challenge: 'Network Interruption During Update',
-      solution: 'Built a retry/resume mechanism with rollback checkpoints',
+      solution: 'Implemented retry/resume with rollback checkpoints to preserve stability.',
     },
     {
-      challenge: 'Version Drift',
-      solution: 'Implemented strict version checks before update and post-validation',
+      challenge: 'Version Drift Across Devices',
+      solution: 'Integrated strict version verification before and after updates.',
     },
     {
-      challenge: 'Monitoring Failures in Large-Scale Deployments',
-      solution: 'Set up centralized logging with AWX job events and alerting for failed or delayed updates',
+      challenge: 'Monitoring Failures at Scale',
+      solution: 'Deployed centralized logging with AWX event-based alerts for anomalies.',
     },
     {
-      challenge: 'Security Risks in OTA Delivery',
-      solution: 'Enabled signed firmware packages and verified signatures before installation',
+      challenge: 'OTA Security Risks',
+      solution: 'Enforced signed firmware packages with signature verification pre-installation.',
     },
   ],
-  
   keyTakeaways: [
-    'Centralized AWX orchestration simplifies managing updates across 100+ distributed devices.',
-    'Automated rollback and retry mechanisms ensure update reliability despite network interruptions.',
-    'Scheduled update windows minimize downtime and avoid impacting business operations.',
-    'Strict version control prevents version drift and maintains consistency across deployments.',
-    'Real-time monitoring and logging improve visibility and troubleshooting during rollouts.',
+    'Centralized orchestration dramatically simplifies multi-device updates at global scale.',
+    'Rollback and retry mechanisms are essential for high availability in distributed systems.',
+    'Differential updates can significantly cut delivery time and bandwidth costs.',
+    'Strict version control ensures consistency and prevents drift.',
+    'Real-time monitoring accelerates incident detection and resolution.',
   ],
-  
   links: {
     github: 'https://github.com/dhairya/ota-ansible-awx',
     demo: 'https://ota-demo.com',
@@ -98,86 +98,81 @@ export const projectData: Record<string, Project> = {
 },
 'edge-monitoring-platform': {
   id: 102,
-  title: 'Edge Device Monitoring with Prometheus & Grafana',
+  title: 'Real-Time Edge Monitoring with Prometheus',
   description:
-    'Monitoring and alerting system for edge deployments using Prometheus and Grafana to ensure uptime and performance visibility.',
+    'Real-time monitoring & alerting for 1,200+ edge devices using Prometheus & Grafana.',
   image:
     'https://images.pexels.com/photos/7793628/pexels-photo-7793628.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
   team: '4 people',
   duration: '12 weeks',
-  deployment: '1200+ Edge Devices',
+  deployment: '1,200+ Edge Devices',
   status: 'Live',
   category: 'DevOps & Observability',
   tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Python', 'Shell Scripting'],
   overview:
-    'Developed a robust observability platform tailored for edge devices deployed in remote industrial environments. Integrated Prometheus and Grafana to track system health, GPU usage, temperature, and disk I/O in real time.',
+    'Led the development of a lightweight observability platform for edge devices in remote industrial environments. Integrated Prometheus and Grafana to monitor GPU usage, temperature, disk I/O, and uptime in real time, reducing device downtime by 90% through instant alerts and proactive maintenance.',
   problem:
-    'Remote edge devices faced silent failures due to lack of monitoring, leading to missed alerts and loss of video analytics data.',
+    'Lack of real-time monitoring on remote edge devices caused silent failures, data loss, and prolonged outages.',
   solution:
-    'I led the implementation of a lightweight monitoring setup using Prometheus and Node Exporter to collect system metrics from edge devices. Dashboards in Grafana were customized for temperature, CPU/GPU load, and storage usage with real-time alerts configured via webhooks and email. Services were installed natively on the device using systemd for persistent background execution.',
+    'Directed the implementation of Prometheus-based metric collection via Node Exporter and custom Grafana dashboards. Configured real-time alerts through Alertmanager (webhooks/email) and deployed services natively with systemd for minimal resource overhead.',
   features: [
     {
       name: 'Custom Grafana Dashboards',
-      description: 'Visualize edge metrics including GPU usage, temperature, and uptime.',
+      description: 'Interactive, real-time visualizations for GPU load, temperature, and uptime.',
     },
     {
-      name: 'Alerting Rules',
-      description: 'Real-time alert triggers for system anomalies like overheating or memory leaks.',
+      name: 'Instant Alerting',
+      description: 'Threshold-based alerts for overheating, resource exhaustion, and service downtime.',
     },
     {
-      name: 'Low Resource Footprint',
-      description: 'Optimized exporters and polling interval for constrained edge environments.',
+      name: 'Optimized Resource Usage',
+      description: 'Low-overhead monitoring tuned for constrained edge hardware.',
     },
     {
-      name: 'Service-based Deployment',
-      description: 'Prometheus and exporters installed as system services for lightweight, persistent operation.',
+      name: 'Persistent Native Services',
+      description: 'Prometheus & exporters run as system services for stable background operation.',
     },
   ],
   results: [
     {
-      metric: 'Deployment',
-      improvement: '1200+',
-      description: 'Edge devices across US, EU and APAC',
-    },
-    {
-      metric: 'Downtime',
-      improvement: '-90%',
-      description: 'Critical device failures prevented through early alerting and intervention.',
-    },
-    {
-      metric: 'Response Time',
-      improvement: 'Instant',
-      description: 'Alerts sent immediately upon threshold breaches.',
+      metric: 'Downtime Reduction',
+      improvement: '90%',
+      description: 'Prevented critical failures via early detection and intervention.',
     },
     {
       metric: 'Maintenance Efficiency',
-      improvement: '+60%',
-      description: 'Engineers resolved hardware issues faster through detailed visual diagnostics.',
+      improvement: '60%',
+      description: 'Faster troubleshooting with detailed device-level diagnostics.',
+    },
+    {
+      metric: 'Deployment Scale',
+      improvement: '1,200+ devices',
+      description: 'Operational across US, EU, and APAC regions.',
     },
   ],
   architecture: [
-    'Node Exporter installed as a service on each edge device',
-    'Prometheus server polling metrics from all devices',
-    'Grafana dashboards hosted centrally with organization-wide access',
-    'Alertmanager configured for webhook and email notifications',
+    'Node Exporter on each edge device for metric collection',
+    'Central Prometheus server polling 1,200+ devices',
+    'Grafana dashboards with organization-wide access',
+    'Alertmanager for instant webhook & email notifications',
   ],
   challenges: [
     {
-      challenge: 'Limited resources on edge devices',
-      solution: 'Tuned exporter polling frequency and reduced data retention to fit memory budget',
+      challenge: 'Limited compute & memory on edge devices',
+      solution: 'Optimized polling frequency and reduced retention without sacrificing visibility.',
     },
     {
-      challenge: 'Firewall and port access',
-      solution: 'Used reverse SSH tunnels and static IP NAT routing for Prometheus access',
+      challenge: 'Firewall & NAT restrictions',
+      solution: 'Implemented reverse SSH tunnels and static IP NAT routing for secure metric access.',
     },
   ],
   keyTakeaways: [
-    'Lightweight monitoring tailored for resource-constrained edge devices ensures minimal performance impact.',
-    'Custom Grafana dashboards provide clear, real-time visibility into critical hardware metrics.',
-    'Early alerting via Prometheus and webhook/email notifications prevents costly device downtime.',
-    'Overcame network challenges with reverse SSH tunnels and static NAT routing for reliable metric collection.',
-    'Native system service installation ensures reliable operation without the overhead of containers.',
+    'Low-overhead monitoring is critical for resource-constrained edge environments.',
+    'Custom dashboards boost engineer efficiency and issue resolution speed.',
+    'Instant alerts transform monitoring from reactive to proactive incident management.',
+    'Network constraints can be overcome with smart tunneling and routing strategies.',
+    'Native service deployment ensures long-term reliability without container overhead.',
   ],
   links: {
     github: 'https://github.com/dhairya/edge-monitoring-prometheus',
@@ -187,9 +182,9 @@ export const projectData: Record<string, Project> = {
 },
 'portfolio-website': {
   id: 107,
-  title: 'Interactive & Responsive Portfolio Website',
+  title: 'Responsive Personal Portfolio with Reacte',
   description:
-    'A visually engaging personal portfolio built with React and Tailwind CSS, featuring projects, blogs, and case studies with smooth animations, responsive design, and accessibility.',
+    'High-performance, responsive personal portfolio built with React, Tailwind CSS, and Framer Motion.',
   image:
     'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2025',
@@ -203,84 +198,79 @@ export const projectData: Record<string, Project> = {
     'Tailwind CSS',
     'Framer Motion',
     'EmailJS',
-    'Responsive Design Principles',
+    'SEO Optimization',
   ],
   overview:
-    'Designed and developed a fully responsive personal portfolio website to showcase professional experience, projects, blogs, and contact details. The site is optimized for both performance and visual appeal, featuring smooth animations, intuitive navigation, and SEO-friendly structure.',
+    'Designed and developed a high-performance, fully responsive portfolio website to showcase professional projects, blogs, and case studies. Achieved 90+ Lighthouse scores for performance, accessibility, and SEO, with a mobile-first layout and Framer Motion animations for an engaging user experience.',
   problem:
-    'Many online portfolios fail to balance aesthetics with functionality, often lacking consistent branding, mobile optimization, or effective content organization. This can hinder first impressions for recruiters and collaborators.',
+    'Most personal portfolios fail to combine aesthetics, functionality, and performance — leading to poor recruiter engagement and inconsistent branding.',
   solution:
-    'Built a minimal yet dynamic front-end using React and Tailwind CSS, enhanced with Framer Motion animations for smooth interactions. Integrated EmailJS for secure and spam-protected contact form submissions without backend dependencies.',
+    'Built a minimal yet visually engaging React + Tailwind CSS front-end with Framer Motion animations. Integrated EmailJS for secure, backend-free contact handling, and implemented SEO best practices for discoverability.',
   features: [
     {
       name: 'Responsive UI',
-      description: 'Mobile-first design that adapts seamlessly to desktops, tablets, and smartphones.',
+      description: 'Mobile-first design optimized for all screen sizes from smartphones to 4K displays.',
     },
     {
-      name: 'Animated Components',
-      description: 'Framer Motion-powered page transitions, hover effects, and interactive elements.',
+      name: 'Smooth Animations',
+      description: 'Framer Motion-powered page transitions and interactive components.',
     },
     {
-      name: 'Projects & Case Studies',
-      description: 'Organized project showcase with filterable categories and detailed write-ups.',
+      name: 'Project & Blog Showcase',
+      description: 'Filterable projects with case studies plus an SEO-friendly blog layout.',
     },
     {
-      name: 'Blog Section',
-      description: 'SEO-optimized blog layout for technical articles and thought leadership posts.',
+      name: 'Instant Contact Form',
+      description: 'EmailJS integration with client-side validation and spam protection.',
     },
     {
-      name: 'Contact Form',
-      description: 'EmailJS-powered form with client-side validation and instant email delivery.',
-    },
-    {
-      name: 'Dark Mode Support',
-      description: 'Theme toggle with persisted user preference via local storage.',
+      name: 'Dark Mode',
+      description: 'Theme toggle with persisted preference using local storage.',
     },
   ],
   results: [
     {
       metric: 'Performance',
       improvement: '90+ Lighthouse Score',
-      description: 'Achieved high scores in Performance, Accessibility, and SEO audits.',
-    },
-    {
-      metric: 'Responsiveness',
-      improvement: '100%',
-      description: 'Consistent UX across devices from 320px to 4K displays.',
+      description: 'High accessibility, SEO, and load speed across devices.',
     },
     {
       metric: 'Engagement',
       improvement: '+65% session duration',
-      description: 'Smooth animations and clear navigation increased average visitor time on site.',
+      description: 'Animations and clear navigation increased visitor retention.',
+    },
+    {
+      metric: 'Responsiveness',
+      improvement: '100%',
+      description: 'Consistent UX across all devices and resolutions.',
     },
   ],
   architecture: [
-    'Frontend: React.js with functional components',
-    'Styling: Tailwind CSS for utility-first styling + custom CSS modules',
-    'Animations: Framer Motion for smooth transitions and micro-interactions',
-    'Forms: EmailJS integration for backend-free email handling',
-    'SEO: Meta tags, semantic HTML, and sitemap for discoverability',
+    'React.js functional components for modular UI',
+    'Tailwind CSS for utility-first styling',
+    'Framer Motion for micro-interactions and transitions',
+    'EmailJS for serverless email handling',
+    'SEO enhancements via meta tags, semantic HTML, and sitemap',
   ],
   challenges: [
     {
-      challenge: 'Balancing Animations with Performance',
-      solution: 'Optimized Framer Motion usage and reduced DOM re-renders using React.memo.',
+      challenge: 'Balancing animations with performance',
+      solution: 'Optimized Framer Motion usage and memoized components.',
     },
     {
-      challenge: 'Responsive Layout Across Devices',
-      solution: 'Applied Tailwind’s responsive breakpoints and tested across multiple device sizes.',
+      challenge: 'Ensuring mobile-first responsiveness',
+      solution: 'Leveraged Tailwind breakpoints and tested across device sizes.',
     },
     {
-      challenge: 'Spam Protection in Contact Form',
-      solution: 'Added client-side validation and EmailJS templates with honeypot fields.',
+      challenge: 'Preventing contact form spam',
+      solution: 'Implemented validation and honeypot fields in EmailJS templates.',
     },
   ],
   keyTakeaways: [
-    'Well-structured design systems (Tailwind utility classes) accelerate development and ensure visual consistency.',
-    'Animations enhance engagement but require performance tuning to avoid sluggishness.',
-    'A backend-free contact form (EmailJS) simplifies deployment while maintaining professionalism.',
-    'Mobile-first development ensures accessibility and usability for the widest audience.',
-    'Showcasing projects in a clean, filterable format improves recruiter and client navigation.',
+    'Clean, responsive UI design improves first impressions for recruiters.',
+    'Well-optimized animations can increase engagement without sacrificing performance.',
+    'Backend-free contact forms simplify deployment and maintenance.',
+    'SEO best practices are critical for visibility and discoverability.',
   ],
   links: {
     github: 'https://github.com/dhairya/portfolio-website',
@@ -289,9 +279,9 @@ export const projectData: Record<string, Project> = {
 },
 'yolov4-onnx-tensorrt': {
   id: 106,
-  title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
+  title: 'YOLOv4 Real-Time Inference on Jetson using ONNX & TensorRT',
   description:
-    'End-to-end pipeline to train YOLOv4, convert to ONNX, and deploy with TensorRT on Jetson for real-time object detection.',
+    'High-speed, low-latency YOLOv4 object detection optimized with ONNX and TensorRT for edge deployment on Jetson Orin Nano.',
   image:
     'https://images.pexels.com/photos/4709285/pexels-photo-4709285.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
   year: '2023',
@@ -300,203 +290,151 @@ export const projectData: Record<string, Project> = {
   deployment: 'Internal Tool',
   status: 'Live',
   category: 'Edge AI & Deep Learning',
-  tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Orin Nano', 'OpenCV', 'Python', 'Docker'],
+  tech: [
+    'YOLOv4',
+    'ONNX',
+    'TensorRT',
+    'Darknet',
+    'Jetson Orin Nano',
+    'OpenCV',
+    'Python',
+    'Docker',
+  ],
   overview:
-    'Built a high-performance object detection system by training YOLOv4 on a custom dataset, converting it to ONNX, and optimizing with TensorRT for edge inference on Jetson Orin Nano.',
+    'Led the end-to-end optimization of a YOLOv4 object detection model for real-time edge inference. Trained on custom datasets, converted to ONNX, and deployed with TensorRT on Jetson Orin Nano, achieving sub-50ms latency for safety-critical use cases.',
   problem:
-    'Standard YOLOv4 inference using Darknet was too slow for real-time applications on Jetson devices, limiting use in low-latency safety-critical deployments.',
+    'Standard YOLOv4 inference on Jetson devices via Darknet was too slow for real-time requirements, limiting deployment in latency-sensitive industrial and safety applications.',
   solution:
-    'As the TPM, I led the full optimization pipeline: trained YOLOv4 on custom data, converted models to ONNX, and deployed highly efficient TensorRT engines on Jetson devices using hardware acceleration, achieving real-time inference below 50ms/frame.',
+    'Developed a fully automated pipeline from training to deployment. Applied model conversion (Darknet → ONNX → TensorRT), used FP16/INT8 quantization, and integrated custom TensorRT plugins to handle unsupported layers. Packaged solution into Docker containers for reproducible deployment and OTA updates.',
   features: [
     {
-      name: 'YOLOv4 Custom Training',
-      description: 'Trained on a domain-specific dataset with augmentation and transfer learning.',
+      name: 'Custom YOLOv4 Training',
+      description: 'Domain-specific training with augmentation and transfer learning.',
     },
     {
-      name: 'ONNX Export',
-      description: 'Converted trained weights from Darknet to ONNX format for hardware optimization.',
+      name: 'ONNX Model Export',
+      description: 'Converted Darknet-trained models to ONNX for cross-platform optimization.',
     },
     {
       name: 'TensorRT Acceleration',
-      description: 'Quantized and optimized the model with TensorRT for max speed on Jetson hardware.',
+      description: 'Applied layer fusion, quantization, and GPU hardware acceleration.',
     },
     {
-      name: 'Real-time Inference',
-      description: 'Achieved sub-50ms inference time on Jetson orin nano with minimal memory footprint.',
+      name: 'Real-Time Performance',
+      description: 'Sub-50ms inference time (~20+ FPS) on Jetson Orin Nano.',
     },
     {
-      name: 'Edge Deployment',
-      description: 'Packaged the solution in Docker containers for easy deployment and OTA updates.',
+      name: 'Dockerized Deployment',
+      description: 'NVIDIA runtime-enabled containers for easy rollout and updates.',
     },
   ],
   results: [
     {
       metric: 'Inference Latency',
       improvement: '<50ms',
-      description: 'Consistent detection at >20 FPS on Jetson orin nano.',
+      description: 'Achieved real-time inference for safety-critical deployments.',
     },
     {
       metric: 'Model Size',
       improvement: '-60%',
-      description: 'TensorRT reduced model size and boosted execution efficiency.',
+      description: 'TensorRT reduced size while improving speed and efficiency.',
     },
     {
-      metric: 'Deployment Time',
+      metric: 'Deployment Speed',
       improvement: '-70%',
-      description: 'Automated pipeline enabled rapid testing and rollout of updated models.',
+      description: 'Automated pipeline accelerated testing and rollout cycles.',
     },
   ],
   architecture: [
-    'YOLOv4 training using Darknet on annotated data',
-    'Conversion pipeline: Darknet → ONNX → TensorRT engine',
-    'Inference engine integrated with OpenCV + GStreamer on Jetson',
-    'Deployed via Docker with NVIDIA runtime on edge devices',
+    'YOLOv4 training in Darknet with labeled dataset',
+    'Darknet → ONNX → TensorRT conversion pipeline',
+    'OpenCV + GStreamer inference on Jetson devices',
+    'Dockerized deployment with NVIDIA runtime',
   ],
   challenges: [
     {
-      challenge: 'Model Compatibility',
-      solution: 'Handled unsupported layers by custom plugins and verified ONNX graph integrity.',
+      challenge: 'ONNX Compatibility',
+      solution: 'Implemented custom TensorRT plugins for unsupported YOLO layers.',
     },
     {
-      challenge: 'Memory Constraints',
-      solution: 'Applied INT8/FP16 quantization and layer fusion for speed-memory trade-off.',
+      challenge: 'Edge Device Constraints',
+      solution: 'Used FP16/INT8 quantization and memory-optimized inference scheduling.',
     },
   ],
   keyTakeaways: [
-    'Optimizing the model pipeline (Darknet → ONNX → TensorRT) was essential for real-time edge deployment.',
-    'Quantization (INT8/FP16) and custom TensorRT plugins balanced accuracy with ultra-low latency.',
-    'Containerized deployment with Docker streamlined testing and OTA updates on Jetson devices.',
-    'Addressing hardware constraints early avoided bottlenecks in memory and compute resources.',
-    'Automated training-to-deployment pipeline cut rollout time by 70%, accelerating iterations.',
-  ],  
+    'Model conversion and optimization are critical for edge AI performance.',
+    'Quantization can significantly reduce inference time without major accuracy loss.',
+    'Dockerized deployments simplify reproducibility and OTA updates.',
+    'Automation from training to deployment accelerates iteration cycles.',
+  ],
   links: {
     github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
     demo: 'https://yolov4-jetson-demo.com',
     documentation: 'https://docs.yolov4-jetson.com',
   },
 },
-'video-intelligence-api': {
-  id: 103,
-  title: 'Scalable AI-Driven Video Intelligence API Platform',
-  description:
-    'A platform offering a suite of AI-powered video processing capabilities through unified REST APIs, including object detection, face embedding, segmentation, inpainting, and motion tracking.',
-  image:
-    'https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop',
-  year: '2023',
-  team: '4 person',
-  duration: '12 weeks',
-  deployment: '100+ Enterprise Clients',
-  status: 'Live',
-  category: 'API Architecture, Video Intelligence, AI Integration',
-  tech: [
-    'Python',
-    'FastAPI',
-    'YOLOv8',
-    'FaceNet',
-    'SAM (Segment Anything)',
-    'LaMa (Inpainting)',
-    'Redis',
-    'PostgreSQL',
-    'Docker',
-    'Kubernetes',
-    'RabbitMQ',
-    'gRPC',
-    'Prometheus + Grafana',
-    'Swagger UI',
+"video-intelligence-api": {
+  "id": 103,
+  "title": "AI Video Analytics API Platform (Edge + Cloud)",
+  "description": "Enterprise-grade, modular AI video analysis APIs with sub-350ms latency for 100+ enterprise clients.",
+  "image": "https://images.pexels.com/photos/8552306/pexels-photo-8552306.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&fit=crop",
+  "year": "2023",
+  "team": "4 people",
+  "duration": "12 weeks",
+  "deployment": "100+ Enterprise Clients",
+  "status": "Live",
+  "category": "API Architecture, Video Intelligence, AI Integration",
+  "tech": [
+    "Python", "FastAPI", "YOLOv8", "FaceNet", "SAM (Segment Anything)", "LaMa (Inpainting)",
+    "Redis", "PostgreSQL", "Docker", "Kubernetes", "RabbitMQ", "gRPC", "Prometheus + Grafana", "Swagger UI"
   ],
-  overview:
-    'Built a fully modular, scalable, and real-time platform for AI-powered video analysis tasks including object detection, segmentation, face embedding, inpainting, and motion detection, all accessible via developer-friendly REST APIs with cloud and edge deployment support.',
-  problem:
-    'Existing AI pipelines for video processing are often fragmented, non-scalable, and lack intuitive developer APIs. These solutions typically require deep ML knowledge and are difficult to deploy in production, especially at scale or in edge environments.',
-  solution:
-    'Designed and implemented a robust API-first platform that modularizes each video intelligence task as a separate microservice. The system supports real-time inference, asynchronous jobs, and JWT-secured endpoints with observability baked in. Optimized for both developer experience and production readiness.',
-  features: [
-    {
-      name: '/detect',
-      description: 'Performs object detection on video frames using YOLOv8.',
-    },
-    {
-      name: '/facenet',
-      description: 'Generates face embeddings and supports similarity matching with FaceNet.',
-    },
-    {
-      name: '/segment',
-      description: 'Segments objects using Meta’s Segment Anything Model (SAM).',
-    },
-    {
-      name: '/inpaint',
-      description: 'Removes unwanted objects or fills occlusions using LaMa inpainting model.',
-    },
-    {
-      name: '/motion',
-      description: 'Detects camera movement such as pan, tilt, and zoom.',
-    },
-    {
-      name: '/auth',
-      description: 'JWT-based authentication and role-based access control.',
-    },
-    {
-      name: '/integrations',
-      description: 'Webhooks for third-party integrations.',
-    },
+  "overview": "Designed and launched a modular ML API platform (YOLOv8, SAM, FaceNet, LaMa) as Dockerized microservices on AWS EKS and edge devices, achieving sub-350ms latency for 100+ concurrent users. Delivered REST APIs with JWT auth, observability, and RabbitMQ-based async processing for scalability. Currently powering Evercam's ML API.",
+  "problem": "Video AI capabilities are often fragmented, require deep ML expertise, and are difficult to deploy or scale in production environments, particularly when integrating multiple model types.",
+  "solution": "Developed a unified, API-first platform where each ML task is encapsulated as a standalone microservice with standardized contracts. Optimized inference pipelines through batching, Redis caching, and model-specific tuning. Integrated security (JWT, RBAC), observability (Prometheus, Grafana), and flexible deployment modes for cloud and edge environments.",
+  "features": [
+    { "name": "Object Detection", "description": "YOLOv8-powered detection API with sub-350ms average latency." },
+    { "name": "Face Embeddings", "description": "FaceNet-based embeddings and similarity search." },
+    { "name": "Object Segmentation", "description": "Meta’s SAM model for high-precision segmentation tasks." },
+    { "name": "Inpainting", "description": "LaMa model to remove or replace objects in video frames." },
+    { "name": "Motion Tracking", "description": "Camera pan, tilt, and zoom detection for surveillance and analytics." },
+    { "name": "Secure Access", "description": "JWT-based authentication with role-based permissions." },
+    { "name": "Integration Hooks", "description": "Webhook endpoints for third-party workflow automation." }
   ],
-  results: [
-    {
-      metric: 'Latency',
-      improvement: '300ms avg',
-      description: 'Achieved sub-350ms latency on /detect and /motion endpoints.',
-    },
-    {
-      metric: 'Scalability',
-      improvement: '100+ concurrent users',
-      description: 'Tested API scaling with concurrent requests using Uvicorn + Gunicorn.',
-    },
-    {
-      metric: 'Deployment Flexibility',
-      improvement: 'Cloud + Edge',
-      description: 'Successfully deployed both on AWS EKS and local edge machines via Docker Compose.',
-    },
+  "results": [
+    { "metric": "Latency", "improvement": "~300ms avg", "description": "Optimized inference pipelines to achieve real-time responsiveness." },
+    { "metric": "Scalability", "improvement": "100+ concurrent users", "description": "Load-tested API under concurrent request spikes with zero downtime." },
+    { "metric": "Deployment Flexibility", "improvement": "Cloud + Edge", "description": "Successfully deployed to AWS EKS and on-prem edge devices." }
   ],
-  architecture: [
-    'Frontend: Swagger UI for interactive API documentation and testing',
-    'Backend: FastAPI with RESTful endpoints',
-    'Model Services: Dockerized ML microservices (YOLOv8, SAM, FaceNet, LaMa)',
-    'Message Queue: RabbitMQ for async video processing jobs',
-    'Database: PostgreSQL (auth, metadata), Redis (caching, sessions)',
-    'Containerization: Docker for local + cloud portability',
-    'Orchestration: Kubernetes for production deployments',
-    'Monitoring: Prometheus + Grafana dashboard for latency, throughput, and job health',
+  "architecture": [
+    "FastAPI backend exposing REST endpoints",
+    "Dockerized ML microservices for YOLOv8, SAM, FaceNet, LaMa",
+    "RabbitMQ for asynchronous job handling",
+    "PostgreSQL for metadata and authentication",
+    "Redis for low-latency caching and session management",
+    "Kubernetes for orchestration and auto-scaling",
+    "Prometheus + Grafana for metrics, alerts, and performance dashboards",
+    "Swagger UI for interactive API documentation and testing"
   ],
-  challenges: [
-    {
-      challenge: 'Fragmented AI Pipelines',
-      solution: 'Standardized ML tasks into unified, modular microservices with shared API contracts.',
-    },
-    {
-      challenge: 'Inference Speed vs. Accuracy',
-      solution: 'Optimized model selection and batching strategies, added Redis caching layer.',
-    },
-    {
-      challenge: 'Scalable Deployment & Observability',
-      solution: 'Used Docker + K8s with Prometheus, Grafana, and retry/resilience logic at the gateway level.',
-    },
+  "challenges": [
+    { "challenge": "Fragmented AI Pipelines", "solution": "Standardized into modular microservices with consistent API contracts." },
+    { "challenge": "Inference Speed vs. Accuracy", "solution": "Tuned batch sizes, caching layers, and model precision for optimal trade-offs." },
+    { "challenge": "Deployment at Scale", "solution": "Implemented Kubernetes auto-scaling with built-in observability and retry logic." }
   ],
-  keyTakeaways: [
-    'Prioritizing developer experience (DX), e.g. Swagger UI, unified API contracts, greatly accelerates adoption.',
-    'Investing early in observability pays off, it helped identify latency spikes and optimize throughput under load.',
-    'Designing for extensibility from day one made it easy to add new AI models and support edge deployments.',
-    'Balancing model accuracy with performance is critical, tuning batch sizes and Redis caching improved real-time use cases.',
-    'Security and integration support (JWT, webhooks) are not afterthoughts, they are core to enterprise-readiness.',
+  "keyTakeaways": [
+    "Standardization and modularity enable faster iteration and easier integration of new models.",
+    "Early investment in observability accelerates debugging and performance tuning.",
+    "Balancing accuracy and performance requires careful benchmarking and architectural choices.",
+    "Security and developer experience are equally important for enterprise adoption."
   ],
-  links: {
-    github: 'https://github.com/dhairya/video-intelligence-api',
-    demo: 'https://video-api-demo.com',
-    documentation: 'https://docs.video-intelligence-api.com',
-  },
+  "links": {
+    "github": "https://github.com/dhairya/video-intelligence-api",
+    "demo": "https://video-api-demo.com",
+    "documentation": "https://docs.video-intelligence-api.com"
+  }
 },
 'genai-chatbot': {
   id: 104,
-  title: 'AI Chatbot using GenAI & LLMs',
+  title: 'Domain-Specific GenAI Chatbot with RAG',
   description:
     'Conversational AI assistant powered by a fine-tuned LLM, enabling domain-specific question answering, task automation, and natural language interaction.',
   image:

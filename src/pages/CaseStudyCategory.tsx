@@ -19,41 +19,40 @@ const CaseStudyCategory = () => {
   const caseStudies = [
     {
       id: '1',
-      title: "Redesigning Evercam's Gate Report",
-      subtitle: 'Real-Time Edge-Based Object Detection for 100+ Sites',
+      title: "Redesigned Gate Report for Real-Time Edge-Based Object Detection",
+      subtitle: 'Edge-powered detection for faster, leaner event reporting',
       category: 'ai-ml',
-      description: 'Redesigned Evercam’s Gate Report from cloud to edge, cutting latency and bandwidth, and boosting user satisfaction and revenue.',
+      description: 'Led product strategy to move Evercam’s Gate Report from cloud to edge, speeding up performance, cutting bandwidth, and boosting revenue.',
       duration: '6 months',
       team: '14',
       impact: ['350% MRR Growth', '94% Lower Data Usage', '71pt NPS Boost'],
       tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
-      image:  '/assets/case-studies/gate-report.png',
-
+      image:  '/assets/case-studies/gate-report.png'
+  
     },
     {
       id: '2',
-      title: "Standardizing Edge Setup at Evercam",
-      subtitle: 'Scalable Kit-Based Deployment Across 500+ Sites',
+      title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
+      subtitle: 'Unified hardware, firmware, and configs for global rollout.',
       category: 'infra',
-      description: "Standardized edge deployments with kit-based setup and OTA config via Ansible & AWX, making it easy for non-engineers to manage devices at scale.",
+      description: 'Drove org-wide shift from camera to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
       duration: '4 months',
       team: '10',
-      impact: ['Reduced deployment time by 70%', 'Enabled 500+ site scalability', 'Empowered non-devs to manage edge ops'],
+      impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
       tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
-      image:  '/assets/case-studies/standardizing-edge.png',
+      image:  '/assets/case-studies/standardizing-edge.png'
     },
     {
       id: '3',
-      title: 'Real-Time Observability for Edge Devices',
-      subtitle: 'Built Scalable Monitoring for 1200+ Devices globally',
+      title: 'Real-Time Edge Fleet Observability: From Blind Spots to Instant Insights',
+      subtitle: 'Fleet-wide observability to boost reliability and uptime',
       category: 'infra',
-      description: "Built a real-time observability system with Grafana and OTA updates to monitor Evercam’s edge fleet, cut failures and support costs, and improve NPS.",
+      description: "Delivered real-time observability with Grafana and OTA updates for Evercam’s edge fleet, reducing failures, support costs, and boosting NPS.",
       duration: '4 months',
       team: '7',
       impact: ['75% fewer device failures', '80% fewer site visits', '+35% NPS increase'],
       tags: ['Observability', 'Prometheus', 'Grafana', 'OTA Deployment', 'Edge Devices', 'DevOps', 'TPM'],
-      image:  '/assets/case-studies/edge-monitoring-platform.png',
-
+      image:  '/assets/case-studies/edge-monitoring-platform.png'
     },
     {
       id: "4",
@@ -65,7 +64,7 @@ const CaseStudyCategory = () => {
       team: "5",
       impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
       tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
-    image:  '/assets/case-studies/video-intelligence-api.png',
+    image:  '/assets/case-studies/video-intelligence-api.png'
     },
     {
       id: '5',
@@ -77,7 +76,7 @@ const CaseStudyCategory = () => {
       team: '10',
       impact: ['10× data scale', '29% accuracy lift', '60% faster annotation'],
       tags: ['MLOps', 'Airflow', 'MLflow', 'Edge AI', 'CVAT', 'Data Pipeline'],
-      image:  '/assets/case-studies/Scaling MLOps Pipeline in Blue.png',
+      image:  '/assets/case-studies/Scaling MLOps Pipeline in Blue.png'
     
     }
 

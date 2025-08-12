@@ -17,18 +17,16 @@ const filters = [
 ];
 
 const projects = [
-
-  
   {
     id: '101',
-    title: 'OTA Firmware Updates with AWX & Ansible',
+    title: 'Automated Edge Firmware Updates with AWX',
     description:
-      'Automated OTA firmware updates for edge devices using Ansible and AWX, achieving 99.8% success rate and 85% less downtime.',  
-    image:  '/assets/case-studies/Firmware Update Process in Action.png',
+      'Led OTA update system for edge devices using Ansible & AWX; achieved 99.8% success and 85% less downtime.',
+    image: '/assets/case-studies/Firmware Update Process in Action.png',
     category: 'infra',
     tech: ['Ansible', 'AWX', 'Python', 'Shell Scripting'],
     year: '2024',
-    team: '3 people',
+    team: 'Led 3 engineers',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/ota-ansible-awx',
@@ -37,50 +35,49 @@ const projects = [
   },
   {
     id: '102',
-    title: 'Edge Device Monitoring with Prometheus & Grafana',
+    title: 'Real-Time Edge Monitoring with Prometheus',
     description:
-      'Deployed lightweight monitoring on edge devices using Prometheus and Grafana, reducing downtime by 90% and enabling real-time alerts.',
-    image:  '/assets/case-studies/edge-monitoring-platform.png',
+      'Deployed edge monitoring with Prometheus & Grafana; reduced downtime by 90% and enabled real-time alerts.',
+    image: '/assets/case-studies/edge-monitoring-platform.png',
     category: 'infra',
     tech: ['Prometheus', 'Grafana', 'Node Exporter', 'Python', 'Docker'],
     year: '2024',
-    team: '4 people',
+    team: 'Led 4-person team',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/edge-monitoring-prometheus',
       demo: 'https://monitoring-demo.com',
     },
   },
-
   {
     id: '103',
-    title: 'Scalable AI-Driven Video Intelligence API Platform',
+    title: 'AI Video Analytics API Platform (Edge + Cloud)',
     description:
-      'Developed a modular FastAPI platform offering video AI features via REST APIs, YOLOv8, FaceNet, SAM, LaMa,running on cloud and edge.',
-    image:  '/assets/case-studies/video-intelligence-api.png',
+      'Shipped FastAPI-based video AI platform with YOLOv8 & FaceNet; enabled scalable REST APIs for developers.',
+    image: '/assets/case-studies/video-intelligence-api.png',
     category: 'api',
     tech: [
       'Python', 'FastAPI', 'YOLOv8', 'FaceNet', 'SAM', 'LaMa',
       'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'RabbitMQ', 'gRPC', 'Prometheus + Grafana',
     ],
     year: '2023',
-    team: '4 person',
+    team: 'PM, 4-person team',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/video-intelligence-api',
       demo: 'https://video-api-demo.com',
     },
   },
-    {
+  {
     id: '104',
-    title: 'AI Chatbot using GenAI & LLMs',
+    title: 'Domain-Specific GenAI Chatbot with RAG',
     description:
-      'Led the development of a domain-specific GenAI chatbot using LangChain and LLMs, integrating a RAG pipeline and voice/text interactions.',  
-    image:  '/assets/case-studies/genai.png',
+      'Led LLM-based chatbot with RAG, LangChain, and voice/text UX; optimized for domain-specific queries.',
+    image: '/assets/case-studies/genai.png',
     category: 'ai-ml',
     tech: ['LLM', 'LangChain', 'Python', 'FastAPI', 'FAISS', 'Streamlit', 'HuggingFace', 'Docker'],
     year: '2025',
-    team: '3 people',
+    team: 'Led 3 people',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/genai-chatbot',
@@ -91,9 +88,9 @@ const projects = [
     id: '105',
     title: 'Fisheye Distortion Correction on Wide Angle Cameras',
     description:
-      'Corrected fisheye distortion in real-time using OpenCV, improving object detection accuracy by 22% and reducing frame latency to <50ms.',
-    image:  '/assets/case-studies/fisheye-correction-opencv.png',
-    category: 'Computer Vision & Image Processing',
+      'Built OpenCV pipeline for fisheye distortion correction; improved detection accuracy by 22%, latency <50ms.',
+    image: '/assets/case-studies/fisheye-correction-opencv.png',
+    category: 'ai-ml',
     tech: ['OpenCV', 'Python', 'Camera Calibration', 'NumPy', 'Docker'],
     year: '2021',
     team: '2 people',
@@ -102,31 +99,29 @@ const projects = [
       github: 'https://github.com/dhairya/fisheye-correction-opencv',
       demo: 'https://fisheye-demo.com',
     },
-  }, 
+  },
   {
     id: '106',
-    title: 'Optimized YOLOv4 Inference on Jetson using ONNX & TensorRT',
+    title: 'YOLOv4 Real-Time Inference on Jetson using ONNX & TensorRT',
     description:
-      'Led the development and deployment of a real-time object detection pipeline on Jetson using YOLOv4 + TensorRT, achieving <50 ms inference.',
-    image:  '/assets/case-studies/yolov4-onnx-tensorrt.png',
+      'Optimized YOLOv4 with TensorRT & ONNX on Jetson Orin Nano; achieved <50ms inference for live CV tasks.',
+    image: '/assets/case-studies/yolov4-onnx-tensorrt.png',
     category: 'ai-ml',
     tech: ['YOLOv4', 'ONNX', 'TensorRT', 'Darknet', 'Jetson Orin Nano', 'OpenCV', 'Python', 'Docker'],
     year: '2023',
-    team: '3 people',
+    team: 'Led 3-person team',
     status: 'Live',
     links: {
       github: 'https://github.com/dhairya/yolov4-jetson-tensorrt',
       demo: 'https://yolov4-jetson-demo.com',
     },
-  },  
- 
-
+  },
   {
     id: '107',
-    title: 'Interactive & Responsive Portfolio Website',
+    title: 'Responsive Personal Portfolio with React',
     description:
-      'Developed a personal portfolio site with React, Tailwind, and Framer Motion,featuring smooth animations and responsive design.',  
-    image:  '/assets/case-studies/portfilio.png',
+      'Designed and built a personal portfolio using React, Tailwind, and Framer Motion with smooth UX.',
+    image: '/assets/case-studies/portfilio.png',
     category: 'web',
     tech: ['React', 'Tailwind CSS', 'Framer Motion', 'EmailJS', 'JavaScript', 'CSS3'],
     year: '2025',
@@ -138,6 +133,7 @@ const projects = [
     },
   }
 ];
+
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -263,7 +259,7 @@ const Projects = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 text-justify line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4 text-left line-clamp-3">
                     {project.description}
                   </p>
 

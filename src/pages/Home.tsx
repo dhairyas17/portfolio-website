@@ -90,7 +90,7 @@ const caseStudies = [
     title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
     subtitle: 'Unified hardware, firmware, and configs for global rollout.',
     category: 'infra',
-    description: 'Drove org-wide shift from camera- to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
+    description: 'Drove org-wide shift from camera to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
     duration: '4 months',
     team: '10',
     impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
@@ -174,15 +174,15 @@ const Home = () => {
 
   const experiences = [
     {
-      role: 'Technical Product Manager',
+      role: 'Computer Vision Engineer - R&D',
       company: 'Evercam',
-      period: 'March 2024 – July 2025',
-      description: "Led AI and edge product strategy from concept to scale, reaching 500+ global sites and reducing operational overhead.",
+      period: 'May 2021 – July 2022',
+      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
       metrics: [
-        '60% reduction in manual reporting',
-        '70% faster incident response',
-        '1200+ edge deployments (up from 150)',
-        '35% less on-site support'
+        'Improved measuring accuracy by 79%',
+        'NPS score increased by 55%',
+        'DroneView & 360° PoCs deployed to production',
+        'Adopted by enterprise clients across US, AU & EU'
       ],
       location: 'Dublin, Ireland'
     },
@@ -199,19 +199,20 @@ const Home = () => {
       ],
       location: 'Dublin, Ireland'
     },
+
     {
-      role: 'Computer Vision Engineer - R&D',
+      role: 'Technical Product Manager',
       company: 'Evercam',
-      period: 'May 2021 – July 2022',
-      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
+      period: 'March 2024 – July 2025',
+      description: "Led AI and edge product strategy from concept to scale, reaching 500+ global sites and reducing operational overhead.",
       metrics: [
-        'Improved measuring accuracy by 79%',
-        'NPS score increased by 55%',
-        'DroneView & 360° PoCs deployed to production',
-        'Adopted by enterprise clients across US, AU & EU'
+        '60% reduction in manual reporting',
+        '70% faster incident response',
+        '1200+ edge deployments (up from 150)',
+        '35% less on-site support'
       ],
       location: 'Dublin, Ireland'
-    }
+    },
     
   ];
 
