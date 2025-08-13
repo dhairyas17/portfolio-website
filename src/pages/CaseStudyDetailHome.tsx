@@ -531,32 +531,39 @@ export default function CaseStudyHomeComponent() {
             </ul>
           </CardSection>
 
-          {/* Prev/Next Buttons */}
-          <div className="flex justify-between mt-8">
-            <button
-              onClick={() =>
-                hasPrev && navigate(`/case-studies/${caseStudies[currentIndex - 1].id}`)
-              }
-              disabled={!hasPrev}
-              className={`px-6 py-3 rounded-md text-white font-semibold ${
-                hasPrev ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"
-              } transition-colors duration-300`}
-            >
-              ← Previous
-            </button>
+{/* Prev/Next Buttons with same styling as portfolio nav */}
+<div className="mt-10 flex flex-row justify-between items-center gap-4">
+  {/* Previous Button */}
+  {hasPrev ? (
+    <button
+      onClick={() => navigate(`/case-studies/${caseStudies[currentIndex - 1].id}`)}
+      className="w-full sm:w-auto flex items-center justify-center sm:justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800 min-w-[140px]"
+    >
+      <ArrowLeft className="w-5 h-5 text-gray-500 hover:text-blue-600 hover:-translate-x-1 transition-transform" />
+      <span className="text-base font-medium text-gray-600 hover:text-blue-600">
+        Previous
+      </span>
+    </button>
+  ) : (
+    <div className="hidden sm:block w-full sm:w-auto" />
+  )}
 
-            <button
-              onClick={() =>
-                hasNext && navigate(`/case-studies/${caseStudies[currentIndex + 1].id}`)
-              }
-              disabled={!hasNext}
-              className={`px-6 py-3 rounded-md text-white font-semibold ${
-                hasNext ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-300 cursor-not-allowed"
-              } transition-colors duration-300`}
-            >
-              Next →
-            </button>
-          </div>
+  {/* Next Button */}
+  {hasNext ? (
+    <button
+      onClick={() => navigate(`/case-studies/${caseStudies[currentIndex + 1].id}`)}
+      className="w-full sm:w-auto flex items-center justify-center sm:justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800 min-w-[140px]"
+    >
+      <span className="text-base font-medium text-gray-600 hover:text-blue-600">
+        Next
+      </span>
+      <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 hover:text-blue-600 hover:translate-x-1 transition-transform" />
+    </button>
+  ) : (
+    <div className="hidden sm:block w-full sm:w-auto" />
+  )}
+</div>
+
 
           {showScrollTop && (
             <button
@@ -575,12 +582,12 @@ export default function CaseStudyHomeComponent() {
             <p className="text-lg text-gray-700 mb-6">
               I’d love to exchange ideas or collaborate on building the next big thing.
             </p>
-            <button
-              type="button"
-              className="px-8 py-3 bg-blue-600 text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400"
+            <Link
+              to="/contact"
+              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200"
             >
               Let’s Connect
-            </button>
+            </Link>
             <p className="text-xs text-gray-400 mt-8 pt-4 border-t border-gray-200">
               © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
             </p>

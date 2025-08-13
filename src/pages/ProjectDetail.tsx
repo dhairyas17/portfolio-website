@@ -283,42 +283,46 @@ const ProjectDetail: React.FC = () => {
           </ul>
         </motion.section>
 
-          {/* Prev / Next Navigation */}
-          <motion.div
-            variants={fadeUp}
-            custom={1.05}
-            className="mt-10 flex flex-col sm:flex-row justify-between gap-4"
-          >
-            {/* Previous Button */}
-            {prevProject ? (
-              <Link
-                to={`/portfolio/projects/${prevProject.id}`}
-                className="no-underline group w-full sm:w-auto flex items-center justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-              >
-                <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
-                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-                  Previous
-                </span>
-              </Link>
-            ) : (
-              <div className="hidden sm:block" />
-            )}
+        <motion.div
+  variants={fadeUp}
+  custom={1.05}
+  className="mt-10 flex flex-row justify-between items-center gap-4"
+>
+  {/* Previous Button */}
+  {prevProject ? (
+    <Link
+      to={`/portfolio/projects/${prevProject.id}`}
+      className="no-underline group w-full sm:w-auto flex items-center justify-center sm:justify-start gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800 min-w-[140px]"
+    >
+      <ArrowLeft className="w-5 h-5 text-gray-500 group-hover:text-blue-600 group-hover:-translate-x-1 transition-transform" />
+      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+        Previous
+      </span>
+    </Link>
+  ) : (
+    <div className="hidden sm:block w-full sm:w-auto" />
+  )}
 
-            {/* Next Button */}
-            {nextProject ? (
-              <Link
-                to={`/portfolio/projects/${nextProject.id}`}
-                className="no-underline group w-full sm:w-auto flex items-center justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800"
-              >
-                <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
-                  Next
-                </span>
-                <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            ) : (
-              <div className="hidden sm:block" />
-            )}
-          </motion.div>
+  {/* Next Button */}
+  {nextProject ? (
+    <Link
+      to={`/portfolio/projects/${nextProject.id}`}
+      className="no-underline group w-full sm:w-auto flex items-center justify-center sm:justify-end gap-3 px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-blue-50 hover:border-blue-600 transition text-base font-medium text-gray-800 min-w-[140px]"
+    >
+      <span className="text-base font-medium text-gray-600 group-hover:text-blue-600">
+        Next
+      </span>
+      <ArrowLeft className="w-5 h-5 rotate-180 text-gray-500 group-hover:text-blue-600 group-hover:translate-x-1 transition-transform" />
+    </Link>
+  ) : (
+    <div className="hidden sm:block w-full sm:w-auto" />
+  )}
+</motion.div>
+
+
+
+
+
 
           {/* Scroll to Top */}
           {showScrollTop && (
