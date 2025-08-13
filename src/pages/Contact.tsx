@@ -65,14 +65,14 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'dhairyasharma008@gmail.com',
-      link: 'mailto:dhairyasharma008@gmail.com'
+      value: 'dhairyasharma.tech@gmail.com',
+      link: 'mailto:dhairyasharma.tech@gmail.com'
     },
     {
       icon: Calendar,
       label: 'Schedule Meeting',
       value: 'Book a call',
-      link: 'https://calendly.com/dhairyasharma008/30min'
+      link: 'https://calendly.com/dhairyasharma-tech/30min'
     },
     {
       icon: MapPin,
