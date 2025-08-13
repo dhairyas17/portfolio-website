@@ -530,7 +530,7 @@ const Home = () => {
                 <span>{exp.location}</span>
               </div>
 
-              <p className="text-gray-700 text-sm mb-3 text-justify">{exp.description}</p>
+              <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{exp.description}</p>
 
               <div className="space-y-1">
                 {exp.metrics.map((metric, idx) => (
@@ -671,7 +671,7 @@ const Home = () => {
                           {study.title}
                         </h3>
                         <p className="text-xs text-blue-600 font-semibold mb-2">{study.subtitle}</p>
-                        <p className="text-gray-600 text-sm text-justify mb-2 line-clamp-3">{study.description}</p>
+                        <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{study.description}</p>
 
                         <div className="flex flex-col gap-1 mb-2 text-xs">
                           {study.impact.map((point, idx) => (

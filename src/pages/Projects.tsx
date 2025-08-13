@@ -259,9 +259,9 @@ const Projects = () => {
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4 text-left line-clamp-3">
-                    {project.description}
-                  </p>
+                  <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">
+  {project.description}
+</p>
 
                   <div className="grid grid-cols-2 gap-4 mb-4 text-xs mt-auto">
                     <div className="flex items-center gap-1">

@@ -167,22 +167,25 @@ const BlogPost = () => {
             <p className="text-gray-600 mb-8">
               Explore more insights or connect with me to discuss AI product thinking.
             </p>
-<div className="flex justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto px-4">
   <Link
     to="/blog"
-    className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+    className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full no-underline text-center transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
   >
-    <span className="block">View All Posts</span>
+    <span>View All Posts</span>
   </Link>
   <a
     href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-block px-6 py-3 border border-gray-300 text-gray-700 text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+    className="w-full sm:w-auto px-6 py-3 border border-gray-300 text-gray-700 text-lg font-semibold rounded-full no-underline text-center transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
   >
-    <span className="block">Connect on LinkedIn</span>
+    <span>Connect on LinkedIn</span>
   </a>
 </div>
+
+
+
 
           </div>
         </motion.div>

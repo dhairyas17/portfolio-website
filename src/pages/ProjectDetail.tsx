@@ -349,11 +349,12 @@ const ProjectDetail: React.FC = () => {
               I’m always open to connecting, sharing insights, or tackling new product challenges together.
             </p>
             <Link
-              to="/contact"
-              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200"
-            >
-              Let’s Connect
-            </Link>
+  to="/contact"
+  className="inline-block w-full sm:w-auto px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full no-underline text-center transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+>
+  <span>Let’s Connect</span>
+</Link>
+
           </motion.div>
         </div>
 

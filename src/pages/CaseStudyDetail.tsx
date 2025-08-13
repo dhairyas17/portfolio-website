@@ -441,7 +441,7 @@ export default function CaseStudyComponent() {
               icon={<TrendingUp className="w-8 h-8 text-indigo-600" />}
             >
               <div className="mb-8">
-                <TableSection title="Results" data={cs.results} />
+                <TableSection title="" data={cs.results} />
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-3">Outcomes</h3>
@@ -561,11 +561,12 @@ export default function CaseStudyComponent() {
                 I’d love to exchange ideas or collaborate on building the next big thing.
               </p>
               <Link
-              to="/contact"
-              className="inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg no-underline transform hover:scale-105 transition-transform duration-200"
-            >
-              Let’s Connect
-            </Link>
+  to="/contact"
+  className="inline-block w-full sm:w-auto px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full no-underline text-center transform hover:scale-105 transition-transform duration-200 will-change-transform preserve-3d"
+>
+  <span>Let’s Connect</span>
+</Link>
+
               <p className="text-xs text-gray-400 mt-8 pt-4 border-t border-gray-200">
                 © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
               </p>

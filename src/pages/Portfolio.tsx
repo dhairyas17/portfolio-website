@@ -9,7 +9,7 @@ const Portfolio = () => {
       id: 'case-studies',
       title: 'Case Studies',
       description:
-        'Detailed case studies demonstrating my end-to-end approach to technical and product challenge, from framing the problem, designing and iterating solutions, to delivering measurable outcomes.',
+        'Detailed case studies demonstrating my comprehensive end-to-end approach to complex technical and product challenges, from effectively framing the problem, designing and iterating solutions, to delivering measurable and impactful outcomes.',
       icon: Layers,
       color: 'from-blue-500 to-indigo-600',
       items: [
@@ -25,7 +25,7 @@ const Portfolio = () => {
       id: 'projects',
       title: 'Projects',
       description:
-        'Self-initiated and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, and workflow automation, delivering tangible results and measurable impact',
+        'Self-initiated and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, machine learning, and workflow automation, delivering tangible results, innovative solutions, and measurable impact.',
       icon: FolderKanban,
       color: 'from-purple-500 to-pink-600',
       items: [
@@ -88,10 +88,7 @@ const Portfolio = () => {
                         </h3>
                       </div>
 
-                      <p
-                        className="text-gray-600 leading-relaxed mb-6"
-                        style={{ textAlign: "justify" }}
-                      >
+<p className="text-gray-600 text-base mb-4 text-justify text-left last-line:text-left leading-relaxed">
                         {category.description}
                       </p>
 
