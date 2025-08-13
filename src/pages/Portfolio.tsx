@@ -1,16 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Layers, FolderKanban, ArrowRight } from 'lucide-react';
+import { Layers, FolderKanban, ArrowRight, Hammer } from 'lucide-react';
 
 const Portfolio = () => {
+
   const categories = [
     {
       id: 'case-studies',
       title: 'Case Studies',
       description:
-        'Detailed case studies demonstrating my comprehensive end-to-end approach to complex technical and product challenges, from effectively framing the problem, designing and iterating solutions, to delivering measurable and impactful outcomes.',
-      icon: Layers,
+        'Comprehensive, end-to-end case studies solving complex technical and product challenges with innovative solutions and measurable business impact.',
+      icon: FolderKanban,
       color: 'from-blue-500 to-indigo-600',
       items: [
         "Redesigning Evercam's Gate Report",
@@ -25,9 +26,9 @@ const Portfolio = () => {
       id: 'projects',
       title: 'Projects',
       description:
-        'Self-initiated and collaborative projects showcasing real-world expertise in architecture, AI, edge computing, machine learning, and workflow automation, delivering tangible results, innovative solutions, and measurable impact.',
-      icon: FolderKanban,
-      color: 'from-purple-500 to-pink-600',
+        'Innovative projects in AI, edge computing, and workflow automation delivering real-world solutions and measurable results with practical impact.',
+      icon: Hammer,
+      color: 'from-green-500 to-blue-600',
       items: [
         "OTA Firmware Updates with AWX & Ansible",
         "Edge Device Monitoring with Prometheus & Grafana",
@@ -40,7 +41,7 @@ const Portfolio = () => {
       count: 7,
     },
   ];
-
+  
   return (
     <div className="min-h-[101vh] px-4 pt-2 pb-0">
       <motion.div
@@ -48,14 +49,14 @@ const Portfolio = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -40 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }} // Shorter transition for better performance
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl font-bold text-gray-900 mb-6">Portfolio</h1>
             <p className="text-lg text-gray-500 max-w-4xl text-center mx-auto">
@@ -67,9 +68,9 @@ const Portfolio = () => {
             {categories.map((category, index) => (
               <motion.div
                 key={category.id}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }} // Improved staggering
               >
                 <Link to={`/portfolio/${category.id}`}>
                   <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 h-[600px] flex flex-col">
@@ -88,15 +89,21 @@ const Portfolio = () => {
                         </h3>
                       </div>
 
-<p className="text-gray-600 text-base mb-4 text-justify text-left last-line:text-left leading-relaxed">
+                      <p className="text-gray-700 text-base mb-4 text-left last-line:text-left leading-relaxed">
                         {category.description}
                       </p>
 
                       <ul className="text-sm text-gray-500 space-y-2 mb-6 list-disc list-inside text-left">
                         {category.items.map((item, i) => (
-                          <li key={i} className="truncate">
+                          <motion.li
+                            key={i}
+                            className="truncate"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.3, delay: 0.4 + i * 0.1 }} // Added staggered item animation
+                          >
                             {item}
-                          </li>
+                          </motion.li>
                         ))}
                       </ul>
 

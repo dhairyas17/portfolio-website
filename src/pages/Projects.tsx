@@ -308,35 +308,55 @@ const Projects = () => {
         </motion.div>
 
         {/* Pagination */}
-        <div className="mt-10 flex justify-center items-center gap-4">
-          <button
-            onClick={goToPreviousPage}
-            disabled={currentPage === 1}
-            className={`min-w-[128px] inline-block px-4 py-2 text-sm font-semibold rounded-lg no-underline transform transition-transform duration-200 will-change-transform text-center ${
-              currentPage === 1
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:scale-105'
-            }`}
-          >
-            ← Prev
-          </button>
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-10">
+            <div className="inline-flex gap-2">
 
-          <span className="text-sm text-gray-600 font-medium">
-            Page {currentPage} of {totalPages}
-          </span>
+              {/* Previous Button */}
+              <button
+                onClick={() => goToPreviousPage()}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded ${
+                  currentPage === 1
+                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
+              >
+                ← Prev
+              </button>
 
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`min-w-[128px] inline-block px-4 py-2 text-sm font-semibold rounded-lg no-underline transform transition-transform duration-200 will-change-transform text-center ${
-              currentPage === totalPages
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:scale-105'
-            }`}
-          >
-            Next →
-          </button>
-        </div>
+              {/* Page Numbers */}
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`px-4 py-2 rounded ${
+                    currentPage === i + 1
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => goToNextPage()}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded ${
+                  currentPage === totalPages
+                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
+              >
+                Next →
+              </button>
+
+            </div>
+          </div>
+        )}
+
 
         <div className="h-4" />
         <p className="text-xs text-center text-gray-400 mt-12 pt-8 border-t border-gray-200">

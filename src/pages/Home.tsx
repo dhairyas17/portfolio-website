@@ -1,6 +1,13 @@
 // src/pages/Home.tsx
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import {
+  motion,
+  LazyMotion,
+  domAnimation,
+  MotionConfig,
+  useReducedMotion,
+  type Variants,
+} from 'framer-motion';
 import {
   ArrowDown,
   ExternalLink,
@@ -19,6 +26,36 @@ import {
   Target
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+// -------------------- Animation presets (smooth & consistent) --------------------
+const viewportDefault = { once: true, amount: 0.25 };
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+};
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const fadeInDown: Variants = {
+  hidden: { opacity: 0, y: -24 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const staggerContainer = (stagger = 0.08, delayChildren = 0.1): Variants => ({
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: stagger,
+      delayChildren
+    }
+  }
+});
+
+// -------------------- Content (unchanged) --------------------
 const valueCards = [
   {
     title: "Strategic Vision",
@@ -41,7 +78,7 @@ const posts = [
   {
     id: '1',
     title: 'From Engineer to TPM: Influencing Without Authority',
-    excerpt: 'Aligned engineering, design, and ops teams to deliver AI/edge products to 500+ sites, without formal authority. Built trust, drove alignment, and enabled execution through clear communication.',
+    excerpt: 'Aligned cross-functional teams to deliver AI/edge products at 500+ sites, building trust and driving execution without formal authority.',
     image: '/assets/blogs/6.png',
     category: 'leadership',
     date: '2025-08-06',
@@ -51,7 +88,7 @@ const posts = [
   {
     id: '2',
     title: 'Feature Prioritization in Complex Technical Products',
-    excerpt: 'Cut prioritization cycle time by 40% by integrating RICE, MoSCoW, and Productboard across firmware, DevOps, and UX teams, accelerating AI product delivery and scaling decision-making efficiency.',
+    excerpt: 'Cut prioritization time 40% by using RICE, MoSCoW, and Productboard across teams, accelerating AI product delivery and decisions.',
     image: '/assets/blogs/2.png',
     category: 'product-strategy',
     date: '2025-02-02',
@@ -61,14 +98,14 @@ const posts = [
   {
     id: '3',
     title: 'Stakeholder Management for TPMs – From Chaos to Clarity',
-    excerpt: 'Aligned firmware, DevOps, data science, and business teams into a single execution roadmap, improving delivery speed, reducing rework, and increasing cross-team trust for global AI/edge rollouts.',
+    excerpt: 'Unified firmware, DevOps, and business teams into one roadmap, boosting delivery speed and cross-team trust for global rollouts.',
     image: '/assets/blogs/7.png',
     category: 'leadership',
     date: '2025-07-17',
     readTime: '6 min read',
     tags: ['Stakeholders', 'TPM', 'Execution']
   }
-] 
+];
 
 const caseStudies = [
   {
@@ -83,7 +120,6 @@ const caseStudies = [
     tags: ['Edge AI', 'System Design', 'YOLOv5', 'RabbitMQ', 'OTA Deployment'],
     image:  '/assets/case-studies/gate-report.png',
     link: '/case-studies/1'
-
   },
   {
     id: '2',
@@ -135,7 +171,7 @@ const Home = () => {
       setShowScrollTop(window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => {
@@ -145,13 +181,16 @@ const Home = () => {
 
   // Scroll if coming from a route with state.scrollTarget
   useEffect(() => {
-    if (location.state?.scrollTarget) {
-      const targetId = location.state.scrollTarget;
+    if ((location.state as any)?.scrollTarget) {
+      const targetId = (location.state as any).scrollTarget as string;
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
+        // Double rAF to ensure layout is ready before smooth scroll (prevents jank)
         requestAnimationFrame(() => {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          requestAnimationFrame(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          });
         });
       }
 
@@ -165,9 +204,9 @@ const Home = () => {
     if (location.hash) {
       const element = document.querySelector(location.hash);
       if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 50); // wait for DOM to render
+        requestAnimationFrame(() => {
+          (element as HTMLElement).scrollIntoView({ behavior: 'smooth' });
+        });
       }
     }
   }, [location]);
@@ -269,25 +308,31 @@ const Home = () => {
     
   ];
 
-  return (
-    <motion.div
-      className="min-h-screen"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+  const prefersReduced = useReducedMotion();
 
-      {/* Hero Section */}
-      
-{/* Hero Section */}
-      <section
-      id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-12"
-    >
-      <div className="max-w-4xl w-full mx-auto text-center">
-        {/* Intro */}
+  return (
+    <LazyMotion features={domAnimation}>
+      <MotionConfig
+        reducedMotion="user"
+        transition={{ duration: prefersReduced ? 0 : 0.6, ease: 'easeOut' }}
+      >
         <motion.div
+          className="min-h-screen"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={fadeIn}
+          style={{ willChange: 'opacity' }}
+        >
+
+          {/* Hero Section */}
+          <section
+            id="home"
+            className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-12"
+          >
+            <div className="max-w-4xl w-full mx-auto text-center">
+              {/* Intro */}
+              <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -332,614 +377,620 @@ const Home = () => {
           </div>
         </motion.div>
 
-        {/* Social Links */}
-        <motion.div
-          className="flex justify-center items-center gap-6 mt-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-        >
-          <a
-            href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 hover:text-blue-700 transition-transform transform hover:scale-110"
-          >
-            <Linkedin size={26} />
-          </a>
-          <a
-            href="mailto:dhairyasharma008@gmail.com"
-            className="text-gray-700 hover:text-red-600 transition-transform transform hover:scale-110"
-          >
-            <Mail size={26} />
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Scroll Down Arrow */}
-      <motion.div
-        className="animate-bounce absolute bottom-10 cursor-pointer"
-        onClick={scrollToAbout}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
-      </motion.div>
-    </section>
-    <section id="about" className="py-20 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Heading */}
-    <motion.div
-      className="text-center mb-16"
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      <h2 className="text-4xl font-extrabold text-gray-900 mb-4">About Me</h2>
-      <p className="text-lg text-gray-500">
-        Engineering roots, product leadership, and scaling global impact.
-      </p>
-    </motion.div>
-
-    {/* Main Section */}
-    <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
-      {/* Left Content */}
-      <motion.div
-        className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
-        initial={{ x: -50, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <p>
-          I'm Dhairya Sharma, an engineer turned Product Manager with 4+ years building and scaling AI/ML, edge computing, and cloud infrastructure products. Delivered enterprise adoption in <strong>25+ countries</strong> and <strong>1200+ site deployments</strong> through scalable system design and data-driven strategy.
-        </p>
-        <p>
-          At Evercam, owned end-to-end SaaS product strategy for global enterprises, cutting manual work <strong>60%</strong>, ensuring SLA compliance, and aligning teams across the US, EU, and APAC. Trusted by leaders in construction and tech to deliver high-availability, mission-critical solutions.
-        </p>
-        <p>
-        I operate at the intersection of technology, strategy, and user experience, turning complex problems into impactful, global-scale products. With a focus on measurable outcomes, rapid iteration, and customer insight. I lead solutions that drive adoption, set technical standards, and create lasting business value.
-        </p>
-
-
-      </motion.div>
-
-      {/* Right Value Cards */}
-      <motion.div
-        className="lg:w-1/2 grid grid-rows-3 gap-9 h-full"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0, y: 30 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { staggerChildren: 0.15 }
-          }
-        }}
-      >
-        {valueCards.map((item, index) => (
-          <motion.div
-            key={index}
-            className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm hover:shadow-lg transition h-full"
-            whileHover={{ scale: 1.02 }}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
-            }}
-          >
-            <div className="flex items-center gap-4">
-              {item.icon}
-              <h4 className="text-lg font-semibold text-gray-900">
-                {item.title}
-              </h4>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mt-3">
-              {item.desc}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
-
-    {/* Stats Section */}
-    <motion.div
-      className="mt-16 grid grid-cols-2 sm:grid-cols-5 gap-8 text-center place-items-center"
-      initial={{ y: 30, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      {[
-        { value: "4+", label: "Years Experience" },
-        { value: "10+", label: "Products" },
-        { value: "25+", label: "Countries" },
-        { value: "50+", label: "Global Teams" },
-        { value: "1200+", label: "Deployments" }
-      ].map((stat, idx) => (
-        <div
-          key={idx}
-          className="bg-white border border-gray-200 rounded-2xl py-6 shadow-sm hover:shadow-lg transition w-full"
-        >
-          <div className="text-indigo-600 text-4xl font-extrabold">
-            {stat.value}
-          </div>
-          <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
-        </div>
-      ))}
-    </motion.div>
-  </div>
-</section>
-
-
-
-      {/* Experience Timeline */}
-      <section className="py-20 pt-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">Experience</h2>
-          </motion.div>
-          <div className="relative">
-            {/* Horizontal timeline line */}
-            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-blue-500 z-0 shadow-[0_0_20px_4px_rgba(59,130,246,0.6)] animate-pulse"></div>
-
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-9">
-              {experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative flex flex-col items-center"
-                    initial={{ y: 50, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <div className="hidden md:flex absolute top-[24px] z-10">
-                      {/* <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div> */}
-                      <div
-                    className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
-                    style={{
-                      boxShadow: '0 0 0 rgba(59,130,246,0.4)',
-                      animation: 'glow 2s infinite ease-in-out',
-                    }}
-                  ></div>
-                      </div>
-                  <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between"
-            >
-              <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
-
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
-
-              <div className="text-gray-600 mb-2 flex items-center gap-1">
-                <span>{exp.company}</span>
-              </div>
-
-              <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-                <MapPin size={14} />
-                <span>{exp.location}</span>
-              </div>
-
-              <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{exp.description}</p>
-
-              <div className="space-y-1">
-                {exp.metrics.map((metric, idx) => (
-                  <div
-                    key={idx}
-                    className="text-xs text-green-700 bg-green-50 px-3 py-1 rounded text-left"
-                  >
-                    {metric}
-                  </div>
-                ))}
-              </div>
-          </motion.div>
-        </motion.div>    
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="py-20 bg-white-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <motion.div
-      className="text-center mb-16"
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, amount: 0.6 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      layout
-    >
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">Tools & Platforms</h2>
-    </motion.div>
-
-    <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6">
-      {tools.map((tool, index) => (
-        <motion.div
-          key={tool.name}
-          className="group flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-lg transition-all cursor-pointer will-change-transform will-change-opacity"
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
-          whileHover={{ scale: 1.05 }}
-          layout
-        >
-          <img
-            src={tool.logo}
-            alt={`${tool.name} logo`}
-            className="h-10 w-10 mb-2 object-contain"
-          />
-          <div className="text-sm font-medium text-gray-700 text-center">
-            {tool.name}
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-      </section>
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership Endorsements</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+              {/* Social Links */}
               <motion.div
-                key={index}
-                className="bg-white shadow-md p-6 rounded-xl flex flex-col justify-between h-full transition hover:shadow-xl"
-                initial={{ y: 50, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="flex justify-center items-center gap-6 mt-8"
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+                style={{ willChange: 'transform, opacity' }}
               >
-                <div className="flex-grow">
-                  <div className="text-gray-700 mb-6 italic">"{testimonial.quote}"</div>
-                </div>
-                <div className="flex items-center mt-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4 object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-            
-
-
-
-
-      <section id="case-study" className="py-20 pt-16 pb-16 bg-white-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            className="text-3xl font-semibold mb-20 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Featured Product Case Studies
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.length > 0 ? (
-              caseStudies.map((study, index) => (
-                <motion.div
-                  key={study.id}
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className="cursor-pointer"
-                  onClick={() => window.location.href = study.link}
+                <a
+                  href="https://www.linkedin.com/in/dhairya-sharma-5484231a9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-blue-700 transition-transform transform-gpu hover:scale-110"
                 >
-                  <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 h-[530px] flex flex-col">
-                    <div className="relative overflow-hidden h-48">
-                      <img
-                        src={study.image}
-                        alt={study.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Linkedin size={26} />
+                </a>
+                <a
+                  href="mailto:dhairyasharma008@gmail.com"
+                  className="text-gray-700 hover:text-red-600 transition-transform transform-gpu hover:scale-110"
+                >
+                  <Mail size={26} />
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Scroll Down Arrow */}
+            <motion.div
+              className="absolute bottom-10 cursor-pointer"
+              onClick={scrollToAbout}
+              initial={{ y: 0 }}
+              animate={{ y: [0, -20, 0] }} // moves up 20px and back
+              transition={{
+                y: {
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  duration: 0.9, // slightly slower bounce
+                  ease: 'easeInOut',
+                },
+              }}
+              style={{ willChange: 'transform' }}
+            >
+              <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
+            </motion.div>
+
+
+          </section>
+
+          <section id="about" className="py-20 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Heading */}
+              <motion.div
+                className="text-center mb-16"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <h2 className="text-4xl font-extrabold text-gray-900 mb-4">About Me</h2>
+                <p className="text-lg text-gray-500">
+                  Engineering roots, product leadership, and scaling global impact.
+                </p>
+              </motion.div>
+
+              {/* Main Section */}
+              <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
+                {/* Left Content */}
+                <motion.div
+                  className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportDefault}
+                  style={{ willChange: 'transform, opacity' }}
+                >
+                  <p>
+                    I'm Dhairya Sharma, an engineer turned Product Manager with 4+ years building and scaling AI/ML, edge computing, and cloud infrastructure products. Delivered enterprise adoption in <strong>25+ countries</strong> and <strong>1200+ site deployments</strong> through scalable system design and data-driven strategy.
+                  </p>
+                  <p>
+                    At Evercam, owned end-to-end SaaS product strategy for global enterprises, cutting manual work <strong>60%</strong>, ensuring SLA compliance, and aligning teams across the US, EU, and APAC. Trusted by leaders in construction and tech to deliver high-availability, mission-critical solutions.
+                  </p>
+                  <p>
+                    I operate at the intersection of technology, strategy, and user experience, turning complex problems into impactful, global-scale products. With a focus on measurable outcomes, rapid iteration, and customer insight. I lead solutions that drive adoption, set technical standards, and create lasting business value.
+                  </p>
+                </motion.div>
+
+                {/* Right Value Cards */}
+                <motion.div
+                  className="lg:w-1/2 grid grid-rows-3 gap-9 h-full"
+                  variants={staggerContainer(0.12, 0.2)}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportDefault}
+                >
+                  {valueCards.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="group bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between h-full cursor-pointer transition-all duration-300 transform-gpu hover:shadow-lg hover:scale-105"
+                      variants={fadeInUp}
+                      transition={{ delay: 0.05 + index * 0.05 }}
+                      style={{ willChange: 'transform, opacity' }}
+                    >
+                      <div className="flex items-center gap-4">
+                        {item.icon}
+                        <h4 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed mt-3 text-justify">
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+              </div>
+
+              {/* Stats Section */}
+              <motion.div
+                className="mt-16 grid grid-cols-2 sm:grid-cols-6 gap-8 text-center place-items-center"
+                variants={staggerContainer(0.06, 0.1)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {[
+                  { value: "4+", label: "Years Experience" },
+                  { value: "7+", label: "Products" },
+                  { value: "10+", label: "Industries Served" },
+                  { value: "25+", label: "Countries" },
+                  { value: "50+", label: "Global Teams" },
+                  { value: "1200+", label: "Deployments" },
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="bg-white border border-gray-200 rounded-2xl py-6 shadow-sm hover:shadow-lg transition w-full"
+                    variants={fadeInUp}
+                    style={{ willChange: 'transform, opacity' }}
+                  >
+                    <div className="text-indigo-600 text-4xl font-extrabold">
+                      {stat.value}
                     </div>
+                    <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
-                    <div className="p-6 flex flex-col flex-grow justify-between">
-                      <div className="flex flex-col gap-1">
-                        <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
-                          {study.title}
-                        </h3>
-                        <p className="text-xs text-blue-600 font-semibold mb-2">{study.subtitle}</p>
-                        <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{study.description}</p>
+          {/* Experience Timeline */}
+          <section className="py-20 pt-16 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                className="text-center mb-16"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                <h2 className="text-4xl font-bold text-gray-900 mb-8">Experience</h2>
+              </motion.div>
+              <div className="relative">
+                {/* Horizontal timeline line */}
+                <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-blue-500 z-0 shadow-[0_0_20px_4px_rgba(59,130,246,0.6)]"></div>
 
-                        <div className="flex flex-col gap-1 mb-2 text-xs">
-                          {study.impact.map((point, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <TrendingUp className="w-3 h-3 text-green-500" />
-                              <span className="text-green-600 font-semibold">{point}</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-9">
+                  {experiences.map((exp, index) => (
+                    <motion.div
+                      key={index}
+                      className="relative flex flex-col items-center"
+                      variants={fadeInUp}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={viewportDefault}
+                      transition={{ delay: index * 0.05 }}
+                      style={{ willChange: 'transform, opacity' }}
+                    >
+                      <div className="hidden md:flex absolute top-[24px] z-10">
+                        <div
+                          className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
+                          style={{
+                            boxShadow: '0 0 0 rgba(59,130,246,0.4)',
+                          }}
+                        ></div>
+                      </div>
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className="mt[50px] md:mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between transform-gpu"
+                      >
+                        <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+
+                        <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+
+                        <div className="text-gray-600 mb-2 flex items-center gap-1">
+                          <span>{exp.company}</span>
+                        </div>
+
+                        <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+                          <MapPin size={14} />
+                          <span>{exp.location}</span>
+                        </div>
+
+                        <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{exp.description}</p>
+
+                        <div className="space-y-1">
+                          {exp.metrics.map((metric, idx) => (
+                            <div
+                              key={idx}
+                              className="text-xs text-green-700 bg-green-50 px-3 py-1 rounded text-left"
+                            >
+                              {metric}
                             </div>
                           ))}
                         </div>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
 
-                        <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
-                          <div className="flex items-center gap-2">
-                            <Clock className="w-3 h-3 text-gray-500" />
-                            <span className="font-medium">Duration:</span> {study.duration}
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Users className="w-3 h-3 text-gray-500" />
-                            <span className="font-medium">Team:</span> {study.team}
-                          </div>
+          <section id="case-study" className="py-20 pt-16 pb-16 bg-white-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.h2
+                className="text-4xl font-semibold mb-20 text-center"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                Featured Product Case Studies
+              </motion.h2>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                variants={staggerContainer(0.1, 0.15)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {caseStudies.length > 0 ? (
+                  caseStudies.map((study, index) => (
+                    <motion.div
+                      key={study.id}
+                      variants={fadeInUp}
+                      className="cursor-pointer"
+                      onClick={() => (window.location.href = study.link)}
+                      transition={{ delay: 0.05 + index * 0.05 }}
+                      style={{ willChange: 'transform, opacity' }}
+                    >
+                      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 h-[530px] flex flex-col">
+                        <div className="relative overflow-hidden h-48">
+                          <img
+                            src={study.image}
+                            alt={study.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
 
-                        <div className="flex flex-wrap gap-2 mb-2">
-                          {study.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {study.tags.length > 3 && (
-                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                              +{study.tags.length - 3} more
-                            </span>
-                          )}
+                        <div className="p-6 flex flex-col flex-grow justify-between">
+                          <div className="flex flex-col gap-1">
+                            <h3 className="text/base md:text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
+                              {study.title}
+                            </h3>
+                            <p className="text-xs text-blue-600 font-semibold mb-2">{study.subtitle}</p>
+                            <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{study.description}</p>
+
+                            <div className="flex flex-col gap-1 mb-2 text-xs">
+                              {study.impact.map((point, idx) => (
+                                <div key={idx} className="flex items-center gap-2">
+                                  <TrendingUp className="w-3 h-3 text-green-500" />
+                                  <span className="text-green-600 font-semibold">{point}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
+                              <div className="flex items-center gap-2">
+                                <Clock className="w-3 h-3 text-gray-500" />
+                                <span className="font-medium">Duration:</span> {study.duration}
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Users className="w-3 h-3 text-gray-500" />
+                                <span className="font-medium">Team:</span> {study.team}
+                              </div>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2 mb-2">
+                              {study.tags.slice(0, 3).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                              {study.tags.length > 3 && (
+                                <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                                  +{study.tags.length - 3} more
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
+                            <span className="text-sm font-semibold mr-2">View Detailed Case Study</span>
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                          </div>
                         </div>
                       </div>
+                    </motion.div>
+                  ))
+                ) : (
+                  <p className="text-center text-gray-500 col-span-full">No case studies found.</p>
+                )}
+              </motion.div>
 
-                      <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
-                        <span className="text-sm font-semibold mr-2">View Detailed Case Study</span>
-                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+              {/* CTA Button */}
+              <div className="mt-10 text-center">
+                <a
+                  href="/case-studies"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg transition-colors transition-transform duration-200 hover:bg-blue-700 hover:scale-105 transform-gpu"
+                >
+                  View All Case Studies
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* Blogs */}
+          <section id="blogs" className="py-20 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.h2
+                className="text-4xl font-semibold mb-20 text-center"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                Product Leadership Insights
+              </motion.h2>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
+                variants={staggerContainer(0.1, 0.15)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {posts.map((post, index) => (
+                  <motion.div
+                    key={post.id}
+                    variants={fadeInUp}
+                    className="cursor-pointer h-full"
+                    onClick={() => (window.location.href = `/blogs/${post.id}`)}
+                    transition={{ delay: 0.05 + index * 0.05 }}
+                    style={{ willChange: 'transform, opacity' }}
+                  >
+                    <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 flex flex-col h-[500px]">
+                      {/* Image */}
+                      <div className="relative overflow-hidden h-48 flex-shrink-0">
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6 flex flex-col flex-grow">
+                        <div className="flex flex-col gap-1 flex-grow">
+                          <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
+                            {post.title}
+                          </h3>
+                          <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
+                            {post.category.replace('-', ' ')}
+                          </p>
+                          <p className="text-gray-600 text-sm text-justify mb-5 line-clamp-4">
+                            {post.excerpt}
+                          </p>
+
+                          <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-3 h-3 text-gray-500" />
+                              <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-3 h-3 text-gray-500" />
+                              <span>{post.readTime}</span>
+                            </div>
+                          </div>
+
+                          <div className="flex flex-wrap gap-2 mb-2">
+                            {post.tags.slice(0, 3).map((tag) => (
+                              <span
+                                key={tag}
+                                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                            {post.tags.length > 3 && (
+                              <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                                +{post.tags.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Read More pinned to bottom */}
+                        <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
+                          <span className="text-sm font-semibold mr-2">Read More</span>
+                          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))
-            ) : (
-              <p className="text-center text-gray-500 col-span-full">No case studies found.</p>
-            )}
-          </div>
+                  </motion.div>
+                ))}
+              </motion.div>
 
-          {/* CTA Button */}
-          <div className="mt-10 text-center">
-        <a
-          href="/case-studies"
-          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg transition-colors transition-transform duration-200 hover:bg-blue-700 hover:scale-105"
-        >
-          View All Case Studies
-          <ArrowRight className="ml-2 w-5 h-5" />
-        </a>
-      </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-
-
-      <section id="blogs" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <motion.h2
-      className="text-3xl font-semibold mb-20 text-center"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      Product Leadership Insights
-    </motion.h2>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-  {posts.map((post, index) => (
-    <motion.div
-      key={post.id}
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-      className="cursor-pointer h-full"
-      onClick={() => window.location.href = `/blogs/${post.id}`}
-    >
-      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:scale-105 flex flex-col h-[500px]">
-        
-        {/* Image */}
-        <div className="relative overflow-hidden h-48 flex-shrink-0">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-
-        {/* Content */}
-        <div className="p-6 flex flex-col flex-grow">
-          <div className="flex flex-col gap-1 flex-grow">
-            <h3 className="text-base font-bold text-gray-900 mb-0 group-hover:text-blue-600 transition-colors">
-              {post.title}
-            </h3>
-            <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
-              {post.category.replace('-', ' ')}
-            </p>
-            <p className="text-gray-600 text-sm text-justify mb-5 line-clamp-4">
-              {post.excerpt}
-            </p>
-
-            <div className="grid grid-cols-2 gap-4 text-xs text-gray-600 mb-2">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-3 h-3 text-gray-500" />
-                <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-3 h-3 text-gray-500" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-2">
-              {post.tags.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+              {/* CTA Button */}
+              <div className="mt-10 text-center">
+                <a
+                  href="/blog"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg 
+                  hover:bg-blue-700 hover:scale-105 transform-gpu transition duration-200 ease-in-out"
                 >
-                  {tag}
-                </span>
-              ))}
-              {post.tags.length > 3 && (
-                <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                  +{post.tags.length - 3} more
-                </span>
-              )}
+                  View All Blogs
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </div>
             </div>
-          </div>
+          </section>
 
-          {/* Read More pinned to bottom */}
-          <div className="mt-auto flex items-center text-blue-600 group-hover:text-blue-800 transition-colors">
-            <span className="text-sm font-semibold mr-2">Read More</span>
-            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  ))}
-</div>
-
-    {/* CTA Button */}
-    <div className="mt-10 text-center">
-      <a
-        href="/blog"
-        className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-lg 
-                  hover:bg-blue-700 hover:scale-105 transform transition duration-200 ease-in-out"
-      >
-        View All Blogs
-        <ArrowRight className="ml-2 w-5 h-5" />
-      </a>
-    </div>
-
-        </div>
-      </section>
-
-
-      {/* Certifications */}
-      <section className="pt-16 pb-16 bg-white-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-20"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
-          </motion.div>
-
-          <motion.div
-            className="bg-white rounded-2xl shadow-xl ring-1 ring-gray-200 overflow-hidden"
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 text-sm">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Certification</th>
-                    <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Provider</th>
-                    <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Link</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-100">
-                  {certifications.map((cert, index) => (
-                    <motion.tr
-                      key={index}
-                      className="hover:bg-gray-50 transition"
-                      initial={{ x: -30, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                    >
-                      <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{cert.name}</td>
-                      <td className="px-6 py-4 text-gray-600 whitespace-nowrap">{cert.provider}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <a
-                          href={cert.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 transition inline-flex items-center gap-1"
-                        >
-                          View <ExternalLink size={14} />
-                        </a>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-        {showScrollTop && (
-          <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
-            aria-label="Scroll to top"
-          >
-            <ChevronUp size={20} />
-          </button>
-        )}
-      {/* Closing Section */}
-      <section className="pt-12 pb-10 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl font-semibold text-gray-900 mb-6 tracking-tight">
-              Bridging ambition and execution through product leadership
-            </h2>
-            <p className="text-base text-gray-600 mb-10 max-w-xl mx-auto">
-            Let’s connect if you’re pushing tech to new frontiers.
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Link
-                to="/contact"
-                className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow"
+          <section className="py-20 bg-white-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                className="text-center mb-16"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+                style={{ willChange: 'transform, opacity' }}
+                layout
               >
-                Get in Touch
-              </Link>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Tools & Platforms</h2>
+              </motion.div>
+
+              <motion.div
+                className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-6"
+                variants={staggerContainer(0.05, 0.05)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {tools.map((tool, index) => (
+                  <motion.div
+                    key={tool.name}
+                    className="group flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:shadow-lg transition-all cursor-pointer transform-gpu"
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.05 }}
+                    style={{ willChange: 'transform, opacity' }}
+                    transition={{ delay: index * 0.02 }}
+                  >
+                    <img
+                      src={tool.logo}
+                      alt={`${tool.name} logo`}
+                      className="h-10 w-10 mb-2 object-contain"
+                      loading="lazy"
+                    />
+                    <div className="text-sm font-medium text-gray-700 text-center">
+                      {tool.name}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="py-20 bg-gray-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership Endorsements</h2>
+              </div>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                variants={staggerContainer(0.08, 0.1)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    transition={{ delay: 0.05 + index * 0.05 }}
+                    style={{ willChange: 'transform, opacity' }}
+                  >
+                    <div className="group bg-white shadow-md p-6 rounded-xl flex flex-col justify-between h-full cursor-pointer hover:shadow-xl transform-gpu hover:scale-105 transition-all duration-300">
+                      <div className="flex-grow">
+                        <div className="text-gray-700 mb-6 italic">"{testimonial.quote}"</div>
+                      </div>
+
+                      <div className="flex items-center mt-4">
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full mr-4 object-cover"
+                          loading="lazy"
+                        />
+                        <div>
+                          <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                          <div className="text-sm text-gray-600">{testimonial.role}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Certifications */}
+          <section className="pt-16 pb-16 bg-white-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
             </div>
 
-          </motion.div>
-          <p className="text-xs text-center text-gray-400 mt-8 pt-4 border-t border-gray-200">
-            © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
-          </p>
-        </div>
-      </section>
-    </motion.div>
+            <div className="bg-white rounded-2xl shadow-xl ring-1 ring-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 text-sm">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Certification</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Provider</th>
+                      <th className="px-6 py-4 text-left font-semibold text-gray-700 tracking-wider">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-100">
+                    {certifications.map((cert, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition">
+                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{cert.name}</td>
+                        <td className="px-6 py-4 text-gray-600 whitespace-nowrap">{cert.provider}</td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <a
+                            href={cert.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 transition inline-flex items-center gap-1"
+                          >
+                            View <ExternalLink size={14} />
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          </section>
+
+
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors duration-300"
+              aria-label="Scroll to top"
+            >
+              <ChevronUp size={20} />
+            </button>
+          )}
+
+          {/* Closing Section */}
+          <section className="pt-12 pb-10 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <motion.div
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                <h2 className="text-4xl font-semibold text-gray-900 mb-6 tracking-tight">
+                  Bridging ambition and execution through product leadership
+                </h2>
+                <p className="text-base text-gray-600 mb-10 max-w-xl mx-auto">
+                  Let’s connect if you’re pushing tech to new frontiers.
+                </p>
+
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                  <Link
+                    to="/contact"
+                    className="min-w-[150px] text-center px-6 py-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-transform duration-200 hover:scale-105 text-sm font-medium shadow transform-gpu"
+                  >
+                    Get in Touch
+                  </Link>
+                </div>
+              </motion.div>
+              <p className="text-xs text-center text-gray-400 mt-8 pt-4 border-t border-gray-200">
+                © {new Date().getFullYear()} Dhairya Sharma. All rights reserved.
+              </p>
+            </div>
+          </section>
+        </motion.div>
+      </MotionConfig>
+    </LazyMotion>
   );
 };
 
