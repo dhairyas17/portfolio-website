@@ -104,7 +104,7 @@ const Header = () => {
           {/* Right: Resume Button + Mobile Toggle */}
           <div className="flex items-center gap-4">
             <a
-              href="/resume.pdf"
+              href="/Dhairya_sharma_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -179,7 +179,7 @@ const Header = () => {
                 Contact
               </Link>
               <a
-                href="/resume.pdf"
+                href="/Dhairya_sharma_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors mx-4 mt-4"

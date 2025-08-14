@@ -28,21 +28,26 @@ import {
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // -------------------- Animation presets (smooth & consistent) --------------------
-const viewportDefault = { once: true, amount: 0.25 };
+const isMobile = window.innerWidth <= 768;
+
+const viewportDefault = {
+  once: true,
+  amount: isMobile ? 0.3 : 0.5,  // Trigger animation when 30% visible on mobile, 50% on desktop
+};
 
 const fadeIn: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 }
+  visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const fadeInDown: Variants = {
   hidden: { opacity: 0, y: -24 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
 const staggerContainer = (stagger = 0.08, delayChildren = 0.1): Variants => ({
@@ -55,22 +60,24 @@ const staggerContainer = (stagger = 0.08, delayChildren = 0.1): Variants => ({
   }
 });
 
+const staggerSettings = isMobile ? { stagger: 0.05, delayChildren: 0.05 } : { stagger: 0.08, delayChildren: 0.1 };
+
 // -------------------- Content (unchanged) --------------------
 const valueCards = [
   {
     title: "Strategic Vision",
     icon: <Lightbulb className="w-6 h-6 text-indigo-600" />,
-    desc: "Architect industry-defining product roadmaps that outpace market trends, align with business ambition, and create category leadership with measurable growth."
+    desc: "Build roadmaps that anticipate market shifts, align with goals, and drive category leadership and growth."
   },
   {
     title: "Cross-Functional Leadership",
     icon: <Users className="w-6 h-6 text-indigo-600" />,
-    desc: "Bridge engineering, design, and business teams to deliver complex products at speed, with uncompromising quality, across global markets.."
+    desc: "Align engineering, design, and business teams in delivering complex and high-impact products."
   },
   {
     title: "User Obsession",
     icon: <Target className="w-6 h-6 text-indigo-600" />,
-    desc: "Translate deep user insights into intuitive, scalable solutions that drive adoption, strengthen retention, and accelerate revenue growth."
+    desc: "Turn user insights into scalable solutions that boost adoption, retention, and revenue."
   }
 ];
 
@@ -212,16 +219,17 @@ const Home = () => {
   }, [location]);
 
   const experiences = [
+
     {
-      role: 'Computer Vision Engineer - R&D',
+      role: 'Technical Product Manager',
       company: 'Evercam',
-      period: 'May 2021 – July 2022',
-      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
+      period: 'March 2024 – July 2025',
+      description: "Led AI and edge product strategy from concept to scale, reaching 500+ global sites and reducing operational overhead.",
       metrics: [
-        'Improved measuring accuracy by 79%',
-        'NPS score increased by 55%',
-        'DroneView & 360° PoCs deployed to production',
-        'Adopted by enterprise clients across US, AU & EU'
+        '60% reduction in manual reporting',
+        '70% faster incident response',
+        '1200+ edge deployments (up from 150)',
+        '35% less on-site support'
       ],
       location: 'Dublin, Ireland'
     },
@@ -238,17 +246,17 @@ const Home = () => {
       ],
       location: 'Dublin, Ireland'
     },
-
     {
-      role: 'Technical Product Manager',
+      
+      role: 'Computer Vision Engineer - R&D',
       company: 'Evercam',
-      period: 'March 2024 – July 2025',
-      description: "Led AI and edge product strategy from concept to scale, reaching 500+ global sites and reducing operational overhead.",
+      period: 'May 2021 – July 2022',
+      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
       metrics: [
-        '60% reduction in manual reporting',
-        '70% faster incident response',
-        '1200+ edge deployments (up from 150)',
-        '35% less on-site support'
+        'Improved measuring accuracy by 79%',
+        'NPS score increased by 55%',
+        'DroneView & 360° PoCs deployed to production',
+        'Adopted by enterprise clients across US, AU & EU'
       ],
       location: 'Dublin, Ireland'
     },
@@ -367,7 +375,7 @@ const Home = () => {
               Let&apos;s Connect
             </Link>
             <a
-              href="/resume.pdf"
+              href="/Dhairya_sharma_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-full border border-gray-400 text-gray-600 font-medium hover:bg-gray-50 hover:scale-105 transform transition duration-300"
@@ -465,7 +473,7 @@ const Home = () => {
 
                 {/* Right Value Cards */}
                 <motion.div
-                  className="lg:w-1/2 grid grid-rows-3 gap-9 h-full"
+                  className="lg:w-1/2 grid grid-rows-3 gap-6 h-full"
                   variants={staggerContainer(0.12, 0.2)}
                   initial="hidden"
                   whileInView="visible"
@@ -485,7 +493,7 @@ const Home = () => {
                           {item.title}
                         </h4>
                       </div>
-                      <p className="text-gray-600 text-sm leading-relaxed mt-3 text-justify">
+                      <p className="text-gray-600 text-base semibold leading-relaxed mt-3 text-left">
                         {item.desc}
                       </p>
                     </motion.div>
@@ -496,7 +504,7 @@ const Home = () => {
 
               {/* Stats Section */}
               <motion.div
-                className="mt-16 grid grid-cols-2 sm:grid-cols-6 gap-8 text-center place-items-center"
+                className="mt-16 grid grid-cols-2 sm:grid-cols-5 gap-8 text-center place-items-center"
                 variants={staggerContainer(0.06, 0.1)}
                 initial="hidden"
                 whileInView="visible"
@@ -506,9 +514,8 @@ const Home = () => {
                   { value: "4+", label: "Years Experience" },
                   { value: "7+", label: "Products" },
                   { value: "10+", label: "Industries Served" },
-                  { value: "25+", label: "Countries" },
-                  { value: "50+", label: "Global Teams" },
-                  { value: "1200+", label: "Deployments" },
+                  { value: "15+", label: "Projects" },
+                  { value: "1200+", label: "Edge Deployments" },
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -564,7 +571,7 @@ const Home = () => {
                       </div>
                       <motion.div
                         whileHover={{ scale: 1.05 }}
-                        className="mt[50px] md:mt-[50px] w-full h-[350px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between transform-gpu"
+                        className="mt[50px] md:mt-[50px] w-full h-[370px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between transform-gpu"
                       >
                         <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
 
@@ -599,6 +606,7 @@ const Home = () => {
             </div>
           </section>
 
+          {/* Case Studies */}
           <section id="case-study" className="py-20 pt-16 pb-16 bg-white-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.h2
@@ -606,9 +614,9 @@ const Home = () => {
                 variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportDefault}
+                viewport={{ once: true, amount: 0.2 }}
               >
-                Featured Product Case Studies
+                Featured Product Work
               </motion.h2>
 
               <motion.div
@@ -616,19 +624,18 @@ const Home = () => {
                 variants={staggerContainer(0.1, 0.15)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportDefault}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 {caseStudies.length > 0 ? (
-                  caseStudies.map((study, index) => (
+                  caseStudies.map((study) => (
                     <motion.div
                       key={study.id}
                       variants={fadeInUp}
                       className="cursor-pointer"
                       onClick={() => (window.location.href = study.link)}
-                      transition={{ delay: 0.05 + index * 0.05 }}
                       style={{ willChange: 'transform, opacity' }}
                     >
-                      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 h-[530px] flex flex-col">
+                      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 h-[570px] flex flex-col">
                         <div className="relative overflow-hidden h-48">
                           <img
                             src={study.image}
@@ -645,7 +652,7 @@ const Home = () => {
                               {study.title}
                             </h3>
                             <p className="text-xs text-blue-600 font-semibold mb-2">{study.subtitle}</p>
-                            <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{study.description}</p>
+                            <p className="text-gray-600 text-sm mb-4 text-justify leading-relaxed">{study.description}</p>
 
                             <div className="flex flex-col gap-1 mb-2 text-xs">
                               {study.impact.map((point, idx) => (
@@ -669,10 +676,7 @@ const Home = () => {
 
                             <div className="flex flex-wrap gap-2 mb-2">
                               {study.tags.slice(0, 3).map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                                >
+                                <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
                                   {tag}
                                 </span>
                               ))}
@@ -718,7 +722,7 @@ const Home = () => {
                 variants={fadeInUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportDefault}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 Product Leadership Insights
               </motion.h2>
@@ -728,18 +732,17 @@ const Home = () => {
                 variants={staggerContainer(0.1, 0.15)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={viewportDefault}
+                viewport={{ once: true, amount: 0.2 }}
               >
-                {posts.map((post, index) => (
+                {posts.map((post) => (
                   <motion.div
                     key={post.id}
                     variants={fadeInUp}
                     className="cursor-pointer h-full"
                     onClick={() => (window.location.href = `/blogs/${post.id}`)}
-                    transition={{ delay: 0.05 + index * 0.05 }}
                     style={{ willChange: 'transform, opacity' }}
                   >
-                    <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 flex flex-col h-[500px]">
+                    <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform-gpu hover:scale-105 flex flex-col h-[485px]">
                       {/* Image */}
                       <div className="relative overflow-hidden h-48 flex-shrink-0">
                         <img
@@ -760,7 +763,7 @@ const Home = () => {
                           <p className="text-xs text-blue-600 font-semibold mb-2 capitalize">
                             {post.category.replace('-', ' ')}
                           </p>
-                          <p className="text-gray-600 text-sm text-justify mb-5 line-clamp-4">
+                          <p className="text-gray-600 text-sm text-justify mb-2 line-clamp-4">
                             {post.excerpt}
                           </p>
 
@@ -775,12 +778,9 @@ const Home = () => {
                             </div>
                           </div>
 
-                          <div className="flex flex-wrap gap-2 mb-2">
+                          <div className="flex flex-wrap gap-2 mb-0">
                             {post.tags.slice(0, 3).map((tag) => (
-                              <span
-                                key={tag}
-                                className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-                              >
+                              <span key={tag} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
                                 {tag}
                               </span>
                             ))}
@@ -816,6 +816,7 @@ const Home = () => {
               </div>
             </div>
           </section>
+
 
           <section className="py-20 bg-white-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -913,7 +914,7 @@ const Home = () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-xl ring-1 ring-gray-200 overflow-hidden">
+            <div className="bg-white h-[330px] rounded-2xl shadow-xl ring-1 ring-gray-200 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200 text-sm">
                   <thead className="bg-gray-100">
