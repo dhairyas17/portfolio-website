@@ -734,7 +734,7 @@ export const caseStudies: CaseStudy[] = [
           "Balanced speed with accuracy by implementing quality gates and human oversight to ensure high-quality annotations."
         ]
       ],
-      "image": ""
+      "image": "/assets/case-studies/cvat.jpeg"
     },
   
     "tradeoffs": {

@@ -31,16 +31,16 @@ const CaseStudyCategory = () => {
 
     },
     {
-      id: '2',
-      title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
-      subtitle: 'Unified hardware, firmware, and configs for global rollout.',
-      category: 'infra',
-      description: 'Drove org-wide shift from camera to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
-      duration: '4 months',
-      team: '10',
-      impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
-      tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
-      image:  '/assets/case-studies/standardizing-edge.png'
+      id: "4",
+      title: "Designing a Scalable AI-Driven  API Platform",
+      subtitle: "Product Design, System Design, AI/Edge Architecture",
+      category: 'api',
+      description: "Unified APIs for AI video tasks like detection, FaceNet-based subclassification, SAM segmentation, LaMa inpainting, and motion tracking.",
+      duration: "6 months",
+      team: "5",
+      impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
+      tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
+    image:  '/assets/case-studies/video-intelligence-api.png',
     },
     {
       id: '3',
@@ -55,16 +55,16 @@ const CaseStudyCategory = () => {
       image:  '/assets/case-studies/edge-monitoring-platform.png'
     },
     {
-      id: "4",
-      title: "Designing a Scalable AI-Driven  API Platform",
-      subtitle: "Product Design, System Design, AI/Edge Architecture",
-      category: 'api',
-      description: "Unified APIs for AI video tasks like detection, FaceNet-based subclassification, SAM segmentation, LaMa inpainting, and motion tracking.",
-      duration: "6 months",
-      team: "5",
-      impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
-      tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
-    image:  '/assets/case-studies/video-intelligence-api.png',
+      id: '2',
+      title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
+      subtitle: 'Unified hardware, firmware, and configs for global rollout.',
+      category: 'infra',
+      description: 'Drove org-wide shift from camera to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
+      duration: '4 months',
+      team: '10',
+      impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
+      tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
+      image:  '/assets/case-studies/standardizing-edge.png'
     },
     {
       id: '5',
@@ -79,8 +79,6 @@ const CaseStudyCategory = () => {
       image:  '/assets/case-studies/Scaling MLOps Pipeline in Blue.png',
     
     }
-
-
 
   ];
   const allCategories = Array.from(new Set(caseStudies.map((study) => study.category)));
