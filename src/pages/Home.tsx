@@ -136,17 +136,17 @@ const caseStudies = [
     link: '/case-studies/1'
   },
   {
-    id: '2',
-    title: "Redesigned Evercam’s Edge Architecture to Scale Globally with Zero-Dev Onboarding",
-    subtitle: 'Unified hardware, firmware, and configs for global rollout.',
-    category: 'infra',
-    description: 'Drove org-wide shift from camera to kit-based system and standardized edge deployments, enabling non-engineers to manage 1,200+ devices.',
-    duration: '4 months',
-    team: '10',
-    impact: ['Reduced deployment time by 70%', 'Standardized 1,200+ kits, enabling 500+ site scalability.', 'Empowered non-devs to manage edge ops'],
-    tags: ['Edge Infrastructure', 'Ansible', 'AWX', 'OTA', 'Kit-Based Architecture', 'TPM', 'DevOps'],
-    image:  '/assets/case-studies/standardizing-edge.png',
-    link: '/case-studies/2'
+    id: "4",
+    title: "Designing a Scalable AI-Driven  API Platform",
+    subtitle: "Product Design, System Design, AI/Edge Architecture",
+    category: 'api',
+    description: "Unified APIs for AI video tasks like detection, FaceNet-based subclassification, SAM segmentation, LaMa inpainting, and motion tracking.",
+    duration: "6 months",
+    team: "5",
+    impact: ["Improved gate detection accuracy from 65% to 96%", "reduced processing time from 2 mins to 5 secs", "improved client retention by 22%"],
+    tags: ["Edge AI", "Object Detection", "Jetson Orin", "React", "Node.js", "Postgres", "MQTT"],
+  image:  '/assets/case-studies/video-intelligence-api.png',
+  link: '/case-studies/4'
   },
   {
     id: '3',
@@ -439,11 +439,6 @@ const Home = () => {
               </span>
             </div>
 
-
-
-
-
-
           </section>
 
           <section id="about" className="py-20 bg-white">
@@ -564,11 +559,13 @@ const Home = () => {
               >
                 <h2 className="text-4xl font-bold text-gray-900 mb-8">Product Experience</h2>
               </motion.div>
+
               <div className="relative">
                 {/* Horizontal timeline line */}
                 <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-blue-500 z-0 shadow-[0_0_20px_4px_rgba(59,130,246,0.6)]"></div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-9">
+                {/* Keep grid and gap as-is */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-9 items-stretch">
                   {experiences.map((exp, index) => (
                     <motion.div
                       key={index}
@@ -580,34 +577,40 @@ const Home = () => {
                       transition={{ delay: index * 0.05 }}
                       style={{ willChange: 'transform, opacity' }}
                     >
+                      {/* Dot above card */}
                       <div className="hidden md:flex absolute top-[24px] z-10">
                         <div
                           className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white"
-                          style={{
-                            boxShadow: '0 0 0 rgba(59,130,246,0.4)',
-                          }}
+                          style={{ boxShadow: '0 0 0 rgba(59,130,246,0.4)' }}
                         ></div>
                       </div>
+
+                      {/* Card */}
                       <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        className="mt[50px] md:mt-[50px] w-full h-[370px] bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between transform-gpu"
+                        whileHover={{ scale: 1.03 }}
+                        className="mt-[50px] w-full h-full bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 flex flex-col justify-between"
                       >
-                        <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+                        {/* Top content */}
+                        <div>
+                          <div className="text-sm text-blue-600 font-semibold mb-2">{exp.period}</div>
+                          <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
 
-                        <h3 className="text-lg font-bold text-gray-900 mb-1">{exp.role}</h3>
+                          <div className="text-gray-600 mb-2 flex items-center gap-1">
+                            <span>{exp.company}</span>
+                          </div>
 
-                        <div className="text-gray-600 mb-2 flex items-center gap-1">
-                          <span>{exp.company}</span>
+                          <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+                            <MapPin size={14} />
+                            <span>{exp.location}</span>
+                          </div>
+
+                          <p className="text-gray-600 text-sm mb-4 text-justify leading-relaxed">
+                            {exp.description}
+                          </p>
                         </div>
 
-                        <div className="text-sm text-gray-500 mb-3 flex items-center gap-1">
-                          <MapPin size={14} />
-                          <span>{exp.location}</span>
-                        </div>
-
-                        <p className="text-gray-600 text-sm mb-4 text-justify text-left last-line:text-left leading-relaxed">{exp.description}</p>
-
-                        <div className="space-y-1">
+                        {/* Metrics pinned bottom */}
+                        <div className="space-y-1 mt-auto">
                           {exp.metrics.map((metric, idx) => (
                             <div
                               key={idx}
