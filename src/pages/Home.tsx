@@ -23,7 +23,8 @@ import {
   ArrowRight,
   Calendar,
   Lightbulb,
-  Target
+  Target,
+  BarChart3
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -70,6 +71,11 @@ const valueCards = [
     desc: "Build roadmaps that anticipate market shifts, align with goals, and drive category leadership and growth."
   },
   {
+    title: "Data-Driven Execution",
+    icon: <BarChart3 className="w-6 h-6 text-indigo-600" />,
+    desc: "Leverage analytics and experimentation to prioritize features, measure outcomes, and maximize ROI."
+  },
+  {
     title: "Cross-Functional Leadership",
     icon: <Users className="w-6 h-6 text-indigo-600" />,
     desc: "Align engineering, design, and business teams in delivering complex and high-impact products."
@@ -80,6 +86,7 @@ const valueCards = [
     desc: "Turn user insights into scalable solutions that boost adoption, retention, and revenue."
   }
 ];
+
 
 const posts = [
   {
@@ -219,7 +226,20 @@ const Home = () => {
   }, [location]);
 
   const experiences = [
-
+      {
+      role: "Technical Product Manager",
+      company: "Softtek",
+      period: "September 2025 - Present",
+      description:
+        "Leading post-merger product integration and roadmap with First Advantage <> Sterling, aligning teams to deliver scalable solutions.",
+        metrics: [
+          "Leading product discovery and roadmap planning",
+          "Facilitating cross-team collaboration and alignment",
+          "Defining strategy for seamless product integration",
+          "Ensuring scalable architecture and smooth migration",
+        ],
+      location: "Bengaluru, India",
+    },
     {
       role: 'Technical Product Manager',
       company: 'Evercam',
@@ -245,22 +265,7 @@ const Home = () => {
         'Stable ML releases with rollback & alerting'
       ],
       location: 'Dublin, Ireland'
-    },
-    {
-      
-      role: 'Computer Vision Engineer - R&D',
-      company: 'Evercam',
-      period: 'May 2021 – July 2022',
-      description: 'Built CV pipelines that improved measurement accuracy and developed PoCs for drone and 360° site walkthroughs ',
-      metrics: [
-        'Improved measuring accuracy by 79%',
-        'NPS score increased by 55%',
-        'DroneView & 360° PoCs deployed to production',
-        'Adopted by enterprise clients across US, AU & EU'
-      ],
-      location: 'Dublin, Ireland'
-    },
-    
+    }
   ];
 
   const tools = [
@@ -352,11 +357,11 @@ const Home = () => {
             </span>
           </h1>
 
-          <h2 className="text-2xl md:text-3xl text-gray-600 mb-1 font-semibold">
-            Product Manager & Strategy Leader
+          <h2 className="text-2xl md:text-3xl text-gray-600 mb-2 font-semibold">
+            Technical Product Manager & Strategy Leader
           </h2>
 
-          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
             Leading global teams to turn vision into scalable, data-driven products with measurable impact.
           </p>
 
@@ -410,24 +415,33 @@ const Home = () => {
               </motion.div>
             </div>
 
-            {/* Scroll Down Arrow */}
-            <motion.div
-              className="absolute bottom-10 cursor-pointer"
-              onClick={scrollToAbout}
-              initial={{ y: 0 }}
-              animate={{ y: [0, -20, 0] }} // moves up 20px and back
-              transition={{
-                y: {
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                  duration: 0.9, // slightly slower bounce
-                  ease: 'easeInOut',
-                },
-              }}
-              style={{ willChange: 'transform' }}
-            >
-              <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
-            </motion.div>
+            {/* Scroll Down Section */}
+            <div className="absolute bottom-6 w-full flex flex-col items-center cursor-pointer" onClick={scrollToAbout}>
+              {/* Bouncing Arrow */}
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{
+                  y: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 0.9,
+                    ease: "easeInOut",
+                  },
+                }}
+                style={{ willChange: "transform" }}
+              >
+                <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
+              </motion.div>
+
+              {/* Static Scroll Down Text */}
+              <span className="mt-2 text-gray-500 text-sm font-medium tracking-wide">
+                Scroll Down
+              </span>
+            </div>
+
+
+
+
 
 
           </section>
@@ -451,56 +465,61 @@ const Home = () => {
 
               {/* Main Section */}
               <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
-                {/* Left Content */}
-                <motion.div
-                  className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
-                  variants={fadeInUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewportDefault}
-                  style={{ willChange: 'transform, opacity' }}
-                >
-                  <p>
-                    I'm Dhairya Sharma, an engineer turned Product Manager with 4+ years building and scaling AI/ML, edge computing, and cloud infrastructure products. Delivered enterprise adoption in <strong>25+ countries</strong> and <strong>1200+ site deployments</strong> through scalable system design and data-driven strategy.
-                  </p>
-                  <p>
-                    At Evercam, owned end-to-end SaaS product strategy for global enterprises, cutting manual work <strong>60%</strong>, ensuring SLA compliance, and aligning teams across the US, EU, and APAC. Trusted by leaders in construction and tech to deliver high-availability, mission-critical solutions.
-                  </p>
-                  <p>
-                    I operate at the intersection of technology, strategy, and user experience, turning complex problems into impactful, global-scale products. With a focus on measurable outcomes, rapid iteration, and customer insight. I lead solutions that drive adoption, set technical standards, and create lasting business value.
-                  </p>
-                </motion.div>
+              {/* Left Content */}
+              <motion.div
+                className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <p>
+                  I'm <strong>Dhairya Sharma</strong>, an engineer turned Technical Product Manager with 4+ years of experience building and scaling API integrations, cloud, and <strong>AI/ML</strong> products. I drive global enterprise adoption by turning technical innovation into measurable business impact through strategy, scalable design, and data-driven decisions.
+                </p>
 
-                {/* Right Value Cards */}
-                <motion.div
-                  className="lg:w-1/2 grid grid-rows-3 gap-6 h-full"
-                  variants={staggerContainer(0.12, 0.2)}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={viewportDefault}
-                >
-                  {valueCards.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className="group bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between h-full cursor-pointer transition-all duration-300 transform-gpu hover:shadow-lg hover:scale-105"
-                      variants={fadeInUp}
-                      transition={{ delay: 0.05 + index * 0.05 }}
-                      style={{ willChange: 'transform, opacity' }}
-                    >
-                      <div className="flex items-center gap-4">
-                        {item.icon}
-                        <h4 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                          {item.title}
-                        </h4>
-                      </div>
-                      <p className="text-gray-600 text-base semibold leading-relaxed mt-3 text-left">
-                        {item.desc}
-                      </p>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                <p>
+                  At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I lead post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, focusing on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong>.
+                </p>
 
-              </div>
+                <p>
+                  Previously at <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, I drove end-to-end SaaS product strategy, reducing manual reporting by <strong>60%</strong>, improving incident response by <strong>70%</strong>, and scaling deployments from 150 to <strong>1200+ sites</strong>. I partnered with engineering to deliver <strong>real-time Jetson deployments</strong>, OTA updates, and high-availability ML pipelines trusted globally.
+                </p>
+
+                <p>
+                  I thrive at the intersection of <strong>technology, strategy, and user experience</strong>, turning complex challenges into global-scale solutions through <strong>deep technical understanding</strong>, <strong>outcome-driven roadmaps</strong>, and <strong>business insight</strong>.
+                </p>
+              </motion.div>
+
+              {/* Right Value Cards */}
+              <motion.div
+                className="lg:w-1/2 grid gap-4 h-full"
+                variants={staggerContainer(0.12, 0.2)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportDefault}
+              >
+                {valueCards.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="group bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between h-full cursor-pointer transition-all duration-300 transform-gpu hover:shadow-lg hover:scale-105"
+                    variants={fadeInUp}
+                    transition={{ delay: 0.05 + index * 0.05 }}
+                    style={{ willChange: 'transform, opacity' }}
+                  >
+                    <div className="flex items-center gap-4">
+                      {item.icon}
+                      <h4 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <p className="text-gray-600 text-base semibold leading-relaxed mt-3 text-left">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
 
               {/* Stats Section */}
               <motion.div
@@ -543,7 +562,7 @@ const Home = () => {
                 whileInView="visible"
                 viewport={viewportDefault}
               >
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">Experience</h2>
+                <h2 className="text-4xl font-bold text-gray-900 mb-8">Product Experience</h2>
               </motion.div>
               <div className="relative">
                 {/* Horizontal timeline line */}

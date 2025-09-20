@@ -15,10 +15,10 @@ const Portfolio = () => {
       color: 'from-blue-500 to-indigo-600',
       items: [
         "Redesigning Evercam's Gate Report",
-        'Standardizing Edge Setup at Evercam',
+        'Designing a Scalable AI-Driven API Platform',       
         'Real-Time Observability for Edge Devices',
-        'Scaling ML Pipelines & MLOps Lifecycle',
-        'Designing a Scalable AI-Driven API Platform'
+        'Standardizing Edge Setup at Evercam',
+        'Scaling ML Pipelines & MLOps Lifecycle'
       ],
       count: 5,
     },
