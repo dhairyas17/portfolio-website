@@ -339,56 +339,66 @@ const Home = () => {
         >
 
           {/* Hero Section */}
+
           <section
             id="home"
             className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-12"
           >
             <div className="max-w-4xl w-full mx-auto text-center">
+            <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="flex justify-center mb-8"
+                >
+                  <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full p-1 bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg">
+                    <img
+                      src="/profile.jpeg" // Replace with your actual image path
+                      alt="Dhairya Sharma"
+                      className="rounded-full w-full h-full object-cover border-4 border-white"
+                    />
+                  </div>
+                </motion.div>
               {/* Intro */}
               <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
-            Hi, I&apos;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
-              Dhairya
-            </span>
-          </h1>
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                  Hi, I&apos;m{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
+                    Dhairya
+                  </span>
+                </h1>
 
-          <h2 className="text-2xl md:text-3xl text-gray-600 mb-2 font-semibold">
-            Technical Product Manager & Strategy Leader
-          </h2>
+                <h2 className="text-3xl md:text-3xl text-gray-600 mb-2 font-semibold">
+                  Technical Product Manager
+                </h2>
 
-          <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
-            Leading global teams to turn vision into scalable, data-driven products with measurable impact.
-          </p>
+                <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
+                Turning complex technology into measurable business outcomes.
+                </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to="/portfolio"
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300"
-            >
-              Explore My Work
-            </Link>
-            <Link
-              to="/contact"
-              className="px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 hover:scale-105 transform transition duration-300"
-            >
-              Let&apos;s Connect
-            </Link>
-            <a
-              href="/Dhairya_sharma_resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full border border-gray-400 text-gray-600 font-medium hover:bg-gray-50 hover:scale-105 transform transition duration-300"
-            >
-              Resume
-            </a>
-          </div>
-        </motion.div>
+                {/* Profile Picture */}
+
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link
+                    to="/portfolio"
+                    className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300"
+                  >
+                    Explore My Work
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="px-6 py-3 rounded-full border border-blue-600 text-blue-600 font-medium hover:bg-blue-50 hover:scale-105 transform transition duration-300"
+                  >
+                    Let&apos;s Connect
+                  </Link>
+                </div>
+              </motion.div>
 
               {/* Social Links */}
               <motion.div
@@ -416,8 +426,10 @@ const Home = () => {
             </div>
 
             {/* Scroll Down Section */}
-            <div className="absolute bottom-6 w-full flex flex-col items-center cursor-pointer" onClick={scrollToAbout}>
-              {/* Bouncing Arrow */}
+            <div
+              className="absolute bottom-6 w-full flex flex-col items-center cursor-pointer"
+              onClick={scrollToAbout}
+            >
               <motion.div
                 animate={{ y: [0, -20, 0] }}
                 transition={{
@@ -430,122 +442,93 @@ const Home = () => {
                 }}
                 style={{ willChange: "transform" }}
               >
-                <ArrowDown size={40} className="text-gray-700 hover:text-blue-700 transition-colors" />
+                <ArrowDown size={25} className="text-gray-700 hover:text-blue-700 transition-colors" />
               </motion.div>
-
-              {/* Static Scroll Down Text */}
               <span className="mt-2 text-gray-500 text-sm font-medium tracking-wide">
                 Scroll Down
               </span>
             </div>
-
           </section>
 
           <section id="about" className="py-20 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Heading */}
-              <motion.div
-                className="text-center mb-16"
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportDefault}
-                style={{ willChange: 'transform, opacity' }}
-              >
-                <h2 className="text-4xl font-extrabold text-gray-900 mb-4">About Me</h2>
-                <p className="text-lg text-gray-500">
-                  Engineering roots, product leadership, and scaling global impact.
-                </p>
-              </motion.div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Heading */}
+    <motion.div
+      className="text-center mb-16"
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportDefault}
+      style={{ willChange: 'transform, opacity' }}
+    >
+      <h2 className="text-4xl font-extrabold text-gray-900 mb-4">About Me</h2>
+    </motion.div>
 
-              {/* Main Section */}
-              <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
-              {/* Left Content */}
-              <motion.div
-                className="lg:w-1/2 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportDefault}
-                style={{ willChange: 'transform, opacity' }}
-              >
-                <p>
-                  I'm <strong>Dhairya Sharma</strong>, an engineer turned Technical Product Manager with 4+ years of experience building and scaling API integrations, cloud, and <strong>AI/ML</strong> products. I drive global enterprise adoption by turning technical innovation into measurable business impact through strategy, scalable design, and data-driven decisions.
-                </p>
+    {/* Main Section */}
+    <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
+      {/* Left Content */}
+      <motion.div
+        className="lg:w-3/5 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportDefault}
+        style={{ willChange: 'transform, opacity' }}
+      >
+        <p>
+          I'm <strong>Dhairya Sharma</strong>, an engineer turned Technical Product Manager with 4+ years of experience building and scaling API integrations, cloud, and <strong>AI/ML</strong> products. I drive global enterprise adoption by turning technical innovation into measurable business impact through strategy, scalable design, and data-driven decisions.
+        </p>
 
-                <p>
-                  At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I am leading post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, focusing on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong>.
-                </p>
+        <p>
+  At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I lead post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, a global leader in background verification, following its acquisition of <strong>Sterling Check</strong>. My work focuses on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong> to ensure seamless integration and measurable enterprise outcomes.
+</p>
 
-                <p>
-                  Previously at <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, I drove end-to-end SaaS product strategy, reducing manual reporting by <strong>60%</strong>, improving incident response by <strong>70%</strong>, and scaling deployments from 150 to <strong>1200+ sites</strong>. I partnered with engineering to deliver <strong>real-time Jetson deployments</strong>, OTA updates, and high-availability ML pipelines trusted globally.
-                </p>
 
-                <p>
-                  I thrive at the intersection of <strong>technology, strategy, and user experience</strong>, turning complex challenges into global-scale solutions through <strong>deep technical understanding</strong>, <strong>outcome-driven roadmaps</strong>, and <strong>business insight</strong>.
-                </p>
-              </motion.div>
+        <p>
+          Previously at <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, I drove end-to-end SaaS product strategy, reducing manual reporting by <strong>60%</strong>, improving incident response by <strong>70%</strong>, and scaling deployments from 150 to <strong>1200+ sites</strong>. I partnered with engineering to deliver <strong>real-time Jetson deployments</strong>, OTA updates, and high-availability ML pipelines trusted globally.
+        </p>
 
-              {/* Right Value Cards */}
-              <motion.div
-                className="lg:w-1/2 grid gap-4 h-full"
-                variants={staggerContainer(0.12, 0.2)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportDefault}
-              >
-                {valueCards.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="group bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between h-full cursor-pointer transition-all duration-300 transform-gpu hover:shadow-lg hover:scale-105"
-                    variants={fadeInUp}
-                    transition={{ delay: 0.05 + index * 0.05 }}
-                    style={{ willChange: 'transform, opacity' }}
-                  >
-                    <div className="flex items-center gap-4">
-                      {item.icon}
-                      <h4 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {item.title}
-                      </h4>
-                    </div>
-                    <p className="text-gray-600 text-base semibold leading-relaxed mt-3 text-left">
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
+        <p>
+          I thrive at the intersection of <strong>technology, strategy, and user experience</strong>, turning complex challenges into global-scale solutions through <strong>deep technical understanding</strong>, <strong>outcome-driven roadmaps</strong>, and <strong>business insight</strong>. Let’s connect if you’re passionate about building products that blend innovation with real-world impact.
+        </p>
+      </motion.div>
+
+      {/* Right Stats Section (8 Stats) */}
+      <motion.div
+        // className="lg:w-2/5 grid grid-cols-2 sm:grid-cols-2 gap-9 text-center place-items-center"
+        className="lg:w-2/5 mb-4 grid grid-cols-2 sm:grid-cols-2 gap-x-5 gap-y-2 text-center place-items-center"
+        variants={staggerContainer(0.06, 0.1)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportDefault}
+      >
+        {[
+        { value: "4+", label: "Years Experience" },
+        { value: "7+", label: "Products Delivered" },
+        { value: "10+", label: "Features Launched" },
+        { value: "18+", label: "Product Integrations Delivered" },
+        { value: "20+", label: "Platform Integrations Managed" },
+        { value: "15+", label: "Data Pipelines Scaled" },
+        { value: "10+", label: "Industries Served" },
+        { value: "20+", label: "Enterprise Clients Served" },
+        ].map((stat, idx) => (
+          <motion.div
+            key={idx}
+            className="bg-white border border-gray-200 rounded-2xl py-8 shadow-sm hover:shadow-lg transition-all w-full h-[120px] flex flex-col items-center justify-center"
+            variants={fadeInUp}
+            style={{ willChange: 'transform, opacity' }}
+          >
+            <div className="text-indigo-600 text-4xl font-extrabold">
+              {stat.value}
             </div>
+            <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+  </div>
+</section>
 
-              {/* Stats Section */}
-              <motion.div
-                className="mt-16 grid grid-cols-2 sm:grid-cols-5 gap-8 text-center place-items-center"
-                variants={staggerContainer(0.06, 0.1)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportDefault}
-              >
-                {[
-                  { value: "4+", label: "Years Experience" },
-                  { value: "7+", label: "Products" },
-                  { value: "10+", label: "Industries Served" },
-                  { value: "15+", label: "Projects" },
-                  { value: "1200+", label: "Edge Deployments" },
-                ].map((stat, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="bg-white border border-gray-200 rounded-2xl py-6 shadow-sm hover:shadow-lg transition w-full"
-                    variants={fadeInUp}
-                    style={{ willChange: 'transform, opacity' }}
-                  >
-                    <div className="text-indigo-600 text-4xl font-extrabold">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
 
           {/* Experience Timeline */}
           <section className="py-20 pt-16 bg-gray-50">

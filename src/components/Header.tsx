@@ -91,18 +91,10 @@ const Header = () => {
             >
               Blogs
             </Link>
-            <Link
-              to="/contact"
-              className={`relative pb-1 transition-colors ${
-                isActive('/contact') ? 'text-blue-600 font-semibold' : 'text-gray-700'
-              } hover:text-blue-600 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-600 hover:after:w-full after:transition-all`}
-            >
-              Contact
-            </Link>
           </div>
 
           {/* Right: Resume Button + Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             <a
               href="/Dhairya_sharma_resume.pdf"
               target="_blank"
@@ -118,7 +110,22 @@ const Header = () => {
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
-          </div>
+          </div> */}
+          <div className="flex items-center gap-4">
+  <a
+    href="/contact"
+    className="hidden md:inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+  >
+    contact
+  </a>
+  <button
+    className="md:hidden text-gray-800"
+    onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+  >
+    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+  </button>
+</div>
+
         </div>
       </div>
 
