@@ -474,7 +474,7 @@ const Home = () => {
                 </p>
 
                 <p>
-                  At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I lead post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, focusing on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong>.
+                  At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I am leading post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, focusing on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong>.
                 </p>
 
                 <p>
