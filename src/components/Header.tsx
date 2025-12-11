@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
@@ -111,12 +111,13 @@ const Header = () => {
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div> */}
-          <div className="flex items-center gap-4">
+<div className="flex items-center gap-4">
   <a
     href="/contact"
     className="hidden md:inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
   >
-    contact
+    <Mail size={18} className="text-white" /> {/* 👈 Added icon */}
+    Contact 
   </a>
   <button
     className="md:hidden text-gray-800"
@@ -185,7 +186,7 @@ const Header = () => {
               >
                 Contact
               </Link>
-              <a
+              {/* <a
                 href="/Dhairya_sharma_resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -193,7 +194,7 @@ const Header = () => {
               >
                 <Download size={16} />
                 Resume
-              </a>
+              </a> */}
             </motion.div>
           </motion.div>
         )}

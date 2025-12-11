@@ -344,6 +344,7 @@ const Home = () => {
             id="home"
             className="relative min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-12"
           >
+            
             <div className="max-w-4xl w-full mx-auto text-center">
             <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -365,19 +366,19 @@ const Home = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
+                <h1 className="text-3xl md:text-5xl font-extrabold text-gray-800 mb-4">
                   Hi, I&apos;m{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
                     Dhairya
                   </span>
                 </h1>
 
-                <h2 className="text-3xl md:text-3xl text-gray-600 mb-2 font-semibold">
+                <h2 className="text-3xl md:text-4xl text-gray-600 mb-2 font-semibold">
                   Technical Product Manager
                 </h2>
 
-                <p className="text-lg md:text-xl text-gray-500 max-w-4xl mx-auto leading-relaxed mb-6">
-                Turning complex technology into measurable business outcomes.
+                <p className="text-lg md:text-xl text-gray-500 max-w-7xl mx-auto leading-relaxed mb-6">
+                Leading global teams to turn technology into measurable business outcomes.
                 </p>
 
                 {/* Profile Picture */}
@@ -431,7 +432,7 @@ const Home = () => {
               onClick={scrollToAbout}
             >
               <motion.div
-                animate={{ y: [0, -20, 0] }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{
                   y: {
                     repeat: Infinity,
@@ -442,7 +443,7 @@ const Home = () => {
                 }}
                 style={{ willChange: "transform" }}
               >
-                <ArrowDown size={25} className="text-gray-700 hover:text-blue-700 transition-colors" />
+                {/* <ArrowDown size={25} className="text-gray-700 hover:text-blue-700 transition-colors" /> */}
               </motion.div>
               <span className="mt-2 text-gray-500 text-sm font-medium tracking-wide">
                 Scroll Down
@@ -467,7 +468,7 @@ const Home = () => {
     {/* Main Section */}
     <div className="flex flex-col lg:flex-row gap-16 items-start lg:items-stretch">
       {/* Left Content */}
-      <motion.div
+      {/* <motion.div
         className="lg:w-3/5 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
         variants={fadeInUp}
         initial="hidden"
@@ -483,20 +484,53 @@ const Home = () => {
   At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, I lead post-merger end-to-end product integration for <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, a global leader in background verification, following its acquisition of <strong>Sterling Check</strong>. My work focuses on <strong>architecture alignment</strong>, <strong>cross-team collaboration</strong>, <strong>migration strategy</strong>, <strong>business continuity planning</strong>, and <strong>scalable technology adoption</strong> to ensure seamless integration and measurable enterprise outcomes.
 </p>
 
+<p>
+  Previously at <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, I was a core member driving the <strong>Evercam × Bentley Systems</strong> collaboration and instrumental in securing <strong>€25M+ in multiple rounds</strong>. Led end-to-end SaaS strategy, reducing manual reporting by <strong>60%</strong>, improving incident response by <strong>70%</strong>, and scaling deployments from 150 to <strong>1200+ sites</strong>. Delivered <strong>Jetson-based real-time deployments</strong>, OTA updates, and high-availability ML pipelines globally.
+</p>
 
-        <p>
-          Previously at <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, I drove end-to-end SaaS product strategy, reducing manual reporting by <strong>60%</strong>, improving incident response by <strong>70%</strong>, and scaling deployments from 150 to <strong>1200+ sites</strong>. I partnered with engineering to deliver <strong>real-time Jetson deployments</strong>, OTA updates, and high-availability ML pipelines trusted globally.
-        </p>
+
 
         <p>
           I thrive at the intersection of <strong>technology, strategy, and user experience</strong>, turning complex challenges into global-scale solutions through <strong>deep technical understanding</strong>, <strong>outcome-driven roadmaps</strong>, and <strong>business insight</strong>. Let’s connect if you’re passionate about building products that blend innovation with real-world impact.
         </p>
-      </motion.div>
+      </motion.div> */}
+<motion.div
+  className="lg:w-3/5 text-gray-700 text-lg space-y-6 text-justify leading-relaxed flex flex-col justify-between h-full"
+  variants={fadeInUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={viewportDefault}
+  style={{ willChange: 'transform, opacity' }}
+>
+  <p>
+    I'm <strong>Dhairya Sharma</strong>, an engineer turned <strong>Technical Product Manager</strong> with 4+ years of experience scaling 
+    <strong> AI/ML</strong>, <strong>cloud</strong>, and <strong>API-driven</strong> products.
+  </p>
+
+  <p>
+    At <a href="https://www.softtek.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Softtek</strong></a>, 
+    I lead <strong>post-merger product integration</strong> for  <a href="https://fadv.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>First Advantage</strong></a>, a global leader in background verification, following its acquisition of <strong>Sterling Checks</strong> for <strong>US $2.2 billion</strong>. 
+    I drive <strong>architecture alignment</strong>, <strong>migration strategy</strong>, and <strong>business continuity planning</strong> to ensure a seamless transition.
+  </p>
+
+  <p>
+    At <a href="https://www.evercam.io/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline"><strong>Evercam</strong></a>, 
+    I was a core member of the <strong>engineering and product team</strong>, driving the <strong>Evercam × Bentley Systems</strong> partnership and raised <strong>€25M+ across multiple funding rounds</strong>. 
+    I scaled edge SaaS deployments from <strong>150 to 1,200+ sites</strong>, cut manual reporting by <strong>60%</strong>, 
+    and delivered <strong>Jetson-based edge AI</strong> solutions with global uptime and OTA updates.
+  </p>
+
+  <p>
+    I thrive at the intersection of <strong>technology, strategy, and user experience</strong>, building products that turn <strong>complex challenges</strong> into <strong>real-world impact</strong>.
+  </p>
+</motion.div>
+
+
 
       {/* Right Stats Section (8 Stats) */}
       <motion.div
         // className="lg:w-2/5 grid grid-cols-2 sm:grid-cols-2 gap-9 text-center place-items-center"
-        className="lg:w-2/5 mb-4 grid grid-cols-2 sm:grid-cols-2 gap-x-5 gap-y-2 text-center place-items-center"
+        className="lg:w-2/5 mb-4 grid grid-cols-2 sm:grid-cols-2 gap-x-5 gap-y-8 text-center place-items-center"
         variants={staggerContainer(0.06, 0.1)}
         initial="hidden"
         whileInView="visible"
@@ -505,12 +539,10 @@ const Home = () => {
         {[
         { value: "4+", label: "Years Experience" },
         { value: "7+", label: "Products Delivered" },
-        { value: "10+", label: "Features Launched" },
-        { value: "18+", label: "Product Integrations Delivered" },
-        { value: "20+", label: "Platform Integrations Managed" },
-        { value: "15+", label: "Data Pipelines Scaled" },
-        { value: "10+", label: "Industries Served" },
-        { value: "20+", label: "Enterprise Clients Served" },
+        { value: "18+", label: "Product Integrations" },
+        { value: "20+", label: "Platform Integrations" },
+        { value: "7+", label: "Data Pipelines Scaled" },
+        { value: "35+", label: "Enterprise Clients Served" },
         ].map((stat, idx) => (
           <motion.div
             key={idx}
